@@ -9,4 +9,11 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+  resources :categories, only: [:new, :create]
+
+  resources :charities do
+    resources :charity_projects do
+      resources :donations, only: [:create] # Nest donations under charity projects
+    end
+  end
 end
