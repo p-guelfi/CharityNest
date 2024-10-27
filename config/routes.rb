@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   resources :charities do
     resources :charity_projects do
-      resources :donations, only: [:create] # Nest donations under charity projects
+      resources :donations, only: [:new, :create] # Nest donations under charity projects
     end
   end
 end
