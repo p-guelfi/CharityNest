@@ -9,7 +9,7 @@ class User < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
 
-  has_one :charity
+  has_one :charity, dependent: :destroy
   has_many :donations
 
   # Optionally, you can add a validation to ensure that only admin users can create charities
