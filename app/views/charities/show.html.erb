@@ -1,13 +1,34 @@
-<h1><%= @charity.name %></h1>
-
-<p><strong>Description:</strong> <%= @charity.description %></p>
-
-<h2>Photos:</h2>
-
-<div class="photos">
-  <% @charity.photos.each do |photo| %>
-    <div class="photo">
-      <%= image_tag photo %>
-    </div>
+<div class="banner">
+  <% if @charity.photos.attached? %>
+    <%= cl_image_tag @charity.photos.first.key, gravity: 'north', crop: 'fill' %>
+  <% else %>
+    <p>No banner image available.</p>
   <% end %>
+</div>
+
+<div class="content">
+  <h1><%= @charity.name %></h1>
+  <p><%= @charity.description %></p>
+  <h2>Ways to Give</h2>
+
+  <div class="ways-to-give">
+    <div class="give-option">
+      <div class="give-photo">
+        <%= cl_image_tag @charity.photos.second.key, width: 300, height: 150, crop: 'fill' %>
+      </div>
+      <h4>Donate to a Project</h4>
+    </div>
+    <div class="give-option">
+      <div class="give-photo">
+        <%= cl_image_tag @charity.photos.third.key, width: 300, height: 150, crop: 'fill' %>
+      </div>
+      <h4>Give a Gift</h4>
+    </div>
+    <div class="give-option">
+      <div class="give-photo">
+        <%= cl_image_tag @charity.photos.fourth.key, width: 300, height: 150, crop: 'fill' %>
+      </div>
+      <h4>Send an Email</h4>
+    </div>
+  </div>
 </div>

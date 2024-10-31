@@ -1,0 +1,78 @@
+.banner {
+  width: 100%;
+  height: 27rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures the image covers the div while maintaining its aspect ratio */
+  object-position: 50% 25%; /* Aligns the image to the top of the banner */
+}
+
+.content {
+  display: flex;
+  flex-direction: column; /* Aligns items in a column */
+  align-items: center; /* Centers items horizontally */
+  justify-content: center; /* Centers items vertically */
+  text-align: center; /* Centers text */
+  padding: 3rem 3rem; /* Adds padding on top and bottom, and horizontal padding */
+}
+
+.content h1 {
+  margin: 3rem 0; /* Margin for spacing between title and description */
+  padding: 0 3rem; /* Optional horizontal padding for the title */
+}
+
+h2 {
+  margin: 5rem 0 1rem; /* Increase the top margin to move the heading lower */
+  padding: 0 3rem; /* Keep the existing horizontal padding */
+}
+
+
+.content {
+  max-width: 800px; /* Set this to match your design */
+  margin: 0 auto; /* Center the content */
+  padding: 0 1rem; /* Optional: add padding on sides */
+}
+
+.ways-to-give {
+  display: flex; /* Use flexbox to arrange items in a row */
+  justify-content: space-between; /* Space items evenly */
+  margin: 2rem 2rem; /* Adds vertical margin above and below the section */
+  padding: 2rem 2rem; /* Add padding to the top and bottom */
+}
+
+.give-option {
+  flex: 1; /* Each square takes equal width */
+  height: 200px; /* Set a fixed height for the square */
+  background-color: #f0f0f0; /* Background color for visibility */
+  margin: 0 1rem; /* Horizontal margin for spacing between squares */
+  display: flex; /* Use flexbox for vertical arrangement */
+  flex-direction: column; /* Arrange children vertically */
+  border-radius: 8px; /* Optional: rounded corners */
+  text-align: center; /* Center text inside the square */
+  overflow: hidden; /* Prevent overflow */
+}
+
+.give-option h4 {
+  background-color: $dark-ocean-blue; /* Use the dark ocean blue variable */
+  color: white; /* Text color */
+  margin: 0 0 2rem; /* Remove default margin */
+  padding: 1rem;  /* Add padding for top and bottom spacing */
+  flex: 0; /* Prevents it from growing */
+}
+
+.give-photo {
+  flex: 1; /* Take remaining space for the photo */
+  display: flex; /* Center photo */
+  align-items: center; /* Vertically center */
+  justify-content: center; /* Horizontally center */
+}
+
+h3 {
+  margin: 0; /* Remove default margin */
+  padding: 0.5rem 0; /* Padding for spacing */
+}
