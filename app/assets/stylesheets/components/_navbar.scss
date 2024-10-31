@@ -2,11 +2,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem; // Add padding for left and right spacing
+  padding: 1rem 2rem;
   background-color: $white;
 
   .navbar-left {
-    flex: 1; // Allow this section to take up space on the left side
+    flex: 1;
     .search-bar {
       input[type="text"] {
         padding: 0.5rem;
@@ -38,9 +38,9 @@
   }
 
   .navbar-right {
-    flex: 1; // Allow this section to take up space on the right side
+    flex: 1;
     display: flex;
-    justify-content: flex-end; // Align items to the right
+    justify-content: flex-end;
 
     .button {
       padding: 0.5rem 1rem;
