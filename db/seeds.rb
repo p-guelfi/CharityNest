@@ -45,19 +45,49 @@ puts "Seeding database..."
 
   puts "Creating categories..."
   categories = [
-    "Climate Change",
-    "Pollution",
-    "Basic Needs",
-    "Natural Disasters",
-    "War",
-    "Education",
-    "Health",
-    "Human Rights",
-    "Famine",
-    "Wildlife"
+    {
+      name: "Climate Change",
+      description: "Climate change addresses the critical issue of rising global temperatures and extreme weather events. Efforts in this category focus on reducing carbon emissions, promoting renewable energy, and fostering sustainable practices to mitigate the impact on ecosystems, protect vulnerable populations, and build resilience against future environmental challenges."
+    },
+    {
+      name: "Pollution",
+      description: "Pollution organizations tackle issues related to air, water, and soil contamination. They work on reducing industrial emissions, plastic waste, and other pollutants that threaten both human health and the environment, while advocating for cleaner production practices and stricter environmental regulations globally."
+    },
+    {
+      name: "Basic Needs",
+      description: "Organizations in this category focus on providing fundamental resources like clean water, food, shelter, and clothing to underserved populations. Addressing basic needs is essential for improving health outcomes, economic stability, and quality of life, especially in low-income communities and disaster-affected areas."
+    },
+    {
+      name: "Natural Disasters",
+      description: "Natural disaster relief organizations provide immediate aid and long-term recovery efforts for communities impacted by events like earthquakes, hurricanes, and floods. They focus on emergency response, disaster preparedness, and building resilience to reduce future vulnerabilities and support sustainable recovery in affected regions."
+    },
+    {
+      name: "War",
+      description: "War-focused organizations assist people affected by conflict, providing services like medical aid, shelter, and psychological support. These organizations also advocate for peacebuilding, refugee support, and human rights protection, aiming to create safer environments for those caught in or displaced by conflict."
+    },
+    {
+      name: "Education",
+      description: "Education organizations work to increase access to quality education globally, especially in underserved regions. They focus on literacy programs, vocational training, and school infrastructure to help individuals improve their skills, knowledge, and future opportunities, ultimately contributing to economic growth and social stability."
+    },
+    {
+      name: "Health",
+      description: "Health organizations focus on improving global health outcomes by providing medical services, disease prevention, and health education. Their work includes fighting infectious diseases, promoting mental health, and addressing healthcare disparities to ensure all people have access to essential health services."
+    },
+    {
+      name: "Human Rights",
+      description: "Human rights organizations protect and promote the rights and freedoms of individuals around the world. They work on issues like freedom of expression, equality, and protection against discrimination and violence, striving to build societies that respect the dignity and autonomy of all individuals."
+    },
+    {
+      name: "Famine",
+      description: "Famine relief organizations work to combat hunger and malnutrition, especially in regions affected by food scarcity and extreme poverty. These organizations provide food assistance, support sustainable agriculture, and promote policies to improve food security and prevent future hunger crises."
+    },
+    {
+      name: "Wildlife",
+      description: "Wildlife organizations focus on protecting endangered species and preserving biodiversity. They work to combat habitat loss, illegal poaching, and other threats to animals, while promoting conservation efforts and awareness to safeguard wildlife and maintain ecological balance for future generations."
+    }
   ]
   categories.each do |category|
-    Category.create!(name: category)
+    Category.create!(name: category[:name], description: category[:description])
   end
 
   puts "#{Category.count} categories created."
@@ -79,13 +109,51 @@ charities = [{
     name: "Oxfam",
     description: "Oxfam is a global organization that was founded in 1942. It is dedicated to fighting poverty and injustice around the world by providing emergency aid, promoting sustainable development, and advocating for social change.",
     category: Category.find_by(name: "Human Rights"),
+    partner: "",
     user: User.all.sample
   }, {
     name: "Greenpeace",
     description: "At Greenpeace we are honoured that our work is funded almost entirely by donations given to us by passionate individuals from all over the world who care about the planet and want to help us create change, and by grants from private foundations who share our values. Our independence is vital for us to be effective in our campaigning work, which is why we have it as a core principle that guides all of our fundraising. We do not accept funding from governments, corporations, political parties or intergovernmental organisations. We also screen all large private donations to identify if there is anything about them which could compromise our independence, our integrity or deflect from our campaign priorities. If we find something then we will refuse or return the donation.",
     category: Category.find_by(name: "Climate Change"),
+    partner: "",
     user: User.all.sample
-  }]
+  },{
+    name: "World Wildlife Fund (WWF)",
+    description: "The World Wildlife Fund works globally to protect endangered species and preserve natural habitats, with a strong emphasis on combating climate change and promoting sustainability.",
+    category: Category.find_by(name: "Climate Change"),
+    partner: "",
+    user: User.all.sample
+  },
+  {
+    name: "The Sierra Club Foundation",
+    description: "The Sierra Club Foundation works to advance climate solutions and promote green energy, sustainable practices, and environmental justice across communities.",
+    category: Category.find_by(name: "Climate Change"),
+    partner: "",
+    user: User.all.sample
+  },
+  {
+    name: "Friends of the Earth",
+    description: "Friends of the Earth is an environmental advocacy organization that campaigns for sustainable policies and practices to combat the climate crisis, focusing on the well-being of communities and the environment.",
+    category: Category.find_by(name: "Climate Change"),
+    partner: "",
+    user: User.all.sample
+  },
+  {
+    name: "Rainforest Alliance",
+    description: "The Rainforest Alliance works with local communities to protect biodiversity and fight climate change through sustainable agriculture and forestry initiatives.",
+    category: Category.find_by(name: "Climate Change"),
+    partner: "",
+    user: User.all.sample
+  },
+  # Lesser-known charity with notable partners
+  {
+    name: "ClimateWorks Foundation",
+    description: "ClimateWorks Foundation is a global platform that brings together partners to address the climate crisis through research, advocacy, and promoting sustainable practices. They partner with well-known organizations like the Hewlett Foundation and Bloomberg Philanthropies.",
+    category: Category.find_by(name: "Climate Change"),
+    partner: "Hewlett Foundation, Bloomberg Philanthropies",
+    user: User.all.sample
+  }
+  ]
 
 charities.each do |charity_data|
   charity = Charity.create!(charity_data)  # Create the Charity instance

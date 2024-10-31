@@ -1,0 +1,14 @@
+$index-margin-x: 50px;
+
+.index-grid-background {
+  background-color: $coral-white;
+}
+.index-grid-container {
+  margin: 0 $index-margin-x;
+  padding: 20px 0px;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: auto;
+  grid-gap: 20px;
+  justify-items: stretch;
+}

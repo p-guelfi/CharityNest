@@ -1,0 +1,24 @@
+.bar-sort {
+  padding-left: $index-margin-x;
+  padding-right: $index-margin-x;
+  padding-top: 50px;
+  padding-bottom: 30px;
+  display: flex;
+  justify-content: end;
+  .btn {
+    margin-left: 10px;
+    border-radius: 10px;
+    background-color: $ocean-turquoise;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    span {
+      line-height: 1.5;
+      margin-bottom: -0.25rem;
+    }
+    i {
+      margin-right: 5px;
+    }
+  }
+}

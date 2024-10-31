@@ -1,0 +1,58 @@
+.card-charity {
+  position: relative;
+  grid-column: span 6;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  justify-items: stretch;
+  gap: 30px;
+  background-color: white;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.card-link {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 50%;
+}
+.card-charity-info {
+  aspect-ratio: 9/16;
+  padding: 40px 40px 40px 0;
+  grid-column: span 1;
+  display: grid;
+  grid-template-rows: repeat(6, 1fr);
+  row-gap: 1rem;
+  div {
+    grid-row: span 1;
+    overflow: clip;
+  }
+  p {
+    font-size: 0.9rem;
+    text-overflow: ellipsis;
+  }
+  .description {
+    grid-row: span 3;
+  }
+}
+
+.card-charity-video {
+  aspect-ratio: 9/16;
+  background: black;
+  min-width: 0;
+  min-height: 0;
+  h2 {
+    color: white;
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    width: 30%;
+    word-wrap: break-word;
+  }
+  video {
+    object-fit: contain;
+    width: 100%;
+  }
+}
