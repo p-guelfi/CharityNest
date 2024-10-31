@@ -1,0 +1,8 @@
+<div class="container">
+  <%= render "card_donation", donation: @donation %>
+  <% if @donation.recurrent? %>
+    <%= button_to "Unsubscribe", donation_path(@donation), method: :patch, params: { donation: { recurrent: false } }, data: { turbo: true }, class: 'btn btn-danger'   %>
+    <%= link_to "Change Amount", edit_donation_path(@donation), class: "btn btn-warning"  %>
+  <% end %>
+  <%= link_to "See all my donations", donations_path, class: "btn btn-primary" %>
+</div>
