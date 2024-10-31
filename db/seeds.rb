@@ -66,7 +66,11 @@ puts "Seeding database..."
 
   puts "Creating charities..."
 
-  charities = [{
+  # db/seeds.rb
+
+# db/seeds.rb
+
+charities = [{
     name: "Save the Children",
     description: "Save the Children is a global non-profit organization that was founded in 1919. It is dedicated to improving the lives of children through better education, health care, and economic opportunities, as well as providing emergency aid in natural disasters, war, and other conflicts.",
     category: Category.find_by(name: "Basic Needs"),
@@ -78,15 +82,30 @@ puts "Seeding database..."
     user: User.all.sample
   }, {
     name: "Greenpeace",
-    description: "Greenpeace is a global environmental organization that was founded in 1971. It is dedicated to promoting peace, protecting the environment, and preventing climate change through non-violent direct action, lobbying, and research.",
+    description: "At Greenpeace we are honoured that our work is funded almost entirely by donations given to us by passionate individuals from all over the world who care about the planet and want to help us create change, and by grants from private foundations who share our values. Our independence is vital for us to be effective in our campaigning work, which is why we have it as a core principle that guides all of our fundraising. We do not accept funding from governments, corporations, political parties or intergovernmental organisations. We also screen all large private donations to identify if there is anything about them which could compromise our independence, our integrity or deflect from our campaign priorities. If we find something then we will refuse or return the donation.",
     category: Category.find_by(name: "Climate Change"),
     user: User.all.sample
   }]
 
-  charities.each do |charity|
-    Charity.create!(charity)
-    puts "Charity #{charity[:name]} created."
+charities.each do |charity_data|
+  charity = Charity.create!(charity_data)  # Create the Charity instance
+  puts "Charity #{charity.name} created."
+
+  # Attach photos only to Greenpeace
+  if charity.name == "Greenpeace"
+    photo_path1 = Rails.root.join("db/seed-images/greenpeace/GP0STPOUA_8.webp")
+    photo_path2 = Rails.root.join("db/seed-images/greenpeace/gp0stown2.webp")
+    photo_path3 = Rails.root.join("db/seed-images/greenpeace/gp0stqdu4.webp")
+    photo_path4 = Rails.root.join("db/seed-images/greenpeace/GP01CK9.webp")
+
+    charity.photos.attach(io: File.open(photo_path1), filename: File.basename(photo_path1))
+    charity.photos.attach(io: File.open(photo_path2), filename: File.basename(photo_path2))
+    charity.photos.attach(io: File.open(photo_path2), filename: File.basename(photo_path3))
+    charity.photos.attach(io: File.open(photo_path2), filename: File.basename(photo_path4))
+
+    puts "Photos attached to #{charity.name}."
   end
+end
 
   puts "#{Charity.count} charities created."
 
