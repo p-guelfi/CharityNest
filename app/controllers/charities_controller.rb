@@ -7,6 +7,11 @@ class CharitiesController < ApplicationController
     end
   end
 
+  def show
+    @charity = Charity.find(params[:id])
+    @charity_projects = @charity.charity_projects.includes(:donations)
+  end
+
   private
 
   def charity_params
@@ -21,5 +26,5 @@ class CharitiesController < ApplicationController
     if params[:category_id].present?
       @category = Category.find(params[:category_id])
     end
-  end
+
 end

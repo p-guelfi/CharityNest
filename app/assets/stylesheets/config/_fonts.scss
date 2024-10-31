@@ -1,15 +1,27 @@
 // Import Google fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Work+Sans:400,700|Geologica:700,800|Khula:400&display=swap');
-// Define fonts for body and headers
-$body-font: "Khula", "Helvetica", "sans-serif";
-$headers-font: "Geologica", "Helvetica", "sans-serif";
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Work+Sans:400,700|Geologica:700,800|Khula:400&display=swap'); // Ensure Khula Regular is included
 
-// To use a font file (.woff) uncomment following lines
-// @font-face {
-//   font-family: "Font Name";
-//   src: font-url('FontFile.eot');
-//   src: font-url('FontFile.eot?#iefix') format('embedded-opentype'),
-//        font-url('FontFile.woff') format('woff'),
-//        font-url('FontFile.ttf') format('truetype')
-// }
-// $my-font: "Font Name";
+// Define fonts for body and headers
+$body-font: "Khula", "Helvetica", "sans-serif"; // Set Khula as the body font
+$headers-font: "Geologica", "Helvetica", "sans-serif"; // Font for headers
+
+// Define default text color
+$default-text-color: #000000; // Black
+
+// Apply styles for body and headers
+body {
+  font-family: $body-font; // Use the body font (Khula)
+  color: $default-text-color; // Set default text color
+}
+
+h1 {
+  font-family: $headers-font; // Use the headers font
+  font-weight: 800; // Extra Bold
+  font-size: 48px; // H1 size
+}
+
+h2 {
+  font-family: $headers-font; // Use the headers font
+  font-weight: 700; // Bold
+  font-size: 32px; // H2 size
+}
