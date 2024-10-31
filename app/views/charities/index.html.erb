@@ -1,0 +1,28 @@
+<%# Banner with charity description %>
+<div class="banner-charities">
+  <div class="banner-heading">
+    <% if @category %>
+      <h1><%= @category.name %></h1>
+    <% else %>
+      <h1>All Charities</h1>
+    <% end %>
+  </div>
+  <div class="banner-intro">
+    <% if @category %>
+      <p><%= @category.description %></p>
+    <% else %>
+      <p>In our comprehensive List of all charities, you can find a charity you want to support.</p>
+    <% end %>
+  </div>
+</div>
+<%# List %>
+<div class="index-grid-background">
+  <%# Sort Bar %>
+  <%= render "bar_sort" %>
+  <%# Grid with Charity Cards %>
+  <div class="index-grid-container">
+    <% @charities.each do |charity| %>
+      <%= render "card_charity", charity: charity %>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+<div class="card-charity" id="charity-<%= charity.id %>">
+  <%= link_to "", charity_path(charity), class: "card-link" %>
+  <div class="card-charity-video">
+    <video controls src="https://scontent-ber1-1.cdninstagram.com/o1/v/t16/f1/m86/054824142AD8873F68251B0463500798_video_dashinit.mp4?stp=dst-mp4&efg=eyJxZV9ncm91cHMiOiJbXCJpZ193ZWJfZGVsaXZlcnlfdnRzX290ZlwiXSIsInZlbmNvZGVfdGFnIjoidnRzX3ZvZF91cmxnZW4uY2xpcHMuYzIuNzIwLmJhc2VsaW5lIn0&_nc_cat=100&vs=911911327499411_1628700732&_nc_vs=HBksFQIYUmlnX3hwdl9yZWVsc19wZXJtYW5lbnRfc3JfcHJvZC8wNTQ4MjQxNDJBRDg4NzNGNjgyNTFCMDQ2MzUwMDc5OF92aWRlb19kYXNoaW5pdC5tcDQVAALIAQAVAhg6cGFzc3Rocm91Z2hfZXZlcnN0b3JlL0dLVnBuaHQ0Q192bHBNZ0ZBSS1XdGswX2MzTi1icV9FQUFBRhUCAsgBACgAGAAbABUAACbu6sWJj7q2PxUCKAJDMywXQD5dsi0OVgQYEmRhc2hfYmFzZWxpbmVfMV92MREAdf4HAA%3D%3D&ccb=9-4&oh=00_AYDgyZyCo2ALHvCj5SgPGpoiLvQOvwzDBeP7PN8e-BCA5g&oe=67257E9A&_nc_sid=d885a2"></video>
+    <h2><%= charity.name %></h2>
+  </div>
+  <div class="card-charity-info">
+    <div class="description">
+      <h6>What we do</h6>
+      <p><%= charity.description %></p>
+    </div>
+    <div class="">
+      <h6>Engagement</h6>
+      <p>5 threads with 30 comments</p>
+    </div>
+    <div class="">
+      <% if charity.partner != "" %>
+        <h6>Our Partners</h6>
+        <p><%= charity.partner %></p>
+      <% end %>
+    </div>
+    <div class="">
+      <h6>Evaluation Score</h6>
+      <p>4.2 Stars</p>
+    </div>
+  </div>
+</div>
