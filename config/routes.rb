@@ -12,8 +12,12 @@ Rails.application.routes.draw do
   resources :categories, only: [:new, :create]
 
   resources :charities do
-    resources :charity_projects do
-      resources :donations, only: [:new, :create] # Nest donations under charity projects
-    end
+    resources :charity_projects, only: [:new, :create] # Nest donations under charity projects
   end
+
+  resources :charity_projects, except: %i[new create] do
+    resources :donations, only: [:new, :create]
+  end
+
+  resources :donations, only: [:index, :show, :edit, :update]
 end

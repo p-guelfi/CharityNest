@@ -1,0 +1,5 @@
+<div class="container">
+  <% @donations.each do |donation| %>
+    <%= render "card_donation", donation: donation %>
+  <% end %>
+</div>

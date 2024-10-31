@@ -1,0 +1,22 @@
+$button-font: "Geologica", "Helvetica", "sans-serif"; // Geologica for buttons
+$button-text-color: #ffffff; // White text
+$button-padding: 10px 20px; // Padding for the button
+$button-border-radius: 10px; // Rounded corners
+
+.button {
+  font-family: $button-font; // Use Geologica font
+  font-weight: 700; // Bold weight
+  font-size: 16px; // Font size
+  background-color: $ocean-turquoise; // Background color using variable
+  color: $button-text-color; // Text color
+  padding: $button-padding; // Padding
+  border: none; // No border
+  border-radius: $button-border-radius; // Rounded corners
+  cursor: pointer; // Pointer on hover
+  transition: background-color 0.3s ease; // Smooth transition for hover effect
+
+  // Hover effect
+  &:hover {
+    background-color: $dark-ocean-blue; // Use dark ocean blue on hover
+  }
+}
