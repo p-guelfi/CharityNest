@@ -2,16 +2,15 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Work+Sans:400,700|Geologica:700,800|Khula:400&display=swap'); // Ensure Khula Regular is included
 
 // Define fonts for body and headers
-$body-font: "Work Sans", "Helvetica", "sans-serif";
-$headers-font: "Geologica", "Helvetica", "sans-serif"; // Updated for headers
-$paragraph-font: "Khula", "Helvetica", "sans-serif"; // Define for paragraphs
+$body-font: "Khula", "Helvetica", "sans-serif"; // Set Khula as the body font
+$headers-font: "Geologica", "Helvetica", "sans-serif"; // Font for headers
 
 // Define default text color
 $default-text-color: #000000; // Black
 
-// Apply styles for body, headers, and paragraphs
+// Apply styles for body and headers
 body {
-  font-family: $body-font; // Use the body font
+  font-family: $body-font; // Use the body font (Khula)
   color: $default-text-color; // Set default text color
 }
 
@@ -25,10 +24,4 @@ h2 {
   font-family: $headers-font; // Use the headers font
   font-weight: 700; // Bold
   font-size: 32px; // H2 size
-}
-
-p {
-  font-family: $paragraph-font; // Use the Khula font
-  font-weight: 400; // Regular weight
-  font-size: 16px; // Paragraph size
 }
