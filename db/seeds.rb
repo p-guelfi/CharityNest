@@ -100,8 +100,8 @@ charities.each do |charity_data|
 
     charity.photos.attach(io: File.open(photo_path1), filename: File.basename(photo_path1))
     charity.photos.attach(io: File.open(photo_path2), filename: File.basename(photo_path2))
-    charity.photos.attach(io: File.open(photo_path2), filename: File.basename(photo_path3))
-    charity.photos.attach(io: File.open(photo_path2), filename: File.basename(photo_path4))
+    charity.photos.attach(io: File.open(photo_path3), filename: File.basename(photo_path3))
+    charity.photos.attach(io: File.open(photo_path4), filename: File.basename(photo_path4))
 
     puts "Photos attached to #{charity.name}."
   end
