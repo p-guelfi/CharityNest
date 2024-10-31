@@ -9,45 +9,43 @@
 <div class="content">
   <div class="section">
     <h1><%= @charity.name %></h1>
-    <p><%= @charity.description %></p>
-    <h2>Ways to Give</h2>
+    <p><strong><%= @charity.description %></strong></p>
   </div>
 
   <div class="">
-    <div class="">
-      <div class="ways-to-give">
-        <div class="give-option">
-          <div class="give-photo">
-            <% if @charity.photos.size > 1 %>
-              <%= cl_image_tag @charity.photos.second.key, width: 300, height: 150, crop: 'fill' %>
-            <% else %>
-              <p>No image available for this option.</p>
-            <% end %>
-          </div>
-          <h4>Support a Project</h4>
+    <h2>Ways to Give</h2>
+    <div class="ways-to-give">
+      <div class="give-option">
+        <div class="give-photo">
+          <% if @charity.photos.size > 1 %>
+            <%= cl_image_tag @charity.photos.second.key, height: 170, crop: 'fill' %>
+          <% else %>
+            <p>No image available for this option.</p>
+          <% end %>
         </div>
+        <h4>Support a Project</h4>
+      </div>
 
-        <div class="give-option">
-          <div class="give-photo">
-            <% if @charity.photos.size > 2 %>
-              <%= cl_image_tag @charity.photos.third.key, width: 300, height: 150, crop: 'fill' %>
-            <% else %>
-              <p>No image available for this option.</p>
-            <% end %>
-          </div>
-          <h4>Give a Gift</h4>
+      <div class="give-option">
+        <div class="give-photo">
+          <% if @charity.photos.size > 2 %>
+            <%= cl_image_tag @charity.photos.third.key, height: 170, crop: 'fill' %>
+          <% else %>
+            <p>No image available for this option.</p>
+          <% end %>
         </div>
+        <h4>Give a Gift</h4>
+      </div>
 
-        <div class="give-option">
-          <div class="give-photo">
-            <% if @charity.photos.size > 3 %>
-              <%= cl_image_tag @charity.photos.fourth.key, width: 300, height: 150, crop: 'fill' %>
-            <% else %>
-              <p>No image available for this option.</p>
-            <% end %>
-          </div>
-          <h4>Send an Email</h4>
+      <div class="give-option">
+        <div class="give-photo">
+          <% if @charity.photos.size > 3 %>
+            <%= cl_image_tag @charity.photos.fourth.key, height: 170, crop: 'fill' %>
+          <% else %>
+            <p>No image available for this option.</p>
+          <% end %>
         </div>
+        <h4>Send an Email</h4>
       </div>
     </div>
   </div>

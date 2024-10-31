@@ -1,3 +1,4 @@
+/* BANNER SECTION */
 .banner {
   width: 100%;
   height: 27rem;
@@ -8,79 +9,82 @@
 .banner img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Ensures the image covers the div while maintaining its aspect ratio */
-  object-position: 50% 25%; /* Aligns the image to the top of the banner */
+  object-fit: cover;
+  object-position: 50% 25%;
 }
 
+/* GENERAL CONTENT STYLING */
 .content {
   display: flex;
-  flex-direction: column; /* Aligns items in a column */
-  align-items: center; /* Centers items horizontally */
-  justify-content: center; /* Centers items vertically */
-  text-align: center; /* Centers text */
-  margin: 0 auto; /* Center the content */
-  width: 100%; /* Ensure it takes up full width until max-width is reached */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
 }
 
 .section {
-  max-width: 50rem; /* Maximum width of 800 pixels in rem */
-  width: 100%; /* Full width until max-width is reached */
-  margin: 0 auto; /* Center the sections */
-  padding: 0 2rem; /* Optional horizontal padding */
+  max-width: 65rem;
+  width: 100%;
 }
 
 .content h1 {
-  margin: 3rem 0; /* Margin for spacing between title and description */
-  padding: 0 3rem; /* Optional horizontal padding for the title */
+  margin: 5rem 0;
+  padding: 0 3rem;
 }
 
 .content h2 {
-  margin: 5rem 0 1rem; /* Increase the top margin to move the heading lower */
-  padding: 0 3rem; /* Keep the existing horizontal padding */
+  margin: 5rem 0 1rem;
+  padding: 0 3rem;
 }
 
+/* WAYS TO GIVE SECTION */
 .ways-to-give {
   width: 100%;
-  display: flex; /* Use flexbox to arrange items in a row */
+  display: flex;
   justify-content: space-between; /* Space items evenly */
-  margin: 2rem 0; /* Vertical margin above and below the section, horizontal margin removed */
-  padding: 2rem; /* Padding applied to all sides */
+  margin: 2rem 0;
+  padding: 2rem;
+  box-sizing: border-box; /* Include padding in width calculation */
 }
 
 .give-option {
-  max-width: 50rem;
-  flex: 1; /* Each square takes equal width */
-  background-color: #f0f0f0; /* Background color for visibility */
-  margin: 0 0.5rem; /* Reduced horizontal margin for spacing between squares */
-  display: flex; /* Use flexbox for vertical arrangement */
-  flex-direction: column; /* Arrange children vertically */
-  border-radius: 10px; /* Optional: rounded corners */
-  text-align: center; /* Center text inside the square */
-  overflow: hidden; /* Prevent overflow */
+  flex: 1; /* Each option takes equal space */
+  max-width: calc(33.33% - 1rem); /* Ensure space between options is accounted for */
+  background-color: #f0f0f0;
+  margin: 0 0.5rem; /* Adjust this as needed */
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  text-align: center;
+  overflow: hidden;
+  box-sizing: border-box; /* Include padding and border in total width */
 }
 
 .give-option h4 {
-  background-color: $dark-ocean-blue; /* Use the dark ocean blue variable */
-  color: white; /* Text color */
-  margin: 0; /* Remove default margin */
-  padding: 2rem 2rem; /* Increase top and bottom padding for more space */
-  flex: 0; /* Prevents it from growing */
+  background-color: $dark-ocean-blue;
+  color: white;
+  margin: 0;
+  padding: 1.5rem 1.5rem;
+  flex: 0;
 }
 
 .give-photo {
-  flex: 1; /* Take remaining space for the photo */
-  display: flex; /* Center photo */
-  align-items: center; /* Vertically center */
-  justify-content: center; /* Horizontally center */
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+/* OUR PROJECTS SECTION */
 .our-projects {
-  display: flex; /* Use flexbox for layout */
-  flex-direction: column; /* Stack items vertically */
+  display: flex;
+  flex-direction: column;
+  max-width: 65rem; /* Max width of the project card */
 }
 
 .project-card {
-  max-width: 50rem;
+  flex: 1; /* Allow the project card to grow and fill the available width */
   width: 100%; /* Full width of the container */
   height: auto; /* Adjust height based on content */
   background-color: $coral-white; /* Background color for visibility */
@@ -88,7 +92,6 @@
   border-radius: 10px; /* Optional: rounded corners */
   display: flex; /* Use flexbox for inner alignment */
   align-items: center; /* Center content vertically */
-  justify-content: flex-start; /* Align items to the start */
-  padding: 1rem; /* Optional: add padding inside the card */
+  padding: 3rem; /* Optional: add padding inside the card */
   border: 1px solid $dark-ocean-blue; /* Add border */
 }
