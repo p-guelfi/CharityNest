@@ -1,0 +1,13 @@
+<h1><%= @charity.name %></h1>
+
+<p><strong>Description:</strong> <%= @charity.description %></p>
+
+<h2>Photos:</h2>
+
+<div class="photos">
+  <% @charity.photos.each do |photo| %>
+    <div class="photo">
+      <%= image_tag photo %>
+    </div>
+  <% end %>
+</div>
