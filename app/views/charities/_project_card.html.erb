@@ -1,0 +1,15 @@
+<!-- _project_card.html.erb -->
+
+<div class="project-card">
+  <div class="project-photo">
+    <% if project.photos.attached? %>
+      <%= cl_image_tag project.photos.first.key, width: 300, height: 150, crop: 'fill' %>
+    <% else %>
+      <p>No image available for this project.</p>
+    <% end %>
+  </div>
+  <div class="project-details">
+    <h4><%= project.name %></h4>
+    <p><strong>Location:</strong> <%= project.location %></p>
+  </div>
+</div>

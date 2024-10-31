@@ -18,7 +18,15 @@
   align-items: center; /* Centers items horizontally */
   justify-content: center; /* Centers items vertically */
   text-align: center; /* Centers text */
-  padding: 3rem 3rem; /* Adds padding on top and bottom, and horizontal padding */
+  margin: 0 auto; /* Center the content */
+  width: 100%; /* Ensure it takes up full width until max-width is reached */
+}
+
+.section {
+  max-width: 50rem; /* Maximum width of 800 pixels in rem */
+  width: 100%; /* Full width until max-width is reached */
+  margin: 0 auto; /* Center the sections */
+  padding: 0 2rem; /* Optional horizontal padding */
 }
 
 .content h1 {
@@ -26,33 +34,27 @@
   padding: 0 3rem; /* Optional horizontal padding for the title */
 }
 
-h2 {
+.content h2 {
   margin: 5rem 0 1rem; /* Increase the top margin to move the heading lower */
   padding: 0 3rem; /* Keep the existing horizontal padding */
 }
 
-
-.content {
-  max-width: 800px; /* Set this to match your design */
-  margin: 0 auto; /* Center the content */
-  padding: 0 1rem; /* Optional: add padding on sides */
-}
-
 .ways-to-give {
+  width: 100%;
   display: flex; /* Use flexbox to arrange items in a row */
   justify-content: space-between; /* Space items evenly */
-  margin: 2rem 2rem; /* Adds vertical margin above and below the section */
-  padding: 2rem 2rem; /* Add padding to the top and bottom */
+  margin: 2rem 0; /* Vertical margin above and below the section, horizontal margin removed */
+  padding: 2rem; /* Padding applied to all sides */
 }
 
 .give-option {
+  max-width: 50rem;
   flex: 1; /* Each square takes equal width */
-  height: 200px; /* Set a fixed height for the square */
   background-color: #f0f0f0; /* Background color for visibility */
-  margin: 0 1rem; /* Horizontal margin for spacing between squares */
+  margin: 0 0.5rem; /* Reduced horizontal margin for spacing between squares */
   display: flex; /* Use flexbox for vertical arrangement */
   flex-direction: column; /* Arrange children vertically */
-  border-radius: 8px; /* Optional: rounded corners */
+  border-radius: 10px; /* Optional: rounded corners */
   text-align: center; /* Center text inside the square */
   overflow: hidden; /* Prevent overflow */
 }
@@ -60,8 +62,8 @@ h2 {
 .give-option h4 {
   background-color: $dark-ocean-blue; /* Use the dark ocean blue variable */
   color: white; /* Text color */
-  margin: 0 0 2rem; /* Remove default margin */
-  padding: 1rem;  /* Add padding for top and bottom spacing */
+  margin: 0; /* Remove default margin */
+  padding: 2rem 2rem; /* Increase top and bottom padding for more space */
   flex: 0; /* Prevents it from growing */
 }
 
@@ -72,7 +74,21 @@ h2 {
   justify-content: center; /* Horizontally center */
 }
 
-h3 {
-  margin: 0; /* Remove default margin */
-  padding: 0.5rem 0; /* Padding for spacing */
+.our-projects {
+  display: flex; /* Use flexbox for layout */
+  flex-direction: column; /* Stack items vertically */
+}
+
+.project-card {
+  max-width: 50rem;
+  width: 100%; /* Full width of the container */
+  height: auto; /* Adjust height based on content */
+  background-color: $coral-white; /* Background color for visibility */
+  margin: 1rem 0; /* Vertical margin for spacing between cards */
+  border-radius: 10px; /* Optional: rounded corners */
+  display: flex; /* Use flexbox for inner alignment */
+  align-items: center; /* Center content vertically */
+  justify-content: flex-start; /* Align items to the start */
+  padding: 1rem; /* Optional: add padding inside the card */
+  border: 1px solid $dark-ocean-blue; /* Add border */
 }
