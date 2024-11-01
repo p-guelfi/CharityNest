@@ -206,19 +206,31 @@ end
     name: "Protecting the Arctic",
     description: "Greenpeace is working to protect the Arctic by campaigning against oil drilling and industrial fishing in the region.",
     location: "Arctic Ocean",
-    charity: Charity.find_by(name: "Greenpeace")
+    goal: 50000,
+    charity: Charity.find_by(name: "Greenpeace"),
+    photos: [
+      Rails.root.join("db/seed-images/greenpeace/GP01EFS-polar-bear-600x450-c-default.webp")
+    ]
   }, {
     name: "Campaigning for Decarbonization in Brussels",
     description: "Greenpeace is campaigning for decarbonization in Brussels by promoting renewable energy and reducing greenhouse gas emissions.",
     location: "Brussels, Belgium",
-    charity: Charity.find_by(name: "Greenpeace")
+    goal: 30000,
+    charity: Charity.find_by(name: "Greenpeace"),
+    photos: [
+      Rails.root.join("db/seed-images/greenpeace/030321_decarbonization.jpg")
+    ]
   }, {
     name: "Whale Conservation in the Pacific",
     description: "Greenpeace is working to protect whales in the Pacific by campaigning against commercial whaling and promoting marine conservation.",
-    # pacific ocean near japan
     location: "Pacific Ocean",
-    charity: Charity.find_by(name: "Greenpeace")
+    goal: 40000,
+    charity: Charity.find_by(name: "Greenpeace"),
+    photos: [
+      Rails.root.join("db/seed-images/greenpeace/DSC_9026-1.jpg")
+    ]
   }]
+
 
   charity_projects_save_the_children = [{
     name: "Providing Education in Afghanistan",
@@ -243,8 +255,18 @@ end
   charity_projects_all = charity_projects_oxfam + charity_projects_greenpeace + charity_projects_save_the_children
 
   charity_projects_all.each do |project|
-    proj = CharityProject.create!(project)
-    puts "Charity project #{ proj.name } created."
+    proj = CharityProject.create!(project.except(:photos))  # Create project without photos
+
+    puts "Charity project #{proj.name} created."
+
+    # Attach photos only if they exist for the project
+    if project[:photos]
+      project[:photos].each do |photo_path|
+        proj.photos.attach(io: File.open(photo_path), filename: File.basename(photo_path))
+      end
+
+      puts "Photos attached to #{proj.name}."
+    end
   end
 
   puts "#{CharityProject.count} charity projects created."
