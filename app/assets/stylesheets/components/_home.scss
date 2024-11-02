@@ -33,3 +33,24 @@
     }
   }
 }
+
+.categories {
+  margin: 2rem 0;
+
+  h2 {
+    font-family: $headers-font;
+    font-weight: 800;
+    font-size: 2rem;
+    color: #0B666A;
+    margin: 2rem 8.75rem;
+  }
+
+  .category-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); // 3 columns layout
+    gap: 5rem;
+    justify-items: center;
+    align-items: start;
+    margin: 0 10rem;
+  }
+}

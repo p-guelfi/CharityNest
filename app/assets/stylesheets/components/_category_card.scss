@@ -1,0 +1,32 @@
+// app/assets/stylesheets/components/_category_card.scss
+
+@import 'config/colors';
+@import 'config/fonts';
+
+.category-card {
+  background-color: $coral-white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  width: 20rem; // Adjust as needed for layout
+  height: 20rem; // Ensure it’s a square
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  .icon {
+    width: 3rem;
+    height: 3rem;
+    color: $ocean-turquoise; // Icon color
+  }
+
+  .title {
+    margin-top: 10rem;
+    font-family: $headers-font;
+    font-weight: 800;
+    font-size: 1.5rem;
+    color: #0B666A;
+    text-align: center;
+  }
+}
