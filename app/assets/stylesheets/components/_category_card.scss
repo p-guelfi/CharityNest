@@ -16,17 +16,23 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
   .icon {
-    width: 3rem;
-    height: 3rem;
+    font-size: 8rem;
+    text-align: center;
+    width: 10rem;
+    height: 10rem;
     color: $ocean-turquoise; // Icon color
+    margin-bottom: 1rem;
   }
 
   .title {
-    margin-top: 10rem;
     font-family: $headers-font;
     font-weight: 800;
     font-size: 1.5rem;
     color: #0B666A;
     text-align: center;
+  }
+
+  &:hover {
+    background-color: #F4F4F4; // Use dark ocean blue on hover
   }
 }
