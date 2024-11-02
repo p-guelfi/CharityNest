@@ -3,15 +3,16 @@
 <div class="project-card">
   <div class="project-photo">
     <% if project.photos.attached? %>
-      <%= cl_image_tag project.photos.first.key, width: 300, height: 200, crop: 'fill' %>
+      <%= cl_image_tag project.photos.first.key, width: 300, height: 200, gravity: "center", crop: "fill" %>
     <% else %>
       <p>No image available for this project.</p>
     <% end %>
   </div>
   <div class="project-details">
     <h4><%= project.name %></h4>
-    <p><strong>Location:</strong> <%= project.location %></p>
-    <div class="progress-and-button row align-items-end">
+    <p><strong>Where:</strong> <%= project.location %></p>
+    <p><%= project.description %></p>
+    <div class="progress-and-button row align-items-end mt-4">
 
       <div class="progress-info-and-bar col-md-8">
         <div class="progress-text d-flex align-items-center">
