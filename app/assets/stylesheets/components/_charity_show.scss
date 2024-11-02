@@ -85,3 +85,23 @@
   flex-direction: column;
   max-width: 70rem; /* Max width of the project card */
 }
+
+
+/* Add media query for smaller screens */
+@media (max-width: 768px) {
+  .ways-to-give {
+    flex-direction: column; /* Stack vertically */
+    align-items: center; /* Center align items */
+  }
+
+  .give-option {
+    max-width: 100%; /* Full width for each option */
+    margin: 1rem 0; /* Add margin for spacing */
+  }
+}
+
+@media (max-width: 768px) {
+  .banner {
+    height: 15rem; /* Adjust height for smaller screens */
+  }
+}

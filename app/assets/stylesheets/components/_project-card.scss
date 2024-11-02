@@ -51,3 +51,19 @@
   width: 100%; /* Full-width button */
   padding: 0.2rem 1rem; /* Increase padding for a larger button */
 }
+
+
+/* Media query for project cards */
+@media (max-width: 768px) {
+  .project-card {
+    flex-direction: column; /* Stack photo and details vertically */
+  }
+
+  .project-photo {
+    width: 100%; /* Full width for photo */
+  }
+
+  .project-details {
+    padding: 1rem; /* Adjust padding for smaller screens */
+  }
+}
