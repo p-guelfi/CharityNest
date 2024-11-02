@@ -102,12 +102,12 @@ puts "Seeding database..."
 
 charities = [{
     name: "Save the Children",
-    description: "Save the Children is a global non-profit organization that was founded in 1919. It is dedicated to improving the lives of children through better education, health care, and economic opportunities, as well as providing emergency aid in natural disasters, war, and other conflicts.",
+    description: "At Save the Children, we are deeply grateful for the unwavering support we receive from individuals and organizations around the world who are committed to improving the lives of children in need. Our work is predominantly funded through generous donations from passionate supporters, along with grants from philanthropic foundations that align with our mission. We firmly believe that our ability to serve vulnerable children and families hinges on our independence, which is why we adhere to strict principles in our fundraising efforts. We do not accept funding from sources that may compromise our values, including governmental bodies, corporations, and political entities. In order to safeguard our integrity and ensure that our programs remain focused on our mission, we rigorously evaluate all significant donations to confirm they do not conflict with our goals. Should any concerns arise during this review, we will take appropriate measures to refuse or return such contributions.",
     category: Category.find_by(name: "Basic Needs"),
     user: User.all.sample
   }, {
     name: "Oxfam",
-    description: "Oxfam is a global organization that was founded in 1942. It is dedicated to fighting poverty and injustice around the world by providing emergency aid, promoting sustainable development, and advocating for social change.",
+    description: "At Oxfam, we are immensely thankful for the support of individuals and organizations worldwide who stand with us in the fight against poverty and inequality. Our initiatives are primarily funded by the generous contributions of passionate supporters and grants from foundations that share our vision of a just world. Upholding our independence is essential for us to effectively carry out our mission, which is why we have established clear guidelines for our fundraising practices. We do not accept funding from governments, corporations, or political parties that may compromise our commitment to social justice. To maintain our integrity and ensure that all contributions align with our values, we carefully review all substantial donations. If any potential conflicts or issues arise, we are committed to refusing or returning those funds to protect the integrity of our work and the communities we serve.",
     category: Category.find_by(name: "Human Rights"),
     partner: "",
     user: User.all.sample
@@ -119,28 +119,28 @@ charities = [{
     user: User.all.sample
   },{
     name: "World Wildlife Fund (WWF)",
-    description: "The World Wildlife Fund works globally to protect endangered species and preserve natural habitats, with a strong emphasis on combating climate change and promoting sustainability.",
+    description: "At the World Wildlife Fund (WWF), we are profoundly grateful for the dedicated support of individuals and organizations who share our commitment to conserving the planet's natural resources and protecting wildlife. Our work is primarily funded by generous donations from passionate supporters and grants from foundations that align with our conservation goals. Our independence is vital to the effectiveness of our initiatives, which is why we adhere to strict fundraising principles. We do not accept funding from governments, corporations, or political parties that could compromise our mission or influence our conservation priorities. To ensure that all donations align with our values, we conduct thorough reviews of significant contributions. Should any concerns arise regarding potential conflicts of interest, we are resolute in our commitment to refusing or returning such donations, ensuring that our efforts remain focused on our mission to create a sustainable future for wildlife and people alike.",
     category: Category.find_by(name: "Climate Change"),
     partner: "",
     user: User.all.sample
   },
   {
     name: "The Sierra Club Foundation",
-    description: "The Sierra Club Foundation works to advance climate solutions and promote green energy, sustainable practices, and environmental justice across communities.",
+    description: "At The Sierra Club Foundation, we are incredibly thankful for the support we receive from individuals and organizations dedicated to protecting the environment and promoting sustainable practices. Our initiatives are primarily funded through the generous donations of passionate supporters and grants from foundations that resonate with our mission of fostering a healthy planet. Upholding our independence is crucial to our effectiveness, which is why we strictly adhere to ethical fundraising principles. We do not accept funding from corporations, government entities, or political parties that may compromise our values or sway our advocacy efforts. To safeguard our integrity and ensure that all contributions align with our mission, we meticulously review significant donations. If any potential conflicts of interest arise during this process, we are committed to refusing or returning those funds, ensuring our work remains focused on environmental justice and sustainability for all.",
     category: Category.find_by(name: "Climate Change"),
     partner: "",
     user: User.all.sample
   },
   {
     name: "Friends of the Earth",
-    description: "Friends of the Earth is an environmental advocacy organization that campaigns for sustainable policies and practices to combat the climate crisis, focusing on the well-being of communities and the environment.",
+    description: "At Friends of the Earth, we are profoundly grateful for the commitment and support of individuals and organizations around the globe who share our vision for a just and sustainable world. Our work is primarily funded by the generous donations of dedicated supporters and grants from foundations that align with our environmental advocacy. Maintaining our independence is vital for our effectiveness, which is why we adhere to strict fundraising standards. We do not accept funding from corporations, government bodies, or political parties that could compromise our mission or influence our campaigns. To ensure that every contribution reflects our values, we rigorously evaluate all significant donations. If any concerns arise regarding potential conflicts of interest, we pledge to refuse or return those funds, thereby safeguarding the integrity of our work and our commitment to environmental justice for all communities.",
     category: Category.find_by(name: "Climate Change"),
     partner: "",
     user: User.all.sample
   },
   {
     name: "Rainforest Alliance",
-    description: "The Rainforest Alliance works with local communities to protect biodiversity and fight climate change through sustainable agriculture and forestry initiatives.",
+    description: "At the Rainforest Alliance, we are deeply appreciative of the support from individuals and organizations worldwide who are committed to conserving biodiversity and promoting sustainable land use. Our efforts are primarily funded through the generous donations of passionate supporters and grants from foundations that share our mission of protecting ecosystems and improving livelihoods. We recognize that our independence is essential to the success of our initiatives, which is why we uphold stringent principles in our fundraising practices. We do not accept funding from corporations, governmental entities, or political parties that could compromise our integrity or sway our conservation goals. To ensure that all donations align with our values, we conduct thorough evaluations of significant contributions. If any potential conflicts arise, we are steadfast in our commitment to refusing or returning those funds, ensuring that our work remains focused on safeguarding the planet and empowering local communities.",
     category: Category.find_by(name: "Climate Change"),
     partner: "",
     user: User.all.sample
@@ -148,7 +148,7 @@ charities = [{
   # Lesser-known charity with notable partners
   {
     name: "ClimateWorks Foundation",
-    description: "ClimateWorks Foundation is a global platform that brings together partners to address the climate crisis through research, advocacy, and promoting sustainable practices. They partner with well-known organizations like the Hewlett Foundation and Bloomberg Philanthropies.",
+    description: "At the ClimateWorks Foundation, we are immensely grateful for the support of individuals and organizations dedicated to combating climate change and promoting sustainable solutions. Our initiatives are primarily funded by the generous contributions of passionate supporters and grants from foundations that align with our mission to drive global climate action. We believe that our independence is essential for the effectiveness of our work, which is why we adhere to rigorous fundraising principles. We do not accept funding from corporations, government agencies, or political parties that may compromise our mission or influence our strategies. To ensure that all donations are in harmony with our values, we carefully assess all significant contributions. If any concerns about potential conflicts of interest arise during this review, we are committed to refusing or returning those funds, thereby safeguarding the integrity of our efforts to create a sustainable and equitable future for all.",
     category: Category.find_by(name: "Climate Change"),
     partner: "Hewlett Foundation, Bloomberg Philanthropies",
     user: User.all.sample
