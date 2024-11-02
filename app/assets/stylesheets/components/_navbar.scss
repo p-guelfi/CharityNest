@@ -1,56 +1,64 @@
-/* app/assets/stylesheets/components/_navbar.scss */
-
-$nav-height: 80px;
-
-.navbar-lewagon {
-  position: sticky;
-  top: 0;
-  z-index: 3;
+.navbar {
+  display: flex;
   justify-content: space-between;
-  background: white;
-  height: $nav-height;
+  align-items: center;
   padding: 1rem 2rem;
+  background-color: $white;
 
-  .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .navbar-brand {
-    display: flex;
-    align-items: center;
-
-    img.avatar {
-      width: 40px;
-      height: 40px;
-      margin-right: 10px;
-      border-radius: 50%;
-    }
-
-    .navbar-textlogo {
-      font-size: 24px;
-      font-weight: 700;
-      color: black;
-      text-decoration: none;
-      margin: 0;
+  .navbar-left {
+    flex: 1;
+    .search-bar {
+      input[type="text"] {
+        padding: 0.5rem;
+        border: 1px solid $light-gray;
+        border-radius: 0.5rem;
+      }
     }
   }
 
-  .navbar-menu {
+  .navbar-center {
     display: flex;
     align-items: center;
-    margin-left: auto;
+    gap: 7.5rem; // Adds spacing between the logo and text links
 
-    .navbar-item {
-      margin-left: 20px;
-      font-size: 16px;
-      font-weight: 500;
-      color: black;
+    .nav-link {
+      color: #0B666A;
+      font-weight: bold;
       text-decoration: none;
 
       &:hover {
-        color: #007bff;
+        color: #35A28C;
+      }
+    }
+
+    .brand {
+      width: 150px;
+      height: auto;
+    }
+  }
+
+  .navbar-right {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+
+    .button {
+      padding: 0.5rem 1rem;
+      margin-left: 1rem;
+      border-radius: 0.5rem;
+      text-decoration: none;
+      font-weight: bold;
+
+      &.login {
+        color: $ocean-turquoise;
+        border: 1px solid $ocean-turquoise;
+        background-color: transparent;
+      }
+
+      &.signup {
+        color: $coral-white;
+        background-color: #0B666A;
+        border: none;
       }
     }
   }
