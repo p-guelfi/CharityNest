@@ -173,6 +173,97 @@ charities.each do |charity_data|
 
     puts "Photos attached to #{charity.name}."
   end
+  if charity.name == "Save the Children"
+    photo_path1 = Rails.root.join("db/seed-images/greenpeace/GP0STPOUA_8.webp")
+    photo_path2 = Rails.root.join("db/seed-images/greenpeace/gp0stown2.webp")
+    photo_path3 = Rails.root.join("db/seed-images/greenpeace/gp0stqdu4.webp")
+    photo_path4 = Rails.root.join("db/seed-images/greenpeace/GP01CK9.webp")
+
+    charity.photos.attach(io: File.open(photo_path1), filename: File.basename(photo_path1))
+    charity.photos.attach(io: File.open(photo_path2), filename: File.basename(photo_path2))
+    charity.photos.attach(io: File.open(photo_path3), filename: File.basename(photo_path3))
+    charity.photos.attach(io: File.open(photo_path4), filename: File.basename(photo_path4))
+
+    puts "Photos attached to #{charity.name}."
+  end
+  if charity.name == "Oxfam"
+    photo_path1 = Rails.root.join("db/seed-images/greenpeace/GP0STPOUA_8.webp")
+    photo_path2 = Rails.root.join("db/seed-images/greenpeace/gp0stown2.webp")
+    photo_path3 = Rails.root.join("db/seed-images/greenpeace/gp0stqdu4.webp")
+    photo_path4 = Rails.root.join("db/seed-images/greenpeace/GP01CK9.webp")
+
+    charity.photos.attach(io: File.open(photo_path1), filename: File.basename(photo_path1))
+    charity.photos.attach(io: File.open(photo_path2), filename: File.basename(photo_path2))
+    charity.photos.attach(io: File.open(photo_path3), filename: File.basename(photo_path3))
+    charity.photos.attach(io: File.open(photo_path4), filename: File.basename(photo_path4))
+
+    puts "Photos attached to #{charity.name}."
+  end
+  if charity.name == "World Wildlife Fund (WWF)"
+    photo_path1 = Rails.root.join("db/seed-images/greenpeace/GP0STPOUA_8.webp")
+    photo_path2 = Rails.root.join("db/seed-images/greenpeace/gp0stown2.webp")
+    photo_path3 = Rails.root.join("db/seed-images/greenpeace/gp0stqdu4.webp")
+    photo_path4 = Rails.root.join("db/seed-images/greenpeace/GP01CK9.webp")
+
+    charity.photos.attach(io: File.open(photo_path1), filename: File.basename(photo_path1))
+    charity.photos.attach(io: File.open(photo_path2), filename: File.basename(photo_path2))
+    charity.photos.attach(io: File.open(photo_path3), filename: File.basename(photo_path3))
+    charity.photos.attach(io: File.open(photo_path4), filename: File.basename(photo_path4))
+
+    puts "Photos attached to #{charity.name}."
+  end
+  if charity.name == "The Sierra Club Foundation"
+    photo_path1 = Rails.root.join("db/seed-images/greenpeace/GP0STPOUA_8.webp")
+    photo_path2 = Rails.root.join("db/seed-images/greenpeace/gp0stown2.webp")
+    photo_path3 = Rails.root.join("db/seed-images/greenpeace/gp0stqdu4.webp")
+    photo_path4 = Rails.root.join("db/seed-images/greenpeace/GP01CK9.webp")
+
+    charity.photos.attach(io: File.open(photo_path1), filename: File.basename(photo_path1))
+    charity.photos.attach(io: File.open(photo_path2), filename: File.basename(photo_path2))
+    charity.photos.attach(io: File.open(photo_path3), filename: File.basename(photo_path3))
+    charity.photos.attach(io: File.open(photo_path4), filename: File.basename(photo_path4))
+
+    puts "Photos attached to #{charity.name}."
+  end
+  if charity.name == "Friends of the Earth"
+    photo_path1 = Rails.root.join("db/seed-images/greenpeace/GP0STPOUA_8.webp")
+    photo_path2 = Rails.root.join("db/seed-images/greenpeace/gp0stown2.webp")
+    photo_path3 = Rails.root.join("db/seed-images/greenpeace/gp0stqdu4.webp")
+    photo_path4 = Rails.root.join("db/seed-images/greenpeace/GP01CK9.webp")
+
+    charity.photos.attach(io: File.open(photo_path1), filename: File.basename(photo_path1))
+    charity.photos.attach(io: File.open(photo_path2), filename: File.basename(photo_path2))
+    charity.photos.attach(io: File.open(photo_path3), filename: File.basename(photo_path3))
+    charity.photos.attach(io: File.open(photo_path4), filename: File.basename(photo_path4))
+
+    puts "Photos attached to #{charity.name}."
+  end
+  if charity.name == "Rainforest Alliance"
+    photo_path1 = Rails.root.join("db/seed-images/greenpeace/GP0STPOUA_8.webp")
+    photo_path2 = Rails.root.join("db/seed-images/greenpeace/gp0stown2.webp")
+    photo_path3 = Rails.root.join("db/seed-images/greenpeace/gp0stqdu4.webp")
+    photo_path4 = Rails.root.join("db/seed-images/greenpeace/GP01CK9.webp")
+
+    charity.photos.attach(io: File.open(photo_path1), filename: File.basename(photo_path1))
+    charity.photos.attach(io: File.open(photo_path2), filename: File.basename(photo_path2))
+    charity.photos.attach(io: File.open(photo_path3), filename: File.basename(photo_path3))
+    charity.photos.attach(io: File.open(photo_path4), filename: File.basename(photo_path4))
+
+    puts "Photos attached to #{charity.name}."
+  end
+  if charity.name == "ClimateWorks Foundation"
+    photo_path1 = Rails.root.join("db/seed-images/greenpeace/GP0STPOUA_8.webp")
+    photo_path2 = Rails.root.join("db/seed-images/greenpeace/gp0stown2.webp")
+    photo_path3 = Rails.root.join("db/seed-images/greenpeace/gp0stqdu4.webp")
+    photo_path4 = Rails.root.join("db/seed-images/greenpeace/GP01CK9.webp")
+
+    charity.photos.attach(io: File.open(photo_path1), filename: File.basename(photo_path1))
+    charity.photos.attach(io: File.open(photo_path2), filename: File.basename(photo_path2))
+    charity.photos.attach(io: File.open(photo_path3), filename: File.basename(photo_path3))
+    charity.photos.attach(io: File.open(photo_path4), filename: File.basename(photo_path4))
+
+    puts "Photos attached to #{charity.name}."
+  end
 end
 
   puts "#{Charity.count} charities created."
@@ -186,18 +277,21 @@ end
       description: "Oxfam is working to fight poverty in Africa by providing clean water, food, and education to communities in need.",
       # A village in Niger named Bilma
       location: "Bilma, Niger",
+      goal: 50000,
       charity: Charity.find_by(name: "Oxfam")
     }, {
       name: "Emergency Aid in Yemen",
       description: "Oxfam is providing emergency aid in Yemen by delivering food, water, and medical supplies to families affected by the conflict.",
       # A village in Yemen named Al-Hudaydah
       location: "Al-Hudaydah, Yemen",
+      goal: 50000,
       charity: Charity.find_by(name: "Oxfam")
     }, {
       name: "Promoting Sustainable Development in India",
       description: "Oxfam is promoting sustainable development in India by supporting small-scale farmers",
       # A village in India named Khandwa
       location: "Khandwa, India",
+      goal: 50000,
       charity: Charity.find_by(name: "Oxfam")
     }
   ]
@@ -237,18 +331,21 @@ end
     description: "Save the Children is providing education in Afghanistan by building schools and training teachers in rural communities.",
     # a village in Afghanistan named Bamyan
     location: "Bamyan, Afghanistan",
+    goal: 50000,
     charity: Charity.find_by(name: "Save the Children")
   }, {
     name: "Emergency Aid in Syria",
     description: "Save the Children is providing emergency aid in Syria by delivering food, water, and medical supplies to families affected by the conflict.",
     # a village in Syria named Aleppo
     location: "Aleppo, Syria",
+    goal: 50000,
     charity: Charity.find_by(name: "Save the Children")
   }, {
     name: "Fighting Malnutrition in South Sudan",
     description: "Save the Children is fighting malnutrition in South Sudan by providing food, water, and medical care to children suffering from hunger.",
     # a village in South Sudan named Juba
     location: "Juba, South Sudan",
+    goal: 50000,
     charity: Charity.find_by(name: "Save the Children")
   }]
 
