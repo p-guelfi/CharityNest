@@ -21,6 +21,7 @@
   justify-content: center;
   text-align: center;
   width: 100%;
+  background-color: $coral-white;
 }
 
 .section {
@@ -51,7 +52,6 @@
 .give-option {
   flex: 1; /* Each option takes equal space */
   max-width: calc(33.33% - 1rem); /* Ensure space between options is accounted for */
-  background-color: #f0f0f0;
   margin: 0 0.5rem; /* Adjust this as needed */
   display: flex;
   flex-direction: column;
@@ -59,10 +59,11 @@
   text-align: center;
   overflow: hidden;
   box-sizing: border-box; /* Include padding and border in total width */
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 .give-option h4 {
-  background-color: $dark-ocean-blue;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), black);
   color: white;
   margin: 0;
   padding: 1.5rem 1.5rem;
@@ -84,16 +85,36 @@
   flex-direction: column;
   max-width: 70rem; /* Max width of the project card */
 }
-
 .project-card {
   flex: 1; /* Allow the project card to grow and fill the available width */
   width: 100%; /* Full width of the container */
   height: auto; /* Adjust height based on content */
-  background-color: $coral-white; /* Background color for visibility */
+  background-color: white; /* Background color for visibility */
   margin: 1rem 0; /* Vertical margin for spacing between cards */
-  border-radius: 10px; /* Optional: rounded corners */
+  border-radius: 10px; /* Rounded corners for the card */
   display: flex; /* Use flexbox for inner alignment */
-  align-items: center; /* Center content vertically */
-  padding: 3rem; /* Optional: add padding inside the card */
-  border: 1px solid $dark-ocean-blue; /* Add border */
+  align-items: stretch; /* Stretch children to fill height */
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+  overflow: hidden; /* Ensure overflow is hidden for the rounded corners */
+}
+
+.project-photo {
+  width: 300px; /* Specify the width of the photo */
+  height: 100%; /* Fill the height of the parent */
+  overflow: hidden; /* Ensure no overflow */
+  margin: 0; /* Remove margin to align with the card edge */
+}
+
+.project-photo img {
+  width: 100%; /* Make the image fill the width of the container */
+  height: 100%; /* Make the image fill the height of the container */
+  object-fit: cover; /* Ensure the image covers the area without distortion */
+  border-top-left-radius: 10px; /* Round the top left corner */
+  border-bottom-left-radius: 10px; /* Round the bottom left corner */
+  display: block; /* Remove bottom space under the image */
+}
+
+.project-details {
+  flex: 1; /* Allow project details to take up remaining space */
+  padding: 2rem; /* General padding inside the card */
 }
