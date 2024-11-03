@@ -10,7 +10,7 @@
     <div class="col m-5">
       <h5>Checkout summary</h5>
       <p>Donation for <strong><%= @charity_project.name %></strong></p>
-      <p>Amount: <%= @donation.amount %></p>
+      <p>Amount: <%= humanized_money_with_symbol(@donation.amount) %> <%= "monthly" if @donation.recurrent? %></p>
       <button id="pay" class="btn btn-primary">Pay</button>
       <script src="https://js.stripe.com/v3/"></script>
       <script>

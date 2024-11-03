@@ -31,8 +31,11 @@ class DonationsController < ApplicationController
     @donation.state = 'pending' # Set the state to pending
 
     if @donation.save
-      # Create a Stripe Checkout session
-      session = Stripe::Checkout::Session.create(
+      # Define amount based on user input
+      amount_cents = @donation.amount.cents
+
+      # Initialize session options
+      session_options = {
         payment_method_types: ['card'],
         line_items: [{
           price_data: {
@@ -40,16 +43,20 @@ class DonationsController < ApplicationController
             product_data: {
               name: "Donation to #{@charity_project.name}",
             },
-            unit_amount: @donation.amount_cents,
+            unit_amount: amount_cents,
+            # Add recurring options only if the donation is recurrent
+            recurring: @donation.recurrent ? { interval: 'month' } : nil,
           },
           quantity: 1
         }],
-        mode: 'payment', # This line is important
+        mode: @donation.recurrent ? 'subscription' : 'payment', # Use subscription mode if recurrent
         success_url: donation_url(@donation),
         cancel_url: new_donation_payment_url(@donation)
-      )
+      }
 
-      # Update the donation with the checkout session ID
+      # Create a Stripe Checkout session
+      session = Stripe::Checkout::Session.create(session_options)
+
       @donation.update(checkout_session_id: session.id)
       redirect_to new_donation_payment_path(@donation)
     else
