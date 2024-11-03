@@ -22,4 +22,6 @@ Rails.application.routes.draw do
   end
 
   resources :donations, only: [:index, :show, :edit, :update]
+
+  resources :orders, only: [:show, :create]
 end
