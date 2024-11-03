@@ -8,8 +8,8 @@
 
 <section class="categories" section id="categories">
   <h2>Categories</h2>
-  <div class="category-cards">
-    <%= link_to '/charities' do %>
+  <div class="category-cards category-link">
+    <%= link_to '/charities', class: 'no-underline-link' do %>
       <%= render 'shared/category_card', title: "Climate Change" %>
     <% end %>
     <%= render 'shared/category_card', title: "Hunger" %>

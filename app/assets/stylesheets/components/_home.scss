@@ -4,7 +4,7 @@
 @import 'config/fonts';
 
 .hero-section {
-  height: 40rem;
+  height: 55rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -54,8 +54,13 @@
     align-items: start;
     margin: 0 15rem;
 
+    .no-underline-link {
+      text-decoration: none;
+    }
+
     &:hover {
       color: #35A28C;
     }
+
   }
 }
