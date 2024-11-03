@@ -9,14 +9,15 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  background-color: $coral-white;
+  background: url('/assets/hero_background.png') no-repeat center center;
+  background-size: cover; // Ensures the image covers the section
   color: $dark-ocean-blue;
 
   .hero-content {
-    background-color: $coral-white;
     padding: 2rem;
     border-radius: 10px;
     max-width: 600px;
+    background-color: $coral-white;
 
     .hero-title {
       font-family: $headers-font;
@@ -35,7 +36,7 @@
 }
 
 .categories {
-  background-color: $white;
+  background-color: $coral-white;
 
   h2 {
     font-family: $headers-font;
