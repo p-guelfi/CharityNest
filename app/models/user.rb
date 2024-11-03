@@ -11,7 +11,6 @@ class User < ApplicationRecord
 
   has_one :charity, dependent: :destroy
   has_many :donations
-  has_many :orders
 
   # Optionally, you can add a validation to ensure that only admin users can create charities
   def can_create_charity?
