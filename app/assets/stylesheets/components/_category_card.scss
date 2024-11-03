@@ -17,7 +17,7 @@
     text-align: center;
     width: 10rem;
     height: 10rem;
-    color: $white;
+    color: #0B666A1A; /* 10% opacity */
     -webkit-text-stroke: 2px #0B666A;
     margin-bottom: 1rem;
   }
@@ -31,10 +31,6 @@
   }
 
   &:hover {
-    background-color: #F4F4F4; // Use dark ocean blue on hover
-  }
-
-  &:hover .icon {
-    color: $coral-white; // Use dark ocean blue on hover
+    background-color: #0B666A0D; /* 5% opacity */
   }
 }

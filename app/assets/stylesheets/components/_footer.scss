@@ -1,0 +1,76 @@
+@import 'config/colors';
+@import 'config/fonts';
+
+.footer {
+  background-color: #0B666A0D; /* 5% opacity */; /* Light gray with 10% opacity */
+  padding: 2rem;
+  font-family: $body-font;
+
+  .footer-top {
+    display: flex;
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+    margin-left: 15rem;
+
+    .footer-column {
+      flex: 1;
+      margin-right: 1rem;
+
+      h3 {
+        font-size: 1.25rem;
+        color: $dark-ocean-blue;
+        margin-bottom: 1rem;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+
+        li {
+          margin-bottom: 0.5rem;
+
+          a {
+            color: $ocean-turquoise;
+            text-decoration: none;
+
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .footer-bottom {
+    display: flex;
+    border-top: 1px solid $dark-ocean-blue;
+    padding-top: 1rem;
+
+    .footer-bottom-left {
+      p {
+        margin: 0;
+        color: $dark-ocean-blue;
+      }
+
+      ul {
+        display: flex;
+        list-style: none;
+        padding: 0;
+
+        li {
+          margin-right: 1rem;
+
+          a {
+            color: $gray;
+            text-decoration: none;
+
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+    }
+  }
+}

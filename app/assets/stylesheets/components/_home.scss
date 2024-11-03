@@ -30,21 +30,22 @@
       font-family: $body-font;
       font-size: 18px;
       color: #0B666A;
-      margin: 5rem 0;
+      margin: 2rem 0;
     }
   }
 }
 
 .categories {
   background-color: $coral-white;
+  padding: 6rem 0rem;
 
   h2 {
     font-family: $headers-font;
     font-weight: 800;
     font-size: 2rem;
     color: #0B666A;
-    margin: 0rem 11.5rem;
-    padding: 5rem 0rem 2rem 0rem;
+    margin: 0rem 15rem;
+    padding: 0rem 0rem 2rem 0rem;
   }
 
   .category-cards {
@@ -53,7 +54,7 @@
     gap: 5rem;
     justify-items: center;
     align-items: start;
-    margin: 0 10rem;
+    margin: 0 15rem;
 
     &:hover {
       color: #35A28C;
