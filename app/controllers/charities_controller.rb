@@ -26,5 +26,5 @@ class CharitiesController < ApplicationController
     if params[:category_id].present?
       @category = Category.find(params[:category_id])
     end
-
+  end
 end

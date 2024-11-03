@@ -1,15 +1,17 @@
 <div class="hero-section">
   <div class="hero-content">
-    <h1 class="hero-title">Title Title</h1>
-    <p class="hero-description">Description Description Description</p>
-    <button class="button" onclick="window.location.href='#categories'">Call to Action</button>
+    <h1 class="hero-title">Support Change, Empower Communities</h1>
+    <p class="hero-description">Make a meaningful impact with your support</p>
+    <button class="button" onclick="window.location.href='#categories'">Get Started Today</button>
   </div>
 </div>
 
 <section class="categories" section id="categories">
   <h2>Categories</h2>
   <div class="category-cards">
-    <%= render 'shared/category_card', title: "Climate Change" %>
+    <%= link_to '/charities' do %>
+      <%= render 'shared/category_card', title: "Climate Change" %>
+    <% end %>
     <%= render 'shared/category_card', title: "Hunger" %>
     <%= render 'shared/category_card', title: "Disaster Relief" %>
     <%= render 'shared/category_card', title: "Education" %>
