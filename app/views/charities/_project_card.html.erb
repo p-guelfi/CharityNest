@@ -1,5 +1,3 @@
-<!-- _project_card.html.erb -->
-
 <div class="project-card">
   <div class="project-photo">
     <% if project.photos.attached? %>
@@ -16,19 +14,21 @@
 
       <div class="progress-info-and-bar col-md-8">
         <div class="progress-text d-flex align-items-center">
-          <% total_donations = project.donations.sum(:amount) %>
-          <% percentage = (total_donations.to_f / project.goal * 100).round(2) %>
-          <h4 class="mb-2 text-success">€<%= number_with_delimiter(total_donations, delimiter: ',') %></h4>
-          <p class="mb-0 ms-2">raised of €<%= number_with_delimiter(project.goal, delimiter: ',') %> Goal</p>
+          <% total_donations_cents = project.donations.sum(:amount_cents) %>
+          <% total_donations = Money.new(total_donations_cents) %>
+          <% goal_cents = project.goal * 100 %> <!-- Convert goal to cents -->
+          <% percentage = (total_donations_cents.to_f / goal_cents * 100).round(2) %>
+          <h4 class="mb-2 text-success"><%= humanized_money_with_symbol(total_donations) %></h4>
+          <p class="mb-0 ms-2">raised of <%= humanized_money_with_symbol(Money.new(goal_cents)) %> Goal</p>
         </div>
         <div class="progress">
-          <div class="progress-bar" role="progressbar" style="width: <%= percentage %>%; background-color: #35A28C;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+          <div class="progress-bar" role="progressbar" style="width: <%= percentage %>%; background-color: #35A28C;" aria-valuenow="<%= percentage %>" aria-valuemin="0" aria-valuemax="100"></div>
         </div>
-    </div>
-    <div class="donate-button col-md-4 ms-auto">
-      <%= link_to "Donate", new_charity_project_donation_path(project), class: "btn btn-primary" %>
-    </div>
+      </div>
+      <div class="donate-button col-md-4 ms-auto">
+        <%= link_to "Donate", new_charity_project_donation_path(project), class: "btn btn-primary" %>
+      </div>
 
-  </div>
+    </div>
   </div>
 </div>

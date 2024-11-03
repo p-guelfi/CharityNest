@@ -76,3 +76,5 @@ end
 gem "devise"
 
 gem "cloudinary"
+
+gem 'money-rails'

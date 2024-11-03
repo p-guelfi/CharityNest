@@ -182,6 +182,15 @@ GEM
     matrix (0.4.2)
     mini_mime (1.1.5)
     minitest (5.25.1)
+    monetize (1.13.0)
+      money (~> 6.12)
+    money (6.19.0)
+      i18n (>= 0.6.4, <= 2)
+    money-rails (1.15.0)
+      activesupport (>= 3.0)
+      monetize (~> 1.9)
+      money (~> 6.13)
+      railties (>= 3.0)
     msgpack (1.7.3)
     multipart-post (2.4.1)
     mutex_m (0.2.0)
@@ -344,6 +353,7 @@ DEPENDENCIES
   font-awesome-sass (~> 6.1)
   importmap-rails
   jbuilder
+  money-rails
   pg (~> 1.1)
   puma (>= 5.0)
   rails (~> 7.1.4, >= 7.1.4.2)
