@@ -21,5 +21,7 @@ Rails.application.routes.draw do
     resources :donations, only: [:new, :create]
   end
 
-  resources :donations, only: [:index, :show, :edit, :update]
+  resources :donations, only: [:index, :show, :edit, :update] do
+    resources :payments, only: :new
+  end
 end

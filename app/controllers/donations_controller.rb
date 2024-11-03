@@ -12,19 +12,54 @@ class DonationsController < ApplicationController
     @donation = Donation.new
   end
 
+  # def create
+  #   @donation = Donation.new(donation_params)
+  #   @donation.user = @user
+  #   @donation.charity_project = @charity_project
+
+  #   if @donation.save
+  #     redirect_to donation_path(@donation)
+  #   else
+  #     render :new, status: :unprocessable_entity
+  #   end
+  # end
+
   def create
     @donation = Donation.new(donation_params)
-    @donation.user = @user
+    @donation.user = current_user
     @donation.charity_project = @charity_project
+    @donation.state = 'pending' # Set the state to pending
 
     if @donation.save
-      redirect_to donation_path(@donation)
+      # Create a Stripe Checkout session
+      session = Stripe::Checkout::Session.create(
+        payment_method_types: ['card'],
+        line_items: [{
+          price_data: {
+            currency: 'eur',
+            product_data: {
+              name: "Donation to #{@charity_project.name}",
+            },
+            unit_amount: @donation.amount_cents,
+          },
+          quantity: 1
+        }],
+        mode: 'payment', # This line is important
+        success_url: donation_url(@donation),
+        cancel_url: new_donation_payment_url(@donation)
+      )
+
+      # Update the donation with the checkout session ID
+      @donation.update(checkout_session_id: session.id)
+      redirect_to new_donation_payment_path(@donation)
     else
       render :new, status: :unprocessable_entity
     end
   end
 
   def show
+    @donation = current_user.donations.find(params[:id])
+    @charity_project = @donation.charity_project
   end
 
   def edit
