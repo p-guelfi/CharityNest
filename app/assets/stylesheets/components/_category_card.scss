@@ -1,0 +1,34 @@
+.category-card {
+  background-color: $white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  width: 20rem; // Adjust as needed for layout
+  height: 20rem; // Ensure it’s a square
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  .icon {
+    font-size: 8rem;
+    text-align: center;
+    width: 10rem;
+    height: 10rem;
+    color: #0B666A1A; /* 10% opacity */
+    -webkit-text-stroke: 2px #0B666A;
+    margin-bottom: 1rem;
+  }
+
+  .title {
+    font-family: $headers-font;
+    font-weight: 200;
+    font-size: 1.5rem;
+    color: #0B666A;
+    text-align: center;
+  }
+
+  &:hover {
+    background-color: #0B666A0D; /* 5% opacity */
+  }
+}

@@ -53,12 +53,22 @@
         color: $ocean-turquoise;
         border: 1px solid $ocean-turquoise;
         background-color: transparent;
+
+        &:hover {
+          background-color: $light-gray; // Use dark ocean blue on hover
+        }
+
       }
 
       &.signup {
         color: $coral-white;
         background-color: #0B666A;
         border: none;
+
+        &:hover {
+          background-color: $forest-green; // Use dark ocean blue on hover
+        }
+
       }
     }
   }
