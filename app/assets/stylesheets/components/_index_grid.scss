@@ -1,14 +1,14 @@
-$index-margin-x: 50px;
+$index-margin-x: 3.125rem;
 
 .index-grid-background {
   background-color: $coral-white;
 }
 .index-grid-container {
   margin: 0 $index-margin-x;
-  padding: 20px 0px;
+  padding: 1.25rem 0px;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: auto;
-  grid-gap: 20px;
+  grid-gap: 1.25rem;
   justify-items: stretch;
 }

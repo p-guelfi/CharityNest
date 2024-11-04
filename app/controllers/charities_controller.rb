@@ -1,9 +1,17 @@
 class CharitiesController < ApplicationController
   def index
     if set_category
-      @charities = Charity.where(category: @category)
+      if set_sorting
+        @charities = Charity.where(category: @category).order(@sorting)
+      else
+        @charities = Charity.where(category: @category)
+      end
     else
-      @charities = Charity.all
+      if set_sorting
+        @charities = Charity.all.order(@sorting)
+      else
+        @charities = Charity.all
+      end
     end
   end
 
@@ -27,4 +35,11 @@ class CharitiesController < ApplicationController
       @category = Category.find(params[:category_id])
     end
   end
+
+  def set_sorting
+    if params[:sort_by].present?
+      @sorting = params[:sort_by].to_sym
+    end
+  end
+
 end
