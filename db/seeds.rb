@@ -104,24 +104,28 @@ charities = [{
     name: "Save the Children",
     description: "Save the Children is a global non-profit organization that was founded in 1919. It is dedicated to improving the lives of children through better education, health care, and economic opportunities, as well as providing emergency aid in natural disasters, war, and other conflicts.",
     category: Category.find_by(name: "Basic Needs"),
+    youtube_id: "bvF_w2bA6mc",
     user: User.all.sample
   }, {
     name: "Oxfam",
     description: "Oxfam is a global organization that was founded in 1942. It is dedicated to fighting poverty and injustice around the world by providing emergency aid, promoting sustainable development, and advocating for social change.",
     category: Category.find_by(name: "Human Rights"),
     partner: "",
+    youtube_id: "7Y0jQ7XwQo4",
     user: User.all.sample
   }, {
     name: "Greenpeace",
     description: "At Greenpeace we are honoured that our work is funded almost entirely by donations given to us by passionate individuals from all over the world who care about the planet and want to help us create change, and by grants from private foundations who share our values. Our independence is vital for us to be effective in our campaigning work, which is why we have it as a core principle that guides all of our fundraising. We do not accept funding from governments, corporations, political parties or intergovernmental organisations. We also screen all large private donations to identify if there is anything about them which could compromise our independence, our integrity or deflect from our campaign priorities. If we find something then we will refuse or return the donation.",
     category: Category.find_by(name: "Climate Change"),
     partner: "",
+    youtube_id: "ccqlzIOGQio",
     user: User.all.sample
   },{
     name: "World Wildlife Fund (WWF)",
     description: "The World Wildlife Fund works globally to protect endangered species and preserve natural habitats, with a strong emphasis on combating climate change and promoting sustainability.",
     category: Category.find_by(name: "Climate Change"),
     partner: "",
+    youtube_id: "v-KqPiqYRck",
     user: User.all.sample
   },
   {
@@ -129,6 +133,7 @@ charities = [{
     description: "The Sierra Club Foundation works to advance climate solutions and promote green energy, sustainable practices, and environmental justice across communities.",
     category: Category.find_by(name: "Climate Change"),
     partner: "",
+    youtube_id: "5V827rXIQU4",
     user: User.all.sample
   },
   {
@@ -136,6 +141,7 @@ charities = [{
     description: "Friends of the Earth is an environmental advocacy organization that campaigns for sustainable policies and practices to combat the climate crisis, focusing on the well-being of communities and the environment.",
     category: Category.find_by(name: "Climate Change"),
     partner: "",
+    youtube_id: "QtM5l7gEoBk",
     user: User.all.sample
   },
   {
@@ -143,6 +149,7 @@ charities = [{
     description: "The Rainforest Alliance works with local communities to protect biodiversity and fight climate change through sustainable agriculture and forestry initiatives.",
     category: Category.find_by(name: "Climate Change"),
     partner: "",
+    youtube_id: "C5KqRYltFDs",
     user: User.all.sample
   },
   # Lesser-known charity with notable partners
@@ -151,6 +158,7 @@ charities = [{
     description: "ClimateWorks Foundation is a global platform that brings together partners to address the climate crisis through research, advocacy, and promoting sustainable practices. They partner with well-known organizations like the Hewlett Foundation and Bloomberg Philanthropies.",
     category: Category.find_by(name: "Climate Change"),
     partner: "Hewlett Foundation, Bloomberg Philanthropies",
+    youtube_id: "U9KP4iZIcuU",
     user: User.all.sample
   }
   ]
