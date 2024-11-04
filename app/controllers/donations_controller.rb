@@ -63,4 +63,14 @@ class DonationsController < ApplicationController
   def authorize_donation
     authorize @donation
   end
+
+  def unsubscribe
+    @donation = Donation.find(params[:id])
+    if @donation.destroy
+      redirect_to donations_path, notice: 'You have successfully unsubscribed from this donation.'
+    else
+      redirect_to donation_path(@donation), alert: 'Failed to unsubscribe from the donation.'
+    end
+  end
+
 end
