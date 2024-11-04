@@ -1,9 +1,10 @@
 <div class="container">
   <h2>Your donation for <%= @charity_project.name %></h2>
   <%= simple_form_for [@charity_project, @donation] do |f| %>
-    <%= f.input :amount, label: "Donation amount" %>
-    <%# Checkbox-Input if a monthly recurring donation is wished %>
-    <%= f.input :recurrent, label: "Monthly donation" %>
-    <%= f.button :submit, class: "btn btn-primary" %>
+  <%= f.input :amount, label: "Donation amount" %>
+  <%= f.input :state, as: :hidden, input_html: { value: 'pending' } %>
+  <%= f.input :checkout_session_id, as: :hidden %>
+  <%= f.input :recurrent, label: "Monthly donation" %>
+  <%= f.button :submit, "Donate Now", class: "btn btn-primary" %>
   <% end %>
 </div>

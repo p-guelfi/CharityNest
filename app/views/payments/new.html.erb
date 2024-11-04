@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row py-4 justify-content-center">
+    <div class="col-lg-8 col-md-10"> <!-- Increased column size -->
+      <div class="card shadow-lg" style="border-radius: 15px;"> <!-- Added shadow and rounded corners -->
+        <div class="card-body text-center"> <!-- Centered text -->
+          <h5 class="card-title mb-4">Checkout Summary</h5> <!-- Added margin-bottom for spacing -->
+          <p class="card-text">Donation for <strong><%= @charity_project.name %></strong></p>
+          <p class="card-text">Amount: <%= humanized_money_with_symbol(@donation.amount) %> <%= "monthly" if @donation.recurrent? %></p>
+          <button id="pay" class="btn btn-primary btn-lg">Pay</button> <!-- Made button larger -->
+        </div>
+        <div class="row no-gutters">
+          <div class="col-12">
+            <% if @charity_project.photos.attached? %>
+              <%= cl_image_tag @charity_project.photos.first.key, width: 800, height: 350, gravity: "center", crop: "fill", class: "card-img-bottom" %> <!-- Reduced image size -->
+            <% else %>
+              <%= cl_image_tag 'placeholder_image.png', width: 800, height: 400, gravity: "center", crop: "fill", class: "card-img-bottom" %> <!-- Placeholder with reduced size -->
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <script src="https://js.stripe.com/v3/"></script>
+      <script>
+        const paymentButton = document.getElementById('pay');
+        paymentButton.addEventListener('click', () => {
+          const stripe = Stripe('<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>');
+          stripe.redirectToCheckout({
+            sessionId: '<%= @donation.checkout_session_id %>'
+          });
+        });
+      </script>
+    </div>
+  </div>
+</div>
