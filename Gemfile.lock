@@ -301,6 +301,9 @@ GEM
       railties (>= 6.0.0)
     stringio (3.1.1)
     stripe (13.1.0)
+    stripe_event (2.11.0)
+      activesupport (>= 3.1)
+      stripe (>= 2.8, < 14)
     thor (1.3.2)
     tilt (2.4.0)
     timeout (0.4.1)
@@ -364,6 +367,7 @@ DEPENDENCIES
   sprockets-rails
   stimulus-rails
   stripe
+  stripe_event
   turbo-rails
   tzinfo-data
   web-console
