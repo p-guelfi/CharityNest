@@ -25,5 +25,6 @@ Rails.application.routes.draw do
     member do
       delete 'unsubscribe'
     end
+    resources :payments, only: :new
   end
 end
