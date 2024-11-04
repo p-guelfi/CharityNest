@@ -26,9 +26,34 @@
         </div>
       </div>
       <div class="donate-button col-md-4 ms-auto">
-        <%= link_to "Donate", new_charity_project_donation_path(project), class: "btn btn-primary" %>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#donationModal-<%= project.id %>">
+          Donate
+        </button>
       </div>
 
+    </div>
+  </div>
+</div>
+
+<!-- Modal for Donation -->
+<div class="modal fade" id="donationModal-<%= project.id %>" tabindex="-1" role="dialog" aria-labelledby="donationModalLabel-<%= project.id %>" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="donationModalLabel-<%= project.id %>">Your donation for <%= project.name %></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for [project, Donation.new] do |f| %>
+          <%= f.input :amount, label: "Donation amount" %>
+          <%= f.input :state, as: :hidden, input_html: { value: 'pending' } %>
+          <%= f.input :checkout_session_id, as: :hidden %>
+          <%= f.input :recurrent, label: "Monthly donation" %>
+          <%= f.button :submit, "Donate Now", class: "btn btn-primary" %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
