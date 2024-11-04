@@ -49,10 +49,10 @@ puts "Seeding database..."
       name: "Climate Change",
       description: "Climate change addresses the critical issue of rising global temperatures and extreme weather events. Efforts in this category focus on reducing carbon emissions, promoting renewable energy, and fostering sustainable practices to mitigate the impact on ecosystems, protect vulnerable populations, and build resilience against future environmental challenges."
     },
-    {
-      name: "Pollution",
-      description: "Pollution organizations tackle issues related to air, water, and soil contamination. They work on reducing industrial emissions, plastic waste, and other pollutants that threaten both human health and the environment, while advocating for cleaner production practices and stricter environmental regulations globally."
-    },
+    #{
+    #  name: "Pollution",
+    #  description: "Pollution organizations tackle issues related to air, water, and soil contamination. They work on reducing industrial emissions, plastic waste, and other pollutants that threaten both human health and the environment, while advocating for cleaner production practices and stricter environmental regulations globally."
+    #},
     {
       name: "Basic Needs",
       description: "Organizations in this category focus on providing fundamental resources like clean water, food, shelter, and clothing to underserved populations. Addressing basic needs is essential for improving health outcomes, economic stability, and quality of life, especially in low-income communities and disaster-affected areas."
@@ -61,10 +61,10 @@ puts "Seeding database..."
       name: "Natural Disasters",
       description: "Natural disaster relief organizations provide immediate aid and long-term recovery efforts for communities impacted by events like earthquakes, hurricanes, and floods. They focus on emergency response, disaster preparedness, and building resilience to reduce future vulnerabilities and support sustainable recovery in affected regions."
     },
-    {
-      name: "War",
-      description: "War-focused organizations assist people affected by conflict, providing services like medical aid, shelter, and psychological support. These organizations also advocate for peacebuilding, refugee support, and human rights protection, aiming to create safer environments for those caught in or displaced by conflict."
-    },
+    #{
+    #  name: "War",
+    #  description: "War-focused organizations assist people affected by conflict, providing services like medical aid, shelter, and psychological support. These organizations also advocate for peacebuilding, refugee support, and human rights protection, aiming to create safer environments for those caught in or displaced by conflict."
+    #},
     {
       name: "Education",
       description: "Education organizations work to increase access to quality education globally, especially in underserved regions. They focus on literacy programs, vocational training, and school infrastructure to help individuals improve their skills, knowledge, and future opportunities, ultimately contributing to economic growth and social stability."
@@ -73,18 +73,18 @@ puts "Seeding database..."
       name: "Health",
       description: "Health organizations focus on improving global health outcomes by providing medical services, disease prevention, and health education. Their work includes fighting infectious diseases, promoting mental health, and addressing healthcare disparities to ensure all people have access to essential health services."
     },
-    {
-      name: "Human Rights",
-      description: "Human rights organizations protect and promote the rights and freedoms of individuals around the world. They work on issues like freedom of expression, equality, and protection against discrimination and violence, striving to build societies that respect the dignity and autonomy of all individuals."
-    },
+    #{
+    #  name: "Human Rights",
+    #  description: "Human rights organizations protect and promote the rights and freedoms of individuals around the world. They work on issues like freedom of expression, equality, and protection against discrimination and violence, striving to build societies that respect the dignity and autonomy of all individuals."
+    #},
     {
       name: "Famine",
       description: "Famine relief organizations work to combat hunger and malnutrition, especially in regions affected by food scarcity and extreme poverty. These organizations provide food assistance, support sustainable agriculture, and promote policies to improve food security and prevent future hunger crises."
     },
-    {
-      name: "Wildlife",
-      description: "Wildlife organizations focus on protecting endangered species and preserving biodiversity. They work to combat habitat loss, illegal poaching, and other threats to animals, while promoting conservation efforts and awareness to safeguard wildlife and maintain ecological balance for future generations."
-    }
+    #{
+    #  name: "Wildlife",
+    #  description: "Wildlife organizations focus on protecting endangered species and preserving biodiversity. They work to combat habitat loss, illegal poaching, and other threats to animals, while promoting conservation efforts and awareness to safeguard wildlife and maintain ecological balance for future generations."
+    #}
   ]
   categories.each do |category|
     Category.create!(name: category[:name], description: category[:description])
