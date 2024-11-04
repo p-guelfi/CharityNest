@@ -6,18 +6,16 @@
   </div>
 </div>
 
-<section class="categories" section id="categories">
+<section class="categories" id="categories">
   <h2>Categories</h2>
-  <div class="category-cards category-link">
-    <%= link_to '/charities', class: 'no-underline-link' do %>
-      <%= render 'shared/category_card', title: "Climate Change" %>
+  <div class="category-cards">
+    <% @categories.each do |category| %>
+      <%= link_to category_charities_path(category), class: 'no-underline-link' do %>
+        <%= render 'shared/category_card', title: category.name %>
+      <% end %>
     <% end %>
-    <%= render 'shared/category_card', title: "Hunger" %>
-    <%= render 'shared/category_card', title: "Disaster Relief" %>
-    <%= render 'shared/category_card', title: "Education" %>
-    <%= render 'shared/category_card', title: "Health" %>
-    <%= render 'shared/category_card', title: "Water & Sanitation" %>
   </div>
 </section>
+
 
 <%= render 'shared/footer' %> <!-- Render the footer section -->
