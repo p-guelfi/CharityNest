@@ -12,18 +12,21 @@
     <p><strong><%= @charity.description %></strong></p>
   </div>
 
-  <div class="">
+  <div>
     <h2>Ways to Give</h2>
     <div class="ways-to-give">
+
       <div class="give-option">
-        <div class="give-photo">
-          <% if @charity.photos.size > 1 %>
-            <%= cl_image_tag @charity.photos.second.key, height: 170, crop: 'fill' %>
-          <% else %>
-            <p>No image available for this option.</p>
-          <% end %>
-        </div>
-        <h4>Support a Project</h4>
+        <a href="#projects-sect" style="display: block; text-decoration: none; color: inherit;">
+          <div class="give-photo">
+            <% if @charity.photos.size > 1 %>
+              <%= cl_image_tag @charity.photos.second.key, height: 170, crop: 'fill' %>
+            <% else %>
+              <p>No image available for this option.</p>
+            <% end %>
+          </div>
+          <h4>Support a Project</h4>
+        </a>
       </div>
 
       <div class="give-option">
@@ -38,21 +41,24 @@
       </div>
 
       <div class="give-option">
-        <div class="give-photo">
-          <% if @charity.photos.size > 3 %>
-            <%= cl_image_tag @charity.photos.fourth.key, height: 170, crop: 'fill' %>
-          <% else %>
-            <p>No image available for this option.</p>
-          <% end %>
-        </div>
-        <h4>Send an Email</h4>
+        <a href="mailto:<%= @charity.name.gsub(' ', '-').downcase %>@charity-nest.com?subject=Inquiry%20About%20<%= @charity.name.gsub(' ', '%20') %>" style="display: block; text-decoration: none; color: inherit;">
+          <div class="give-photo">
+            <% if @charity.photos.size > 3 %>
+              <%= cl_image_tag @charity.photos.fourth.key, height: 170, crop: 'fill' %>
+            <% else %>
+              <p>No image available for this option.</p>
+            <% end %>
+          </div>
+          <h4>Send an Email</h4>
+        </a>
       </div>
+
     </div>
   </div>
 
-  <div class="">
+  <div>
     <h2>Our Projects</h2>
-    <div class="our-projects">
+    <div id="projects-sect" class="our-projects">
       <% @charity_projects.each do |project| %>
         <%= render partial: 'project_card', locals: { project: project } %>
       <% end %>
