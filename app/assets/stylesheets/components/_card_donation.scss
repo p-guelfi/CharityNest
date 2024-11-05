@@ -1,11 +1,14 @@
+body {
+  background-color: $coral-white;
+}
+
+
 .donations-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.25rem;
   justify-items: center;
   padding: 1rem 10rem;
-  background-color: $coral-white;
-
 }
 
 .donation-page-container {
@@ -49,6 +52,7 @@
     gap: 0.75rem;
     margin-top: 1rem;
     width: 100%;
+    margin-top: auto;
 
     .button {
       font-family: $headers-font;
