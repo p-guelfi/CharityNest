@@ -22,6 +22,9 @@ Rails.application.routes.draw do
   end
 
   resources :donations, only: [:index, :show, :edit, :update] do
+    member do
+      delete 'unsubscribe'
+    end
     resources :payments, only: :new
   end
 

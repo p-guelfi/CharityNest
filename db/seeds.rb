@@ -109,7 +109,7 @@ charities = [{
   }, {
     name: "Oxfam",
     description: "At Oxfam, we are immensely thankful for the support of individuals and organizations worldwide who stand with us in the fight against poverty and inequality. Our initiatives are primarily funded by the generous contributions of passionate supporters and grants from foundations that share our vision of a just world. Upholding our independence is essential for us to effectively carry out our mission, which is why we have established clear guidelines for our fundraising practices. We do not accept funding from governments, corporations, or political parties that may compromise our commitment to social justice. To maintain our integrity and ensure that all contributions align with our values, we carefully review all substantial donations. If any potential conflicts or issues arise, we are committed to refusing or returning those funds to protect the integrity of our work and the communities we serve.",
-    category: Category.find_by(name: "Human Rights"),
+    category: Category.find_by(name: "Basic Needs"),
     partner: "",
     youtube_id: "7Y0jQ7XwQo4",
     user: User.all.sample

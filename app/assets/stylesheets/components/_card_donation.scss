@@ -1,0 +1,88 @@
+body {
+  background-color: $coral-white;
+}
+
+
+.donations-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  justify-items: center;
+  padding: 1rem 10rem;
+}
+
+.donation-page-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.donation-card {
+  border: 0.063rem solid #ddd;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  width: 22rem;
+  background-color: $white;
+  color: $default-text-color;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 0.125rem 0.313rem rgba(0, 0, 0, 0.1);
+
+  h3 {
+    font-family: $headers-font;
+    font-size: 1.5rem;
+    color: $dark-ocean-blue;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  p {
+    font-family: $body-font;
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+    text-align: center;
+  }
+
+  .donation-actions {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 0.75rem;
+    margin-top: 1rem;
+    width: 100%;
+    margin-top: auto;
+
+    .button {
+      font-family: $headers-font;
+      color: #0B666A;
+      background-color: $white;
+      border: 1px solid #0B666A;
+      &:hover {
+        background-color: $light-gray;
+      }
+    }
+
+    &.button-unsubscribe {
+      background-color: #FD1015;
+      &:hover {
+        background-color: #D90E13;
+      }
+    }
+
+    &.button-edit {
+      background-color: #FFC65A;
+      &:hover {
+        background-color: #E67E22;
+      }
+    }
+
+    &.button-view-all {
+      background-color: $dark-ocean-blue;
+      &:hover {
+        background-color: $ocean-turquoise;
+      }
+    }
+  }
+}

@@ -1,8 +1,13 @@
-<div class="container">
-  <%= render "card_donation", donation: @donation %>
-  <% if @donation.recurrent? %>
-    <%= button_to "Unsubscribe", donation_path(@donation), method: :patch, params: { donation: { recurrent: false } }, data: { turbo: true }, class: 'btn btn-danger'   %>
-    <%= link_to "Change Amount", edit_donation_path(@donation), class: "btn btn-warning"  %>
-  <% end %>
-  <%= link_to "See all my donations", donations_path, class: "btn btn-primary" %>
+<div class="donation-page-container">
+  <div class="donation-card">
+    <h3><%= @donation.charity_project.name %></h3>
+    <p>Amount Donated: <%= number_to_currency(@donation.amount_cents / 100.0, precision: 0) %></p>
+    <p>Date: <%= @donation.created_at.strftime('%b %d, %Y') %></p>
+
+    <div class="donation-actions">
+      <%= link_to 'Unsubscribe', unsubscribe_donation_path(@donation), method: :delete, data: { confirm: 'Are you sure you want to unsubscribe?' }, class: 'button button-unsubscribe' %>
+      <%= link_to 'Change Amount', edit_donation_path(@donation), class: 'button button-edit' %>
+      <%= link_to 'See all my donations', donations_path, class: 'button button-view-all' %>
+    </div>
+  </div>
 </div>
