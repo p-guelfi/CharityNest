@@ -281,39 +281,57 @@ end
   puts "Creating charity projects..."
 
   charity_projects_oxfam = [{
-      name: "Fighting Poverty in Africa",
-      description: "Oxfam is working to fight poverty in Africa by providing clean water, food, and education to communities in need.",
-      # A village in Niger named Bilma
-      location: "Bilma, Niger",
-      goal: 50000,
-      charity: Charity.find_by(name: "Oxfam"),
-      photos: [
+    name: "Oxfam",  # This is now the first project
+    description: "Description of the new project goes here.",
+    location: "Location of the new project",
+    goal: 50000,
+    charity: Charity.find_by(name: "Oxfam"),
+    photos: [
+      Rails.root.join("db/seed-images/greenpeace/GP0STPOUA_8.webp")
+    ]
+  }, {
+    name: "Fighting Poverty in Africa",
+    description: "Oxfam is working to fight poverty in Africa by providing clean water, food, and education to communities in need.",
+    # A village in Niger named Bilma
+    location: "Bilma, Niger",
+    goal: 50000,
+    charity: Charity.find_by(name: "Oxfam"),
+    photos: [
       Rails.root.join("db/seed-images/greenpeace/GP01EFS-polar-bear-600x450-c-default.webp")
     ]
-    }, {
-      name: "Emergency Aid in Yemen",
-      description: "Oxfam is providing emergency aid in Yemen by delivering food, water, and medical supplies to families affected by the conflict.",
-      # A village in Yemen named Al-Hudaydah
-      location: "Al-Hudaydah, Yemen",
-      goal: 50000,
-      charity: Charity.find_by(name: "Oxfam"),
-      photos: [
+  }, {
+    name: "Emergency Aid in Yemen",
+    description: "Oxfam is providing emergency aid in Yemen by delivering food, water, and medical supplies to families affected by the conflict.",
+    # A village in Yemen named Al-Hudaydah
+    location: "Al-Hudaydah, Yemen",
+    goal: 50000,
+    charity: Charity.find_by(name: "Oxfam"),
+    photos: [
       Rails.root.join("db/seed-images/greenpeace/030321_decarbonization.jpg")
     ]
-    }, {
-      name: "Promoting Sustainable Development in India",
-      description: "Oxfam is promoting sustainable development in India by supporting small-scale farmers",
-      # A village in India named Khandwa
-      location: "Khandwa, India",
-      goal: 50000,
-      charity: Charity.find_by(name: "Oxfam"),
-      photos: [
+  }, {
+    name: "Promoting Sustainable Development in India",
+    description: "Oxfam is promoting sustainable development in India by supporting small-scale farmers.",
+    # A village in India named Khandwa
+    location: "Khandwa, India",
+    goal: 50000,
+    charity: Charity.find_by(name: "Oxfam"),
+    photos: [
       Rails.root.join("db/seed-images/greenpeace/DSC_9026-1.jpg")
     ]
-    }
-  ]
+  }
+]
 
-  charity_projects_greenpeace = [{
+charity_projects_greenpeace = [{
+    name: "Greenpeace",  # This is now the first project
+    description: "Description of the new project goes here.",
+    location: "Location of the new project",
+    goal: 50000,
+    charity: Charity.find_by(name: "Greenpeace"),
+    photos: [
+      Rails.root.join("db/seed-images/greenpeace/GP0STPOUA_8.webp")
+    ]
+  }, {
     name: "Protecting the Arctic",
     description: "Greenpeace is working to protect the Arctic by campaigning against oil drilling and industrial fishing in the region.",
     location: "Arctic Ocean",
@@ -340,13 +358,21 @@ end
     photos: [
       Rails.root.join("db/seed-images/greenpeace/DSC_9026-1.jpg")
     ]
-  }]
+  }
+]
 
-
-  charity_projects_save_the_children = [{
+charity_projects_save_the_children = [{
+    name: "Save the Children",  # Replace this with the actual title of the new project
+    description: "Description of the new project goes here.",  # Provide a brief description of the project
+    location: "Location of the new project",  # Specify the location
+    goal: 50000,  # Set a funding goal
+    charity: Charity.find_by(name: "Save the Children"),  # Link to the charity
+    photos: [
+      Rails.root.join("db/seed-images/greenpeace/GP0STPOUA_8.webp")  # Path to an image related to the new project
+    ]
+  }, {
     name: "Providing Education in Afghanistan",
     description: "Save the Children is providing education in Afghanistan by building schools and training teachers in rural communities.",
-    # a village in Afghanistan named Bamyan
     location: "Bamyan, Afghanistan",
     goal: 50000,
     charity: Charity.find_by(name: "Save the Children"),
@@ -356,7 +382,6 @@ end
   }, {
     name: "Emergency Aid in Syria",
     description: "Save the Children is providing emergency aid in Syria by delivering food, water, and medical supplies to families affected by the conflict.",
-    # a village in Syria named Aleppo
     location: "Aleppo, Syria",
     goal: 50000,
     charity: Charity.find_by(name: "Save the Children"),
@@ -366,19 +391,27 @@ end
   }, {
     name: "Fighting Malnutrition in South Sudan",
     description: "Save the Children is fighting malnutrition in South Sudan by providing food, water, and medical care to children suffering from hunger.",
-    # a village in South Sudan named Juba
     location: "Juba, South Sudan",
     goal: 50000,
     charity: Charity.find_by(name: "Save the Children"),
     photos: [
       Rails.root.join("db/seed-images/greenpeace/DSC_9026-1.jpg")
     ]
-  }]
+  }
+]
 
-  charity_projects_wwf = [{
+charity_projects_wwf = [{
+    name: "World Wildlife Fund (WWF)",  # Replace with the actual title of the new project
+    description: "Description of the new project goes here.",  # Provide a brief description of the new project
+    location: "Location of the new project",  # Specify the location
+    goal: 85000,  # Set a funding goal
+    charity: Charity.find_by(name: "World Wildlife Fund (WWF)"),  # Link to the charity
+    photos: [
+      Rails.root.join("db/seed-images/greenpeace/GP0STPOUA_8.webp")  # Path to an image related to the new project
+    ]
+  }, {
     name: "Protecting Endangered Species",
     description: "WWF is dedicated to protecting endangered species across the globe through conservation efforts and habitat protection.",
-    # A wildlife reserve in Kenya named Maasai Mara
     location: "Maasai Mara, Kenya",
     goal: 80000,
     charity: Charity.find_by(name: "World Wildlife Fund (WWF)"),
@@ -388,7 +421,6 @@ end
   }, {
     name: "Forest Conservation in the Amazon",
     description: "WWF is working to conserve the Amazon rainforest by promoting sustainable land practices and protecting native species.",
-    # A rainforest area in Brazil named Manaus
     location: "Manaus, Brazil",
     goal: 100000,
     charity: Charity.find_by(name: "World Wildlife Fund (WWF)"),
@@ -398,7 +430,6 @@ end
   }, {
     name: "Marine Ecosystem Restoration",
     description: "WWF is focused on restoring marine ecosystems to protect ocean biodiversity and sustain coastal communities.",
-    # A marine conservation area in Australia named Great Barrier Reef
     location: "Great Barrier Reef, Australia",
     goal: 90000,
     charity: Charity.find_by(name: "World Wildlife Fund (WWF)"),
@@ -409,9 +440,17 @@ end
 ]
 
 charity_projects_sierra_club = [{
+    name: "The Sierra Club Foundation",  # Replace with the actual title of the new project
+    description: "Description of the new project goes here.",  # Provide a brief description of the new project
+    location: "Location of the new project",  # Specify the location
+    goal: 80000,  # Set a funding goal
+    charity: Charity.find_by(name: "The Sierra Club Foundation"),  # Link to the charity
+    photos: [
+      Rails.root.join("db/seed-images/greenpeace/GP0STPOUA_8.webp")  # Path to an image related to the new project
+    ]
+  }, {
     name: "Preserving National Parks",
     description: "The Sierra Club Foundation is dedicated to preserving America's national parks, ensuring these natural treasures are protected for future generations.",
-    # A national park in the USA named Yosemite
     location: "Yosemite National Park, USA",
     goal: 85000,
     charity: Charity.find_by(name: "The Sierra Club Foundation"),
@@ -421,7 +460,6 @@ charity_projects_sierra_club = [{
   }, {
     name: "Clean Energy Transition",
     description: "The Sierra Club Foundation supports the transition to clean, renewable energy sources to combat climate change and reduce pollution.",
-    # A city in the USA known for renewable energy initiatives named Austin
     location: "Austin, USA",
     goal: 95000,
     charity: Charity.find_by(name: "The Sierra Club Foundation"),
@@ -431,7 +469,6 @@ charity_projects_sierra_club = [{
   }, {
     name: "Protecting Wildlife Habitats",
     description: "The Sierra Club Foundation works to protect wildlife habitats by advocating for sustainable land use and conservation policies.",
-    # A wildlife habitat area in the USA named Yellowstone
     location: "Yellowstone National Park, USA",
     goal: 70000,
     charity: Charity.find_by(name: "The Sierra Club Foundation"),
@@ -442,9 +479,17 @@ charity_projects_sierra_club = [{
 ]
 
 charity_projects_friends_of_the_earth = [{
+    name: "Friends of the Earth",  # Replace with the actual title of the new project
+    description: "Description of the new project goes here.",  # Provide a brief description of the new project
+    location: "Location of the new project",  # Specify the location
+    goal: 70000,  # Set a funding goal
+    charity: Charity.find_by(name: "Friends of the Earth"),  # Link to the charity
+    photos: [
+      Rails.root.join("db/seed-images/greenpeace/GP0STPOUA_8.webp")  # Path to an image related to the new project
+    ]
+  }, {
     name: "Campaign for Clean Air",
     description: "Friends of the Earth is leading a campaign to improve air quality in urban areas by reducing pollution and promoting green energy solutions.",
-    # A major urban area in the UK named London
     location: "London, UK",
     goal: 60000,
     charity: Charity.find_by(name: "Friends of the Earth"),
@@ -454,7 +499,6 @@ charity_projects_friends_of_the_earth = [{
   }, {
     name: "Protecting Pollinators",
     description: "Friends of the Earth is working to protect pollinators like bees by advocating against harmful pesticides and supporting organic farming.",
-    # A region in the USA known for agriculture named California
     location: "California, USA",
     goal: 75000,
     charity: Charity.find_by(name: "Friends of the Earth"),
@@ -464,7 +508,6 @@ charity_projects_friends_of_the_earth = [{
   }, {
     name: "Fighting Plastic Pollution",
     description: "Friends of the Earth is fighting plastic pollution by promoting sustainable alternatives and reducing single-use plastics.",
-    # A coastal city in Australia named Sydney
     location: "Sydney, Australia",
     goal: 65000,
     charity: Charity.find_by(name: "Friends of the Earth"),
@@ -475,9 +518,17 @@ charity_projects_friends_of_the_earth = [{
 ]
 
 charity_projects_rainforest_alliance = [{
+    name: "Rainforest Alliance",  # Replace with the actual title of the new project
+    description: "Description of the new project goes here.",  # Provide a brief description of the new project
+    location: "Location of the new project",  # Specify the location
+    goal: 75000,  # Set a funding goal
+    charity: Charity.find_by(name: "Rainforest Alliance"),  # Link to the charity
+    photos: [
+      Rails.root.join("db/seed-images/greenpeace/GP0STPOUA_8.webp")  # Path to an image related to the new project
+    ]
+  }, {
     name: "Sustainable Farming in the Amazon",
     description: "The Rainforest Alliance promotes sustainable farming practices in the Amazon to protect biodiversity and support local communities.",
-    # A rainforest area in Brazil named Acre
     location: "Acre, Brazil",
     goal: 90000,
     charity: Charity.find_by(name: "Rainforest Alliance"),
@@ -487,7 +538,6 @@ charity_projects_rainforest_alliance = [{
   }, {
     name: "Forest Conservation in Central America",
     description: "The Rainforest Alliance works to conserve forests in Central America by advocating for sustainable land use and protecting wildlife.",
-    # A conservation area in Guatemala named Petén
     location: "Petén, Guatemala",
     goal: 80000,
     charity: Charity.find_by(name: "Rainforest Alliance"),
@@ -497,7 +547,6 @@ charity_projects_rainforest_alliance = [{
   }, {
     name: "Protecting Indigenous Land Rights",
     description: "The Rainforest Alliance supports indigenous communities in protecting their land rights to preserve forests and traditional ways of life.",
-    # An indigenous territory in Peru named Madre de Dios
     location: "Madre de Dios, Peru",
     goal: 85000,
     charity: Charity.find_by(name: "Rainforest Alliance"),
@@ -508,9 +557,17 @@ charity_projects_rainforest_alliance = [{
 ]
 
 charity_projects_climateworks = [{
+    name: "ClimateWorks Foundation",  # Replace with the actual title of the new project
+    description: "Description of the new project goes here.",  # Provide a brief description of the new project
+    location: "Location of the new project",  # Specify the location
+    goal: 110000,  # Set a funding goal
+    charity: Charity.find_by(name: "ClimateWorks Foundation"),  # Link to the charity
+    photos: [
+      Rails.root.join("db/seed-images/greenpeace/GP0STPOUA_8.webp")  # Path to an image related to the new project
+    ]
+  }, {
     name: "Accelerating Clean Energy Solutions",
     description: "ClimateWorks Foundation is driving the transition to clean energy solutions worldwide to reduce carbon emissions and combat climate change.",
-    # A major city known for clean energy efforts named San Francisco
     location: "San Francisco, USA",
     goal: 100000,
     charity: Charity.find_by(name: "ClimateWorks Foundation"),
@@ -520,7 +577,6 @@ charity_projects_climateworks = [{
   }, {
     name: "Supporting Sustainable Urban Development",
     description: "ClimateWorks Foundation supports sustainable urban development initiatives to promote low-carbon, resilient cities.",
-    # A city known for urban development initiatives named Copenhagen
     location: "Copenhagen, Denmark",
     goal: 120000,
     charity: Charity.find_by(name: "ClimateWorks Foundation"),
@@ -530,7 +586,6 @@ charity_projects_climateworks = [{
   }, {
     name: "Reducing Deforestation in Southeast Asia",
     description: "ClimateWorks Foundation is working to reduce deforestation in Southeast Asia by supporting sustainable land management practices.",
-    # A tropical forest region in Indonesia named Borneo
     location: "Borneo, Indonesia",
     goal: 95000,
     charity: Charity.find_by(name: "ClimateWorks Foundation"),

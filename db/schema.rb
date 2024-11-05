@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_11_05_114434) do
+ActiveRecord::Schema[7.1].define(version: 2024_11_05_141729) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -80,10 +80,27 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_05_114434) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "amount_cents", default: 0, null: false
-    t.string "checkout_session_id"
     t.string "state"
+    t.string "checkout_session_id"
+    t.string "subscription_id"
+    t.string "stripe_customer_id"
+    t.string "stripe_subscription_id"
+    t.bigint "charity_id"
+    t.index ["charity_id"], name: "index_donations_on_charity_id"
     t.index ["charity_project_id"], name: "index_donations_on_charity_project_id"
     t.index ["user_id"], name: "index_donations_on_user_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.string "state"
+    t.integer "amount_cents", default: 0, null: false
+    t.string "checkout_session_id"
+    t.bigint "user_id", null: false
+    t.bigint "charity_project_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["charity_project_id"], name: "index_orders_on_charity_project_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -97,6 +114,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_05_114434) do
     t.string "first_name"
     t.string "last_name"
     t.integer "role", default: 1
+    t.string "stripe_customer_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -106,6 +124,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_05_114434) do
   add_foreign_key "charities", "categories"
   add_foreign_key "charities", "users"
   add_foreign_key "charity_projects", "charities"
+  add_foreign_key "donations", "charities"
   add_foreign_key "donations", "charity_projects"
   add_foreign_key "donations", "users"
+  add_foreign_key "orders", "charity_projects"
+  add_foreign_key "orders", "users"
 end

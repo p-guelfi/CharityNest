@@ -12,21 +12,23 @@
     <p><strong><%= @charity.description %></strong></p>
   </div>
 
-  <div class="">
+  <div>
     <h2>Ways to Give</h2>
     <div class="ways-to-give">
       <div class="give-option">
-        <div class="give-photo">
-          <% if @charity.photos.size > 1 %>
-            <%= cl_image_tag @charity.photos.second.key, height: 170, crop: 'fill' %>
-          <% else %>
-            <p>No image available for this option.</p>
-          <% end %>
-        </div>
-        <h4>Support a Project</h4>
+        <a href="#projects-sect" style="display: block; text-decoration: none; color: inherit;">
+          <div class="give-photo">
+            <% if @charity.photos.size > 1 %>
+              <%= cl_image_tag @charity.photos.second.key, height: 170, crop: 'fill' %>
+            <% else %>
+              <p>No image available for this option.</p>
+            <% end %>
+          </div>
+          <h4>Support a Project</h4>
+        </a>
       </div>
 
-      <div class="give-option">
+      <div class="give-option" style="cursor: pointer;" data-toggle="modal" data-target="#donationModal">
         <div class="give-photo">
           <% if @charity.photos.size > 2 %>
             <%= cl_image_tag @charity.photos.third.key, height: 170, crop: 'fill' %>
@@ -38,24 +40,53 @@
       </div>
 
       <div class="give-option">
-        <div class="give-photo">
-          <% if @charity.photos.size > 3 %>
-            <%= cl_image_tag @charity.photos.fourth.key, height: 170, crop: 'fill' %>
-          <% else %>
-            <p>No image available for this option.</p>
-          <% end %>
-        </div>
-        <h4>Send an Email</h4>
+        <a href="mailto:<%= @charity.name.gsub(' ', '-').downcase %>@charity-nest.com?subject=Inquiry%20About%20<%= @charity.name.gsub(' ', '%20') %>" style="display: block; text-decoration: none; color: inherit;">
+          <div class="give-photo">
+            <% if @charity.photos.size > 3 %>
+              <%= cl_image_tag @charity.photos.fourth.key, height: 170, crop: 'fill' %>
+            <% else %>
+              <p>No image available for this option.</p>
+            <% end %>
+          </div>
+          <h4>Send an Email</h4>
+        </a>
       </div>
     </div>
   </div>
 
-  <div class="">
+  <div>
     <h2>Our Projects</h2>
-    <div class="our-projects">
+    <div id="projects-sect" class="our-projects">
       <% @charity_projects.each do |project| %>
-        <%= render partial: 'project_card', locals: { project: project } %>
+        <% unless project.name == @charity.name %>
+          <%= render partial: 'project_card', locals: { project: project } %>
+        <% end %>
       <% end %>
     </div>
   </div>
 </div>
+
+<!-- Modal for Donation -->
+<% if @charity.charity_projects.any? %>
+  <div class="modal fade" id="donationModal" tabindex="-1" role="dialog" aria-labelledby="donationModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="donationModalLabel">Your donation for <%= @charity.charity_projects[0].name %></h5>
+          <button type="button" class="close m-3" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <%= simple_form_for [@charity.charity_projects[0], Donation.new] do |f| %>
+            <%= f.input :amount, label: "Donation amount" %>
+            <%= f.input :state, as: :hidden, input_html: { value: 'pending' } %>
+            <%= f.input :checkout_session_id, as: :hidden %>
+            <%= f.input :recurrent, label: "Monthly donation" %>
+            <%= f.button :submit, "Donate Now", class: "btn btn-primary" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
