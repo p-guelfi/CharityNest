@@ -623,6 +623,7 @@ charity_projects_climateworks = [{
       recurrent: [true, false].sample,
       amount: rand(5..10000),
       user: User.all.sample,
+      state: "paid",
       charity_project: CharityProject.all.sample)
   end
 
