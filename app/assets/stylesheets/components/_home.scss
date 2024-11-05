@@ -46,11 +46,11 @@
 
   .category-cards {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); // 3 columns layout
+    grid-template-columns: repeat(3, 1fr);
     gap: 5rem;
     justify-items: center;
     align-items: start;
-    margin: 0 15rem;
+    margin: 0 10rem;
 
     .no-underline-link {
       text-decoration: none;
