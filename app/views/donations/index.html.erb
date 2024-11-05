@@ -1,5 +1,5 @@
-<div class="container">
+<div class="donations-container">
   <% @donations.each do |donation| %>
-    <%= render "card_donation", donation: donation %>
+    <%= render partial: "donations/card_donation", locals: { donation: donation } %>
   <% end %>
 </div>
