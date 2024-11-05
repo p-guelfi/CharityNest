@@ -4,6 +4,8 @@
   gap: 1.25rem;
   justify-items: center;
   padding: 1rem 10rem;
+  background-color: $coral-white;
+
 }
 
 .donation-page-container {
@@ -18,7 +20,7 @@
   border-radius: 0.5rem;
   padding: 1.5rem;
   width: 22rem;
-  background-color: $coral-white;
+  background-color: $white;
   color: $default-text-color;
   display: flex;
   flex-direction: column;
