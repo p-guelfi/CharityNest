@@ -33,6 +33,10 @@ class DonationsController < ApplicationController
     if @donation.save
       # Define amount based on user input
       amount_cents = @donation.amount.cents
+      photo_key = @charity_project.photos.first.key
+
+      # image_url = "https://res.cloudinary.com/dtbqxujlt/image/upload/c_fill,g_center,h_200,w_300/v1/development/#{photo_key}?_a=BACADKEv"
+      image_url = "https://res.cloudinary.com/dztdhys55/image/upload/c_fill,g_center,h_200,w_300/v1/production/#{photo_key}?_a=BACADKEv"
 
       # Initialize session options
       session_options = {
@@ -42,6 +46,7 @@ class DonationsController < ApplicationController
             currency: 'eur',
             product_data: {
               name: "Donation to #{@charity_project.name}",
+              images: image_url ? [image_url] : []
             },
             unit_amount: amount_cents,
             # Add recurring options only if the donation is recurrent
