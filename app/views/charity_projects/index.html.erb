@@ -8,17 +8,17 @@
     <% end %>
   </div>
   <div class="banner-intro">
-      <p>Discover impactful projects across various causes and choose one to support.</p>
+    <p>Discover impactful projects across various causes and choose one to support.</p>
   </div>
 </div>
+
 <%# List %>
 <div class="content">
-
-<div>
+  <div>
     <div id="projects-sect" class="our-projects">
       <% @charity_projects.each do |project| %>
-          <%= render partial: '/charities/project_card2', locals: { project: project } %>
+        <%= render partial: '/charities/project_card2', locals: { project: project } %>
       <% end %>
     </div>
   </div>
-   </div>
+</div>

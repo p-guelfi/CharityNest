@@ -6,12 +6,21 @@
       <p>No image available for this project.</p>
     <% end %>
   </div>
+
   <div class="project-details">
-    <h4><%= link_to project.name, charity_project_path(project), class: "project-name-link" %></h4>
+    <div class="">
+      <h6>
+        <%= link_to project.charity.name, charity_path(project.charity), class: "charity-name-link" %>
+      </h6>
+      <h4>
+        <%= link_to project.name, charity_project_path(project), class: "project-name-link" %>
+      </h4>
+    </div>
+
     <p><strong><i class="fa-solid fa-location-dot"></i> </strong> <%= project.location %></p>
     <p><%= project.description %></p>
-    <div class="progress-and-button row align-items-end mt-4">
 
+    <div class="progress-and-button row align-items-end mt-4">
       <div class="progress-info-and-bar col-md-8">
         <div class="progress-text d-flex align-items-center">
           <% total_donations_cents = project.donations.sum(:amount_cents) %>
@@ -25,12 +34,12 @@
           <div class="progress-bar" role="progressbar" style="width: <%= percentage %>%; background-color: #35A28C;" aria-valuenow="<%= percentage %>" aria-valuemin="0" aria-valuemax="100"></div>
         </div>
       </div>
+
       <div class="donate-button col-md-4 ms-auto">
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#donationModal-<%= project.id %>">
           Donate
         </button>
       </div>
-
     </div>
   </div>
 </div>
