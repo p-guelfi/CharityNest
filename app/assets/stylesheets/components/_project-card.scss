@@ -47,12 +47,35 @@
   background-color: #97FEED;
 }
 
+// .donate-button .btn {
+//   width: 100%;
+//   height: 2.5rem; /* Set fixed height */
+//   text-align: center;
+//   border-radius: 10px;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   padding: 0; /* Remove padding to simplify alignment */
+//   line-height: 2.5rem; /* Match line-height to height */
+// }
 .donate-button .btn {
-  width: 100%; /* Full-width button */
-  padding: 0.2rem 1rem; /* Increase padding for a larger button */
+  font-family: $button-font; // Use Geologica font
+  width: 100%;
+  font-weight: 700; // Bold weight
+  font-size: 16px; // Font size
+  background-color: $ocean-turquoise; // Background color using variable
+  color: $button-text-color; // Text color
+  padding: $button-padding; // Padding
+  border: none; // No border
+  border-radius: $button-border-radius; // Rounded corners
+  cursor: pointer; // Pointer on hover
+  transition: background-color 0.3s ease; // Smooth transition for hover effect
+
+  // Hover effect
+  &:hover {
+    background-color: $forest-green; // Use dark ocean blue on hover
+  }
 }
-
-
 /* Media query for project cards */
 @media (max-width: 768px) {
   .project-card {
