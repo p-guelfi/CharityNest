@@ -7,7 +7,7 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  background: url('/assets/hero_background.png') no-repeat center center;
+  background: asset-url('hero_background.png') no-repeat center center;
   background-size: cover; // Ensures the image covers the section
   color: $dark-ocean-blue;
 
