@@ -1,4 +1,6 @@
 class CharitiesController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index, :show]
+
   def index
     if set_category
       if set_sorting

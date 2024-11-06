@@ -23,7 +23,7 @@
   padding: 40px 40px 40px 0;
   grid-column: span 1;
   display: grid;
-  grid-template-rows: repeat(6, 1fr);
+  grid-template-rows: repeat(12, 1fr);
   row-gap: 1rem;
   div {
     grid-row: span 1;
@@ -37,8 +37,18 @@
     font-size: 0.9rem;
     text-overflow: ellipsis;
   }
-  .description {
+  .header {
     grid-row: span 3;
+  }
+  .description {
+    grid-row: span 6;
+  }
+  .info-points {
+    grid-row: span 1;
+  }
+  .progress {
+    font-family: "Mukta Malar", Helvetica, sans-serif;
+    font-size: 0.875rem;
   }
 }
 
