@@ -5,7 +5,7 @@ class DonationsController < ApplicationController
   # before_action :authorize_donation
 
   def index
-    @donations = @user.donations
+    @donations = @user.donations.order(created_at: :desc)
   end
 
   def new
