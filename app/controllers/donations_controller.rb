@@ -34,9 +34,15 @@ class DonationsController < ApplicationController
       # Define amount based on user input
       amount_cents = @donation.amount.cents
       photo_key = @charity_project.photos.first.key
-
+      cloudinary_url = ENV['CLOUDINARY_URL']
+      cloud_name = cloudinary_url.split('@').last
+      environment = Rails.env.production? ? "production" : "development"
+      # With my cloudinary account in development
       # image_url = "https://res.cloudinary.com/dtbqxujlt/image/upload/c_fill,g_center,h_200,w_300/v1/development/#{photo_key}?_a=BACADKEv"
-      image_url = "https://res.cloudinary.com/dztdhys55/image/upload/c_fill,g_center,h_200,w_300/v1/production/#{photo_key}?_a=BACADKEv"
+      # With David's cloudinary account in production
+      # image_url = "https://res.cloudinary.com/dztdhys55/image/upload/c_fill,g_center,h_200,w_300/v1/production/#{photo_key}?_a=BACADKEv"
+      # Dynamic:
+      image_url = "https://res.cloudinary.com/#{cloud_name}/image/upload/c_fill,g_center,h_200,w_300/v1/#{environment}/#{photo_key}?_a=BACADKEv"
 
       # Initialize session options
       session_options = {
