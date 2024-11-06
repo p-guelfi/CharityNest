@@ -6,7 +6,7 @@
           <h5 class="card-title mb-4">Checkout Summary</h5> <!-- Added margin-bottom for spacing -->
           <p class="card-text">Donation for <strong><%= @charity_project.name %></strong></p>
           <p class="card-text">Amount: <%= humanized_money_with_symbol(@donation.amount) %> <%= "monthly" if @donation.recurrent? %></p>
-          <button id="pay" class="btn btn-primary btn-lg">Pay</button> <!-- Made button larger -->
+          <button id="pay" class="btn button btn-lg">Pay</button> <!-- Made button larger -->
         </div>
         <div class="row no-gutters">
           <div class="col-12">
