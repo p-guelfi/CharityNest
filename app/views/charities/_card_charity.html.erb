@@ -5,24 +5,29 @@
     <iframe src="https://www.youtube.com/embed/<%= charity.youtube_id %>" frameborder="0" allow="accelerometer; encrypted-media;" referrerpolicy="strict-origin-when-cross-origin" modestbranding showinfo="0" allowfullscreen></iframe>
   </div>
   <div class="card-charity-info">
-    <h2><%= charity.name %></h2>
+    <div class="header">
+      <h2><%= charity.name %></h2>
+    </div>
     <div class="description">
       <h6>What we do</h6>
-      <p><%= charity.description %></p>
+      <p><%= charity.teaser %></p>
     </div>
-    <div class="">
-      <h6>Engagement</h6>
-      <p>5 threads with 30 comments</p>
-    </div>
-    <div class="">
+    <div class="info-points">
       <% if charity.partner != "" %>
         <h6>Our Partners</h6>
         <p><%= charity.partner %></p>
       <% end %>
     </div>
-    <div class="">
+    <div class="info-points">
+      <h6>Engagement</h6>
+      <p><%= rand(2..15) %> threads with <%= rand(10..150) %> comments overall</p>
+    </div>
+    <div class="info-points">
       <h6>Evaluation Score</h6>
-      <p>4.2 Stars</p>
+      <div class="progress">
+          <% charity.name == "Greenpeace" ? percentage = 95 : percentage = rand(80..97) %>
+          <div class="progress-bar" role="progressbar" style="width: <%= percentage %>%; background-color: #35A28C;" aria-valuenow="<%= percentage %>" aria-valuemin="0" aria-valuemax="100"><%= percentage %> %</div>
+        </div>
     </div>
   </div>
 </div>
