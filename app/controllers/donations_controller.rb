@@ -8,7 +8,7 @@ class DonationsController < ApplicationController
     @donations = @user.donations.order(created_at: :desc)
 
     if params[:payment_status] == 'success'
-      flash[:notice] = "Payment successful! Thank you for your donation."
+      flash[:notice] = "Payment successful! Thank you for your donation. Stay tuned for updates on the project: #{ @donations.first.charity_project.name}."
     end
   end
 
