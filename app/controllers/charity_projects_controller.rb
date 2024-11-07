@@ -1,18 +1,16 @@
 class CharityProjectsController < ApplicationController
 
   def index
-    # Apply search if a query is present
     if params[:query].present?
       @charity_projects = CharityProject.global_search(params[:query])
+      redirect_to charity_projects_path(query: nil) and return
     else
       @charity_projects = CharityProject.all
     end
 
-    # Determine the sorting field and order
     sort_by = params[:sort_by]
     order = params[:order] == "desc" ? :desc : :asc
 
-    # Apply sorting based on the sort_by parameter
     case sort_by
     when 'name'
       @charity_projects = @charity_projects.order(name: order)

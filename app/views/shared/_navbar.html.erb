@@ -1,28 +1,25 @@
 <nav class="navbar">
   <div class="navbar-left">
-    <%# <%= form_with url: "#", method: :get, local: true do %>
-      <%#<div class="search-bar">
-        <%= text_field_tag :query, nil, placeholder: "🔍  Search" %>
-     <%# </div>
-   <%# <% end %>
-    <%= form_with url: charity_projects_path, method: :get, class: "d-flex" do %>
-      <%= text_field_tag :query,
-            params[:query],
-            class: "form-control",
-            placeholder: "Find a project"
-        %>
-      <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+    <%= form_with url: charity_projects_path, method: :get, local: true do %>
+      <div class="search-bar">
+        <%= text_field_tag :query,
+              params[:query],
+              placeholder: "🔍 Find a project..."
+          %>
+      </div>
     <% end %>
   </div>
+
   <div class="navbar-center">
+    <%= link_to "All Projects", charity_projects_path, class: "nav-link" %>
     <%= link_to "Charities", charities_path, class: "nav-link" %>
-    <%= link_to "Projects", charity_projects_path, class: "nav-link" %>
     <%= link_to root_path do %>
       <%= image_tag "logo.svg", class: "brand-logo", alt: "CharityNest Logo" %>
     <% end %>
     <%= link_to "About Us", "#", class: "nav-link" %>
     <%= link_to "Get Involved", "#", class: "nav-link" %>
   </div>
+
   <div class="navbar-right">
     <% if user_signed_in? %>
       <%= link_to "Profile", edit_user_registration_path, class: "button login" %>
