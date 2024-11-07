@@ -3,7 +3,6 @@ class CharityProjectsController < ApplicationController
   def index
     if params[:query].present?
       @charity_projects = CharityProject.global_search(params[:query])
-      redirect_to charity_projects_path(query: nil) and return
     else
       @charity_projects = CharityProject.all
     end
