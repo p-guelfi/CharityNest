@@ -33,11 +33,11 @@
 </nav>
 
 <script>
-  // Clear the input field after the form is submitted and the page is reloaded
+  // Clear the input field
   document.getElementById("search-form").addEventListener("submit", function() {
-    // Add a delay to ensure the form has been submitted and the page reloads
+    // Add a delay
     setTimeout(function() {
       document.getElementById("search-query-field").value = "";
-    }, 300); // Wait a little while before clearing the input (to ensure form submission)
+    }, 300); // Wait a while before clearing the input
   });
 </script>
