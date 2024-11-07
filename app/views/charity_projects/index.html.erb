@@ -3,7 +3,6 @@
   <div class="banner-heading">
     <% if params[:query].present? %>
       <h2>Search results for "<%= params[:query] %>"</H2>
-      <%= link_to 'Clear Search', request.path, method: :get, class: 'clear-search' %>
     <% else %>
       <h1>Active Projects</h1>
     </div>
@@ -18,7 +17,8 @@
 </div>
 
 <%# List %>
-<div class="content">
+<div class="content" data-controller="">
+  <%= render "bar_sort" %>
   <div>
     <div id="projects-sect" class="our-projects">
       <% @charity_projects.each do |project| %>

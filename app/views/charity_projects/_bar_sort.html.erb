@@ -1,0 +1,16 @@
+<div class="bar-sort">
+  <%= link_to charity_projects_path(sort_by: "name", order: @next_order), class: "btn" do %>
+    <i class="fas fa-sort"></i>
+    <span>Name</span>
+  <% end %>
+
+  <%= link_to charity_projects_path(sort_by: "location", order: @next_order), class: "btn" do %>
+    <i class="fas fa-sort"></i>
+    <span>Location</span>
+  <% end %>
+
+  <%= link_to charity_projects_path(sort_by: "goal", order: @next_order), class: "btn" do %>
+    <i class="fas fa-sort"></i>
+    <span>Project Goal</span>
+  <% end %>
+</div>
