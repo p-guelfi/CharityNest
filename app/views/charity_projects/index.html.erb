@@ -2,13 +2,18 @@
 <div class="banner-charities">
   <div class="banner-heading">
     <% if params[:query].present? %>
-      <h1>Projects related to "<%= params[:query] %>"</h1>
+      <h2>Search results for "<%= params[:query] %>"</H2>
+      <%= link_to 'Clear Search', request.path, method: :get, class: 'clear-search' %>
     <% else %>
       <h1>Active Projects</h1>
+    </div>
+  <div class="banner-intro">
+    <p>Discover impactful projects across various causes and choose one to support.</p>
+  </div>
+</div>
     <% end %>
   </div>
   <div class="banner-intro">
-    <p>Discover impactful projects across various causes and choose one to support.</p>
   </div>
 </div>
 
