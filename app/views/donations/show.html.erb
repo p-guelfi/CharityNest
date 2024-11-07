@@ -4,10 +4,18 @@
     <p>Amount Donated: <%= number_to_currency(@donation.amount_cents / 100.0, precision: 0) %></p>
     <p>Date: <%= @donation.created_at.strftime('%b %d, %Y') %></p>
 
+    <% if @donation.recurrent %>
+      <p><strong>Monthly subscription</strong></p>
+    <% else %>
+      <p><strong>One-time donation</strong></p>
+    <% end %>
+
     <div class="donation-actions">
-      <%= link_to 'Unsubscribe', unsubscribe_donation_path(@donation), method: :delete, data: { confirm: 'Are you sure you want to unsubscribe?' }, class: 'button button-unsubscribe' %>
-      <%= link_to 'Change Amount', edit_donation_path(@donation), class: 'button button-edit' %>
-      <%= link_to 'See all my donations', donations_path, class: 'button button-view-all' %>
+      <% if @donation.recurrent %>
+        <%= button_to 'Unsubscribe', donation_path(@donation), method: :patch, params: { donation: { recurrent: false } }, data: { confirm: 'Are you sure you want to unsubscribe?' }, class: 'button button-unsubscribe w-100' %>
+        <%= link_to 'Change Amount', edit_donation_path(@donation), class: 'button button-edit w-100 text-decoration-none' %>
+      <% end %>
+      <%= link_to 'See all my donations', donations_path, class: 'button button-view-all w-100 text-decoration-none' %>
     </div>
   </div>
 </div>

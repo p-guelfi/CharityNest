@@ -6,6 +6,10 @@ class DonationsController < ApplicationController
 
   def index
     @donations = @user.donations.order(created_at: :desc)
+
+    if params[:payment_status] == 'success'
+      flash[:notice] = "Payment successful! Thank you for your donation. Stay tuned for updates on the project: #{ @donations.first.charity_project.name}."
+    end
   end
 
   def new
@@ -61,7 +65,7 @@ class DonationsController < ApplicationController
           quantity: 1
         }],
         mode: @donation.recurrent ? 'subscription' : 'payment', # Use subscription mode if recurrent
-        success_url: donations_url,
+        success_url: donations_url(payment_status: 'success'),
         cancel_url: new_donation_payment_url(@donation)
       }
 
@@ -71,6 +75,7 @@ class DonationsController < ApplicationController
       @donation.update(checkout_session_id: session.id)
       redirect_to new_donation_payment_path(@donation)
     else
+      flash[:alert] = "Something went wrong while creating your donation. Please try again."
       render :new, status: :unprocessable_entity
     end
   end

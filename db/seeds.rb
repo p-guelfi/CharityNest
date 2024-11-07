@@ -640,11 +640,11 @@ charity_projects_climateworks = [{
 
   puts "Creating donations..."
 
-  20.times do
+  40.times do
     Donation.create!(
       recurrent: [true, false].sample,
       amount: rand(5..10000),
-      user: User.all.sample,
+      user: User.first(3).sample,
       state: "paid",
       charity_project: CharityProject.all.sample)
   end
