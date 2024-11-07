@@ -1,6 +1,10 @@
 class CharityProjectsController < ApplicationController
   def index
-    @charity_projects = CharityProject.all
+    if params[:query].present?
+      @charity_projects = CharityProject.global_search(params[:query])
+    else
+      @charity_projects = CharityProject.all
+    end
   end
 
   def show
