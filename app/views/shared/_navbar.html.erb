@@ -1,11 +1,12 @@
 <nav class="navbar">
   <div class="navbar-left">
-    <%= form_with url: charity_projects_path, method: :get, local: true do %>
+    <%= form_with url: charity_projects_path, method: :get, local: true, html: { id: "search-form" } do %>
       <div class="search-bar">
         <%= text_field_tag :query,
               params[:query],
-              placeholder: "🔍 Find a project..."
-          %>
+              placeholder: "🔍 Find a project...",
+              id: "search-query-field"
+        %>
       </div>
     <% end %>
   </div>
@@ -23,10 +24,20 @@
   <div class="navbar-right">
     <% if user_signed_in? %>
       <%= link_to "Profile", edit_user_registration_path, class: "button login" %>
-      <%= link_to "Log-out", destroy_user_session_path, data: {turbo_method: :delete, action: "click->notification-updater#stop"}, class: "button login" %>
+      <%= link_to "Log-out", destroy_user_session_path, data: { turbo_method: :delete, action: "click->notification-updater#stop" }, class: "button login" %>
     <% else %>
       <%= link_to "Log-in", new_user_session_path, class: "button login" %>
       <%= link_to "Sign-up", new_user_registration_path, class: "button signup" %>
     <% end %>
   </div>
 </nav>
+
+<script>
+  // Clear the input field after the form is submitted and the page is reloaded
+  document.getElementById("search-form").addEventListener("submit", function() {
+    // Add a delay to ensure the form has been submitted and the page reloads
+    setTimeout(function() {
+      document.getElementById("search-query-field").value = "";
+    }, 300); // Wait a little while before clearing the input (to ensure form submission)
+  });
+</script>
