@@ -18,7 +18,9 @@
 
 <%# List %>
 <div class="content" data-controller="">
-  <%= render "bar_sort" %>
+  <% unless params[:query].present? %>
+    <%= render "bar_sort" %>
+  <% end %>
   <div>
     <div id="projects-sect" class="our-projects">
       <% @charity_projects.each do |project| %>
