@@ -1,5 +1,6 @@
 class CharityProject < ApplicationRecord
   belongs_to :charity
+  has_one :category, through: :charity
   has_many :donations, dependent: :destroy
   has_many_attached :photos, dependent: :destroy
 
@@ -12,6 +13,7 @@ class CharityProject < ApplicationRecord
     against: [:name, :description, :location],
     associated_against: {
       charity: [:name, :description],
+      category: :name
     },
     using: {
       tsearch: { prefix: true }
