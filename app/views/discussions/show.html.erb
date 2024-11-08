@@ -1,0 +1,12 @@
+<h1><%= @discussion.title %></h1>
+<p><%= @discussion.description %></p>
+
+<h2>Comments</h2>
+<div class="comments-list">
+  <% @discussion.comments.each do |comment| %>
+    <div class="comment-card">
+      <p><%= comment.content %></p>
+      <small>by <%= comment.user&.email || 'Anonymous' %></small>
+    </div>
+  <% end %>
+</div>

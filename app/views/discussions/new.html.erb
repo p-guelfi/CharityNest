@@ -1,0 +1,9 @@
+<h1>New Discussion for <%= @donation.charity_project.name %></h1>
+
+<%= simple_form_for [@donation, @discussion] do |f| %>
+  <div class="form-group">
+    <%= f.input :title %>
+    <%= f.input :description %>
+  </div>
+  <%= f.button :submit, 'Create Discussion', class: 'btn btn-primary' %>
+<% end %>

@@ -1,5 +1,6 @@
 <div class="donation-card">
-  <h3><%= donation.charity_project.name %></h2>
+  <h3><%= donation.charity_project.name %></h3>
+
   <% if donation.recurrent? %>
     <p><strong>Monthly Donation:</strong> <%= humanized_money_with_symbol(donation.amount) %></p>
     <p>since
@@ -7,10 +8,11 @@
     <p>You donated: <%= number_to_currency(donation.amount_cents / 100.0, precision: 0) %></p>
     <p>on
   <% end %>
-    <%= donation.created_at.strftime("%b %d, %Y") %></p>
-    <p>Status: <%= donation.state %></p>
+  <%= donation.created_at.strftime("%b %d, %Y") %></p>
+  <p>Status: <%= donation.state %></p>
 
   <div class="donation-actions">
-    <%= link_to 'Edit', donation_path(donation), method: :delete, data: { confirm: 'Are you sure you want to delete this donation?' }, class: 'button text-decoration-none' %>
+    <%= link_to 'Edit', edit_donation_path(donation), class: 'button text-decoration-none' %>
+    <%= link_to 'Discuss', donation_discussions_path(donation), class: 'button text-decoration-none' %>
   </div>
 </div>

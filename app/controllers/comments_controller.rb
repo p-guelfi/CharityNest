@@ -1,21 +1,22 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_discussion
+  before_action :set_donation_and_discussion
 
   def create
     @comment = @discussion.comments.build(comment_params)
     @comment.user = current_user
     if @comment.save
-      redirect_to charity_project_discussion_path(@discussion.charity_project, @discussion), notice: 'Comment added.'
+      redirect_to donation_discussion_path(@donation, @discussion), notice: 'Comment added successfully.'
     else
-      redirect_to charity_project_discussion_path(@discussion.charity_project, @discussion), alert: 'Failed to add comment.'
+      redirect_to donation_discussion_path(@donation, @discussion), alert: 'Failed to add comment.'
     end
   end
 
   private
 
-  def set_discussion
-    @discussion = Discussion.find(params[:discussion_id])
+  def set_donation_and_discussion
+    @donation = Donation.find(params[:donation_id])
+    @discussion = @donation.discussions.find(params[:discussion_id])
   end
 
   def comment_params

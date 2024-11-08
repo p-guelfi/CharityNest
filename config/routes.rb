@@ -19,9 +19,6 @@ Rails.application.routes.draw do
 
   resources :charity_projects, except: %i[new create] do
     resources :donations, only: [:new, :create]
-    resources :discussions do
-      resources :comments, only: [:create]
-    end
   end
 
   resources :donations, only: [:index, :show, :edit, :update] do
@@ -29,6 +26,10 @@ Rails.application.routes.draw do
       delete 'unsubscribe'
     end
     resources :payments, only: :new
+    resources :discussions, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
+      resources :comments, only: [:create]
+    end
+
   end
 
   mount StripeEvent::Engine, at: '/webhooks/stripe'

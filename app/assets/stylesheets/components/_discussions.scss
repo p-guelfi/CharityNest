@@ -1,0 +1,20 @@
+.discussions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  .discussion-card {
+    background-color: #fff;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+
+    h4 {
+      font-size: 1.3em;
+      margin-bottom: 5px;
+    }
+
+    .btn-info {
+      margin-top: 10px;
+    }
+  }
+}

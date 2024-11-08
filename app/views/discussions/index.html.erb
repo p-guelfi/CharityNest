@@ -1,0 +1,10 @@
+<h1>Discussions for Your Donation to <%= @donation.charity_project.name %></h1>
+<div class="discussions-list">
+  <% @discussions.each do |discussion| %>
+    <div class="discussion-card">
+      <h3><%= link_to discussion.title, donation_discussion_path(@donation, discussion) %></h3>
+      <p><%= discussion.description %></p>
+    </div>
+  <% end %>
+</div>
+<%= link_to 'New Discussion', new_donation_discussion_path(@donation), class: 'btn btn-primary' %>
