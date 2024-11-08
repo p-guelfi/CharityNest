@@ -16,7 +16,7 @@
       </div>
 
       <div class="form-inputs">
-        <%= f.input :teaser, label: "Teaser Text (max 200 characters)", class: "report-input-teaser" %>
+        <%= f.input :teaser, input_html: { class: "report-input-teaser" }, label: "Teaser Text (max 200 characters)" %>
       </div>
 
       <!-- insert these three line of code below -->
@@ -26,7 +26,7 @@
       </div>
 
       <div class="form-actions">
-        <%= f.button :submit, class: "btn btn-primary" %>
+        <%= f.button :submit, class: "button" %>
       </div>
     <% end %>
   </div>

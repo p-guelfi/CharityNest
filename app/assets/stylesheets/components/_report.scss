@@ -35,11 +35,15 @@
       margin-bottom: 0!important;
     }
   }
+  .form-actions {
+    display: flex;
+    justify-content: end;
+  }
 }
 
 .report-input-teaser {
   &.form-control {
-  min-height: 20em;
+  min-height: 10em;
   }
 }
 .report-input-body {
