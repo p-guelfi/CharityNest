@@ -19,6 +19,9 @@ Rails.application.routes.draw do
 
   resources :charity_projects, except: %i[new create] do
     resources :donations, only: [:new, :create]
+    resources :discussions do
+      resources :comments, only: [:create]
+    end
   end
 
   resources :donations, only: [:index, :show, :edit, :update] do
