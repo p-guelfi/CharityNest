@@ -1,4 +1,4 @@
-<div class="project-card">
+<div class="project-card" data-goal="<%= project.goal %>">
   <div class="project-photo">
     <% if project.photos.attached? %>
       <%= cl_image_tag project.photos.first.key, width: 300, height: 200, gravity: "center", crop: "fill" %>
@@ -12,12 +12,12 @@
       <h6>
         <%= link_to project.charity.name, charity_path(project.charity), class: "charity-name-link" %>
       </h6>
-      <h4>
+      <h4 class="project-name">
         <%= link_to project.name, charity_project_path(project), class: "project-name-link" %>
       </h4>
     </div>
 
-    <p><strong><i class="fa-solid fa-location-dot"></i> </strong> <%= project.location %></p>
+    <p class="project-location"><strong><i class="fa-solid fa-location-dot"></i> </strong> <%= project.location %></p>
     <p><%= project.description %></p>
 
     <div class="progress-and-button row align-items-end mt-4">
@@ -27,7 +27,7 @@
           <% total_donations = Money.new(total_donations_cents) %>
           <% goal_cents = project.goal * 100 %> <!-- Convert goal to cents -->
           <% percentage = (total_donations_cents.to_f / goal_cents * 100).round(2) %>
-          <h4 class="mb-2 text-success"><%= humanized_money_with_symbol(total_donations) %></h4>
+          <h4 class="mb-2 text-success project-goal"><%= humanized_money_with_symbol(total_donations) %></h4>
           <p class="mb-0 ms-2">raised of <%= humanized_money_with_symbol(Money.new(goal_cents)) %> Goal</p>
         </div>
         <div class="progress">
@@ -43,6 +43,7 @@
     </div>
   </div>
 </div>
+
 
 <!-- Modal for Donation -->
 <div class="modal fade" id="donationModal-<%= project.id %>" tabindex="-1" role="dialog" aria-labelledby="donationModalLabel-<%= project.id %>" aria-hidden="true">
