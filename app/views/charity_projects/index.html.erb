@@ -20,7 +20,7 @@
 <div class="content" data-controller="sort">
     <%= render "bar_sort" %>
   <div>
-    <div id="projects-sect" class="our-projects" data-sort-target="ListToSort">
+    <div id="projects-sect" class="our-projects2" data-sort-target="ListToSort">
       <% @charity_projects.each do |project| %>
         <%= render partial: '/charities/project_card2', locals: { project: project } %>
       <% end %>
