@@ -122,3 +122,19 @@
   background-color: #f8f9fa;
   border-color: #6c757d;
 }
+
+.custom-close {
+  font-size: 2rem; /* Larger close button */
+  color: $danger; /* Blue color for the button */
+  border: none; /* Remove default border */
+  background: none; /* No background */
+}
+
+.custom-close:hover {
+  color: $success; /* Darker blue on hover */
+  cursor: pointer; /* Change cursor to pointer */
+}
+
+.custom-close:focus {
+  outline: none; /* Remove focus outline */
+}
