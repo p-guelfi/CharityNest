@@ -1,20 +1,33 @@
 <div class="container">
-  <%= simple_form_for [ @charity_project, @report ] do |f| %>
-    <div class="form-inputs">
-      <%= f.input :title %>
-    </div>
+  <div class="report-editor">
+    <h2>Create a new Report</h2>
+    <%= simple_form_for [ @charity_project, @report ] do |f| %>
+      <% if current_user.evaluator? %>
+        <div class="form-inputs">
+          <%= f.input :type, label: "Type of Article", as: :select %>
+        </div>
+      <% else %>
+          <%= f.input :type, as: :hidden, input_html: { value: "article" } %>
+      <% end %>
 
-    <div class="form-inputs">
-      <%= f.input :teaser %>
-    </div>
 
-    <!-- insert these three line of code below -->
-    <div class="form-inputs">
-      <%= f.rich_text_area :body %>
-    </div>
+      <div class="form-inputs">
+        <%= f.input :title, label: "Title (max 30 characters)" %>
+      </div>
 
-    <div class="form-actions">
-      <%= f.button :submit %>
-    </div>
-  <% end %>
+      <div class="form-inputs">
+        <%= f.input :teaser, label: "Teaser Text (max 200 characters)", class: "report-input-teaser" %>
+      </div>
+
+      <!-- insert these three line of code below -->
+      <div class="form-inputs">
+        <label for="report_body" class="mb-2">Report Body Text</label>
+        <%= f.rich_text_area :body, class: "report-input-body" %>
+      </div>
+
+      <div class="form-actions">
+        <%= f.button :submit, class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
 </div>
