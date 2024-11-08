@@ -68,17 +68,18 @@
 
 <!-- Modal for Donation -->
 <% if @charity.charity_projects.any? %>
+  <% project = @charity.charity_projects.find { |project| project.name == @charity.name } %>
   <div class="modal fade" id="donationModal" tabindex="-1" role="dialog" aria-labelledby="donationModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="donationModalLabel">Your donation for <%= @charity.charity_projects[0].name %></h5>
+          <h5 class="modal-title" id="donationModalLabel">Your donation for <%= project.name %></h5>
           <button type="button" class="close m-3" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          <%= simple_form_for [@charity.charity_projects[0], Donation.new] do |f| %>
+          <%= simple_form_for [project, Donation.new] do |f| %>
             <%= f.input :amount, label: "Donation amount" %>
             <%= f.input :state, as: :hidden, input_html: { value: 'pending' } %>
             <%= f.input :checkout_session_id, as: :hidden %>
