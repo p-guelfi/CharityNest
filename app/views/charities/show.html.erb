@@ -84,7 +84,7 @@
             <%= f.input :state, as: :hidden, input_html: { value: 'pending' } %>
             <%= f.input :checkout_session_id, as: :hidden %>
             <div class="form-check mb-3">
-              <%= f.check_box :recurrent, class: "form-check-input custom-checkbox" %>
+              <%= f.check_box :recurrent, class: "form-check-input custom-checkbox mt-0" %>
               <%= f.label :recurrent, "Monthly donation", class: "form-check-label" %>
             </div>
             <%= f.button :submit, "Donate Now", class: "btn button" %>
