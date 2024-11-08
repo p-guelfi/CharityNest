@@ -1,11 +1,12 @@
 <nav class="navbar">
   <div class="navbar-left">
-    <%= form_with url: charity_projects_path, method: :get, local: true, html: { id: "search-form" } do %>
+    <%= form_with url: charity_projects_path, method: :get, local: true, html: { id: "search-form", data: { controller: "search" } } do %>
       <div class="search-bar">
         <%= text_field_tag :query,
               params[:query],
               placeholder: "🔍 Find a project...",
-              id: "search-query-field"
+              id: "search-query-field",
+              data: { search_target: "queryField" }
         %>
       </div>
     <% end %>
@@ -31,13 +32,3 @@
     <% end %>
   </div>
 </nav>
-
-<script>
-  // Clear the input field
-  document.getElementById("search-form").addEventListener("submit", function() {
-    // Add a delay
-    setTimeout(function() {
-      document.getElementById("search-query-field").value = "";
-    }, 300); // Wait a while before clearing the input
-  });
-</script>
