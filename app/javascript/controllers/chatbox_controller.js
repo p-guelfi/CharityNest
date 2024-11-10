@@ -21,7 +21,20 @@ export default class extends Controller {
     const chatHistory = JSON.parse(sessionStorage.getItem("chatHistory")) || [];
 
     chatHistory.forEach((message) => {
-      messagesDiv.innerHTML += `<div>${message.sender}: ${message.text}</div>`;
+      const messageElement = document.createElement("div");
+
+      // Add the appropriate class based on the sender
+      if (message.sender === "You") {
+        messageElement.classList.add("user-message");
+      } else if (message.sender === "CharityNest AI") {
+        messageElement.classList.add("ai-message");
+      }
+
+      // Set the message text
+      messageElement.textContent = `${message.sender}: ${message.text}`;
+
+      // Append the message to the chat history
+      messagesDiv.appendChild(messageElement);
     });
   }
 
@@ -51,7 +64,11 @@ export default class extends Controller {
 
       // Add user message to chat history
       chatHistory.push({ sender: "You", text: message });
-      messagesDiv.innerHTML += `<div class="user-message">You: ${message}</div>`;
+      const userMessageElement = document.createElement("div");
+      userMessageElement.classList.add("user-message");
+      userMessageElement.textContent = `You: ${message}`;
+      messagesDiv.appendChild(userMessageElement);
+
       this.inputTarget.value = ""; // Clear input field
       this.saveChatHistory(chatHistory);
 
@@ -68,13 +85,19 @@ export default class extends Controller {
         .then((data) => {
           // Add AI response to chat history
           chatHistory.push({ sender: "CharityNest AI", text: data.response });
-          messagesDiv.innerHTML += `<div class="ai-message">CharityNest AI: ${data.response}</div>`;
+          const aiMessageElement = document.createElement("div");
+          aiMessageElement.classList.add("ai-message");
+          aiMessageElement.textContent = `CharityNest AI: ${data.response}`;
+          messagesDiv.appendChild(aiMessageElement);
+
           this.saveChatHistory(chatHistory);
           messagesDiv.scrollTop = messagesDiv.scrollHeight; // Scroll to the bottom
         })
         .catch((error) => {
           console.error("Error:", error);
-          messagesDiv.innerHTML += `<div>Error: ${error.message}</div>`;
+          const errorElement = document.createElement("div");
+          errorElement.textContent = `Error: ${error.message}`;
+          messagesDiv.appendChild(errorElement);
           messagesDiv.scrollTop = messagesDiv.scrollHeight;
         });
     }
