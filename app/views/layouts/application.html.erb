@@ -18,17 +18,34 @@
     <%= render "shared/flashes" %>
     <%= yield %>
 
-<div id="chat-box" class="chatbox" data-controller="chatbox" data-chatbox-target="chatbox">
-  <button id="chatbox-toggle" class="chatbox-toggle" data-action="click->chatbox#toggleMinimize">&times;</button>
+    <!-- Button to open the modal -->
+    <button id="chatbox-toggle-button" class="chatbox-toggle-button btn btn-primary" data-bs-toggle="modal" data-bs-target="#chatboxModal">
+      Ask CharityNest AI assistant
+    </button>
 
-  <!-- Ensure the messages target is set correctly -->
-  <div id="messages" class="chatbox-messages" data-chatbox-target="messages"></div>
+    <!-- Modal HTML -->
+    <div class="modal" tabindex="-1" role="dialog" id="chatboxModal" data-controller="chatbox">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header d-flex justify-content-between align-items-center">
+            <h5 class="modal-title">Chat with CharityNest AI</h5>
+            <!-- Close button triggers the modal to hide -->
+            <button type="button" class="close custom-close" data-bs-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <!-- Messages container -->
+            <div id="messages" class="chatbox-messages" data-chatbox-target="messages"></div>
 
-  <!-- Ensure the input target is set correctly -->
-  <input type="text" id="chat-input" class="chatbox-input" placeholder="Type a message..." data-chatbox-target="input" />
+            <!-- User input -->
+            <input type="text" id="chat-input" class="chatbox-input" placeholder="Type a message..." data-chatbox-target="input" />
 
-  <!-- Attach the sendMessage function to the button click via Stimulus action -->
-  <button id="send-message" class="chatbox-send" data-action="click->chatbox#sendMessage">Send</button>
-</div>
+            <!-- Send message button -->
+            <button id="send-message" class="chatbox-send" data-action="click->chatbox#sendMessage">Send</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
