@@ -108,3 +108,7 @@
   color: #aaa;
   opacity: 1;
 }
+
+body.modal-open {
+  overflow: auto !important;
+}
