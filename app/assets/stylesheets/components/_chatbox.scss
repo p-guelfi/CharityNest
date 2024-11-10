@@ -1,72 +1,19 @@
-/* Ensure the modal takes up the full width but is positioned above the button */
+/* Chatbox modal positioning */
 #chatboxModal .modal-dialog {
-  max-width: 400px;
-  width: 100%;
-  position: absolute;
-  bottom: 70px; /* Adjust this value to control how far above the button the modal appears */
-  right: 20px;  /* Ensure the modal is aligned with the button */
-  z-index: 1050; /* Ensure the modal appears above other elements */
+  position: fixed;         /* Fix modal position */
+  bottom: 80px;            /* Position the modal above the button */
+  right: 20px;             /* Align it with the right edge of the screen */
+  max-width: 400px;        /* Max width of the modal */
+  width: 100%;             /* Make it full width of its container */
+  transform: translateX(0); /* No need for horizontal transform */
+  z-index: 9999;           /* Ensure modal appears above other content */
 }
 
-/* Style the chatbox messages container */
-#messages {
-  max-height: 300px; /* Limit the height of the messages section */
-  overflow-y: auto;  /* Make the messages scrollable */
-  margin-bottom: 10px;
-  padding: 10px;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-}
-
-/* Style each message inside the chat */
-#messages div {
-  margin-bottom: 10px;
-  padding: 5px;
-  border-radius: 5px;
-  background-color: #e4e4e4;
-  font-size: 14px;
-}
-
-/* Differentiate user messages from AI responses */
-#messages .user-message {
-  background-color: #d4edda;
-}
-
-#messages .ai-message {
-  background-color: #d1ecf1;
-}
-
-/* Style the chat input field */
-#chat-input {
-  width: 100%;
-  padding: 10px;
-  font-size: 14px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  margin-bottom: 10px;
-}
-
-/* Style the send button */
-#send-message {
-  width: 100%;
-  padding: 10px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-/* Change button color on hover */
-#send-message:hover {
-  background-color: #0056b3;
-}
-
-/* Optional: Style the button that toggles the modal */
+/* Button that toggles the modal, positioned at bottom right */
 #chatbox-toggle-button {
   position: fixed;
-  bottom: 20px; /* Adjust distance from the bottom */
-  right: 20px;  /* Adjust distance from the right */
+  bottom: 20px;            /* Adjust distance from the bottom */
+  right: 20px;             /* Adjust distance from the right */
   padding: 10px 20px;
   background-color: #28a745;
   color: white;
@@ -74,11 +21,90 @@
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
-  z-index: 999; /* Ensure it's above other elements */
+  z-index: 999;            /* Ensure it's above other elements */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Adds a shadow for better visibility */
 }
 
 /* Style the button on hover */
 #chatbox-toggle-button:hover {
   background-color: #218838;
+}
+
+/* Chatbox footer: align textarea and send icon on the same line */
+.chatbox-footer {
+  display: flex;
+  align-items: center;
+  gap: 10px;           /* Space between the input and the icon */
+  width: 100%;         /* Full width of the modal body */
+}
+
+/* Chat input field */
+.chatbox-input {
+  width: 90%;           /* Textarea takes most of the space */
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  resize: none;
+  overflow: hidden;
+  background-color: #f9f9f9;
+  box-sizing: border-box;
+}
+
+/* Send button with the icon */
+.chatbox-send {
+  background: none;
+  border: none;
+  padding: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  color: #007bff;
+  transition: color 0.3s ease;
+}
+
+/* Change icon color on hover */
+.chatbox-send:hover {
+  color: #0056b3;
+}
+
+/* Style the icon size */
+.chatbox-send i {
+  font-size: 20px;
+}
+
+/* Messages container inside the modal */
+#messages {
+  max-height: 300px;
+  overflow-y: auto;
+  margin-bottom: 10px;
+  padding: 10px;        /* Padding added back */
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+
+/* Styling for user and AI messages */
+#messages .user-message,
+#messages .ai-message {
+  margin-bottom: 10px;
+  padding: 10px; /* Added padding for messages */
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+/* Differentiate user messages from AI responses */
+#messages .user-message {
+  background-color: #d4edda; /* Greenish for user messages */
+}
+
+#messages .ai-message {
+  background-color: #d1ecf1; /* Bluish for AI responses */
+}
+
+/* Modal close button styling */
+.modal-header .btn-close {
+  border: none;
+  background: none;
+  font-size: 1.5rem;
+  color: #aaa;
+  opacity: 1;
 }
