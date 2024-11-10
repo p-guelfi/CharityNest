@@ -30,4 +30,6 @@ Rails.application.routes.draw do
   end
 
   mount StripeEvent::Engine, at: '/webhooks/stripe'
+
+  post '/chat', to: 'chat#create'
 end
