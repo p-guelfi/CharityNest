@@ -17,5 +17,41 @@
     <%= render "shared/navbar" %>
     <%= render "shared/flashes" %>
     <%= yield %>
+
+    <div id="chat-box" class="chatbox" data-controller="chatbox" data-chatbox-target="chatbox">
+      <button id="chatbox-toggle" class="chatbox-toggle" data-action="click->chatbox#toggleMinimize">&times;</button>
+
+      <!-- Ensure the messages target is set correctly -->
+      <div id="messages" class="chatbox-messages" data-chatbox-target="messages"></div>
+
+      <!-- Ensure the input target is set correctly -->
+      <input type="text" id="chat-input" class="chatbox-input" placeholder="Type a message..." data-chatbox-target="input" />
+
+      <button id="send-message" class="chatbox-send">Send</button>
+    </div>
+
+    <script>
+      document.getElementById('send-message').addEventListener('click', function() {
+        let message = document.getElementById('chat-input').value;
+        if (message) {
+          let messagesDiv = document.getElementById('messages');
+          messagesDiv.innerHTML += `<div>User: ${message}</div>`;
+          document.getElementById('chat-input').value = '';
+
+          fetch('/chat', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ message: message }),
+          })
+            .then(response => response.json())
+            .then(data => {
+              messagesDiv.innerHTML += `<div>AI: ${data.response}</div>`;
+            })
+            .catch(error => console.error('Error:', error));
+        }
+      });
+    </script>
   </body>
 </html>
