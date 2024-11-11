@@ -6,13 +6,17 @@ export default class extends Controller {
   connect() {
     console.log("Chatbox controller connected.");
     this.loadChatHistory();
-    this.inputTarget.addEventListener("keydown", this.handleKeyDown.bind(this)); // Add event listener for Enter key
+    this.inputTarget.addEventListener("keydown", this.handleKeyDown.bind(this));
+
+    // Attach handleModalShown to the Bootstrap modal's shown event
+    const modalElement = document.getElementById("chatboxModal");
+    modalElement.addEventListener("shown.bs.modal", this.handleModalShown.bind(this));
   }
 
   handleKeyDown(event) {
     if (event.key === "Enter" && !event.shiftKey) {
-      event.preventDefault(); // Prevent form submission
-      this.sendMessage(event); // Trigger the sendMessage method
+      event.preventDefault();
+      this.sendMessage(event);
     }
   }
 
@@ -23,17 +27,14 @@ export default class extends Controller {
     chatHistory.forEach((message) => {
       const messageElement = document.createElement("div");
 
-      // Add the appropriate class based on the sender
       if (message.sender === "You") {
         messageElement.classList.add("user-message");
+        messageElement.innerHTML = `<i class="fa-regular fa-user"></i> ${message.text}`;
       } else if (message.sender === "CharityNest AI") {
         messageElement.classList.add("ai-message");
+        messageElement.innerHTML = `<i class="fa-solid fa-crow"></i> ${message.text}`;
       }
 
-      // Set the message text
-      messageElement.textContent = `${message.sender}: ${message.text}`;
-
-      // Append the message to the chat history
       messagesDiv.appendChild(messageElement);
     });
   }
@@ -42,18 +43,31 @@ export default class extends Controller {
     sessionStorage.setItem("chatHistory", JSON.stringify(messages));
   }
 
-  // Toggle the modal visibility
-  toggleModal() {
-    const modal = document.getElementById("chatboxModal");
-    modal.classList.toggle("show"); // Show or hide the modal
-    document.body.classList.toggle("modal-open"); // Optional: Prevent scrolling when modal is open
+  handleModalShown() {
+    this.inputTarget.focus();
+
+    // Only add the greeting if there’s no existing chat history
+    const chatHistory = JSON.parse(sessionStorage.getItem("chatHistory")) || [];
+    if (chatHistory.length === 0) {
+      this.addInitialGreeting();
+    }
   }
 
-  // Close the modal (triggered by the close button or clicking outside)
-  closeModal() {
-    const modal = document.getElementById("chatboxModal");
-    modal.classList.remove("show");
-    document.body.classList.remove("modal-open"); // Optional: Allow scrolling when modal is closed
+  addInitialGreeting() {
+    const messagesDiv = this.messagesTarget;
+    const greetingMessage = {
+      sender: "CharityNest AI",
+      text: "Hello, I'm the CharityNest AI assistant. How can I help you?",
+    };
+
+    const aiMessageElement = document.createElement("div");
+    aiMessageElement.classList.add("ai-message");
+    aiMessageElement.innerHTML = `<i class="fa-solid fa-crow"></i> ${greetingMessage.text}`;
+    messagesDiv.appendChild(aiMessageElement);
+
+    const chatHistory = [greetingMessage];
+    this.saveChatHistory(chatHistory);
+    messagesDiv.scrollTop = messagesDiv.scrollHeight;
   }
 
   sendMessage(event) {
@@ -62,17 +76,15 @@ export default class extends Controller {
       const messagesDiv = this.messagesTarget;
       let chatHistory = JSON.parse(sessionStorage.getItem("chatHistory")) || [];
 
-      // Add user message to chat history
       chatHistory.push({ sender: "You", text: message });
       const userMessageElement = document.createElement("div");
       userMessageElement.classList.add("user-message");
-      userMessageElement.textContent = `You: ${message}`;
+      userMessageElement.innerHTML = `<i class="fa-regular fa-user"></i> ${message}`;
       messagesDiv.appendChild(userMessageElement);
 
-      this.inputTarget.value = ""; // Clear input field
+      this.inputTarget.value = "";
       this.saveChatHistory(chatHistory);
 
-      // Send the message to the server
       fetch("/chat", {
         method: "POST",
         headers: {
@@ -83,15 +95,14 @@ export default class extends Controller {
       })
         .then((response) => response.json())
         .then((data) => {
-          // Add AI response to chat history
           chatHistory.push({ sender: "CharityNest AI", text: data.response });
           const aiMessageElement = document.createElement("div");
           aiMessageElement.classList.add("ai-message");
-          aiMessageElement.textContent = `CharityNest AI: ${data.response}`;
+          aiMessageElement.innerHTML = `<i class="fa-solid fa-crow"></i> ${data.response}`;
           messagesDiv.appendChild(aiMessageElement);
 
           this.saveChatHistory(chatHistory);
-          messagesDiv.scrollTop = messagesDiv.scrollHeight; // Scroll to the bottom
+          messagesDiv.scrollTop = messagesDiv.scrollHeight;
         })
         .catch((error) => {
           console.error("Error:", error);
