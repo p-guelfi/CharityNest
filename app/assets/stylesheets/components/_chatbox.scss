@@ -1,16 +1,19 @@
-/* Chatbox modal positioning */
+/* Modal content and positioning */
 .modal-content {
-  border-radius: 10px; /* Rounded corners for the modal content */
+  border-radius: 10px;
   background-color: $coral-white;
 }
 
 .modal-body {
   background-color: $coral-white;
   border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
 .modal-dialog {
-  border-radius: 10px; /* This will round all corners of the outer modal */
+  border-radius: 10px;
 }
 
 #chatboxModal .modal-dialog {
@@ -23,7 +26,7 @@
   z-index: 9999;
 }
 
-/* Button to toggle the modal, positioned at the bottom right */
+/* Button to toggle the modal */
 #chatbox-toggle-button {
   position: fixed;
   bottom: 20px;
@@ -41,20 +44,33 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Style the toggle button on hover */
 #chatbox-toggle-button:hover {
   background-color: $forest-green;
 }
 
-/* Chatbox footer: align textarea and send icon on the same line */
+/* Modal header with title and close button */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #ccc;
+  padding: 10px 20px;
+  margin-left: 15px; /* Move header slightly to the right */
+}
+
+.modal-title {
+  margin-bottom: 0;
+}
+
+/* Chatbox footer: align textarea and send button */
 .chatbox-footer {
   display: flex;
   align-items: center;
   gap: 10px;
   width: 100%;
+  margin-top: 10px;
 }
 
-/* Chat input field */
 .chatbox-input {
   width: 90%;
   padding: 10px;
@@ -68,10 +84,9 @@
 
 .chatbox-input:focus {
   outline: none;
-  border: 1px solid #666; /* Set a neutral border color */
-  box-shadow: none; /* Removes any focus shadow */
+  border: 1px solid #666;
 }
-/* Send button with the icon */
+
 .chatbox-send {
   background: none;
   border: none;
@@ -79,20 +94,17 @@
   font-size: 20px;
   cursor: pointer;
   color: #666;
-  transition: color 0.3s ease;
 }
 
-/* Change icon color on hover */
 .chatbox-send:hover {
   color: black;
 }
 
-/* Style the send icon */
 .chatbox-send i {
   font-size: 20px;
 }
 
-/* Messages container inside the modal */
+/* Messages container inside modal */
 #messages {
   max-height: 300px;
   overflow-y: auto;
@@ -100,6 +112,9 @@
   padding: 10px;
   background-color: $coral-white;
   border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 /* Wrapper for message and icon */
@@ -107,10 +122,9 @@
   display: flex;
   align-items: flex-start;
   margin-bottom: 10px;
-  background-color: $coral-white;
 }
 
-/* Style for user and AI messages */
+/* User and AI message styles */
 .user-message,
 .ai-message {
   padding: 10px;
@@ -119,16 +133,15 @@
   max-width: 80%;
 }
 
-/* Differentiate user and AI message backgrounds */
 .user-message {
-  background-color: #d4edda; /* Greenish for user messages */
+  background-color: #d4edda;
 }
 
 .ai-message {
-  background-color: #d1ecf1; /* Bluish for AI responses */
+  background-color: #d1ecf1;
 }
 
-/* Icon styling */
+/* Icon styling for user and AI */
 .message-icon {
   width: 30px;
   height: 30px;
@@ -138,12 +151,12 @@
   justify-content: center;
   background-color: #fff;
   color: #333;
-  border-radius: 10px;
+  border-radius: 50%;
   font-size: 16px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Modal close button styling */
+/* Modal close button */
 .modal-header .btn-close {
   border: none;
   background: none;
@@ -152,7 +165,6 @@
   opacity: 1;
 }
 
-/* Prevent body scroll when modal is open */
 body.modal-open {
   overflow: auto !important;
 }
