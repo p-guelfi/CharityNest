@@ -23,6 +23,9 @@ export default class extends Controller {
     if (event.key === "Enter" && !event.shiftKey) {
       event.preventDefault();
       this.sendMessage(event);
+
+      // Hide the common questions section when the user types a question
+      this.hideCommonQuestions();
     }
   }
 
