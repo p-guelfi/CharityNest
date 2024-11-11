@@ -1,9 +1,23 @@
 /* Chatbox modal positioning */
+.modal-content {
+  border-radius: 10px; /* Rounded corners for the modal content */
+  background-color: $coral-white;
+}
+
+.modal-body {
+  background-color: $coral-white;
+  border-radius: 10px;
+}
+
+.modal-dialog {
+  border-radius: 10px; /* This will round all corners of the outer modal */
+}
+
 #chatboxModal .modal-dialog {
   position: fixed;
   bottom: 80px;
   right: 20px;
-  max-width: 500px;
+  max-width: 450px;
   width: 100%;
   transform: translateX(0);
   z-index: 9999;
@@ -15,11 +29,13 @@
   bottom: 20px;
   right: 20px;
   padding: 10px 20px;
-  background-color: #28a745;
+  background-color: black;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
   cursor: pointer;
+  font-family: $button-font;
+  font-weight: 700;
   font-size: 16px;
   z-index: 999;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -27,7 +43,7 @@
 
 /* Style the toggle button on hover */
 #chatbox-toggle-button:hover {
-  background-color: #218838;
+  background-color: $forest-green;
 }
 
 /* Chatbox footer: align textarea and send icon on the same line */
@@ -43,13 +59,18 @@
   width: 90%;
   padding: 10px;
   font-size: 14px;
-  border-radius: 5px;
+  border-radius: 10px;
   border: 1px solid #ccc;
   resize: none;
   background-color: #f9f9f9;
   box-sizing: border-box;
 }
 
+.chatbox-input:focus {
+  outline: none;
+  border: 1px solid #666; /* Set a neutral border color */
+  box-shadow: none; /* Removes any focus shadow */
+}
 /* Send button with the icon */
 .chatbox-send {
   background: none;
@@ -57,7 +78,7 @@
   padding: 10px;
   font-size: 20px;
   cursor: pointer;
-  color: black;
+  color: #666;
   transition: color 0.3s ease;
 }
 
@@ -77,8 +98,8 @@
   overflow-y: auto;
   margin-bottom: 10px;
   padding: 10px;
-  background-color: #f9f9f9;
-  border-radius: 8px;
+  background-color: $coral-white;
+  border-radius: 10px;
 }
 
 /* Wrapper for message and icon */
@@ -86,13 +107,14 @@
   display: flex;
   align-items: flex-start;
   margin-bottom: 10px;
+  background-color: $coral-white;
 }
 
 /* Style for user and AI messages */
 .user-message,
 .ai-message {
   padding: 10px;
-  border-radius: 5px;
+  border-radius: 10px;
   font-size: 14px;
   max-width: 80%;
 }
@@ -116,7 +138,7 @@
   justify-content: center;
   background-color: #fff;
   color: #333;
-  border-radius: 5px;
+  border-radius: 10px;
   font-size: 16px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }

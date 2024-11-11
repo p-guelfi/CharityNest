@@ -92,7 +92,7 @@ export default class extends Controller {
 
       const iconElement = document.createElement("div");
       iconElement.classList.add("message-icon");
-      iconElement.innerHTML = '<i class="fa-regular fa-user"></i>';
+      iconElement.innerHTML = '<i class="fa-solid fa-user"></i>';
 
       const userMessageElement = document.createElement("div");
       userMessageElement.classList.add("user-message");
