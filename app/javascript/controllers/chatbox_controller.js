@@ -12,6 +12,11 @@ export default class extends Controller {
       this.sendGreetingMessage();
       sessionStorage.setItem("hasOpenedChat", "true");
     }
+
+    // Check if common questions were hidden on previous page load
+    if (sessionStorage.getItem("commonQuestionsHidden") === "true") {
+      this.hideCommonQuestions();
+    }
   }
 
   handleKeyDown(event) {
@@ -158,9 +163,14 @@ export default class extends Controller {
     event.target.closest('.question-wrapper').remove();
 
     // Hide the entire common questions section
+    this.hideCommonQuestions();
+  }
+
+  hideCommonQuestions() {
     const commonQuestionsDiv = this.element.querySelector('.common-questions');
     if (commonQuestionsDiv) {
       commonQuestionsDiv.style.display = 'none';
+      sessionStorage.setItem("commonQuestionsHidden", "true"); // Save state to sessionStorage
     }
   }
 }
