@@ -8,9 +8,10 @@ export default class extends Controller {
     this.loadChatHistory();
     this.inputTarget.addEventListener("keydown", this.handleKeyDown.bind(this));
 
-    // Attach handleModalShown to the Bootstrap modal's shown event
-    const modalElement = document.getElementById("chatboxModal");
-    modalElement.addEventListener("shown.bs.modal", this.handleModalShown.bind(this));
+    if (!sessionStorage.getItem("hasOpenedChat")) {
+      this.sendGreetingMessage();
+      sessionStorage.setItem("hasOpenedChat", "true");
+    }
   }
 
   handleKeyDown(event) {
@@ -25,17 +26,26 @@ export default class extends Controller {
     const chatHistory = JSON.parse(sessionStorage.getItem("chatHistory")) || [];
 
     chatHistory.forEach((message) => {
+      const messageWrapper = document.createElement("div");
+      messageWrapper.classList.add("message-wrapper");
+
+      const iconElement = document.createElement("div");
+      iconElement.classList.add("message-icon");
+
       const messageElement = document.createElement("div");
+      messageElement.textContent = message.text;
 
       if (message.sender === "You") {
+        iconElement.innerHTML = '<i class="fa-regular fa-user"></i>';
         messageElement.classList.add("user-message");
-        messageElement.innerHTML = `<i class="fa-regular fa-user"></i> ${message.text}`;
       } else if (message.sender === "CharityNest AI") {
+        iconElement.innerHTML = '<i class="fa-solid fa-crow"></i>';
         messageElement.classList.add("ai-message");
-        messageElement.innerHTML = `<i class="fa-solid fa-crow"></i> ${message.text}`;
       }
 
-      messagesDiv.appendChild(messageElement);
+      messageWrapper.appendChild(iconElement);
+      messageWrapper.appendChild(messageElement);
+      messagesDiv.appendChild(messageWrapper);
     });
   }
 
@@ -43,31 +53,29 @@ export default class extends Controller {
     sessionStorage.setItem("chatHistory", JSON.stringify(messages));
   }
 
-  handleModalShown() {
-    this.inputTarget.focus();
-
-    // Only add the greeting if there’s no existing chat history
-    const chatHistory = JSON.parse(sessionStorage.getItem("chatHistory")) || [];
-    if (chatHistory.length === 0) {
-      this.addInitialGreeting();
-    }
-  }
-
-  addInitialGreeting() {
+  sendGreetingMessage() {
     const messagesDiv = this.messagesTarget;
-    const greetingMessage = {
-      sender: "CharityNest AI",
-      text: "Hello, I'm the CharityNest AI assistant. How can I help you?",
-    };
+    let chatHistory = JSON.parse(sessionStorage.getItem("chatHistory")) || [];
 
-    const aiMessageElement = document.createElement("div");
-    aiMessageElement.classList.add("ai-message");
-    aiMessageElement.innerHTML = `<i class="fa-solid fa-crow"></i> ${greetingMessage.text}`;
-    messagesDiv.appendChild(aiMessageElement);
+    const greetingMessage = "Hello, I'm the CharityNest AI assistant. How can I help you?";
+    chatHistory.push({ sender: "CharityNest AI", text: greetingMessage });
 
-    const chatHistory = [greetingMessage];
+    const messageWrapper = document.createElement("div");
+    messageWrapper.classList.add("message-wrapper");
+
+    const iconElement = document.createElement("div");
+    iconElement.classList.add("message-icon");
+    iconElement.innerHTML = '<i class="fa-solid fa-crow"></i>';
+
+    const messageElement = document.createElement("div");
+    messageElement.classList.add("ai-message");
+    messageElement.textContent = greetingMessage;
+
+    messageWrapper.appendChild(iconElement);
+    messageWrapper.appendChild(messageElement);
+    messagesDiv.appendChild(messageWrapper);
+
     this.saveChatHistory(chatHistory);
-    messagesDiv.scrollTop = messagesDiv.scrollHeight;
   }
 
   sendMessage(event) {
@@ -76,15 +84,28 @@ export default class extends Controller {
       const messagesDiv = this.messagesTarget;
       let chatHistory = JSON.parse(sessionStorage.getItem("chatHistory")) || [];
 
+      // Add user message to chat history
       chatHistory.push({ sender: "You", text: message });
+
+      const messageWrapper = document.createElement("div");
+      messageWrapper.classList.add("message-wrapper");
+
+      const iconElement = document.createElement("div");
+      iconElement.classList.add("message-icon");
+      iconElement.innerHTML = '<i class="fa-regular fa-user"></i>';
+
       const userMessageElement = document.createElement("div");
       userMessageElement.classList.add("user-message");
-      userMessageElement.innerHTML = `<i class="fa-regular fa-user"></i> ${message}`;
-      messagesDiv.appendChild(userMessageElement);
+      userMessageElement.textContent = message;
+
+      messageWrapper.appendChild(iconElement);
+      messageWrapper.appendChild(userMessageElement);
+      messagesDiv.appendChild(messageWrapper);
 
       this.inputTarget.value = "";
       this.saveChatHistory(chatHistory);
 
+      // Send the message to the server
       fetch("/chat", {
         method: "POST",
         headers: {
@@ -96,17 +117,30 @@ export default class extends Controller {
         .then((response) => response.json())
         .then((data) => {
           chatHistory.push({ sender: "CharityNest AI", text: data.response });
+
+          const aiMessageWrapper = document.createElement("div");
+          aiMessageWrapper.classList.add("message-wrapper");
+
+          const aiIconElement = document.createElement("div");
+          aiIconElement.classList.add("message-icon");
+          aiIconElement.innerHTML = '<i class="fa-solid fa-crow"></i>';
+
           const aiMessageElement = document.createElement("div");
           aiMessageElement.classList.add("ai-message");
-          aiMessageElement.innerHTML = `<i class="fa-solid fa-crow"></i> ${data.response}`;
-          messagesDiv.appendChild(aiMessageElement);
+          aiMessageElement.textContent = data.response;
+
+          aiMessageWrapper.appendChild(aiIconElement);
+          aiMessageWrapper.appendChild(aiMessageElement);
+          messagesDiv.appendChild(aiMessageWrapper);
 
           this.saveChatHistory(chatHistory);
           messagesDiv.scrollTop = messagesDiv.scrollHeight;
         })
         .catch((error) => {
           console.error("Error:", error);
+
           const errorElement = document.createElement("div");
+          errorElement.classList.add("error-message");
           errorElement.textContent = `Error: ${error.message}`;
           messagesDiv.appendChild(errorElement);
           messagesDiv.scrollTop = messagesDiv.scrollHeight;
