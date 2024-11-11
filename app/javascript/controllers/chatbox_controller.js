@@ -44,7 +44,7 @@ export default class extends Controller {
       messageElement.textContent = message.text;
 
       if (message.sender === "You") {
-        iconElement.innerHTML = '<i class="fa-regular fa-user"></i>';
+        iconElement.innerHTML = '<i class="fa-solid fa-user"></i>';
         messageElement.classList.add("user-message");
       } else if (message.sender === "CharityNest AI") {
         iconElement.innerHTML = '<i class="fa-solid fa-crow"></i>';
@@ -100,7 +100,7 @@ export default class extends Controller {
 
       const iconElement = document.createElement("div");
       iconElement.classList.add("message-icon");
-      iconElement.innerHTML = '<i class="fa-regular fa-user"></i>';
+      iconElement.innerHTML = '<i class="fa-solid fa-user"></i>';
 
       const userMessageElement = document.createElement("div");
       userMessageElement.classList.add("user-message");

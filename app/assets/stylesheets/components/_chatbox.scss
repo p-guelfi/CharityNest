@@ -241,3 +241,15 @@ body.modal-open {
 .chatbot-wrapper__ai-chatbot-button svg {
   margin-right: 5px;
 }
+
+.custom-close-chatbox {
+  font-size: 2rem; /* Larger close button */
+  color: #666; /* Blue color for the button */
+  border: none; /* Remove default border */
+  background: none; /* No background */
+}
+
+.custom-close-chatbox:hover {
+  color: black; /* Darker blue on hover */
+  cursor: pointer; /* Change cursor to pointer */
+}
