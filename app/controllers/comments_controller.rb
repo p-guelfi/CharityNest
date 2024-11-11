@@ -12,6 +12,15 @@ class CommentsController < ApplicationController
     end
   end
 
+  def destroy
+    @donation = Donation.find(params[:donation_id])
+    @discussion = @donation.discussions.find(params[:discussion_id])
+    @comment = @discussion.comments.find(params[:id])
+    @comment.destroy
+    redirect_to donation_discussion_path(@donation, @discussion), notice: 'Comment was successfully deleted.'
+  end
+
+
   private
 
   def set_donation_and_discussion

@@ -26,8 +26,8 @@ Rails.application.routes.draw do
       delete 'unsubscribe'
     end
     resources :payments, only: :new
-    resources :discussions, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
-      resources :comments, only: [:create]
+    resources :discussions do
+      resources :comments, only: [:create, :destroy]
     end
 
   end
