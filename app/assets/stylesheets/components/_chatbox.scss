@@ -2,6 +2,7 @@
 .modal-content {
   border-radius: 10px;
   background-color: $coral-white;
+  position: relative;
 }
 
 .modal-body {
@@ -53,9 +54,21 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 2px solid #ccc;
-  padding: 10px 20px;
-  margin-left: 15px; /* Move header slightly to the right */
+  padding: 10px 20px; /* Your padding */
+  position: relative; /* Needed for positioning the pseudo-element */
+  margin-left: 15px; /* Margin to adjust header position */
+  margin-right: 15px;
+  z-index: 1; /* Ensures header content stays above the border */
+}
+
+.modal-header::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%; /* Ensure the border spans full width of modal content */
+  border-bottom: 2px solid #ccc; /* Original border thickness */
+  z-index: -1; /* Ensure the border stays behind the content */
 }
 
 .modal-title {
@@ -167,4 +180,64 @@
 
 body.modal-open {
   overflow: auto !important;
+}
+
+/* Common Questions section */
+.common-questions {
+  padding: 10px;
+  margin-top: 10px;
+  // border-top: 2px solid #ddd;
+}
+
+.common-questions p {
+  font-size: 14px; /* Same size as the questions */
+  font-weight: normal; /* Optional: adjust if needed */
+}
+
+.question-wrapper {
+  background-color: #f1f1f1;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 5px 0;
+  padding: 10px;
+  cursor: pointer;
+  display: inline-block;
+  width: 100%;
+  max-width: 100%;
+}
+
+.question-wrapper:hover {
+  background-color: #e1e1e1;
+}
+
+/* Question text */
+.question-wrapper .question {
+  font-size: 14px;
+  color: #333;
+}
+
+/* After question is clicked, hide it */
+.question-wrapper.clicked {
+  display: none;
+}
+
+/* Chatbox button to open chat */
+.chatbot-wrapper__ai-chatbot-button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 50px;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.chatbot-wrapper__ai-chatbot-button:hover {
+  background-color: #0056b3;
+}
+
+.chatbot-wrapper__ai-chatbot-button svg {
+  margin-right: 5px;
 }

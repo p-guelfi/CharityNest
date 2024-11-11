@@ -28,7 +28,6 @@
         <div class="modal-content">
           <div class="modal-header d-flex justify-content-between align-items-center">
             <h5 class="modal-title">Chat with CharityNest AI</h5>
-            <!-- Close button triggers the modal to hide -->
             <button type="button" class="close custom-close" data-bs-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -36,6 +35,17 @@
           <div class="modal-body">
             <!-- Messages container -->
             <div id="messages" class="chatbox-messages" data-chatbox-target="messages"></div>
+
+            <!-- Common Questions Section -->
+            <div class="common-questions">
+              <p>Common questions are:</p>
+              <div class="question-wrapper" data-action="click->chatbox#askQuestion">
+                <div class="question">Should I donate to a charity or to a project?</div>
+              </div>
+              <div class="question-wrapper" data-action="click->chatbox#askQuestion">
+                <div class="question">Where can I make a bigger impact?</div>
+              </div>
+            </div>
 
             <!-- User input -->
             <form class="chatbox-footer">
@@ -48,5 +58,6 @@
         </div>
       </div>
     </div>
+
   </body>
 </html>

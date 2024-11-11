@@ -92,7 +92,7 @@ export default class extends Controller {
 
       const iconElement = document.createElement("div");
       iconElement.classList.add("message-icon");
-      iconElement.innerHTML = '<i class="fa-solid fa-user"></i>';
+      iconElement.innerHTML = '<i class="fa-regular fa-user"></i>';
 
       const userMessageElement = document.createElement("div");
       userMessageElement.classList.add("user-message");
@@ -145,6 +145,22 @@ export default class extends Controller {
           messagesDiv.appendChild(errorElement);
           messagesDiv.scrollTop = messagesDiv.scrollHeight;
         });
+    }
+  }
+
+  askQuestion(event) {
+    // Set the clicked question as input message
+    const question = event.target.textContent;
+    this.inputTarget.value = question;
+    this.sendMessage(event); // Optionally, auto-send the question
+
+    // Remove the clicked question
+    event.target.closest('.question-wrapper').remove();
+
+    // Hide the entire common questions section
+    const commonQuestionsDiv = this.element.querySelector('.common-questions');
+    if (commonQuestionsDiv) {
+      commonQuestionsDiv.style.display = 'none';
     }
   }
 }
