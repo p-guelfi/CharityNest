@@ -9,7 +9,7 @@ class ChatController < ApplicationController
     client = OpenAI::Client.new(api_key: ENV['OPENAI_ACCESS_TOKEN'])
     response = client.chat(
       parameters: {
-        model: "ft:gpt-3.5-turbo-0125:personal:charitynest:ASiAsJL4",  # Fine-tuned model ID
+        model: "ft:gpt-3.5-turbo-0125:personal:charitynest:ASkUktHP",  # Fine-tuned model ID
         messages: prompt,
         max_tokens: 150
       }
