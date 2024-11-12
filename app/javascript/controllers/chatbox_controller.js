@@ -55,6 +55,9 @@ export default class extends Controller {
       messageWrapper.appendChild(messageElement);
       messagesDiv.appendChild(messageWrapper);
     });
+
+    // Scroll to the bottom after loading the chat history
+    messagesDiv.scrollTop = messagesDiv.scrollHeight;
   }
 
   saveChatHistory(messages) {
@@ -84,6 +87,9 @@ export default class extends Controller {
     messagesDiv.appendChild(messageWrapper);
 
     this.saveChatHistory(chatHistory);
+
+    // Scroll to the bottom after sending the greeting
+    messagesDiv.scrollTop = messagesDiv.scrollHeight;
   }
 
   sendMessage(event) {
@@ -112,6 +118,9 @@ export default class extends Controller {
 
       this.inputTarget.value = "";
       this.saveChatHistory(chatHistory);
+
+      // Scroll to the bottom after the user sends a message
+      messagesDiv.scrollTop = messagesDiv.scrollHeight;
 
       // Send the full conversation history to the server
       fetch("/chat", {
@@ -142,6 +151,8 @@ export default class extends Controller {
           messagesDiv.appendChild(aiMessageWrapper);
 
           this.saveChatHistory(chatHistory);
+
+          // Scroll to the bottom after the AI sends a response
           messagesDiv.scrollTop = messagesDiv.scrollHeight;
         })
         .catch((error) => {
