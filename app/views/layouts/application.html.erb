@@ -17,5 +17,47 @@
     <%= render "shared/navbar" %>
     <%= render "shared/flashes" %>
     <%= yield %>
+
+    <button id="chatbox-toggle-button" class="chatbox-toggle-button btn btn-primary" data-bs-toggle="modal" data-bs-target="#chatboxModal">
+      Ask CharityNest AI Assistant
+    </button>
+
+    <!-- Modal HTML -->
+    <div class="modal" tabindex="-1" role="dialog" id="chatboxModal" data-controller="chatbox">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header d-flex justify-content-between">
+            <h5 class="modal-title">Chat with CharityNest AI</h5>
+            <button type="button" class="close custom-close-chatbox ml-auto" data-bs-dismiss="modal" aria-label="Close" style="margin-left: 10px; margin-top: 12px">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <!-- Messages container -->
+            <div id="messages" class="chatbox-messages" data-chatbox-target="messages"></div>
+
+            <!-- Common Questions Section -->
+            <div class="common-questions">
+              <p>Common questions are:</p>
+              <div class="question-wrapper" data-action="click->chatbox#askQuestion">
+                <div class="question">Should I donate to a charity or to a project?</div>
+              </div>
+              <div class="question-wrapper" data-action="click->chatbox#askQuestion">
+                <div class="question">Where can I make a bigger impact?</div>
+              </div>
+            </div>
+
+            <!-- User input -->
+            <form class="chatbox-footer">
+              <textarea id="chat-input" class="chatbox-input" placeholder="Type a message..." data-chatbox-target="input" rows="1" maxlength="1000"></textarea>
+              <button type="button" class="chatbox-send" data-action="click->chatbox#sendMessage">
+                <i class="fa-regular fa-paper-plane"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </body>
 </html>
