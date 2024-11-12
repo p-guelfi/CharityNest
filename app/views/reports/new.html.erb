@@ -4,21 +4,20 @@
     <%= simple_form_for [ @charity_project, @report ] do |f| %>
       <% if current_user.evaluator? %>
         <div class="form-inputs">
-          <%= f.input :type, label: "Type of Article", as: :select %>
+          <%= f.input :report_type, label: "Type of Article", as: :select %>
         </div>
       <% else %>
-          <%= f.input :type, as: :hidden, input_html: { value: "article" } %>
+          <%= f.input :report_type, as: :hidden, input_html: { value: "article" } %>
       <% end %>
-
-
       <div class="form-inputs">
         <%= f.input :title, label: "Title (max 30 characters)" %>
       </div>
-
       <div class="form-inputs">
         <%= f.input :teaser, input_html: { class: "report-input-teaser" }, label: "Teaser Text (max 200 characters)" %>
       </div>
-
+      <div class="form-inputs">
+        <%= f.input :photos, as: :file, input_html: { multiple: true }, label: "Upload Photos" %>
+      </div>
       <!-- insert these three line of code below -->
       <div class="form-inputs">
         <label for="report_body" class="mb-2">Report Body Text</label>

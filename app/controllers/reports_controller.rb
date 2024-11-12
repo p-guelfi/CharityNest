@@ -1,7 +1,9 @@
 class ReportsController < ApplicationController
+  before_action :set_report, only: %i[show]
+  before_action :set_charity_project, only: %i[new create]
+
   def new
     @report = Report.new
-    set_charity_project
   end
 
   def create
@@ -10,10 +12,21 @@ class ReportsController < ApplicationController
     @report.user = set_user
     if @report.save
       flash[:notice] = "Your report has been created successfully."
-      redirect_to charity_project_path(@charity_project)
+      redirect_to report_path(@report)
     else
       flash[:alert] = "Something went wrong while creating your report. Please try again."
       render :new, status: :unprocessable_entity
+    end
+  end
+
+  def show
+  end
+
+  def index
+    if set_charity_project
+      @reports = @charity_project.reports.all
+    else
+      @reports = Report.all
     end
   end
 
@@ -21,7 +34,11 @@ class ReportsController < ApplicationController
   private
 
   def report_params
-    params.require(:report).permit(:title, :teaser, :body, :type )
+    params.require(:report).permit(:title, :teaser, :body, :type, :report_type, photos: [])
+  end
+
+  def set_report
+    @report = Report.find(params[:id])
   end
 
   def set_user
@@ -33,6 +50,8 @@ class ReportsController < ApplicationController
   end
 
   def set_charity_project
-    @charity_project = CharityProject.find(params[:charity_project_id])
+    if params[:charity_project_id].present?
+      @charity_project = CharityProject.find(params[:charity_project_id])
+    end
   end
 end

@@ -1,3 +1,6 @@
+require 'open-uri'
+require 'nokogiri'
+
 puts "Seeding database..."
 # Destroy all existing records
 
@@ -37,8 +40,15 @@ puts "Seeding database..."
     password: "123456",
     first_name: "Max",
     last_name: "Ranoldi",
-    role: 2
-    }]
+    role: 1
+    }, {
+    email: "master@evaluator.com",
+    password: "123456",
+    first_name: "Robert",
+    last_name: "Thoughtful",
+    role: 3
+    }
+  ]
 
   users.each do |user|
     User.create!(user)
@@ -102,11 +112,7 @@ puts "Seeding database..."
 
   puts "Creating charities..."
 
-  # db/seeds.rb
-
-# db/seeds.rb
-
-charities = [{
+  charities = [{
     name: "Save the Children",
     # Add a brief description of the charity with 35 words
     teaser: "Save the Children is dedicated to improving the lives of children worldwide by providing essential resources, education, and healthcare. Join us in supporting vulnerable communities and creating a brighter future for children in need.",
@@ -185,116 +191,116 @@ charities = [{
   }
   ]
 
-charities.each do |charity_data|
-  charity = Charity.create!(charity_data)  # Create the Charity instance
-  puts "Charity #{charity.name} created."
+  charities.each do |charity_data|
+    charity = Charity.create!(charity_data)  # Create the Charity instance
+    puts "Charity #{charity.name} created."
 
-  # Attach photos only to Greenpeace
-  if charity.name == "Greenpeace"
-    photo_path1 = Rails.root.join("db/seed-images/greenpeace/GP0STPOUA_8.webp")
-    photo_path2 = Rails.root.join("db/seed-images/greenpeace/gp0stown2.webp")
-    photo_path3 = Rails.root.join("db/seed-images/greenpeace/gp0stqdu4.webp")
-    photo_path4 = Rails.root.join("db/seed-images/greenpeace/GP01CK9.webp")
+    # Attach photos only to Greenpeace
+    if charity.name == "Greenpeace"
+      photo_path1 = Rails.root.join("db/seed-images/greenpeace/GP0STPOUA_8.webp")
+      photo_path2 = Rails.root.join("db/seed-images/greenpeace/gp0stown2.webp")
+      photo_path3 = Rails.root.join("db/seed-images/greenpeace/gp0stqdu4.webp")
+      photo_path4 = Rails.root.join("db/seed-images/greenpeace/GP01CK9.webp")
 
-    charity.photos.attach(io: File.open(photo_path1), filename: File.basename(photo_path1))
-    charity.photos.attach(io: File.open(photo_path2), filename: File.basename(photo_path2))
-    charity.photos.attach(io: File.open(photo_path3), filename: File.basename(photo_path3))
-    charity.photos.attach(io: File.open(photo_path4), filename: File.basename(photo_path4))
+      charity.photos.attach(io: File.open(photo_path1), filename: File.basename(photo_path1))
+      charity.photos.attach(io: File.open(photo_path2), filename: File.basename(photo_path2))
+      charity.photos.attach(io: File.open(photo_path3), filename: File.basename(photo_path3))
+      charity.photos.attach(io: File.open(photo_path4), filename: File.basename(photo_path4))
 
-    puts "Photos attached to #{charity.name}."
+      puts "Photos attached to #{charity.name}."
+    end
+    if charity.name == "Save the Children"
+      photo_path1 = Rails.root.join("db/seed-images/greenpeace/GP0STPOUA_8.webp")
+      photo_path2 = Rails.root.join("db/seed-images/greenpeace/gp0stown2.webp")
+      photo_path3 = Rails.root.join("db/seed-images/greenpeace/gp0stqdu4.webp")
+      photo_path4 = Rails.root.join("db/seed-images/greenpeace/GP01CK9.webp")
+
+      charity.photos.attach(io: File.open(photo_path1), filename: File.basename(photo_path1))
+      charity.photos.attach(io: File.open(photo_path2), filename: File.basename(photo_path2))
+      charity.photos.attach(io: File.open(photo_path3), filename: File.basename(photo_path3))
+      charity.photos.attach(io: File.open(photo_path4), filename: File.basename(photo_path4))
+
+      puts "Photos attached to #{charity.name}."
+    end
+    if charity.name == "Oxfam"
+      photo_path1 = Rails.root.join("db/seed-images/greenpeace/GP0STPOUA_8.webp")
+      photo_path2 = Rails.root.join("db/seed-images/greenpeace/gp0stown2.webp")
+      photo_path3 = Rails.root.join("db/seed-images/greenpeace/gp0stqdu4.webp")
+      photo_path4 = Rails.root.join("db/seed-images/greenpeace/GP01CK9.webp")
+
+      charity.photos.attach(io: File.open(photo_path1), filename: File.basename(photo_path1))
+      charity.photos.attach(io: File.open(photo_path2), filename: File.basename(photo_path2))
+      charity.photos.attach(io: File.open(photo_path3), filename: File.basename(photo_path3))
+      charity.photos.attach(io: File.open(photo_path4), filename: File.basename(photo_path4))
+
+      puts "Photos attached to #{charity.name}."
+    end
+    if charity.name == "World Wildlife Fund (WWF)"
+      photo_path1 = Rails.root.join("db/seed-images/greenpeace/GP0STPOUA_8.webp")
+      photo_path2 = Rails.root.join("db/seed-images/greenpeace/gp0stown2.webp")
+      photo_path3 = Rails.root.join("db/seed-images/greenpeace/gp0stqdu4.webp")
+      photo_path4 = Rails.root.join("db/seed-images/greenpeace/GP01CK9.webp")
+
+      charity.photos.attach(io: File.open(photo_path1), filename: File.basename(photo_path1))
+      charity.photos.attach(io: File.open(photo_path2), filename: File.basename(photo_path2))
+      charity.photos.attach(io: File.open(photo_path3), filename: File.basename(photo_path3))
+      charity.photos.attach(io: File.open(photo_path4), filename: File.basename(photo_path4))
+
+      puts "Photos attached to #{charity.name}."
+    end
+    if charity.name == "The Sierra Club Foundation"
+      photo_path1 = Rails.root.join("db/seed-images/greenpeace/GP0STPOUA_8.webp")
+      photo_path2 = Rails.root.join("db/seed-images/greenpeace/gp0stown2.webp")
+      photo_path3 = Rails.root.join("db/seed-images/greenpeace/gp0stqdu4.webp")
+      photo_path4 = Rails.root.join("db/seed-images/greenpeace/GP01CK9.webp")
+
+      charity.photos.attach(io: File.open(photo_path1), filename: File.basename(photo_path1))
+      charity.photos.attach(io: File.open(photo_path2), filename: File.basename(photo_path2))
+      charity.photos.attach(io: File.open(photo_path3), filename: File.basename(photo_path3))
+      charity.photos.attach(io: File.open(photo_path4), filename: File.basename(photo_path4))
+
+      puts "Photos attached to #{charity.name}."
+    end
+    if charity.name == "Friends of the Earth"
+      photo_path1 = Rails.root.join("db/seed-images/greenpeace/GP0STPOUA_8.webp")
+      photo_path2 = Rails.root.join("db/seed-images/greenpeace/gp0stown2.webp")
+      photo_path3 = Rails.root.join("db/seed-images/greenpeace/gp0stqdu4.webp")
+      photo_path4 = Rails.root.join("db/seed-images/greenpeace/GP01CK9.webp")
+
+      charity.photos.attach(io: File.open(photo_path1), filename: File.basename(photo_path1))
+      charity.photos.attach(io: File.open(photo_path2), filename: File.basename(photo_path2))
+      charity.photos.attach(io: File.open(photo_path3), filename: File.basename(photo_path3))
+      charity.photos.attach(io: File.open(photo_path4), filename: File.basename(photo_path4))
+
+      puts "Photos attached to #{charity.name}."
+    end
+    if charity.name == "Rainforest Alliance"
+      photo_path1 = Rails.root.join("db/seed-images/greenpeace/GP0STPOUA_8.webp")
+      photo_path2 = Rails.root.join("db/seed-images/greenpeace/gp0stown2.webp")
+      photo_path3 = Rails.root.join("db/seed-images/greenpeace/gp0stqdu4.webp")
+      photo_path4 = Rails.root.join("db/seed-images/greenpeace/GP01CK9.webp")
+
+      charity.photos.attach(io: File.open(photo_path1), filename: File.basename(photo_path1))
+      charity.photos.attach(io: File.open(photo_path2), filename: File.basename(photo_path2))
+      charity.photos.attach(io: File.open(photo_path3), filename: File.basename(photo_path3))
+      charity.photos.attach(io: File.open(photo_path4), filename: File.basename(photo_path4))
+
+      puts "Photos attached to #{charity.name}."
+    end
+    if charity.name == "ClimateWorks Foundation"
+      photo_path1 = Rails.root.join("db/seed-images/greenpeace/GP0STPOUA_8.webp")
+      photo_path2 = Rails.root.join("db/seed-images/greenpeace/gp0stown2.webp")
+      photo_path3 = Rails.root.join("db/seed-images/greenpeace/gp0stqdu4.webp")
+      photo_path4 = Rails.root.join("db/seed-images/greenpeace/GP01CK9.webp")
+
+      charity.photos.attach(io: File.open(photo_path1), filename: File.basename(photo_path1))
+      charity.photos.attach(io: File.open(photo_path2), filename: File.basename(photo_path2))
+      charity.photos.attach(io: File.open(photo_path3), filename: File.basename(photo_path3))
+      charity.photos.attach(io: File.open(photo_path4), filename: File.basename(photo_path4))
+
+      puts "Photos attached to #{charity.name}."
+    end
   end
-  if charity.name == "Save the Children"
-    photo_path1 = Rails.root.join("db/seed-images/greenpeace/GP0STPOUA_8.webp")
-    photo_path2 = Rails.root.join("db/seed-images/greenpeace/gp0stown2.webp")
-    photo_path3 = Rails.root.join("db/seed-images/greenpeace/gp0stqdu4.webp")
-    photo_path4 = Rails.root.join("db/seed-images/greenpeace/GP01CK9.webp")
-
-    charity.photos.attach(io: File.open(photo_path1), filename: File.basename(photo_path1))
-    charity.photos.attach(io: File.open(photo_path2), filename: File.basename(photo_path2))
-    charity.photos.attach(io: File.open(photo_path3), filename: File.basename(photo_path3))
-    charity.photos.attach(io: File.open(photo_path4), filename: File.basename(photo_path4))
-
-    puts "Photos attached to #{charity.name}."
-  end
-  if charity.name == "Oxfam"
-    photo_path1 = Rails.root.join("db/seed-images/greenpeace/GP0STPOUA_8.webp")
-    photo_path2 = Rails.root.join("db/seed-images/greenpeace/gp0stown2.webp")
-    photo_path3 = Rails.root.join("db/seed-images/greenpeace/gp0stqdu4.webp")
-    photo_path4 = Rails.root.join("db/seed-images/greenpeace/GP01CK9.webp")
-
-    charity.photos.attach(io: File.open(photo_path1), filename: File.basename(photo_path1))
-    charity.photos.attach(io: File.open(photo_path2), filename: File.basename(photo_path2))
-    charity.photos.attach(io: File.open(photo_path3), filename: File.basename(photo_path3))
-    charity.photos.attach(io: File.open(photo_path4), filename: File.basename(photo_path4))
-
-    puts "Photos attached to #{charity.name}."
-  end
-  if charity.name == "World Wildlife Fund (WWF)"
-    photo_path1 = Rails.root.join("db/seed-images/greenpeace/GP0STPOUA_8.webp")
-    photo_path2 = Rails.root.join("db/seed-images/greenpeace/gp0stown2.webp")
-    photo_path3 = Rails.root.join("db/seed-images/greenpeace/gp0stqdu4.webp")
-    photo_path4 = Rails.root.join("db/seed-images/greenpeace/GP01CK9.webp")
-
-    charity.photos.attach(io: File.open(photo_path1), filename: File.basename(photo_path1))
-    charity.photos.attach(io: File.open(photo_path2), filename: File.basename(photo_path2))
-    charity.photos.attach(io: File.open(photo_path3), filename: File.basename(photo_path3))
-    charity.photos.attach(io: File.open(photo_path4), filename: File.basename(photo_path4))
-
-    puts "Photos attached to #{charity.name}."
-  end
-  if charity.name == "The Sierra Club Foundation"
-    photo_path1 = Rails.root.join("db/seed-images/greenpeace/GP0STPOUA_8.webp")
-    photo_path2 = Rails.root.join("db/seed-images/greenpeace/gp0stown2.webp")
-    photo_path3 = Rails.root.join("db/seed-images/greenpeace/gp0stqdu4.webp")
-    photo_path4 = Rails.root.join("db/seed-images/greenpeace/GP01CK9.webp")
-
-    charity.photos.attach(io: File.open(photo_path1), filename: File.basename(photo_path1))
-    charity.photos.attach(io: File.open(photo_path2), filename: File.basename(photo_path2))
-    charity.photos.attach(io: File.open(photo_path3), filename: File.basename(photo_path3))
-    charity.photos.attach(io: File.open(photo_path4), filename: File.basename(photo_path4))
-
-    puts "Photos attached to #{charity.name}."
-  end
-  if charity.name == "Friends of the Earth"
-    photo_path1 = Rails.root.join("db/seed-images/greenpeace/GP0STPOUA_8.webp")
-    photo_path2 = Rails.root.join("db/seed-images/greenpeace/gp0stown2.webp")
-    photo_path3 = Rails.root.join("db/seed-images/greenpeace/gp0stqdu4.webp")
-    photo_path4 = Rails.root.join("db/seed-images/greenpeace/GP01CK9.webp")
-
-    charity.photos.attach(io: File.open(photo_path1), filename: File.basename(photo_path1))
-    charity.photos.attach(io: File.open(photo_path2), filename: File.basename(photo_path2))
-    charity.photos.attach(io: File.open(photo_path3), filename: File.basename(photo_path3))
-    charity.photos.attach(io: File.open(photo_path4), filename: File.basename(photo_path4))
-
-    puts "Photos attached to #{charity.name}."
-  end
-  if charity.name == "Rainforest Alliance"
-    photo_path1 = Rails.root.join("db/seed-images/greenpeace/GP0STPOUA_8.webp")
-    photo_path2 = Rails.root.join("db/seed-images/greenpeace/gp0stown2.webp")
-    photo_path3 = Rails.root.join("db/seed-images/greenpeace/gp0stqdu4.webp")
-    photo_path4 = Rails.root.join("db/seed-images/greenpeace/GP01CK9.webp")
-
-    charity.photos.attach(io: File.open(photo_path1), filename: File.basename(photo_path1))
-    charity.photos.attach(io: File.open(photo_path2), filename: File.basename(photo_path2))
-    charity.photos.attach(io: File.open(photo_path3), filename: File.basename(photo_path3))
-    charity.photos.attach(io: File.open(photo_path4), filename: File.basename(photo_path4))
-
-    puts "Photos attached to #{charity.name}."
-  end
-  if charity.name == "ClimateWorks Foundation"
-    photo_path1 = Rails.root.join("db/seed-images/greenpeace/GP0STPOUA_8.webp")
-    photo_path2 = Rails.root.join("db/seed-images/greenpeace/gp0stown2.webp")
-    photo_path3 = Rails.root.join("db/seed-images/greenpeace/gp0stqdu4.webp")
-    photo_path4 = Rails.root.join("db/seed-images/greenpeace/GP01CK9.webp")
-
-    charity.photos.attach(io: File.open(photo_path1), filename: File.basename(photo_path1))
-    charity.photos.attach(io: File.open(photo_path2), filename: File.basename(photo_path2))
-    charity.photos.attach(io: File.open(photo_path3), filename: File.basename(photo_path3))
-    charity.photos.attach(io: File.open(photo_path4), filename: File.basename(photo_path4))
-
-    puts "Photos attached to #{charity.name}."
-  end
-end
 
   puts "#{Charity.count} charities created."
 
@@ -303,319 +309,319 @@ end
   puts "Creating charity projects..."
 
   charity_projects_oxfam = [{
-    name: "Oxfam",  # This is now the first project
-    description: "Description of the new project goes here.",
-    location: "Location of the new project",
-    goal: 50000,
-    charity: Charity.find_by(name: "Oxfam"),
-    photos: [
-      Rails.root.join("db/seed-images/greenpeace/GP0STPOUA_8.webp")
-    ]
-  }, {
-    name: "Fighting Poverty in Africa",
-    description: "Oxfam is working to fight poverty in Africa by providing clean water, food, and education to communities in need.",
-    # A village in Niger named Bilma
-    location: "Bilma, Niger",
-    goal: 50000,
-    charity: Charity.find_by(name: "Oxfam"),
-    photos: [
-      Rails.root.join("db/seed-images/greenpeace/GP01EFS-polar-bear-600x450-c-default.webp")
-    ]
-  }, {
-    name: "Emergency Aid in Yemen",
-    description: "Oxfam is providing emergency aid in Yemen by delivering food, water, and medical supplies to families affected by the conflict.",
-    # A village in Yemen named Al-Hudaydah
-    location: "Al-Hudaydah, Yemen",
-    goal: 50000,
-    charity: Charity.find_by(name: "Oxfam"),
-    photos: [
-      Rails.root.join("db/seed-images/greenpeace/030321_decarbonization.jpg")
-    ]
-  }, {
-    name: "Promoting Sustainable Development in India",
-    description: "Oxfam is promoting sustainable development in India by supporting small-scale farmers.",
-    # A village in India named Khandwa
-    location: "Khandwa, India",
-    goal: 50000,
-    charity: Charity.find_by(name: "Oxfam"),
-    photos: [
-      Rails.root.join("db/seed-images/greenpeace/DSC_9026-1.jpg")
-    ]
-  }
-]
+      name: "Oxfam",  # This is now the first project
+      description: "Description of the new project goes here.",
+      location: "Location of the new project",
+      goal: 50000,
+      charity: Charity.find_by(name: "Oxfam"),
+      photos: [
+        Rails.root.join("db/seed-images/greenpeace/GP0STPOUA_8.webp")
+      ]
+    }, {
+      name: "Fighting Poverty in Africa",
+      description: "Oxfam is working to fight poverty in Africa by providing clean water, food, and education to communities in need.",
+      # A village in Niger named Bilma
+      location: "Bilma, Niger",
+      goal: 50000,
+      charity: Charity.find_by(name: "Oxfam"),
+      photos: [
+        Rails.root.join("db/seed-images/greenpeace/GP01EFS-polar-bear-600x450-c-default.webp")
+      ]
+    }, {
+      name: "Emergency Aid in Yemen",
+      description: "Oxfam is providing emergency aid in Yemen by delivering food, water, and medical supplies to families affected by the conflict.",
+      # A village in Yemen named Al-Hudaydah
+      location: "Al-Hudaydah, Yemen",
+      goal: 50000,
+      charity: Charity.find_by(name: "Oxfam"),
+      photos: [
+        Rails.root.join("db/seed-images/greenpeace/030321_decarbonization.jpg")
+      ]
+    }, {
+      name: "Promoting Sustainable Development in India",
+      description: "Oxfam is promoting sustainable development in India by supporting small-scale farmers.",
+      # A village in India named Khandwa
+      location: "Khandwa, India",
+      goal: 50000,
+      charity: Charity.find_by(name: "Oxfam"),
+      photos: [
+        Rails.root.join("db/seed-images/greenpeace/DSC_9026-1.jpg")
+      ]
+    }
+  ]
 
-charity_projects_greenpeace = [{
-    name: "Greenpeace",  # This is now the first project
-    description: "Description of the new project goes here.",
-    location: "Location of the new project",
-    goal: 50000,
-    charity: Charity.find_by(name: "Greenpeace"),
-    photos: [
-      Rails.root.join("db/seed-images/greenpeace/GP0STPOUA_8.webp")
-    ]
-  }, {
-    name: "Protecting the Arctic",
-    description: "Greenpeace is working to protect the Arctic by campaigning against oil drilling and industrial fishing in the region.",
-    location: "Arctic Ocean",
-    goal: 50000,
-    charity: Charity.find_by(name: "Greenpeace"),
-    photos: [
-      Rails.root.join("db/seed-images/greenpeace/GP01EFS-polar-bear-600x450-c-default.webp")
-    ]
-  }, {
-    name: "Campaigning for Decarbonization in Brussels",
-    description: "Greenpeace is campaigning for decarbonization in Brussels by promoting renewable energy and reducing greenhouse gas emissions.",
-    location: "Brussels, Belgium",
-    goal: 30000,
-    charity: Charity.find_by(name: "Greenpeace"),
-    photos: [
-      Rails.root.join("db/seed-images/greenpeace/030321_decarbonization.jpg")
-    ]
-  }, {
-    name: "Whale Conservation in the Pacific",
-    description: "Greenpeace is working to protect whales in the Pacific by campaigning against commercial whaling and promoting marine conservation.",
-    location: "Pacific Ocean",
-    goal: 40000,
-    charity: Charity.find_by(name: "Greenpeace"),
-    photos: [
-      Rails.root.join("db/seed-images/greenpeace/DSC_9026-1.jpg")
-    ]
-  }
-]
+  charity_projects_greenpeace = [{
+      name: "Greenpeace",  # This is now the first project
+      description: "Description of the new project goes here.",
+      location: "Location of the new project",
+      goal: 50000,
+      charity: Charity.find_by(name: "Greenpeace"),
+      photos: [
+        Rails.root.join("db/seed-images/greenpeace/GP0STPOUA_8.webp")
+      ]
+    }, {
+      name: "Protecting the Arctic",
+      description: "Greenpeace is working to protect the Arctic by campaigning against oil drilling and industrial fishing in the region.",
+      location: "Arctic Ocean",
+      goal: 50000,
+      charity: Charity.find_by(name: "Greenpeace"),
+      photos: [
+        Rails.root.join("db/seed-images/greenpeace/GP01EFS-polar-bear-600x450-c-default.webp")
+      ]
+    }, {
+      name: "Campaigning for Decarbonization in Brussels",
+      description: "Greenpeace is campaigning for decarbonization in Brussels by promoting renewable energy and reducing greenhouse gas emissions.",
+      location: "Brussels, Belgium",
+      goal: 30000,
+      charity: Charity.find_by(name: "Greenpeace"),
+      photos: [
+        Rails.root.join("db/seed-images/greenpeace/030321_decarbonization.jpg")
+      ]
+    }, {
+      name: "Whale Conservation in the Pacific",
+      description: "Greenpeace is working to protect whales in the Pacific by campaigning against commercial whaling and promoting marine conservation.",
+      location: "Pacific Ocean",
+      goal: 40000,
+      charity: Charity.find_by(name: "Greenpeace"),
+      photos: [
+        Rails.root.join("db/seed-images/greenpeace/DSC_9026-1.jpg")
+      ]
+    }
+  ]
 
-charity_projects_save_the_children = [{
-    name: "Save the Children",  # Replace this with the actual title of the new project
-    description: "Description of the new project goes here.",  # Provide a brief description of the project
-    location: "Location of the new project",  # Specify the location
-    goal: 50000,  # Set a funding goal
-    charity: Charity.find_by(name: "Save the Children"),  # Link to the charity
-    photos: [
-      Rails.root.join("db/seed-images/greenpeace/GP0STPOUA_8.webp")  # Path to an image related to the new project
-    ]
-  }, {
-    name: "Providing Education in Afghanistan",
-    description: "Save the Children is providing education in Afghanistan by building schools and training teachers in rural communities.",
-    location: "Bamyan, Afghanistan",
-    goal: 50000,
-    charity: Charity.find_by(name: "Save the Children"),
-    photos: [
-      Rails.root.join("db/seed-images/greenpeace/DSC_9026-1.jpg")
-    ]
-  }, {
-    name: "Emergency Aid in Syria",
-    description: "Save the Children is providing emergency aid in Syria by delivering food, water, and medical supplies to families affected by the conflict.",
-    location: "Aleppo, Syria",
-    goal: 50000,
-    charity: Charity.find_by(name: "Save the Children"),
-    photos: [
-      Rails.root.join("db/seed-images/greenpeace/DSC_9026-1.jpg")
-    ]
-  }, {
-    name: "Fighting Malnutrition in South Sudan",
-    description: "Save the Children is fighting malnutrition in South Sudan by providing food, water, and medical care to children suffering from hunger.",
-    location: "Juba, South Sudan",
-    goal: 50000,
-    charity: Charity.find_by(name: "Save the Children"),
-    photos: [
-      Rails.root.join("db/seed-images/greenpeace/DSC_9026-1.jpg")
-    ]
-  }
-]
+  charity_projects_save_the_children = [{
+      name: "Save the Children",  # Replace this with the actual title of the new project
+      description: "Description of the new project goes here.",  # Provide a brief description of the project
+      location: "Location of the new project",  # Specify the location
+      goal: 50000,  # Set a funding goal
+      charity: Charity.find_by(name: "Save the Children"),  # Link to the charity
+      photos: [
+        Rails.root.join("db/seed-images/greenpeace/GP0STPOUA_8.webp")  # Path to an image related to the new project
+      ]
+    }, {
+      name: "Providing Education in Afghanistan",
+      description: "Save the Children is providing education in Afghanistan by building schools and training teachers in rural communities.",
+      location: "Bamyan, Afghanistan",
+      goal: 50000,
+      charity: Charity.find_by(name: "Save the Children"),
+      photos: [
+        Rails.root.join("db/seed-images/greenpeace/DSC_9026-1.jpg")
+      ]
+    }, {
+      name: "Emergency Aid in Syria",
+      description: "Save the Children is providing emergency aid in Syria by delivering food, water, and medical supplies to families affected by the conflict.",
+      location: "Aleppo, Syria",
+      goal: 50000,
+      charity: Charity.find_by(name: "Save the Children"),
+      photos: [
+        Rails.root.join("db/seed-images/greenpeace/DSC_9026-1.jpg")
+      ]
+    }, {
+      name: "Fighting Malnutrition in South Sudan",
+      description: "Save the Children is fighting malnutrition in South Sudan by providing food, water, and medical care to children suffering from hunger.",
+      location: "Juba, South Sudan",
+      goal: 50000,
+      charity: Charity.find_by(name: "Save the Children"),
+      photos: [
+        Rails.root.join("db/seed-images/greenpeace/DSC_9026-1.jpg")
+      ]
+    }
+  ]
 
-charity_projects_wwf = [{
-    name: "World Wildlife Fund (WWF)",  # Replace with the actual title of the new project
-    description: "Description of the new project goes here.",  # Provide a brief description of the new project
-    location: "Location of the new project",  # Specify the location
-    goal: 85000,  # Set a funding goal
-    charity: Charity.find_by(name: "World Wildlife Fund (WWF)"),  # Link to the charity
-    photos: [
-      Rails.root.join("db/seed-images/greenpeace/GP0STPOUA_8.webp")  # Path to an image related to the new project
-    ]
-  }, {
-    name: "Protecting Endangered Species",
-    description: "WWF is dedicated to protecting endangered species across the globe through conservation efforts and habitat protection.",
-    location: "Maasai Mara, Kenya",
-    goal: 80000,
-    charity: Charity.find_by(name: "World Wildlife Fund (WWF)"),
-    photos: [
-      Rails.root.join("db/seed-images/greenpeace/GP01EFS-polar-bear-600x450-c-default.webp")
-    ]
-  }, {
-    name: "Forest Conservation in the Amazon",
-    description: "WWF is working to conserve the Amazon rainforest by promoting sustainable land practices and protecting native species.",
-    location: "Manaus, Brazil",
-    goal: 100000,
-    charity: Charity.find_by(name: "World Wildlife Fund (WWF)"),
-    photos: [
-      Rails.root.join("db/seed-images/greenpeace/030321_decarbonization.jpg")
-    ]
-  }, {
-    name: "Marine Ecosystem Restoration",
-    description: "WWF is focused on restoring marine ecosystems to protect ocean biodiversity and sustain coastal communities.",
-    location: "Great Barrier Reef, Australia",
-    goal: 90000,
-    charity: Charity.find_by(name: "World Wildlife Fund (WWF)"),
-    photos: [
-      Rails.root.join("db/seed-images/greenpeace/DSC_9026-1.jpg")
-    ]
-  }
-]
+  charity_projects_wwf = [{
+      name: "World Wildlife Fund (WWF)",  # Replace with the actual title of the new project
+      description: "Description of the new project goes here.",  # Provide a brief description of the new project
+      location: "Location of the new project",  # Specify the location
+      goal: 85000,  # Set a funding goal
+      charity: Charity.find_by(name: "World Wildlife Fund (WWF)"),  # Link to the charity
+      photos: [
+        Rails.root.join("db/seed-images/greenpeace/GP0STPOUA_8.webp")  # Path to an image related to the new project
+      ]
+    }, {
+      name: "Protecting Endangered Species",
+      description: "WWF is dedicated to protecting endangered species across the globe through conservation efforts and habitat protection.",
+      location: "Maasai Mara, Kenya",
+      goal: 80000,
+      charity: Charity.find_by(name: "World Wildlife Fund (WWF)"),
+      photos: [
+        Rails.root.join("db/seed-images/greenpeace/GP01EFS-polar-bear-600x450-c-default.webp")
+      ]
+    }, {
+      name: "Forest Conservation in the Amazon",
+      description: "WWF is working to conserve the Amazon rainforest by promoting sustainable land practices and protecting native species.",
+      location: "Manaus, Brazil",
+      goal: 100000,
+      charity: Charity.find_by(name: "World Wildlife Fund (WWF)"),
+      photos: [
+        Rails.root.join("db/seed-images/greenpeace/030321_decarbonization.jpg")
+      ]
+    }, {
+      name: "Marine Ecosystem Restoration",
+      description: "WWF is focused on restoring marine ecosystems to protect ocean biodiversity and sustain coastal communities.",
+      location: "Great Barrier Reef, Australia",
+      goal: 90000,
+      charity: Charity.find_by(name: "World Wildlife Fund (WWF)"),
+      photos: [
+        Rails.root.join("db/seed-images/greenpeace/DSC_9026-1.jpg")
+      ]
+    }
+  ]
 
-charity_projects_sierra_club = [{
-    name: "The Sierra Club Foundation",  # Replace with the actual title of the new project
-    description: "Description of the new project goes here.",  # Provide a brief description of the new project
-    location: "Location of the new project",  # Specify the location
-    goal: 80000,  # Set a funding goal
-    charity: Charity.find_by(name: "The Sierra Club Foundation"),  # Link to the charity
-    photos: [
-      Rails.root.join("db/seed-images/greenpeace/GP0STPOUA_8.webp")  # Path to an image related to the new project
-    ]
-  }, {
-    name: "Preserving National Parks",
-    description: "The Sierra Club Foundation is dedicated to preserving America's national parks, ensuring these natural treasures are protected for future generations.",
-    location: "Yosemite National Park, USA",
-    goal: 85000,
-    charity: Charity.find_by(name: "The Sierra Club Foundation"),
-    photos: [
-      Rails.root.join("db/seed-images/greenpeace/GP01EFS-polar-bear-600x450-c-default.webp")
-    ]
-  }, {
-    name: "Clean Energy Transition",
-    description: "The Sierra Club Foundation supports the transition to clean, renewable energy sources to combat climate change and reduce pollution.",
-    location: "Austin, USA",
-    goal: 95000,
-    charity: Charity.find_by(name: "The Sierra Club Foundation"),
-    photos: [
-      Rails.root.join("db/seed-images/greenpeace/030321_decarbonization.jpg")
-    ]
-  }, {
-    name: "Protecting Wildlife Habitats",
-    description: "The Sierra Club Foundation works to protect wildlife habitats by advocating for sustainable land use and conservation policies.",
-    location: "Yellowstone National Park, USA",
-    goal: 70000,
-    charity: Charity.find_by(name: "The Sierra Club Foundation"),
-    photos: [
-      Rails.root.join("db/seed-images/greenpeace/DSC_9026-1.jpg")
-    ]
-  }
-]
+  charity_projects_sierra_club = [{
+      name: "The Sierra Club Foundation",  # Replace with the actual title of the new project
+      description: "Description of the new project goes here.",  # Provide a brief description of the new project
+      location: "Location of the new project",  # Specify the location
+      goal: 80000,  # Set a funding goal
+      charity: Charity.find_by(name: "The Sierra Club Foundation"),  # Link to the charity
+      photos: [
+        Rails.root.join("db/seed-images/greenpeace/GP0STPOUA_8.webp")  # Path to an image related to the new project
+      ]
+    }, {
+      name: "Preserving National Parks",
+      description: "The Sierra Club Foundation is dedicated to preserving America's national parks, ensuring these natural treasures are protected for future generations.",
+      location: "Yosemite National Park, USA",
+      goal: 85000,
+      charity: Charity.find_by(name: "The Sierra Club Foundation"),
+      photos: [
+        Rails.root.join("db/seed-images/greenpeace/GP01EFS-polar-bear-600x450-c-default.webp")
+      ]
+    }, {
+      name: "Clean Energy Transition",
+      description: "The Sierra Club Foundation supports the transition to clean, renewable energy sources to combat climate change and reduce pollution.",
+      location: "Austin, USA",
+      goal: 95000,
+      charity: Charity.find_by(name: "The Sierra Club Foundation"),
+      photos: [
+        Rails.root.join("db/seed-images/greenpeace/030321_decarbonization.jpg")
+      ]
+    }, {
+      name: "Protecting Wildlife Habitats",
+      description: "The Sierra Club Foundation works to protect wildlife habitats by advocating for sustainable land use and conservation policies.",
+      location: "Yellowstone National Park, USA",
+      goal: 70000,
+      charity: Charity.find_by(name: "The Sierra Club Foundation"),
+      photos: [
+        Rails.root.join("db/seed-images/greenpeace/DSC_9026-1.jpg")
+      ]
+    }
+  ]
 
-charity_projects_friends_of_the_earth = [{
-    name: "Friends of the Earth",  # Replace with the actual title of the new project
-    description: "Description of the new project goes here.",  # Provide a brief description of the new project
-    location: "Location of the new project",  # Specify the location
-    goal: 70000,  # Set a funding goal
-    charity: Charity.find_by(name: "Friends of the Earth"),  # Link to the charity
-    photos: [
-      Rails.root.join("db/seed-images/greenpeace/GP0STPOUA_8.webp")  # Path to an image related to the new project
-    ]
-  }, {
-    name: "Campaign for Clean Air",
-    description: "Friends of the Earth is leading a campaign to improve air quality in urban areas by reducing pollution and promoting green energy solutions.",
-    location: "London, UK",
-    goal: 60000,
-    charity: Charity.find_by(name: "Friends of the Earth"),
-    photos: [
-      Rails.root.join("db/seed-images/greenpeace/GP01EFS-polar-bear-600x450-c-default.webp")
-    ]
-  }, {
-    name: "Protecting Pollinators",
-    description: "Friends of the Earth is working to protect pollinators like bees by advocating against harmful pesticides and supporting organic farming.",
-    location: "California, USA",
-    goal: 75000,
-    charity: Charity.find_by(name: "Friends of the Earth"),
-    photos: [
-      Rails.root.join("db/seed-images/greenpeace/030321_decarbonization.jpg")
-    ]
-  }, {
-    name: "Fighting Plastic Pollution",
-    description: "Friends of the Earth is fighting plastic pollution by promoting sustainable alternatives and reducing single-use plastics.",
-    location: "Sydney, Australia",
-    goal: 65000,
-    charity: Charity.find_by(name: "Friends of the Earth"),
-    photos: [
-      Rails.root.join("db/seed-images/greenpeace/DSC_9026-1.jpg")
-    ]
-  }
-]
+  charity_projects_friends_of_the_earth = [{
+      name: "Friends of the Earth",  # Replace with the actual title of the new project
+      description: "Description of the new project goes here.",  # Provide a brief description of the new project
+      location: "Location of the new project",  # Specify the location
+      goal: 70000,  # Set a funding goal
+      charity: Charity.find_by(name: "Friends of the Earth"),  # Link to the charity
+      photos: [
+        Rails.root.join("db/seed-images/greenpeace/GP0STPOUA_8.webp")  # Path to an image related to the new project
+      ]
+    }, {
+      name: "Campaign for Clean Air",
+      description: "Friends of the Earth is leading a campaign to improve air quality in urban areas by reducing pollution and promoting green energy solutions.",
+      location: "London, UK",
+      goal: 60000,
+      charity: Charity.find_by(name: "Friends of the Earth"),
+      photos: [
+        Rails.root.join("db/seed-images/greenpeace/GP01EFS-polar-bear-600x450-c-default.webp")
+      ]
+    }, {
+      name: "Protecting Pollinators",
+      description: "Friends of the Earth is working to protect pollinators like bees by advocating against harmful pesticides and supporting organic farming.",
+      location: "California, USA",
+      goal: 75000,
+      charity: Charity.find_by(name: "Friends of the Earth"),
+      photos: [
+        Rails.root.join("db/seed-images/greenpeace/030321_decarbonization.jpg")
+      ]
+    }, {
+      name: "Fighting Plastic Pollution",
+      description: "Friends of the Earth is fighting plastic pollution by promoting sustainable alternatives and reducing single-use plastics.",
+      location: "Sydney, Australia",
+      goal: 65000,
+      charity: Charity.find_by(name: "Friends of the Earth"),
+      photos: [
+        Rails.root.join("db/seed-images/greenpeace/DSC_9026-1.jpg")
+      ]
+    }
+  ]
 
-charity_projects_rainforest_alliance = [{
-    name: "Rainforest Alliance",  # Replace with the actual title of the new project
-    description: "Description of the new project goes here.",  # Provide a brief description of the new project
-    location: "Location of the new project",  # Specify the location
-    goal: 75000,  # Set a funding goal
-    charity: Charity.find_by(name: "Rainforest Alliance"),  # Link to the charity
-    photos: [
-      Rails.root.join("db/seed-images/greenpeace/GP0STPOUA_8.webp")  # Path to an image related to the new project
-    ]
-  }, {
-    name: "Sustainable Farming in the Amazon",
-    description: "The Rainforest Alliance promotes sustainable farming practices in the Amazon to protect biodiversity and support local communities.",
-    location: "Acre, Brazil",
-    goal: 90000,
-    charity: Charity.find_by(name: "Rainforest Alliance"),
-    photos: [
-      Rails.root.join("db/seed-images/greenpeace/GP01EFS-polar-bear-600x450-c-default.webp")
-    ]
-  }, {
-    name: "Forest Conservation in Central America",
-    description: "The Rainforest Alliance works to conserve forests in Central America by advocating for sustainable land use and protecting wildlife.",
-    location: "Petén, Guatemala",
-    goal: 80000,
-    charity: Charity.find_by(name: "Rainforest Alliance"),
-    photos: [
-      Rails.root.join("db/seed-images/greenpeace/030321_decarbonization.jpg")
-    ]
-  }, {
-    name: "Protecting Indigenous Land Rights",
-    description: "The Rainforest Alliance supports indigenous communities in protecting their land rights to preserve forests and traditional ways of life.",
-    location: "Madre de Dios, Peru",
-    goal: 85000,
-    charity: Charity.find_by(name: "Rainforest Alliance"),
-    photos: [
-      Rails.root.join("db/seed-images/greenpeace/DSC_9026-1.jpg")
-    ]
-  }
-]
+  charity_projects_rainforest_alliance = [{
+      name: "Rainforest Alliance",  # Replace with the actual title of the new project
+      description: "Description of the new project goes here.",  # Provide a brief description of the new project
+      location: "Location of the new project",  # Specify the location
+      goal: 75000,  # Set a funding goal
+      charity: Charity.find_by(name: "Rainforest Alliance"),  # Link to the charity
+      photos: [
+        Rails.root.join("db/seed-images/greenpeace/GP0STPOUA_8.webp")  # Path to an image related to the new project
+      ]
+    }, {
+      name: "Sustainable Farming in the Amazon",
+      description: "The Rainforest Alliance promotes sustainable farming practices in the Amazon to protect biodiversity and support local communities.",
+      location: "Acre, Brazil",
+      goal: 90000,
+      charity: Charity.find_by(name: "Rainforest Alliance"),
+      photos: [
+        Rails.root.join("db/seed-images/greenpeace/GP01EFS-polar-bear-600x450-c-default.webp")
+      ]
+    }, {
+      name: "Forest Conservation in Central America",
+      description: "The Rainforest Alliance works to conserve forests in Central America by advocating for sustainable land use and protecting wildlife.",
+      location: "Petén, Guatemala",
+      goal: 80000,
+      charity: Charity.find_by(name: "Rainforest Alliance"),
+      photos: [
+        Rails.root.join("db/seed-images/greenpeace/030321_decarbonization.jpg")
+      ]
+    }, {
+      name: "Protecting Indigenous Land Rights",
+      description: "The Rainforest Alliance supports indigenous communities in protecting their land rights to preserve forests and traditional ways of life.",
+      location: "Madre de Dios, Peru",
+      goal: 85000,
+      charity: Charity.find_by(name: "Rainforest Alliance"),
+      photos: [
+        Rails.root.join("db/seed-images/greenpeace/DSC_9026-1.jpg")
+      ]
+    }
+  ]
 
-charity_projects_climateworks = [{
-    name: "ClimateWorks Foundation",  # Replace with the actual title of the new project
-    description: "Description of the new project goes here.",  # Provide a brief description of the new project
-    location: "Location of the new project",  # Specify the location
-    goal: 110000,  # Set a funding goal
-    charity: Charity.find_by(name: "ClimateWorks Foundation"),  # Link to the charity
-    photos: [
-      Rails.root.join("db/seed-images/greenpeace/GP0STPOUA_8.webp")  # Path to an image related to the new project
-    ]
-  }, {
-    name: "Accelerating Clean Energy Solutions",
-    description: "ClimateWorks Foundation is driving the transition to clean energy solutions worldwide to reduce carbon emissions and combat climate change.",
-    location: "San Francisco, USA",
-    goal: 100000,
-    charity: Charity.find_by(name: "ClimateWorks Foundation"),
-    photos: [
-      Rails.root.join("db/seed-images/greenpeace/GP01EFS-polar-bear-600x450-c-default.webp")
-    ]
-  }, {
-    name: "Supporting Sustainable Urban Development",
-    description: "ClimateWorks Foundation supports sustainable urban development initiatives to promote low-carbon, resilient cities.",
-    location: "Copenhagen, Denmark",
-    goal: 120000,
-    charity: Charity.find_by(name: "ClimateWorks Foundation"),
-    photos: [
-      Rails.root.join("db/seed-images/greenpeace/030321_decarbonization.jpg")
-    ]
-  }, {
-    name: "Reducing Deforestation in Southeast Asia",
-    description: "ClimateWorks Foundation is working to reduce deforestation in Southeast Asia by supporting sustainable land management practices.",
-    location: "Borneo, Indonesia",
-    goal: 95000,
-    charity: Charity.find_by(name: "ClimateWorks Foundation"),
-    photos: [
-      Rails.root.join("db/seed-images/greenpeace/DSC_9026-1.jpg")
-    ]
-  }
-]
+  charity_projects_climateworks = [{
+      name: "ClimateWorks Foundation",  # Replace with the actual title of the new project
+      description: "Description of the new project goes here.",  # Provide a brief description of the new project
+      location: "Location of the new project",  # Specify the location
+      goal: 110000,  # Set a funding goal
+      charity: Charity.find_by(name: "ClimateWorks Foundation"),  # Link to the charity
+      photos: [
+        Rails.root.join("db/seed-images/greenpeace/GP0STPOUA_8.webp")  # Path to an image related to the new project
+      ]
+    }, {
+      name: "Accelerating Clean Energy Solutions",
+      description: "ClimateWorks Foundation is driving the transition to clean energy solutions worldwide to reduce carbon emissions and combat climate change.",
+      location: "San Francisco, USA",
+      goal: 100000,
+      charity: Charity.find_by(name: "ClimateWorks Foundation"),
+      photos: [
+        Rails.root.join("db/seed-images/greenpeace/GP01EFS-polar-bear-600x450-c-default.webp")
+      ]
+    }, {
+      name: "Supporting Sustainable Urban Development",
+      description: "ClimateWorks Foundation supports sustainable urban development initiatives to promote low-carbon, resilient cities.",
+      location: "Copenhagen, Denmark",
+      goal: 120000,
+      charity: Charity.find_by(name: "ClimateWorks Foundation"),
+      photos: [
+        Rails.root.join("db/seed-images/greenpeace/030321_decarbonization.jpg")
+      ]
+    }, {
+      name: "Reducing Deforestation in Southeast Asia",
+      description: "ClimateWorks Foundation is working to reduce deforestation in Southeast Asia by supporting sustainable land management practices.",
+      location: "Borneo, Indonesia",
+      goal: 95000,
+      charity: Charity.find_by(name: "ClimateWorks Foundation"),
+      photos: [
+        Rails.root.join("db/seed-images/greenpeace/DSC_9026-1.jpg")
+      ]
+    }
+  ]
 
   charity_projects_all = charity_projects_oxfam + charity_projects_greenpeace + charity_projects_save_the_children + charity_projects_wwf + charity_projects_sierra_club + charity_projects_friends_of_the_earth + charity_projects_rainforest_alliance + charity_projects_climateworks
 
@@ -650,5 +656,98 @@ charity_projects_climateworks = [{
   end
 
   puts "#{Donation.count} donations created."
+
+# Create reports
+
+  puts "Creating reports..."
+
+  article_reports = []
+  evaluation_reports = []
+
+
+  def report_scraper(article_reports)
+    # Def base url with charity projects to be scraped
+    base_url = "https://www.globalgiving.org/"
+    # Def url for reports of the charity project
+
+    # Test Scraping of the page
+    projects_page = URI.open("#{base_url}projects/").read
+    projects_doc = Nokogiri::HTML(projects_page).search(".js-projTitle")
+    projects_doc.each_with_index do |element, index|
+      project_page = URI.open("#{base_url + element.attribute("href").value}/reports/").read
+      project_reports = Nokogiri::HTML(project_page).search(".projectReport")
+      project_title = Nokogiri::HTML(project_page).search(".cuke-project div h1").text
+      project_category = Nokogiri::HTML(project_page).search(".cuke-project div div a").first.text
+      puts "project_category: #{project_category}"
+      my_category = ""
+      case project_category
+      when "Climate Action" then my_category = Category.find_by(name: "Climate Change")
+      when "Education" then my_category = Category.find_by(name: "Education")
+      when "Physical Health" then my_category = Category.find_by(name: "Health")
+      when "Mental Health" then my_category = Category.find_by(name: "Health")
+      when "Gender Equality" then my_category = Category.find_by(name: "Basic Needs")
+      when "Child Protection" then my_category = Category.find_by(name: "Basic Needs")
+      when "Economic Growth" then my_category = Category.find_by(name: "Basic Needs")
+      when "Food Security" then my_category = Category.find_by(name: "Basic Needs")
+      when "Justice and Human Rights" then my_category = Category.find_by(name: "Basic Needs")
+      when "Disaster Response" then my_category = Category.find_by(name: "Natural Disasters")
+      when "Ending Abuse" then my_category = Category.find_by(name: "Basic Needs")
+      when "Safe Housing" then my_category = Category.find_by(name: "Basic Needs")
+      when "Clean Water" then my_category = Category.find_by(name: "Basic Needs")
+      when "Disability Rights" then my_category = Category.find_by(name: "Basic Needs")
+      when "Ecosystem Restoration" then my_category = Category.find_by(name: "Climate Change")
+      when "Sustainable Agriculture" then my_category = Category.find_by(name: "Famine")
+      when "Animal Welfare" then my_category = Category.find_by(name: "Basic Needs")
+      when "Wildlife Conservation" then my_category = Category.find_by(name: "Climate Change")
+      when "Reproductive Health" then my_category = Category.find_by(name: "Health")
+      when "Refugee Rights" then my_category = Category.find_by(name: "Basic Needs")
+      when "Digital Literacy" then my_category = Category.find_by(name: "Education")
+      when "Arts and Culture" then my_category = Category.find_by(name: "Education")
+      when "Peace and Reconciliation" then my_category = Category.find_by(name: "Basic Needs")
+      when "Ending Human Trafficking" then my_category = Category.find_by(name: "Basic Needs")
+      when "Sport" then my_category = Category.find_by(name: "Education")
+      when "Racial Justice" then my_category = Category.find_by(name: "Basic Needs")
+      else my_category = Category.find_by(name: "Basic Needs")
+      end
+      puts "my_category: #{my_category.name}"
+
+      puts "creating Reports for Project #{index} / #{projects_doc.count}: #{project_title}"
+      project_reports.each_with_index do |scraped_report, ind|
+        puts "creating Report #{ind} / #{project_reports.count}: #{scraped_report.search("h3 > span").text}"
+        content = ""
+        scraped_report.search("div > p").each do |p|
+          content += p.text
+        end
+        teaser_content = ""
+        content.split(".").each do |sentence|
+          teaser_content += sentence unless ( teaser_content.length + sentence.length ) > 300
+        end
+        if teaser_content == ""
+          teaser_content = "Read the full Article to learn more."
+        end
+        # Safe inside project_math a random project that belongs to a chraity organisation that belongs to my_category
+        project_match = CharityProject.joins(charity: :category).where(charity: { category: my_category}).sample
+        report = {
+          report_type: "article",
+          user: User.where(role: 2).sample,
+          title: scraped_report.search("h3 > span").text,
+          body: content,
+          # cut the content after a fullstop with a max of 300 characters
+          teaser: teaser_content,
+          charity_project: project_match
+        }
+        article_reports << report
+      end
+    end
+    article_reports
+  end
+
+  if article_reports.empty?
+    my_reports = report_scraper(article_reports)
+    my_reports.each_with_index do |report, index|
+      a_report = Report.create!(report)
+      puts "Report #{index} / #{my_reports.count}: #{a_report.title} created."
+    end
+  end
 
 puts "Seeding complete!"

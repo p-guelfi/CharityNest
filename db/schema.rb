@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_11_07_150618) do
+ActiveRecord::Schema[7.1].define(version: 2024_11_08_203245) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -100,7 +100,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_07_150618) do
   create_table "reports", force: :cascade do |t|
     t.string "title"
     t.text "teaser"
-    t.integer "type"
+    t.integer "report_type"
     t.integer "score"
     t.bigint "user_id", null: false
     t.bigint "charity_project_id", null: false

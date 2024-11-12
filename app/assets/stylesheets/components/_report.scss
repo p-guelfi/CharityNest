@@ -52,9 +52,62 @@
   border: 0;
 }
 
+.report {
+  padding: 2rem;
+  img {
+    width: 100%;
+    margin-bottom: 2rem;
+    overflow: hidden;
+  }
+  a {
+    text-decoration: none;
+    font-weight: bold;
+    margin-bottom: 0;
+  }
+  small {
+    margin: 0;
+  }
+}
+.report-evaluation {
+  background-color: $bright-turquoise;
+  .report-type {
+    color: white;
+    font-weight: bold;
+  }
+}
+.report-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+
 .card-report-teaser {
   @extend .card-basic;
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  img {
+    object-fit: cover;
+    margin: -2rem 0 -2rem -2rem;
+    width: calc(100% + 2rem);
+    height: calc(100% + 2*2rem);
+  }
 }
 .report-full {
   background-color: white;
+  max-width: 800px;
+  margin: 0 auto;
+  box-shadow: $default-box-shadow;
+  min-height: 100vh;
+  img {
+    object-fit: contain;
+    margin: -2rem -2rem 2rem -2rem;
+    width: calc(100% + 4rem)
+  }
+}
+.report-date {
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
 }
