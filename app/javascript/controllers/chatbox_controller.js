@@ -113,14 +113,14 @@ export default class extends Controller {
       this.inputTarget.value = "";
       this.saveChatHistory(chatHistory);
 
-      // Send the message to the server
+      // Send the full conversation history to the server
       fetch("/chat", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           "X-CSRF-Token": document.querySelector("[name='csrf-token']").content,
         },
-        body: JSON.stringify({ message: message }),
+        body: JSON.stringify({ messages: chatHistory }), // Send the full chat history
       })
         .then((response) => response.json())
         .then((data) => {
