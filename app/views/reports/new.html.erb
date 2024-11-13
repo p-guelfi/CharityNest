@@ -4,8 +4,32 @@
     <%= simple_form_for [ @charity_project, @report ] do |f| %>
       <% if current_user.evaluator? %>
         <div class="form-inputs">
-          <%= f.input :report_type, label: "Type of Article", as: :select %>
+          <%= f.input :report_type, collection: Report.report_types.keys, label: "Type of Report" %>
         </div>
+        <%# Input for Score as a slider between 0 and 100 %>
+        <div class="score-inputs">
+          <h4>Scores in % ( 0 - 100 )</h4>
+          <div class="score-main">
+            <div class="form-inputs">
+              <%= f.input :score, as: :integer, label: "Overall", input_html: { min: 0, max: 100 } %>
+            </div>
+          </div>
+          <div class="score-detailed">
+            <div class="form-inputs">
+              <%= f.input :score_impact, as: :integer, label: "Impact", input_html: { min: 0, max: 100 } %>
+            </div>
+            <div class="form-inputs">
+              <%= f.input :score_communication, as: :integer, label: "Communication", input_html: { min: 0, max: 100 } %>
+            </div>
+            <div class="form-inputs">
+              <%= f.input :score_efficiency, as: :integer, label: "Efficiency", input_html: { min: 0, max: 100 } %>
+            </div>
+            <div class="form-inputs">
+              <%= f.input :score_adaptability, as: :integer, label: "Adaptability", input_html: { min: 0, max: 100 } %>
+            </div>
+          </div>
+        </div>
+      <h4>Evaluation Report</h4>
       <% else %>
           <%= f.input :report_type, as: :hidden, input_html: { value: "article" } %>
       <% end %>

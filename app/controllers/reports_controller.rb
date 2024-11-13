@@ -34,7 +34,18 @@ class ReportsController < ApplicationController
   private
 
   def report_params
-    params.require(:report).permit(:title, :teaser, :body, :type, :report_type, photos: [])
+    params.require(:report).permit(
+      :title,
+      :teaser,
+      :body,
+      :type,
+      :report_type,
+      :score,
+      :score_impact,
+      :score_communication,
+      :score_efficiency,
+      :score_adaptability,
+      photos: [])
   end
 
   def set_report

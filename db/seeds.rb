@@ -1,5 +1,6 @@
 require 'open-uri'
 require 'nokogiri'
+require 'json'
 
 puts "Seeding database..."
 # Destroy all existing records
@@ -661,11 +662,10 @@ puts "Seeding database..."
 
   puts "Creating reports..."
 
-  article_reports = []
-  evaluation_reports = []
+  # Scraper for Article Reports
 
-
-  def report_scraper(article_reports)
+  def report_scraper
+    scraped_reports = []
     # Def base url with charity projects to be scraped
     base_url = "https://www.globalgiving.org/"
     # Def url for reports of the charity project
@@ -726,28 +726,75 @@ puts "Seeding database..."
           teaser_content = "Read the full Article to learn more."
         end
         # Safe inside project_math a random project that belongs to a chraity organisation that belongs to my_category
-        project_match = CharityProject.joins(charity: :category).where(charity: { category: my_category}).sample
+        project_match = CharityProject.joins(charity: :category).where(charity: { category: my_category}).sample.name
         report = {
           report_type: "article",
-          user: User.where(role: 2).sample,
+          user: User.where(role: 2).sample.email,
           title: scraped_report.search("h3 > span").text,
           body: content,
           # cut the content after a fullstop with a max of 300 characters
           teaser: teaser_content,
           charity_project: project_match
         }
-        article_reports << report
+        scraped_reports << report
       end
     end
-    article_reports
-  end
-
-  if article_reports.empty?
-    my_reports = report_scraper(article_reports)
-    my_reports.each_with_index do |report, index|
-      a_report = Report.create!(report)
-      puts "Report #{index} / #{my_reports.count}: #{a_report.title} created."
+    File.open("db/reports.json", "wb") do |file|
+      file.write(JSON.generate(scraped_reports))
     end
   end
+
+
+  # Save Article Reports in DB
+
+  reports_file = File.read("db/reports.json")
+  if reports_file.empty?
+    report_scraper
+    reports_file = File.read("db/reports.json")
+  end
+  article_reports  = JSON.parse(reports_file)
+
+  article_reports.each_with_index do |report, index|
+    a_report = Report.new(title: report["title"], body: report["body"], teaser: report["teaser"], report_type: report["report_type"].capitalize)
+    a_report.user = User.find_by(email: report["user"])
+    a_report.charity_project = CharityProject.find_by(name: report["charity_project"])
+    a_report.save!
+    puts "Article Report #{index} / #{article_reports.count}: #{a_report.title} created."
+  end
+
+  # Create Evaluation Reports
+  evaluation_reports = []
+
+  CharityProject.all.each do |project|
+    i = 1
+    3.times do
+      evaluation_report = {
+        report_type: "Evaluation",
+        user: User.where(role: 3).sample,
+        score: rand(75..100),
+        score_impact: rand(75..100),
+        score_communication: rand(75..100),
+        score_efficiency: rand(75..100),
+        score_adaptability: rand(75..100),
+        title: "Report Q#{i} 2024",
+        body: "This evaluation report provides an overview of the impact and outcomes of the project, including key achievements, challenges, and recommendations for future initiatives.<h1>Impact</h1>
+        <p>The project has demonstrated a significant impact on the target community, with measurable improvements in key areas such as access to education, healthcare, and economic opportunities. The implementation of sustainable solutions has led to positive outcomes for local residents, contributing to long-term development and well-being.</p>
+        <h1>Communication</h1>
+        <p>The project team has effectively communicated with stakeholders, partners, and beneficiaries throughout the project lifecycle, ensuring transparency, accountability, and engagement. Regular updates, reports, and feedback mechanisms have facilitated meaningful dialogue and collaboration, enhancing the overall success of the initiative.</p>
+        <h1>Efficiency</h1>
+        <p>The project has demonstrated high levels of efficiency in resource management, budget allocation, and timeline adherence. The team's strategic planning, monitoring, and evaluation processes have optimized project delivery, resulting in cost-effective solutions and timely outcomes.</p>
+        <h1>Adaptability</h1>
+        <p>The project team has shown flexibility and adaptability in responding to changing circumstances, unforeseen challenges, and evolving needs. By adjusting strategies, activities, and approaches as required, the project has maintained relevance, effectiveness, and sustainability over time.</p>",
+        teaser: "Read the evaluation report to learn more about the impact of this project.",
+        charity_project: project
+      }
+      Report.create!(evaluation_report)
+      i += 1
+    end
+    puts "#{i - 1} Evaluation reports created for #{project.name}."
+  end
+
+
+
 
 puts "Seeding complete!"

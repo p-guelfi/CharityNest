@@ -1,4 +1,4 @@
 <%# needs a report object as an argument %>
-<div class="report card-report-teaser" <%= "class='report-evaluation'" if report.report_type == "evaluation"  %>>
+<div class="<%= report.report_type == "Evaluation" ? 'report card-report-teaser report-evaluation' : 'report card-report-teaser' %>">
   <%= render "report_content_essentials", report: report %>
 </div>

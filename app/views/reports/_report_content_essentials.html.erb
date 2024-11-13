@@ -1,15 +1,15 @@
 <div class="report-image">
-  <%  if report.photos.first.present? %>
-    <%= cl_image_tag report.photos.first.key %>
+  <% if report.report_type == "Evaluation" %>
+    <%= render "report_evaluation_graphics", report: report %>
   <% else %>
-    <%= cl_image_tag report.charity_project.photos.first.key %>
+    <%= render "report_article_image", report: report %>
   <% end %>
 </div>
 <div class="report-text">
   <div>
-    <small><%= report.user.first_name %> <%= report.user.last_name %></small>
+    <small><%= report.charity_project.name %></small>
     <h2><%= report.title %></h2>
-    <p class="report-date"><span class="report-type"><%= report.report_type.capitalize %></span> • <%= report.created_at.strftime('%b %d, %Y') %></p>
+    <p class="report-date"><span class="report-type"><%= report.report_type.capitalize %></span> by <%= report.user.first_name %>  <%= report.user.last_name %> • <%= report.created_at.strftime('%b %d, %Y') %></p>
     <p><%= report.teaser %></p>
   </div>
   <% unless current_page?(report_path(report))  %>

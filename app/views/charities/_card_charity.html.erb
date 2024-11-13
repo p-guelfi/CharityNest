@@ -25,9 +25,9 @@
     <div class="info-points">
       <h6>Evaluation Score</h6>
       <div class="progress">
-          <% charity.name == "Greenpeace" ? percentage = 95 : percentage = rand(80..97) %>
-          <div class="progress-bar" role="progressbar" style="width: <%= percentage %>%; background-color: #35A28C;" aria-valuenow="<%= percentage %>" aria-valuemin="0" aria-valuemax="100"><%= percentage %> %</div>
-        </div>
+        <% charity.name == "Greenpeace" ? percentage = 95 : percentage = charity.score %>
+        <div class="progress-bar" role="progressbar" style="width: <%= percentage %>%; background-color: #35A28C;" aria-valuenow="<%= percentage %>" aria-valuemin="0" aria-valuemax="100"><%= percentage %> %</div>
+      </div>
     </div>
   </div>
 </div>
