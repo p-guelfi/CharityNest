@@ -20,6 +20,14 @@ class CharitiesController < ApplicationController
   def show
     @charity = Charity.find(params[:id])
     @charity_projects = @charity.charity_projects.includes(:donations)
+
+    # Build the markers array for the charity's projects
+    @markers = @charity_projects.geocoded.map do |project|
+      {
+        lat: project.latitude,
+        lng: project.longitude
+      }
+    end
   end
 
   private
