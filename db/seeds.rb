@@ -310,51 +310,51 @@ puts "Seeding database..."
   puts "Creating charity projects..."
 
   charity_projects_oxfam = [{
-      name: "Oxfam",  # This is now the first project
-      description: "Description of the new project goes here.",
-      location: "Location of the new project",
-      goal: 50000,
-      charity: Charity.find_by(name: "Oxfam"),
-      photos: [
-        Rails.root.join("db/seed-images/greenpeace/GP0STPOUA_8.webp")
-      ]
-    }, {
-      name: "Fighting Poverty in Africa",
-      description: "Oxfam is working to fight poverty in Africa by providing clean water, food, and education to communities in need.",
-      # A village in Niger named Bilma
-      location: "Bilma, Niger",
-      goal: 50000,
-      charity: Charity.find_by(name: "Oxfam"),
-      photos: [
-        Rails.root.join("db/seed-images/greenpeace/GP01EFS-polar-bear-600x450-c-default.webp")
-      ]
-    }, {
-      name: "Emergency Aid in Yemen",
-      description: "Oxfam is providing emergency aid in Yemen by delivering food, water, and medical supplies to families affected by the conflict.",
-      # A village in Yemen named Al-Hudaydah
-      location: "Al-Hudaydah, Yemen",
-      goal: 50000,
-      charity: Charity.find_by(name: "Oxfam"),
-      photos: [
-        Rails.root.join("db/seed-images/greenpeace/030321_decarbonization.jpg")
-      ]
-    }, {
-      name: "Promoting Sustainable Development in India",
-      description: "Oxfam is promoting sustainable development in India by supporting small-scale farmers.",
-      # A village in India named Khandwa
-      location: "Khandwa, India",
-      goal: 50000,
-      charity: Charity.find_by(name: "Oxfam"),
-      photos: [
-        Rails.root.join("db/seed-images/greenpeace/DSC_9026-1.jpg")
-      ]
-    }
+    name: "Oxfam",  # This is now the first project
+    description: "This project directly funds Oxfam, helping to support its core mission of fighting poverty and inequality around the world.",
+    location: "Nairobi, Kenya",
+    goal: 50000,
+    charity: Charity.find_by(name: "Oxfam"),
+    photos: [
+      Rails.root.join("db/seed-images/greenpeace/GP0STPOUA_8.webp")
+    ]
+  }, {
+    name: "Fighting Poverty in Africa",
+    description: "Oxfam is working to fight poverty in Africa by providing clean water, food, and education to communities in need.",
+    # A village in Niger named Bilma
+    location: "Bilma, Niger",
+    goal: 50000,
+    charity: Charity.find_by(name: "Oxfam"),
+    photos: [
+      Rails.root.join("db/seed-images/greenpeace/GP01EFS-polar-bear-600x450-c-default.webp")
+    ]
+  }, {
+    name: "Emergency Aid in Yemen",
+    description: "Oxfam is providing emergency aid in Yemen by delivering food, water, and medical supplies to families affected by the conflict.",
+    # A village in Yemen named Al-Hudaydah
+    location: "Al-Hudaydah, Yemen",
+    goal: 50000,
+    charity: Charity.find_by(name: "Oxfam"),
+    photos: [
+      Rails.root.join("db/seed-images/greenpeace/030321_decarbonization.jpg")
+    ]
+  }, {
+    name: "Promoting Sustainable Development in India",
+    description: "Oxfam is promoting sustainable development in India by supporting small-scale farmers.",
+    # A village in India named Khandwa
+    location: "Khandwa, India",
+    goal: 50000,
+    charity: Charity.find_by(name: "Oxfam"),
+    photos: [
+      Rails.root.join("db/seed-images/greenpeace/DSC_9026-1.jpg")
+    ]
+  }
   ]
 
   charity_projects_greenpeace = [{
       name: "Greenpeace",  # This is now the first project
-      description: "Description of the new project goes here.",
-      location: "Location of the new project",
+      description: "This project directly funds Greenpeace, helping to support its core mission of protecting the environment and promoting peace worldwide.",
+      location: "Amsterdam, Netherlands",
       goal: 50000,
       charity: Charity.find_by(name: "Greenpeace"),
       photos: [
@@ -392,8 +392,8 @@ puts "Seeding database..."
 
   charity_projects_save_the_children = [{
       name: "Save the Children",  # Replace this with the actual title of the new project
-      description: "Description of the new project goes here.",  # Provide a brief description of the project
-      location: "Location of the new project",  # Specify the location
+      description: "This project directly funds Save the Children, helping to support its mission of protecting and empowering vulnerable children worldwide.",
+      location: "London, United Kingdom",  # Specify the location
       goal: 50000,  # Set a funding goal
       charity: Charity.find_by(name: "Save the Children"),  # Link to the charity
       photos: [
@@ -431,8 +431,8 @@ puts "Seeding database..."
 
   charity_projects_wwf = [{
       name: "World Wildlife Fund (WWF)",  # Replace with the actual title of the new project
-      description: "Description of the new project goes here.",  # Provide a brief description of the new project
-      location: "Location of the new project",  # Specify the location
+      description: "This project directly funds WWF, helping to support its mission of conserving nature and reducing the most pressing threats to the environment.",
+      location: "Gland, Switzerland",  # Specify the location
       goal: 85000,  # Set a funding goal
       charity: Charity.find_by(name: "World Wildlife Fund (WWF)"),  # Link to the charity
       photos: [
@@ -470,8 +470,8 @@ puts "Seeding database..."
 
   charity_projects_sierra_club = [{
       name: "The Sierra Club Foundation",  # Replace with the actual title of the new project
-      description: "Description of the new project goes here.",  # Provide a brief description of the new project
-      location: "Location of the new project",  # Specify the location
+      description: "This project directly funds The Sierra Club Foundation, helping to support its mission of promoting climate solutions and protecting natural ecosystems.",
+      location: "Oakland, CA, USA",  # Specify the location
       goal: 80000,  # Set a funding goal
       charity: Charity.find_by(name: "The Sierra Club Foundation"),  # Link to the charity
       photos: [
@@ -509,8 +509,8 @@ puts "Seeding database..."
 
   charity_projects_friends_of_the_earth = [{
       name: "Friends of the Earth",  # Replace with the actual title of the new project
-      description: "Description of the new project goes here.",  # Provide a brief description of the new project
-      location: "Location of the new project",  # Specify the location
+      description: "This project directly funds Friends of the Earth, helping to support its mission of promoting environmental justice and sustainability worldwide.",
+      location: "Amsterdam, Netherlands",  # Specify the location
       goal: 70000,  # Set a funding goal
       charity: Charity.find_by(name: "Friends of the Earth"),  # Link to the charity
       photos: [
@@ -548,8 +548,8 @@ puts "Seeding database..."
 
   charity_projects_rainforest_alliance = [{
       name: "Rainforest Alliance",  # Replace with the actual title of the new project
-      description: "Description of the new project goes here.",  # Provide a brief description of the new project
-      location: "Location of the new project",  # Specify the location
+      description: "This project directly funds the Rainforest Alliance, helping to support its mission of conserving biodiversity and ensuring sustainable livelihoods.",
+      location: "New York City, United States",  # Specify the location
       goal: 75000,  # Set a funding goal
       charity: Charity.find_by(name: "Rainforest Alliance"),  # Link to the charity
       photos: [
@@ -587,8 +587,8 @@ puts "Seeding database..."
 
   charity_projects_climateworks = [{
       name: "ClimateWorks Foundation",  # Replace with the actual title of the new project
-      description: "Description of the new project goes here.",  # Provide a brief description of the new project
-      location: "Location of the new project",  # Specify the location
+      description: "This project directly funds ClimateWorks, helping to support its mission of driving global climate solutions and reducing greenhouse gas emissions.",
+      location: "San Francisco, USA",  # Specify the location
       goal: 110000,  # Set a funding goal
       charity: Charity.find_by(name: "ClimateWorks Foundation"),  # Link to the charity
       photos: [

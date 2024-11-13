@@ -1,0 +1,255 @@
+/* Modal content and positioning */
+.modal-content {
+  border-radius: 10px;
+  background-color: $coral-white;
+  position: relative;
+}
+
+.modal-body {
+  background-color: $coral-white;
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-dialog {
+  border-radius: 10px;
+}
+
+#chatboxModal .modal-dialog {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  max-width: 450px;
+  width: 100%;
+  transform: translateX(0);
+  z-index: 9999;
+}
+
+/* Button to toggle the modal */
+#chatbox-toggle-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: $button-font;
+  font-weight: 700;
+  font-size: 16px;
+  z-index: 999;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#chatbox-toggle-button:hover {
+  background-color: $forest-green;
+}
+
+/* Modal header with title and close button */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px; /* Your padding */
+  position: relative; /* Needed for positioning the pseudo-element */
+  margin-left: 15px; /* Margin to adjust header position */
+  margin-right: 15px;
+  z-index: 1; /* Ensures header content stays above the border */
+}
+
+.modal-header::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%; /* Ensure the border spans full width of modal content */
+  border-bottom: 2px solid #ccc; /* Original border thickness */
+  z-index: -1; /* Ensure the border stays behind the content */
+}
+
+.modal-title {
+  margin-bottom: 0;
+}
+
+/* Chatbox footer: align textarea and send button */
+.chatbox-footer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.chatbox-input {
+  width: 90%;
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  resize: none;
+  background-color: #f9f9f9;
+  box-sizing: border-box;
+}
+
+.chatbox-input:focus {
+  outline: none;
+  border: 1px solid #666;
+}
+
+.chatbox-send {
+  background: none;
+  border: none;
+  padding: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  color: #666;
+}
+
+.chatbox-send:hover {
+  color: black;
+}
+
+.chatbox-send i {
+  font-size: 20px;
+}
+
+/* Messages container inside modal */
+#messages {
+  max-height: 300px;
+  overflow-y: auto;
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: $coral-white;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Wrapper for message and icon */
+.message-wrapper {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+/* User and AI message styles */
+.user-message,
+.ai-message {
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 14px;
+  max-width: 80%;
+}
+
+.user-message {
+  background-color: #d4edda;
+}
+
+.ai-message {
+  background-color: #d1ecf1;
+}
+
+/* Icon styling for user and AI */
+.message-icon {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  color: #333;
+  border-radius: 50%;
+  font-size: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Modal close button */
+.modal-header .btn-close {
+  border: none;
+  background: none;
+  font-size: 1.5rem;
+  color: #aaa;
+  opacity: 1;
+}
+
+body.modal-open {
+  overflow: auto !important;
+}
+
+/* Common Questions section */
+.common-questions {
+  padding: 10px;
+  margin-top: 10px;
+  // border-top: 2px solid #ddd;
+}
+
+.common-questions p {
+  font-size: 14px; /* Same size as the questions */
+  font-weight: normal; /* Optional: adjust if needed */
+}
+
+.question-wrapper {
+  background-color: #f1f1f1;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 5px 0;
+  padding: 10px;
+  cursor: pointer;
+  display: inline-block;
+  width: 100%;
+  max-width: 100%;
+}
+
+.question-wrapper:hover {
+  background-color: #e1e1e1;
+}
+
+/* Question text */
+.question-wrapper .question {
+  font-size: 14px;
+  color: #333;
+}
+
+/* After question is clicked, hide it */
+.question-wrapper.clicked {
+  display: none;
+}
+
+/* Chatbox button to open chat */
+.chatbot-wrapper__ai-chatbot-button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 50px;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.chatbot-wrapper__ai-chatbot-button:hover {
+  background-color: #0056b3;
+}
+
+.chatbot-wrapper__ai-chatbot-button svg {
+  margin-right: 5px;
+}
+
+.custom-close-chatbox {
+  font-size: 2rem; /* Larger close button */
+  color: #666; /* Blue color for the button */
+  border: none; /* Remove default border */
+  background: none; /* No background */
+}
+
+.custom-close-chatbox:hover {
+  color: black; /* Darker blue on hover */
+  cursor: pointer; /* Change cursor to pointer */
+}
