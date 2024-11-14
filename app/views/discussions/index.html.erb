@@ -19,7 +19,7 @@
       <div class="discussion-info">
         <% if discussion.user.present? %>
           <% name = "#{discussion.user.first_name} #{discussion.user.last_name}".strip.presence || discussion.user.email %>
-          <p class="user-info"> <%= name %> | <%= time_ago_in_words(discussion.created_at) %> ago</p>
+          <p class="user-info"> by <%= name %> | <%= time_ago_in_words(discussion.created_at) %> ago</p>
         <% else %>
           <p class="user-info">Anonymous | <%= time_ago_in_words(discussion.created_at) %> ago</p>
         <% end %>

@@ -19,11 +19,11 @@
   max-width: 100rem;
 
   .discussion-card-header {
-
     .discussion-title h3 {
       font-size: 1.5rem;
-      color: #0D6EFD;
+      color: $dark-ocean-blue;
       margin: 0 0 8px;
+
       a {
         text-decoration: none; // Removes underline from title links
       }
@@ -32,7 +32,7 @@
     .discussion-content p {
       font-size: 1.25rem;
       color: $dark-ocean-blue;
-      margin: 0.5rem 0 0; // Adds spacing below the title
+      margin: 0.5rem 0 0;
       overflow: hidden;
       display: -webkit-box;
       -webkit-line-clamp: 3; // Limits to 3 lines
@@ -50,7 +50,6 @@
     }
   }
 }
-
 
 // Center the New Discussion button and apply button styling
 .button-container {
@@ -70,7 +69,7 @@
   border-radius: $button-border-radius;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  text-decoration: none; // Remove underline
+  text-decoration: none;
 
   &:hover {
     background-color: $forest-green;
@@ -84,40 +83,135 @@
   color: #071952;
 }
 
-.new-discussion-form {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 2rem;
+// Show Page Specific Styles
+.discussion-show-container {
+  max-width: 80rem;
+  margin: 2rem auto;
+  padding: 1.5rem;
   background-color: #ffffff;
   border-radius: 8px;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
+.discussion-details {
+  margin-bottom: 2rem;
+
+  .discussion-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: $dark-ocean-blue;
+    margin-bottom: 0.5rem;
+  }
+
+  .discussion-description {
+    font-size: 1.125rem;
+    color: #071952;
+    margin-bottom: 0.5rem;
+  }
+
+  .delete-button {
+    text-align: right;
+
+    .btn-danger {
+      background-color: #e74c3c;
+      color: #ffffff;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: #c0392b;
+      }
+    }
+  }
 }
 
-.input-field {
-  font-size: 1rem;
-  padding: 0.75rem;
-  border: 1px solid #ccc;
-  border-radius: 6px;
+.comments-section {
+  margin-bottom: 2rem;
+
+  h2 {
+    font-size: 1.5rem;
+    color: #071952;
+    margin-bottom: 1rem;
+  }
+
+  .comments-list {
+    .comment-card {
+      background-color: #f8f9fa;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-radius: 6px;
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+
+      .comment-content {
+        font-size: 1rem;
+        color: #333;
+        margin-bottom: 0.5rem;
+      }
+
+      .comment-author {
+        font-size: 0.875rem;
+        color: #757575;
+      }
+
+      .btn-danger {
+        background-color: #e74c3c;
+        color: #ffffff;
+        padding: 0.25rem 0.75rem;
+        border-radius: 6px;
+        border: none;
+        font-size: 0.875rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+          background-color: #c0392b;
+        }
+      }
+    }
+  }
 }
 
-.btn-primary {
-  font-size: 1rem;
-  padding: 0.75rem 1.5rem;
-  background-color: #0B666A;
-  color: #ffffff;
-  border: none;
+// New Discussion Page Specific Styles
+.new-discussion-container {
+  max-width: 50rem;
+  margin: 0 auto;
+}
+
+.new-discussion-form {
+  background-color: #ffffff;
+  padding: 2rem;
   border-radius: 8px;
-  cursor: pointer;
-  text-align: center;
-  transition: background-color 0.3s ease;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
 
-  &:hover {
-    background-color: #35A28C;
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    .input-field {
+      font-size: 1rem;
+      padding: 0.75rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+  }
+
+  .btn-primary {
+    font-size: 1rem;
+    padding: 0.75rem 1.5rem;
+    background-color: #0B666A;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #35A28C;
+    }
   }
 }
