@@ -1,0 +1,34 @@
+$index-margin-x: 3.125rem;
+
+.grid-show-background {
+  background-color: $coral-white;
+}
+.grid-show-container {
+  margin: 0 $index-margin-x 1.25rem 0;
+  padding: 1.25rem 0px;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: auto;
+  grid-gap: 1.25rem;
+  justify-items: stretch;
+  .card-report-teaser, .card-photos {
+    grid-column: span 6;
+    margin: 0;
+  }
+  .report-evaluation {
+    grid-column: 1 / span 6;
+  }
+  .report-article {
+    grid-column: 7 / span 6;
+  }
+}
+.show-container{
+  display: flex;
+}
+.show-nav-container {
+  width: 100px;
+  margin-left: 1.25rem;
+}
+.show-content-container {
+  margin-left: 1.25rem;
+}

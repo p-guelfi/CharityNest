@@ -14,7 +14,6 @@ class Report < ApplicationRecord
 
   enum report_type: { Article: 0, Evaluation: 1 }
 
-
   private
 
   def check_evaluation

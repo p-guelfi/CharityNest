@@ -1,0 +1,16 @@
+.nav-show {
+  padding-top: 1.25rem;
+  padding-bottom: 30px;
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+}
+.nav-line {
+  flex-grow: 1;
+  border-right: 1px solid $ocean-turquoise;
+  min-height: 10px;
+}

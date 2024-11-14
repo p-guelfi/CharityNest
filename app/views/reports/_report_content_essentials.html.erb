@@ -1,13 +1,15 @@
 <div class="report-image">
   <% if report.report_type == "Evaluation" %>
-    <%= render "report_evaluation_graphics", report: report %>
+    <%= render "reports/report_evaluation_graphics", report: report %>
   <% else %>
-    <%= render "report_article_image", report: report %>
+    <%= render "reports/report_article_image", report: report %>
   <% end %>
 </div>
 <div class="report-text">
   <div>
-    <small><%= report.charity_project.name %></small>
+    <% unless current_page?(charity_projects_path(report.charity_project)) %>
+      <small><%= report.charity_project.name %></small>
+    <% end %>
     <h2><%= report.title %></h2>
     <p class="report-date"><span class="report-type"><%= report.report_type.capitalize %></span> by <%= report.user.first_name %>  <%= report.user.last_name %> • <%= report.created_at.strftime('%b %d, %Y') %></p>
     <p><%= report.teaser %></p>

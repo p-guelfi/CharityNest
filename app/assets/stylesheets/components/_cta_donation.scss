@@ -1,0 +1,17 @@
+.cta-donation {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  padding: 2rem $index-margin-x;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  height: 8rem;
+  > div {
+    width: 33%;
+  }
+  .donate-button {
+    padding: 0 10%;
+  }
+}

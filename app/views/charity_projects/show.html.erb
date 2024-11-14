@@ -1,1 +1,47 @@
-<h1><%= @charity_project.name %></h1>
+<%# Banner with charity description %>
+<div class="banner-charities">
+  <div class="banner-heading">
+    <h1><%= @charity_project.name %></h1>
+  </div>
+  <div class="banner-intro">
+    <p><%= @charity_project.description %></p>
+  </div>
+</div>
+<%# List %>
+<div class="grid-show-background show-container" data-controller="sort-index">
+  <div class="show-nav-container">
+    <%# Nav Bar Show Content %>
+    <%= render "show_nav" %>
+  </div>
+  <%# Grid with Charity Cards %>
+  <div class="show-content-container">
+    <section id="aim">
+      <div class="grid-show-container">
+        <%= render "show_card_photos" %>
+        <%= render "show_card_aim" %>
+      </div>
+    </section>
+    <section id="data">
+      <div class="grid-show-container">
+        <%= render "show_card_photos" %>
+        <%= render "show_card_aim" %>
+      </div>
+    </section>
+    <section id="reporting">
+      <div class="grid-show-container">
+        <% @charity_project.evaluations.each do |evaluation| %>
+          <%= render "reports/card_report_teaser", report: evaluation %>
+        <% end %>
+        <% @charity_project.articles.each do |article| %>
+          <%= render "reports/card_report_teaser", report: article %>
+        <% end %>
+      </div>
+    </section>
+    <section id="forum">
+      <div class="grid-show-container">
+
+      </div>
+    </section>
+  </div>
+</div>
+<%= render "show_cta_donation", project: @charity_project %>
