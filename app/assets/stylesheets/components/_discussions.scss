@@ -1,3 +1,8 @@
+.discussions-heading {
+  text-align: center;
+  margin: 2rem auto;
+}
+
 .discussions-list {
   display: grid;
   gap: 1.25rem;
@@ -11,22 +16,41 @@
   padding: 1rem;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 300px;
+  max-width: 100rem;
+
+  .discussion-card-header {
+
+    .discussion-title h3 {
+      font-size: 1.5rem;
+      color: #0D6EFD;
+      margin: 0 0 8px;
+      a {
+        text-decoration: none; // Removes underline from title links
+      }
+    }
+
+    .discussion-content p {
+      font-size: 1.25rem;
+      color: $dark-ocean-blue;
+      margin: 0.5rem 0 0; // Adds spacing below the title
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 3; // Limits to 3 lines
+      -webkit-box-orient: vertical;
+      text-overflow: ellipsis;
+    }
+  }
+
+  .discussion-info {
+    margin-top: 0.5rem;
+
+    .user-info {
+      font-size: 0.875rem;
+      color: #757575;
+    }
+  }
 }
 
-.discussion-card h3 {
-  font-size: 1.25rem;
-  margin-bottom: 0.5rem;
-}
-
-.discussion-card h3 a {
-  text-decoration: none; // Removes underline from discussion titles
-}
-
-.discussion-card p {
-  font-size: 1rem;
-  color: #555;
-}
 
 // Center the New Discussion button and apply button styling
 .button-container {
@@ -48,7 +72,6 @@
   transition: background-color 0.3s ease;
   text-decoration: none; // Remove underline
 
-  // Hover effect
   &:hover {
     background-color: $forest-green;
   }

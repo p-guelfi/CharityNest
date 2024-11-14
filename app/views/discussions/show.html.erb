@@ -1,6 +1,13 @@
 <h1><%= @discussion.title %></h1>
 <p><%= @discussion.description %></p>
 
+<!-- Delete Discussion button -->
+<% if @discussion.user == current_user %>
+  <%= form_with url: donation_discussion_path(@donation, @discussion), method: :delete, local: true, data: { confirm: 'Are you sure you want to delete this discussion?' }, class: 'inline-form' do %>
+    <%= submit_tag 'Delete Discussion', class: 'btn btn-danger' %>
+  <% end %>
+<% end %>
+
 <h2>Comments</h2>
 <div class="comments-list">
   <% @discussion.comments.each do |comment| %>

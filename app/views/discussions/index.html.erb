@@ -1,4 +1,4 @@
-<h1>Discussions for Your Donation to <%= @donation.charity_project.name %></h1>
+<h1 class="discussions-heading">Discussions for <%= @donation.charity_project.name %></h1>
 
 <div class="button-container">
   <%= link_to 'New Discussion', new_donation_discussion_path(@donation), class: 'btn-primary' %>
@@ -7,15 +7,23 @@
 <div class="discussions-list">
   <% @discussions.each do |discussion| %>
     <div class="discussion-card">
-      <h3><%= link_to discussion.title, donation_discussion_path(@donation, discussion) %></h3>
-      <p><%= discussion.description %></p>
+      <div class="discussion-card-header">
+        <div class="discussion-title">
+          <h3><%= link_to discussion.title, donation_discussion_path(@donation, discussion) %></h3>
+        </div>
+        <div class="discussion-content">
+          <p><%= discussion.description %></p>
+        </div>
+      </div>
 
-      <!-- Delete Discussion button -->
-      <% if discussion.user == current_user %>
-        <%= form_with url: donation_discussion_path(@donation, discussion), method: :delete, local: true, data: { confirm: 'Are you sure you want to delete this discussion?' }, class: 'inline-form' do %>
-          <%= submit_tag 'Delete Discussion', class: 'btn btn-danger' %>
+      <div class="discussion-info">
+        <% if discussion.user.present? %>
+          <% name = "#{discussion.user.first_name} #{discussion.user.last_name}".strip.presence || discussion.user.email %>
+          <p class="user-info"> <%= name %> | <%= time_ago_in_words(discussion.created_at) %> ago</p>
+        <% else %>
+          <p class="user-info">Anonymous | <%= time_ago_in_words(discussion.created_at) %> ago</p>
         <% end %>
-      <% end %>
+      </div>
     </div>
   <% end %>
 </div>
