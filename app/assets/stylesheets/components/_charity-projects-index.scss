@@ -4,6 +4,25 @@
 }
 .bar-sort-projects {
   position: sticky;
-  top: 8rem;  /* Sticks the sorting bar at the top of the viewport when you scroll */
+  top: 6rem;  /* Sticks the sorting bar at the top of the viewport when you scroll */
   z-index: 10;  /* Ensures the sorting bar stays above other elements */
+}
+
+.two-columns {
+  display: flex;
+  justify-content: space-between;
+  gap: 2.5rem;  /* Space between content and map */
+  padding: 0 2rem;  /* Add padding to the left and right */
+}
+
+.content {
+  flex: 1;  /* Takes up remaining space */
+}
+
+.map-container {
+  position: sticky;
+  border-radius: 10px;
+  top:  10rem;  /* Adjust this based on your banner height */
+  height: 600px;  /* Adjust the map height */
+  z-index: 10;  /* Keeps the map above other content */
 }
