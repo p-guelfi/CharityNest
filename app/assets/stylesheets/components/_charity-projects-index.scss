@@ -1,0 +1,9 @@
+.banner-charities {
+  position: sticky;
+  top: 0;  // Keeps the banner fixed at the top of the viewport
+}
+.bar-sort-projects {
+  position: sticky;
+  top: 8rem;  /* Sticks the sorting bar at the top of the viewport when you scroll */
+  z-index: 10;  /* Ensures the sorting bar stays above other elements */
+}
