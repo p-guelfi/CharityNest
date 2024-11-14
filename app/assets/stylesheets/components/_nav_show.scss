@@ -1,5 +1,5 @@
 .nav-show {
-  padding-top: 1.25rem;
+  padding-top: 0;
   padding-bottom: 30px;
   position: sticky;
   top: 0;
@@ -9,6 +9,10 @@
   justify-content: space-between;
   min-height: calc(100vh - 20rem);
   max-height: calc(100vh - 8rem);
+  a {
+    margin: 1.25rem 0;
+    font-family: $headers-font;
+  }
 }
 .nav-line {
   flex-grow: 1;

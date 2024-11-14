@@ -32,6 +32,7 @@
         <% @charity_project.evaluations.each do |evaluation| %>
           <%= render "reports/card_report_teaser", report: evaluation %>
         <% end %>
+        <%# Iterate over articles %>
         <% @charity_project.articles.each do |article| %>
           <%= render "reports/card_report_teaser", report: article %>
         <% end %>

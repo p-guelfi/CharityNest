@@ -1,17 +1,19 @@
-$index-margin-x: 3.125rem;
+$nav-width: 100px;
 
 .grid-show-background {
   background-color: $coral-white;
 }
 .grid-show-container {
-  margin: 0 $index-margin-x 1.25rem 0;
+  background-color: white;
+  margin: 0 calc( #{$nav-width} + 4rem ) 0 2rem;
   padding: 1.25rem 0px;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: auto;
   grid-gap: 1.25rem;
   justify-items: stretch;
-  .card-report-teaser, .card-photos {
+  grid-auto-flow: column;
+  .card-report-teaser, .card-photos, .card-basic {
     grid-column: span 6;
     margin: 0;
   }
@@ -26,8 +28,8 @@ $index-margin-x: 3.125rem;
   display: flex;
 }
 .show-nav-container {
-  width: 100px;
-  margin-left: 1.25rem;
+  width: $nav-width;
+  margin-left: 2rem;
 }
 .show-content-container {
   margin-left: 1.25rem;
