@@ -18,8 +18,11 @@
     <%= render "shared/flashes" %>
     <%= yield %>
 
-    <button id="chatbox-toggle-button" class="chatbox-toggle-button btn btn-primary" data-bs-toggle="modal" data-bs-target="#chatboxModal">
-      Ask CharityNest AI Assistant
+    <!-- Chatbox Toggle Button (with dynamic ID) -->
+    <button id="<%= content_for?(:chatbox_button_id) ? yield(:chatbox_button_id) : 'chatbox-toggle-button' %>"
+      class="chatbox-toggle-button btn <%= content_for?(:chatbox_button_class) ? yield(:chatbox_button_class) : 'btn-primary' %>"
+      data-bs-toggle="modal" data-bs-target="#chatboxModal">
+      <%= content_for?(:chatbox_button_text) ? yield(:chatbox_button_text) : raw('<i class="fa-solid fa-crow fa-lg"></i>') %>
     </button>
 
     <!-- Modal HTML -->
@@ -58,6 +61,5 @@
         </div>
       </div>
     </div>
-
   </body>
 </html>

@@ -36,6 +36,25 @@
   background-color: black;
   color: white;
   border: none;
+  width: 3.75rem;   /* 60px in rem (60px / 16px) */
+  height: 3.75rem;  /* 60px in rem */
+  border-radius: 50%;
+  cursor: pointer;
+  font-family: $button-font;
+  font-weight: 700;
+  font-size: 16px;
+  z-index: 999;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#chatbox-toggle-button-two {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  background-color: black;
+  color: white;
+  border: none;
   border-radius: 10px;
   cursor: pointer;
   font-family: $button-font;
