@@ -45,3 +45,8 @@
   </div>
 </div>
 <%= render "show_cta_donation", project: @charity_project %>
+
+<% if current_user.donations.exists?(charity_project: @charity_project) %>
+  <!-- Display the "Discuss" button only if the user has donated to this project -->
+  <%= link_to 'Discuss', donation_discussions_path(current_user.donations.find_by(charity_project: @charity_project)), class: 'btn btn-primary ' %>
+<% end %>

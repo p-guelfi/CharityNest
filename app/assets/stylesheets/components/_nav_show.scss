@@ -7,7 +7,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-
+  min-height: calc(100vh - 20rem);
+  max-height: calc(100vh - 8rem);
 }
 .nav-line {
   flex-grow: 1;

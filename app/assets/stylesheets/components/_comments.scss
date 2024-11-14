@@ -1,0 +1,15 @@
+.comments-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  .comment-card {
+    background-color: #f1f1f1;
+    padding: 10px;
+    border-radius: 5px;
+
+    small {
+      color: #6c757d;
+    }
+  }
+}
