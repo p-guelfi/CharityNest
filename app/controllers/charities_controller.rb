@@ -25,7 +25,9 @@ class CharitiesController < ApplicationController
     @markers = @charity_projects.geocoded.map do |project|
       {
         lat: project.latitude,
-        lng: project.longitude
+        lng: project.longitude,
+        info_window_html: render_to_string(partial: "charity_projects/info_window", locals: {charity_project: project}),
+        marker_html: render_to_string(partial: "charity_projects/marker")
       }
     end
   end
