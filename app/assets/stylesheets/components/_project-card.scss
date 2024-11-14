@@ -76,6 +76,17 @@
     background-color: $forest-green; // Use dark ocean blue on hover
   }
 }
+
+.project-name-link {
+  text-decoration: none;  /* Remove underline */
+  color: inherit;         /* Keep the text color the same as surrounding text */
+}
+
+.charity-name-link {
+  text-decoration: none;  /* Remove underline */
+  color: $forest-green;         /* Keep the text color the same as surrounding text */
+}
+
 /* Media query for project cards */
 @media (max-width: 768px) {
   .project-card {

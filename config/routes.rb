@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'charity_projects/index'
   devise_for :users
   root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -33,4 +34,6 @@ Rails.application.routes.draw do
   end
 
   mount StripeEvent::Engine, at: '/webhooks/stripe'
+
+  post '/chat', to: 'chat#create'
 end
