@@ -1,11 +1,18 @@
+.sticky-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1030;
+}
+
 .banner-charities {
   position: sticky;
-  top: 0;  // Keeps the banner fixed at the top of the viewport
+  top: 3.5rem; /* Keeps the banner at the very top of the viewport */
+  z-index: 1040; /* Ensure it appears above other elements but below modals */
 }
 
 .bar-sort-projects {
   position: sticky;
-  top: 8.5rem;  /* Sticks the sorting bar at the top of the viewport when you scroll */
+  top: 12rem;  /* Sticks the sorting bar at the top of the viewport when you scroll */
   z-index: 10;
 }
 
@@ -24,7 +31,7 @@
 .map-container {
   position: sticky;
   border-radius: 10px;
-  top:  9.8rem;  /* Adjust this based on your banner height */
+  top:  13.3rem;  /* Adjust this based on your banner height */
   height: 38rem;  /* Adjust the map height */
   z-index: 10;
   margin-top: 4rem;
