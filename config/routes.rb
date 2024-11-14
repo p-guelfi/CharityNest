@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'about', to: 'pages#about'
   get 'charity_projects/index'
   devise_for :users
   root to: "pages#home"
@@ -36,7 +37,7 @@ Rails.application.routes.draw do
 
 # config/routes.rb
 
-  get 'about', to: 'pages#about'
+
 
   mount StripeEvent::Engine, at: '/webhooks/stripe'
 
