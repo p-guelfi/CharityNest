@@ -167,13 +167,13 @@ GEM
       turbo-rails
     i18n (1.14.6)
       concurrent-ruby (~> 1.0)
-    importmap-rails (1.2.3)
     image_processing (1.13.0)
-      mini_magick (>= 4.9.5, < 5)
-      ruby-vips (>= 2.0.17, < 3)
       actionpack (>= 6.0.0)
       activesupport (>= 6.0.0)
+      mini_magick (>= 4.9.5, < 5)
       railties (>= 6.0.0)
+      ruby-vips (>= 2.0.17, < 3)
+    importmap-rails (1.2.3)
     io-console (0.7.2)
     irb (1.14.1)
       rdoc (>= 4.0.0)
@@ -382,11 +382,8 @@ DEPENDENCIES
   font-awesome-sass (~> 6.1)
   geocoder
   hotwire-rails
-
-  importmap-rails (~> 1.2.3)
-
   image_processing (~> 1.2)
-
+  importmap-rails (~> 1.2.3)
   jbuilder
   money-rails
   pg (~> 1.1)
