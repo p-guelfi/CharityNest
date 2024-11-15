@@ -142,13 +142,13 @@
 
 .custom-close {
   font-size: 2rem; /* Larger close button */
-  color: #dc3545; /* Danger color for the button */
+  color: $ocean-turquoise; /* Danger color for the button */
   border: none; /* Remove default border */
   background: none; /* No background */
 }
 
 .custom-close:hover {
-  color: #28a745; /* Success color on hover */
+  color: $forest-green; /* Success color on hover */
   cursor: pointer; /* Change cursor to pointer */
 }
 
