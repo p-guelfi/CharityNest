@@ -1,0 +1,33 @@
+.sticky-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1030;
+}
+
+.banner-projects {
+  background-color: white;
+  padding: 50px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  position: sticky;
+  top: 3.61rem; /* Keeps the banner at the very top of the viewport */
+  z-index: 1040; /* Ensure it appears above other elements but below modals */
+}
+
+.bar-sort-projects {
+  position: sticky;
+  top: 11rem;  /* Sticks the sorting bar at the top of the viewport when you scroll */
+  z-index: 1050;
+}
+
+.two-columns {
+  display: flex;
+  justify-content: space-between;
+  gap: 2.5rem;  /* Space between content and map */
+  padding: 0 2rem;
+  min-height: 100vh; /* Add padding to the left and right */
+}
+
+.content {
+  flex: 1;  /* Takes up remaining space */
+}

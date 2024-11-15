@@ -1,5 +1,15 @@
 // Define variables for your color scheme
 
+// Define css variables of our color paletet to be reused inside html.erb files
+:root {
+  --dark-ocean-blue: #071952;
+  --ocean-turquoise: #0B666A;
+  --forest-green: #35A28C;
+  --bright-turquoise: #97FEED;
+  --coral-white: #FFFAF5;
+  --white: #FFFFFF;
+}
+
 // For example:
 $red: #FD1015;
 $blue: #0D6EFD;
@@ -15,4 +25,59 @@ $ocean-turquoise: #0B666A;
 $forest-green: #35A28C;
 $bright-turquoise: #97FEED;
 $coral-white: #FFFAF5;
-$-white: #FFFFFF
+$-white: #FFFFFF;
+
+// Shades of Dark Ocean Blue
+$dark-ocean-blue-100: lighten($dark-ocean-blue, 40%);
+$dark-ocean-blue-200: lighten($dark-ocean-blue, 30%);
+$dark-ocean-blue-300: lighten($dark-ocean-blue, 20%);
+$dark-ocean-blue-400: lighten($dark-ocean-blue, 10%);
+$dark-ocean-blue-500: #071952;
+$dark-ocean-blue-600: darken($dark-ocean-blue, 5%);
+$dark-ocean-blue-700: darken($dark-ocean-blue, 10%);
+$dark-ocean-blue-800: darken($dark-ocean-blue, 15%);
+$dark-ocean-blue-900: darken($dark-ocean-blue, 20%);
+
+// Shades of Ocean Turquoise
+$ocean-turquoise-100: lighten($ocean-turquoise, 40%);
+$ocean-turquoise-200: lighten($ocean-turquoise, 30%);
+$ocean-turquoise-300: lighten($ocean-turquoise, 20%);
+$ocean-turquoise-400: lighten($ocean-turquoise, 10%);
+$ocean-turquoise-500: #0B666A;
+$ocean-turquoise-600: darken($ocean-turquoise, 5%);
+$ocean-turquoise-700: darken($ocean-turquoise, 10%);
+$ocean-turquoise-800: darken($ocean-turquoise, 15%);
+$ocean-turquoise-900: darken($ocean-turquoise, 20%);
+
+// Shades of Forest Green
+$forest-green-100: lighten($forest-green, 40%);
+$forest-green-200: lighten($forest-green, 30%);
+$forest-green-300: lighten($forest-green, 20%);
+$forest-green-400: lighten($forest-green, 10%);
+$forest-green-500: #35A28C;
+$forest-green-600: darken($forest-green, 5%);
+$forest-green-700: darken($forest-green, 10%);
+$forest-green-800: darken($forest-green, 15%);
+$forest-green-900: darken($forest-green, 20%);
+
+// Shades of Bright Turquoise
+$bright-turquoise-100: lighten($bright-turquoise, 40%);
+$bright-turquoise-200: lighten($bright-turquoise, 30%);
+$bright-turquoise-300: lighten($bright-turquoise, 20%);
+$bright-turquoise-400: lighten($bright-turquoise, 10%);
+$bright-turquoise-500: #97FEED;
+$bright-turquoise-600: darken($bright-turquoise, 5%);
+$bright-turquoise-700: darken($bright-turquoise, 10%);
+$bright-turquoise-800: darken($bright-turquoise, 15%);
+$bright-turquoise-900: darken($bright-turquoise, 20%);
+
+// Shades of Coral White
+$coral-white-100: lighten($coral-white, 40%);
+$coral-white-200: lighten($coral-white, 30%);
+$coral-white-300: lighten($coral-white, 20%);
+$coral-white-400: lighten($coral-white, 10%);
+$coral-white-500: #FFFAF5;
+$coral-white-600: darken($coral-white, 5%);
+$coral-white-700: darken($coral-white, 10%);
+$coral-white-800: darken($coral-white, 15%);
+$coral-white-900: darken($coral-white, 20%);

@@ -2,24 +2,34 @@ class CharitiesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
+    set_sorting
     if set_category
-      if set_sorting
-        @charities = Charity.where(category: @category).order(@sorting)
-      else
-        @charities = Charity.where(category: @category)
-      end
+      @charities = Charity.where(category: @category)
     else
-      if set_sorting
-        @charities = Charity.all.order(@sorting)
-      else
-        @charities = Charity.all
-      end
+      @charities = Charity.all
+    end
+    if @sorting == "name"
+      @charities = @charities.order(:name)
+    elsif @sorting == "score"
+      @charities = @charities.sort_by{ |charity| -charity.score }
+    else
+      @charities
     end
   end
 
   def show
     @charity = Charity.find(params[:id])
     @charity_projects = @charity.charity_projects.includes(:donations)
+
+    # Build the markers array for the charity's projects
+    @markers = @charity_projects.geocoded.map do |project|
+      {
+        lat: project.latitude,
+        lng: project.longitude,
+        info_window_html: render_to_string(partial: "charity_projects/info_window", locals: {charity_project: project}),
+        marker_html: render_to_string(partial: "charity_projects/marker")
+      }
+    end
   end
 
   private
@@ -40,7 +50,7 @@ class CharitiesController < ApplicationController
 
   def set_sorting
     if params[:sort_by].present?
-      @sorting = params[:sort_by].to_sym
+      @sorting = params[:sort_by]
     end
   end
 

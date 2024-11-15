@@ -1,0 +1,5 @@
+<%  if report.photos.first.present? %>
+  <%= cl_image_tag report.photos.first.key %>
+<% else %>
+  <%= cl_image_tag report.charity_project.photos.first.key %>
+<% end %>

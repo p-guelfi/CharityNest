@@ -11,8 +11,9 @@ class User < ApplicationRecord
 
   has_one :charity, dependent: :destroy
   has_many :donations
+  has_many :reports
   has_many :discussions
-  has_many :comments
+  has_many :comments, dependent: :destroy
 
 
   # Optionally, you can add a validation to ensure that only admin users can create charities

@@ -3,7 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Mukta+Malar:wght@200;300;400;500;600;700;800&display=swap');
 
 // Define fonts for body and headers
-$body-font: "Khula", "Helvetica", "sans-serif"; // Set Khula as the body font
+$body-font: "Mukta Malar", "Helvetica", "sans-serif"; // Set Khula as the body font
 $headers-font: "Geologica", "Helvetica", "sans-serif"; // Font for headers
 
 // Define default text color
@@ -25,4 +25,7 @@ h2 {
   font-family: $headers-font; // Use the headers font
   font-weight: 700; // Bold
   font-size: 32px; // H2 size
+}
+a {
+  text-decoration: none;
 }

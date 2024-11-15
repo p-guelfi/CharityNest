@@ -1,29 +1,35 @@
 <%# Banner with charity description %>
-<div class="banner-charities">
+<% content_for :navbar_class, 'sticky-navbar' %>
+<div class="banner-projects">
   <div class="banner-heading">
     <% if params[:query].present? %>
-      <h2>Search results for "<%= params[:query] %>"</H2>
+      <h2>Search results for "<%= params[:query] %>"</h2>
     <% else %>
       <h1>Active Projects</h1>
-    </div>
+    <% end %>
+  </div>
   <div class="banner-intro">
     <p>Discover impactful projects across various causes and choose one to support.</p>
   </div>
 </div>
-    <% end %>
-  </div>
-  <div class="banner-intro">
-  </div>
-</div>
 
-<%# List %>
-<div class="content" data-controller="sort">
+<%# Sorting Bar (Outside the banner) %>
+
+<%# List and Map Section %>
+<div class="two-columns">
+  <div class="content col-8" data-controller="sort">
     <%= render "bar_sort" %>
-  <div>
     <div id="projects-sect" class="our-projects2" data-sort-target="ListToSort">
       <% @charity_projects.each do |project| %>
         <%= render partial: '/charities/project_card2', locals: { project: project } %>
       <% end %>
     </div>
+  </div>
+
+  <div class="map-container col-4">
+    <div style="width: 100%; height: 38rem; border-radius: 10px;"
+         data-controller="map"
+         data-map-markers-value="<%= @markers.to_json %>"
+         data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
   </div>
 </div>

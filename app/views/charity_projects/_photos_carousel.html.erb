@@ -1,0 +1,33 @@
+<%# To render this card two attributes are neede:
+  # 1. carousel_id as a String two make the carousel unique and be able to control multiple carousels on one page
+  # 2. object as an ClassInstance to be able to hand over the data from controller
+  %>
+<div id="carouselPhotos<%=carousel_id%>" class="carousel slide">
+  <div class="carousel-inner">
+    <% object.photos.each_with_index do |photo, index| %>
+      <% index == 0 ? attr = "active" : attr = "" %>
+      <div class="carousel-item <%= attr %>">
+        <%= cl_image_tag photo.key, crop: :fill, class: "banner-square" %>
+      </div>
+    <% end %>
+  </div>
+  <button class="carousel-control-prev my-5" type="button" data-bs-target="#carouselPhotos<%=carousel_id%>" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next my-5" type="button" data-bs-target="#carouselPhotos<%=carousel_id%>" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+  <div class="carousel-idicator-rel">
+    <div class="carousel-indicators">
+      <% object.photos.each_with_index do |photo, index|  %>
+        <% if index == 0 %>
+          <button type="button" data-bs-target="#carouselPhotos<%=carousel_id%>Indicators" data-bs-slide-to="<%= index %>" class="active" aria-current="true" aria-label="Slide <%= index + 1%>"></button>
+        <% else %>
+          <button type="button" data-bs-target="#carouselPhotos<%=carousel_id%>Indicators" data-bs-slide-to="<%= index %>" aria-label="Slide <%= index + 1%>"></button>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
