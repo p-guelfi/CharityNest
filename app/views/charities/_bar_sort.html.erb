@@ -6,11 +6,10 @@
       <span>Name</span>
     <% end %>
   <%# </button> %>
-  <button class="btn" data-action="click->sort-index#toggleSort">
-    <%# # Fontawesome sort icon %>
+  <%= link_to charities_path(sort_by: "score"), class: "btn" do %>
     <i class="fas fa-sort"></i>
     <span>Evaluation Score</span>
-  </button>
+  <% end %>
   <button class="btn" data-action="click->sort-index#toggleSort">
     <%# # Fontawesome sort icon %>
     <i class="fas fa-sort"></i>

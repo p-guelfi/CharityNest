@@ -162,6 +162,9 @@ GEM
       turbo-rails
     i18n (1.14.6)
       concurrent-ruby (~> 1.0)
+    image_processing (1.13.0)
+      mini_magick (>= 4.9.5, < 5)
+      ruby-vips (>= 2.0.17, < 3)
     importmap-rails (2.0.3)
       actionpack (>= 6.0.0)
       activesupport (>= 6.0.0)
@@ -185,6 +188,7 @@ GEM
       net-smtp
     marcel (1.0.4)
     matrix (0.4.2)
+    mini_magick (4.13.2)
     mini_mime (1.1.5)
     minitest (5.25.1)
     monetize (1.13.0)
@@ -287,6 +291,9 @@ GEM
       event_stream_parser (>= 0.3.0, < 2.0.0)
       faraday (>= 1)
       faraday-multipart (>= 1)
+    ruby-vips (2.2.2)
+      ffi (~> 1.12)
+      logger
     rubyzip (2.3.2)
     sassc (2.4.0)
       ffi (~> 1.9)
@@ -368,6 +375,7 @@ DEPENDENCIES
   dotenv-rails
   font-awesome-sass (~> 6.1)
   hotwire-rails
+  image_processing (~> 1.2)
   importmap-rails
   jbuilder
   money-rails

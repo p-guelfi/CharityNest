@@ -10,19 +10,22 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
-  resources :categories, only: [:new, :create] do
+  resources :categories, only: %i[new create] do
     resources :charities, only: :index # Nest charities under categories for filtered index
   end
 
   resources :charities do
-    resources :charity_projects, only: [:new, :create] # Nest donations under charity projects
+    resources :charity_projects, only: %i[new create] # Nest donations under charity projects
   end
 
   resources :charity_projects, except: %i[new create] do
-    resources :donations, only: [:new, :create]
+    resources :donations, only: %i[new create]
+    resources :reports, only: %i[new create index]
   end
 
-  resources :donations, only: [:index, :show, :edit, :update] do
+  resources :reports, only: %i[show edit update index]
+
+  resources :donations, only: %i[index show edit update] do
     member do
       delete 'unsubscribe'
     end
