@@ -10,9 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_11_13_155411) do
+ActiveRecord::Schema[7.1].define(version: 2024_11_15_140401) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "action_text_rich_texts", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "body"
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["record_type", "record_id", "name"], name: "index_action_text_rich_texts_uniqueness", unique: true
+  end
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -73,7 +84,30 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_13_155411) do
     t.integer "goal"
     t.float "latitude"
     t.float "longitude"
+    t.text "description_long"
     t.index ["charity_id"], name: "index_charity_projects_on_charity_id"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.text "content"
+    t.bigint "user_id", null: false
+    t.bigint "discussion_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["discussion_id"], name: "index_comments_on_discussion_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "discussions", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "charity_project_id"
+    t.integer "donation_id"
+    t.index ["charity_project_id"], name: "index_discussions_on_charity_project_id"
+    t.index ["user_id"], name: "index_discussions_on_user_id"
   end
 
   create_table "donations", force: :cascade do |t|
@@ -87,6 +121,23 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_13_155411) do
     t.string "state"
     t.index ["charity_project_id"], name: "index_donations_on_charity_project_id"
     t.index ["user_id"], name: "index_donations_on_user_id"
+  end
+
+  create_table "reports", force: :cascade do |t|
+    t.string "title"
+    t.text "teaser"
+    t.integer "report_type"
+    t.integer "score"
+    t.bigint "user_id", null: false
+    t.bigint "charity_project_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "score_impact"
+    t.integer "score_communication"
+    t.integer "score_efficiency"
+    t.integer "score_adaptability"
+    t.index ["charity_project_id"], name: "index_reports_on_charity_project_id"
+    t.index ["user_id"], name: "index_reports_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -109,6 +160,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_13_155411) do
   add_foreign_key "charities", "categories"
   add_foreign_key "charities", "users"
   add_foreign_key "charity_projects", "charities"
+  add_foreign_key "comments", "discussions"
+  add_foreign_key "comments", "users"
+  add_foreign_key "discussions", "charity_projects"
+  add_foreign_key "discussions", "users"
   add_foreign_key "donations", "charity_projects"
   add_foreign_key "donations", "users"
+  add_foreign_key "reports", "charity_projects"
+  add_foreign_key "reports", "users"
 end

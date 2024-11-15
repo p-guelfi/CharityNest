@@ -1,0 +1,20 @@
+.carousel-inner {
+  padding: 1rem;
+}
+.carousel-control-prev-icon, .carousel-control-next-icon {
+  filter: invert(70%);
+}
+
+.carousel-control-circle, .carousel-control-circle {
+  background-color: white;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.carousel-control-prev, .carousel-control-next {
+  width: 3rem!important;
+  opacity: 1;
+}

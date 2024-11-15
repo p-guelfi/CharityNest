@@ -2,18 +2,18 @@ class CharitiesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
+    set_sorting
     if set_category
-      if set_sorting
-        @charities = Charity.where(category: @category).order(@sorting)
-      else
-        @charities = Charity.where(category: @category)
-      end
+      @charities = Charity.where(category: @category)
     else
-      if set_sorting
-        @charities = Charity.all.order(@sorting)
-      else
-        @charities = Charity.all
-      end
+      @charities = Charity.all
+    end
+    if @sorting == "name"
+      @charities = @charities.order(:name)
+    elsif @sorting == "score"
+      @charities = @charities.sort_by{ |charity| -charity.score }
+    else
+      @charities
     end
   end
 
@@ -50,7 +50,7 @@ class CharitiesController < ApplicationController
 
   def set_sorting
     if params[:sort_by].present?
-      @sorting = params[:sort_by].to_sym
+      @sorting = params[:sort_by]
     end
   end
 

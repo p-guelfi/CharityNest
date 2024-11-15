@@ -1,0 +1,164 @@
+.report-editor {
+  h2 {
+    margin: 2rem 0;
+  }
+  .trix-button-group {
+  border: 0px solid white;
+  border-radius: 5px;
+  margin-bottom: 0;
+  }
+  .trix-button {
+    background-color: $bright-turquoise;
+    opacity: 1;
+    overflow: hidden ;
+    border: 0;
+    &:not(:first-child) {
+      border-left: 0;
+    }
+  }
+  .form-control {
+    border: 0;
+    border-radius: 0;
+    overflow: hidden;
+  }
+  .form-inputs {
+    border: 0;
+    border-radius: 0.25rem;
+    background-color: $bright-turquoise;
+    box-shadow: $card-box-shadow;
+    border: 1px solid $bright-turquoise;
+    margin-bottom: 1rem;
+    label {
+      margin: 0.5em 0.5em 0 0.5em;
+    }
+    div {
+      margin-bottom: 0!important;
+    }
+  }
+  .form-actions {
+    display: flex;
+    justify-content: end;
+  }
+}
+
+.score-detailed {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 1rem;
+  div {
+    grid-row: span 1;
+  }
+}
+
+.report-input-teaser {
+  &.form-control {
+  min-height: 10em;
+  }
+}
+.report-input-body {
+  min-height: 30em;
+  background-color: white;
+  border: 0;
+}
+
+.report {
+  padding: 2rem;
+  img {
+    width: 100%;
+    margin-bottom: 2rem;
+    overflow: hidden;
+  }
+  a {
+    text-decoration: none;
+    font-weight: bold;
+    margin-bottom: 0;
+  }
+  small {
+    margin: 0;
+  }
+}
+.report-evaluation {
+  background-color: $bright-turquoise;
+  .report-type {
+    color: $forest-green;
+    font-weight: bold;
+  }
+}
+.report-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+
+.card-report-teaser {
+  @extend .card-basic;
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  img {
+    object-fit: cover;
+    margin: -2rem 0 -2rem -2rem;
+    width: calc(100% + 2rem);
+    height: calc(100% + 2*2rem);
+  }
+}
+.report-full {
+  background-color: white;
+  max-width: 800px;
+  margin: 0 auto;
+  box-shadow: $default-box-shadow;
+  min-height: 100vh;
+  padding: 2rem 4rem;
+  img {
+    object-fit: contain;
+    margin: -2rem -2rem 2rem -2rem;
+    width: calc(100% + 4rem)
+  }
+  .report-score-bars {
+    margin-bottom: 2rem;
+  }
+  h1 {
+    margin: 2rem 0 1rem 0;
+  }
+}
+.report-date {
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+}
+.report-score-bars {
+  label {
+    margin-bottom: -0.125rem;
+  }
+  .progress {
+    margin-bottom: 0.5rem;
+  }
+  .progress-bar {
+    background-color: $forest-green;
+    filter: brightness(1.25) saturate(0.3);
+  }
+  span {
+    color: black;
+    font-size: 0.875rem;
+
+  }
+}
+.main-score-bar {
+  span {
+    color: white;
+    font-size: 1rem;
+  }
+  label {
+    font-weight: bold;
+  }
+  .progress-bar {
+    filter: brightness(1) saturate(1);
+    color: white;
+  }
+  .progress {
+    margin-top: 0.25rem;
+    margin-bottom: 1rem;
+    height: 2rem!important;
+  }
+}

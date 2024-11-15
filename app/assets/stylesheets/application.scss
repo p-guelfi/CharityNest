@@ -2,8 +2,10 @@
 @import "config/fonts";
 @import "config/colors";
 @import "config/bootstrap_variables";
+@import "config/project_variables";
 
 // External libraries
+@import "trix";
 @import "bootstrap";
 @import "font-awesome";
 

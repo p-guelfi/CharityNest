@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="report-editor">
+    <h2>Create a new Report</h2>
+    <%= simple_form_for [ @charity_project, @report ] do |f| %>
+      <% if current_user.evaluator? %>
+        <div class="form-inputs">
+          <%= f.input :report_type, collection: Report.report_types.keys, label: "Type of Report" %>
+        </div>
+        <%# Input for Score as a slider between 0 and 100 %>
+        <div class="score-inputs">
+          <h4>Scores in % ( 0 - 100 )</h4>
+          <div class="score-main">
+            <div class="form-inputs">
+              <%= f.input :score, as: :integer, label: "Overall", input_html: { min: 0, max: 100 } %>
+            </div>
+          </div>
+          <div class="score-detailed">
+            <div class="form-inputs">
+              <%= f.input :score_impact, as: :integer, label: "Impact", input_html: { min: 0, max: 100 } %>
+            </div>
+            <div class="form-inputs">
+              <%= f.input :score_communication, as: :integer, label: "Communication", input_html: { min: 0, max: 100 } %>
+            </div>
+            <div class="form-inputs">
+              <%= f.input :score_efficiency, as: :integer, label: "Efficiency", input_html: { min: 0, max: 100 } %>
+            </div>
+            <div class="form-inputs">
+              <%= f.input :score_adaptability, as: :integer, label: "Adaptability", input_html: { min: 0, max: 100 } %>
+            </div>
+          </div>
+        </div>
+      <h4>Evaluation Report</h4>
+      <% else %>
+          <%= f.input :report_type, as: :hidden, input_html: { value: "article" } %>
+      <% end %>
+      <div class="form-inputs">
+        <%= f.input :title, label: "Title (max 30 characters)" %>
+      </div>
+      <div class="form-inputs">
+        <%= f.input :teaser, input_html: { class: "report-input-teaser" }, label: "Teaser Text (max 200 characters)" %>
+      </div>
+      <div class="form-inputs">
+        <%= f.input :photos, as: :file, input_html: { multiple: true }, label: "Upload Photos" %>
+      </div>
+      <!-- insert these three line of code below -->
+      <div class="form-inputs">
+        <label for="report_body" class="mb-2">Report Body Text</label>
+        <%= f.rich_text_area :body, class: "report-input-body" %>
+      </div>
+
+      <div class="form-actions">
+        <%= f.button :submit, class: "button" %>
+      </div>
+    <% end %>
+  </div>
+</div>
