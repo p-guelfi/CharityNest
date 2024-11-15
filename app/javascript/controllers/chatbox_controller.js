@@ -8,15 +8,22 @@ export default class extends Controller {
     this.loadChatHistory();
     this.inputTarget.addEventListener("keydown", this.handleKeyDown.bind(this));
 
-    if (!sessionStorage.getItem("hasOpenedChat")) {
+    if (!localStorage.getItem("hasOpenedChat")) {
       this.sendGreetingMessage();
-      sessionStorage.setItem("hasOpenedChat", "true");
+      localStorage.setItem("hasOpenedChat", "true");
     }
 
     // Check if common questions were hidden on previous page load
-    if (sessionStorage.getItem("commonQuestionsHidden") === "true") {
+    if (localStorage.getItem("commonQuestionsHidden") === "true") {
       this.hideCommonQuestions();
     }
+
+    // Listen for changes in localStorage (across tabs)
+    window.addEventListener("storage", (event) => {
+      if (event.key === "chatHistory") {
+        this.loadChatHistory(); // Reload chat history when it changes in another tab
+      }
+    });
   }
 
   handleKeyDown(event) {
@@ -31,7 +38,9 @@ export default class extends Controller {
 
   loadChatHistory() {
     const messagesDiv = this.messagesTarget;
-    const chatHistory = JSON.parse(sessionStorage.getItem("chatHistory")) || [];
+    const chatHistory = JSON.parse(localStorage.getItem("chatHistory")) || [];
+
+    messagesDiv.innerHTML = ''; // Clear the existing messages before loading new ones
 
     chatHistory.forEach((message) => {
       const messageWrapper = document.createElement("div");
@@ -41,14 +50,18 @@ export default class extends Controller {
       iconElement.classList.add("message-icon");
 
       const messageElement = document.createElement("div");
-      messageElement.textContent = message.text;
 
+      // Check if the message is from the AI and has HTML content
       if (message.sender === "You") {
         iconElement.innerHTML = '<i class="fa-solid fa-user"></i>';
         messageElement.classList.add("user-message");
+        messageElement.textContent = message.text; // User's message is plain text
       } else if (message.sender === "CharityNest AI") {
         iconElement.innerHTML = '<i class="fa-solid fa-crow"></i>';
         messageElement.classList.add("ai-message");
+
+        // Use innerHTML for AI messages to render HTML (if any)
+        messageElement.innerHTML = message.text; // AI's message can contain HTML
       }
 
       messageWrapper.appendChild(iconElement);
@@ -60,13 +73,14 @@ export default class extends Controller {
     messagesDiv.scrollTop = messagesDiv.scrollHeight;
   }
 
+
   saveChatHistory(messages) {
-    sessionStorage.setItem("chatHistory", JSON.stringify(messages));
+    localStorage.setItem("chatHistory", JSON.stringify(messages));
   }
 
   sendGreetingMessage() {
     const messagesDiv = this.messagesTarget;
-    let chatHistory = JSON.parse(sessionStorage.getItem("chatHistory")) || [];
+    let chatHistory = JSON.parse(localStorage.getItem("chatHistory")) || [];
 
     const greetingMessage = "Hello, I'm the CharityNest AI assistant. How can I help you?";
     chatHistory.push({ sender: "CharityNest AI", text: greetingMessage });
@@ -96,7 +110,7 @@ export default class extends Controller {
     const message = this.inputTarget.value;
     if (message) {
       const messagesDiv = this.messagesTarget;
-      let chatHistory = JSON.parse(sessionStorage.getItem("chatHistory")) || [];
+      let chatHistory = JSON.parse(localStorage.getItem("chatHistory")) || [];
 
       // Add user message to chat history
       chatHistory.push({ sender: "You", text: message });
@@ -174,7 +188,6 @@ export default class extends Controller {
           // Scroll to the bottom after the AI sends a response
           messagesDiv.scrollTop = messagesDiv.scrollHeight;
         })
-
         .catch((error) => {
           console.error("Error:", error);
 
@@ -204,7 +217,7 @@ export default class extends Controller {
     const commonQuestionsDiv = this.element.querySelector('.common-questions');
     if (commonQuestionsDiv) {
       commonQuestionsDiv.style.display = 'none';
-      sessionStorage.setItem("commonQuestionsHidden", "true"); // Save state to sessionStorage
+      localStorage.setItem("commonQuestionsHidden", "true"); // Save state to localStorage
     }
   }
 }
