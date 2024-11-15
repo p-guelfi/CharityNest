@@ -1,7 +1,7 @@
 /* BANNER SECTION */
 .banner {
   width: 100%;
-  height: 27rem;
+  height: 34rem;
   overflow: hidden;
   position: relative;
 }
@@ -13,20 +13,36 @@
   object-position: 50% 25%;
 }
 
+/* MAIN HEADER STYLING */
+.main-header {
+  position: relative; /* Part of the document flow */
+  margin-top: -5rem; /* Overlaps the banner */
+  background-color: $coral-white; /* Coral-white background */
+  color: black; /* Text color */
+  padding: 2rem 3rem 3rem;
+  border-radius: 10px; /* Rounded edges */
+  text-align: center; /* Centers the text */
+  z-index: 1; /* Ensures it sits above the banner */
+  width: fit-content; /* Prevents stretching */
+  margin-left: auto; /* Centers horizontally */
+  margin-right: auto; /* Centers horizontally */
+}
+
 /* GENERAL CONTENT STYLING */
 .content {
+  margin-top: 2rem; /* Adds space below the main header */
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   text-align: center;
   width: 100%;
-  background-color: $coral-white;
+  background-color: $coral-white; /* Coral-white */
 }
 
 .section {
   max-width: 65rem;
   width: 100%;
+  padding: 0 5rem;
 }
 
 .content h1 {
@@ -79,8 +95,6 @@
 
 /* OUR PROJECTS SECTION */
 .our-projects {
-  margin: 2rem 0;
-  padding: 2rem;
   display: flex;
   flex-direction: column;
   max-width: 70rem; /* Max width of the project card */
@@ -113,7 +127,7 @@
   }
 }
 
-
+/* CUSTOM STYLES */
 .custom-checkbox {
   width: 1rem;
   height: 1rem;
@@ -127,13 +141,13 @@
 
 .custom-close {
   font-size: 2rem; /* Larger close button */
-  color: $danger; /* Blue color for the button */
+  color: $ocean-turquoise; /* Danger color for the button */
   border: none; /* Remove default border */
   background: none; /* No background */
 }
 
 .custom-close:hover {
-  color: $success; /* Darker blue on hover */
+  color: $forest-green; /* Success color on hover */
   cursor: pointer; /* Change cursor to pointer */
 }
 
