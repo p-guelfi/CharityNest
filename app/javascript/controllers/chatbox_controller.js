@@ -161,7 +161,9 @@ export default class extends Controller {
 
           const aiMessageElement = document.createElement("div");
           aiMessageElement.classList.add("ai-message");
-          aiMessageElement.textContent = data.response;
+
+          // This is where you allow HTML to render correctly, using innerHTML instead of textContent
+          aiMessageElement.innerHTML = data.response;  // This will allow the link to render as HTML
 
           aiMessageWrapper.appendChild(aiIconElement);
           aiMessageWrapper.appendChild(aiMessageElement);
@@ -172,6 +174,7 @@ export default class extends Controller {
           // Scroll to the bottom after the AI sends a response
           messagesDiv.scrollTop = messagesDiv.scrollHeight;
         })
+
         .catch((error) => {
           console.error("Error:", error);
 
