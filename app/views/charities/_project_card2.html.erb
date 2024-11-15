@@ -1,7 +1,7 @@
 <div class="project-card" data-goal="<%= project.goal %>">
   <div class="project-photo">
     <% if project.photos.attached? %>
-<%= cl_image_tag project.photos.first.key, width: 300, height: 200, crop: "fit", gravity: "center" %>
+      <%= cl_image_tag project.photos.first.key, width: 300, height: 200, gravity: "center", crop: "fill" %>
     <% else %>
       <p>No image available for this project.</p>
     <% end %>
