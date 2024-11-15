@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_11_10_113807) do
+ActiveRecord::Schema[7.1].define(version: 2024_11_15_132351) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -90,8 +90,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_10_113807) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "donation_id"
-    t.index ["donation_id"], name: "index_discussions_on_donation_id"
+    t.bigint "charity_project_id"
+    t.index ["charity_project_id"], name: "index_discussions_on_charity_project_id"
     t.index ["user_id"], name: "index_discussions_on_user_id"
   end
 
@@ -130,7 +130,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_10_113807) do
   add_foreign_key "charity_projects", "charities"
   add_foreign_key "comments", "discussions"
   add_foreign_key "comments", "users"
-  add_foreign_key "discussions", "donations"
+  add_foreign_key "discussions", "charity_projects"
   add_foreign_key "discussions", "users"
   add_foreign_key "donations", "charity_projects"
   add_foreign_key "donations", "users"

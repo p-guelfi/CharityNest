@@ -651,4 +651,57 @@ charity_projects_climateworks = [{
 
   puts "#{Donation.count} donations created."
 
+
+  # Create discussions with comments for specific charity projects
+  puts "Creating discussions and comments for selected charity projects..."
+
+  # Find charity projects by name
+  campaign_for_clean_air = CharityProject.find_by(name: "Campaign for Clean Air")
+  decarbonization_in_brussels = CharityProject.find_by(name: "Campaigning for Decarbonization in Brussels")
+
+  # Create discussions and comments for "Campaign for Clean Air"
+  3.times do |i|
+    discussion = Discussion.create!(
+      title: "Discussion ##{i + 1} for Campaign for Clean Air",
+      description: "This is a sample discussion ##{i + 1} for the Campaign for Clean Air project.",
+      user: User.all.sample, # Assign to a random user
+      charity_project: campaign_for_clean_air
+    )
+
+    # Add 5 comments to each discussion
+    5.times do |j|
+      Comment.create!(
+        content: "This is comment ##{j + 1} on discussion ##{i + 1} for Campaign for Clean Air.",
+        user: User.all.sample, # Assign to a random user
+        discussion: discussion
+      )
+    end
+
+    puts "Created discussion ##{i + 1} with 5 comments for Campaign for Clean Air."
+  end
+
+  # Create discussions and comments for "Campaigning for Decarbonization in Brussels"
+  3.times do |i|
+    discussion = Discussion.create!(
+      title: "Discussion ##{i + 1} for Campaigning for Decarbonization in Brussels",
+      description: "This is a sample discussion ##{i + 1} for the Campaigning for Decarbonization in Brussels project.",
+      user: User.all.sample, # Assign to a random user
+      charity_project: decarbonization_in_brussels
+    )
+
+    # Add 5 comments to each discussion
+    5.times do |j|
+      Comment.create!(
+        content: "This is comment ##{j + 1} on discussion ##{i + 1} for Campaigning for Decarbonization in Brussels.",
+        user: User.all.sample, # Assign to a random user
+        discussion: discussion
+      )
+    end
+
+    puts "Created discussion ##{i + 1} with 5 comments for Campaigning for Decarbonization in Brussels."
+  end
+
+  puts "Discussions and comments created for selected charity projects."
+
+
 puts "Seeding complete!"
