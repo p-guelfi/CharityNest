@@ -19,7 +19,7 @@
   margin-top: -5rem; /* Overlaps the banner */
   background-color: $coral-white; /* Coral-white background */
   color: black; /* Text color */
-  padding: 1rem 2rem; /* Padding for better spacing */
+  padding: 2rem 3rem 3rem;
   border-radius: 10px; /* Rounded edges */
   text-align: center; /* Centers the text */
   z-index: 1; /* Ensures it sits above the banner */
@@ -42,6 +42,7 @@
 .section {
   max-width: 65rem;
   width: 100%;
+  padding: 0 2rem;
 }
 
 .content h1 {

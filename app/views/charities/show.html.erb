@@ -5,9 +5,11 @@
     <p>No banner image available.</p>
   <% end %>
 </div>
+
 <div class="main-header">
-    <h1><%= @charity.name %></h1>
+  <h1><%= @charity.name %></h1>
 </div>
+
 <div class="content">
   <div class="section">
     <p><strong><%= @charity.description %></strong></p>
@@ -55,32 +57,27 @@
     </div>
   </div>
 
-
-
-
-<%# List and Map Section %>
-    <h2>Our Projects</h2>
-
-<div class="two-columns">
-  <div class="content col-8" data-controller="sort">
-    <div id="projects-sect" class="our-projects">
-      <% @charity_projects.each do |project| %>
-        <% unless project.name == @charity.name %>
-         <%= render partial: 'project_card', locals: { project: project } %>
+  <%# List and Map Section %>
+  <h2>Our Projects</h2>
+  <div class="two-columns">
+    <div class="content col-8" data-controller="sort">
+      <div id="projects-sect" class="our-projects">
+        <% @charity_projects.each do |project| %>
+          <% unless project.name == @charity.name %>
+            <%= render partial: 'project_card', locals: { project: project } %>
+          <% end %>
         <% end %>
-      <% end %>
+      </div>
+    </div>
+
+    <div class="map-container-project-show col-4">
+      <div style="width: 100%; height: 38rem; border-radius: 10px;"
+           data-controller="map"
+           data-map-markers-value="<%= @markers.to_json %>"
+           data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
     </div>
   </div>
-
-  <div class="map-container-project-show col-4">
-    <div style="width: 100%; height: 38rem; border-radius: 10px;"
-         data-controller="map"
-         data-map-markers-value="<%= @markers.to_json %>"
-         data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
-  </div>
 </div>
-
-
 
 
 
