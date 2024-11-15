@@ -256,7 +256,7 @@ charities.each do |charity_data|
     puts "Photos attached to #{charity.name}."
   end
   if charity.name == "Friends of the Earth"
-    photo_path1 = Rails.root.join("db/seed-images/greenpeace/GP0STPOUA_8.webp")
+    photo_path1 = Rails.root.join("db/seed-images/friends-of-earth/banner.png")
     photo_path2 = Rails.root.join("db/seed-images/greenpeace/gp0stown2.webp")
     photo_path3 = Rails.root.join("db/seed-images/greenpeace/gp0stqdu4.webp")
     photo_path4 = Rails.root.join("db/seed-images/greenpeace/GP01CK9.webp")
@@ -507,7 +507,7 @@ charity_projects_friends_of_the_earth = [{
     goal: 70000,  # Set a funding goal
     charity: Charity.find_by(name: "Friends of the Earth"),  # Link to the charity
     photos: [
-      Rails.root.join("db/seed-images/greenpeace/GP0STPOUA_8.webp")  # Path to an image related to the new project
+      Rails.root.join("db/seed-images/friends-of-earth/banner.png")  # Path to an image related to the new project
     ]
   }, {
     name: "Campaign for Clean Air",
@@ -516,7 +516,7 @@ charity_projects_friends_of_the_earth = [{
     goal: 60000,
     charity: Charity.find_by(name: "Friends of the Earth"),
     photos: [
-      Rails.root.join("db/seed-images/greenpeace/GP01EFS-polar-bear-600x450-c-default.webp")
+      Rails.root.join("db/seed-images/friends-of-earth/dust-delhi-01-10-24-E-hero.jpg")
     ]
   }, {
     name: "Protecting Pollinators",
@@ -525,7 +525,7 @@ charity_projects_friends_of_the_earth = [{
     goal: 75000,
     charity: Charity.find_by(name: "Friends of the Earth"),
     photos: [
-      Rails.root.join("db/seed-images/greenpeace/030321_decarbonization.jpg")
+      Rails.root.join("db/seed-images/friends-of-earth/Protecting-Pollinators-Safeguarding-Natures-Essential-Insect-Workforce.jpg")
     ]
   }, {
     name: "Fighting Plastic Pollution",
@@ -534,7 +534,7 @@ charity_projects_friends_of_the_earth = [{
     goal: 65000,
     charity: Charity.find_by(name: "Friends of the Earth"),
     photos: [
-      Rails.root.join("db/seed-images/greenpeace/DSC_9026-1.jpg")
+      Rails.root.join("db/seed-images/friends-of-earth/istockphoto-1442904386-612x612-2.jpg")
     ]
   }
 ]
