@@ -3,6 +3,8 @@ puts "Seeding database..."
 
   puts "Cleaning database..."
 
+  Comment.destroy_all
+  Discussion.destroy_all
   Charity.destroy_all
   User.destroy_all
   Category.destroy_all
@@ -652,56 +654,57 @@ charity_projects_climateworks = [{
   puts "#{Donation.count} donations created."
 
 
-  # Create discussions with comments for specific charity projects
+# Create discussions for specific charity projects
   puts "Creating discussions and comments for selected charity projects..."
 
-  # Find charity projects by name
-  campaign_for_clean_air = CharityProject.find_by(name: "Campaign for Clean Air")
-  decarbonization_in_brussels = CharityProject.find_by(name: "Campaigning for Decarbonization in Brussels")
+  # Find the charity projects to add discussions to
+  charity_project_clean_air = CharityProject.find_by(name: "Campaign for Clean Air")
+  charity_project_decarbonization = CharityProject.find_by(name: "Campaigning for Decarbonization in Brussels")
 
-  # Create discussions and comments for "Campaign for Clean Air"
-  3.times do |i|
-    discussion = Discussion.create!(
-      title: "Discussion ##{i + 1} for Campaign for Clean Air",
-      description: "This is a sample discussion ##{i + 1} for the Campaign for Clean Air project.",
-      user: User.all.sample, # Assign to a random user
-      charity_project: campaign_for_clean_air
-    )
+  # Define sample discussions and comments
+  discussion_titles = ["Future of Air Quality", "Renewable Energy Solutions", "Community Initiatives for Clean Air"]
+  discussion_descriptions = [
+    "Let's discuss the various factors impacting air quality and how we can make a difference.",
+    "How renewable energy sources can help reduce pollution and improve air quality.",
+    "Exploring community-driven efforts to improve air quality and reduce pollution."
+  ]
+  comment_contents = [
+    "Great point! I think awareness is key.",
+    "This initiative will have a significant impact on future generations.",
+    "We need more government support for these projects.",
+    "Public engagement is crucial for success.",
+    "Looking forward to seeing positive changes!"
+  ]
 
-    # Add 5 comments to each discussion
-    5.times do |j|
-      Comment.create!(
-        content: "This is comment ##{j + 1} on discussion ##{i + 1} for Campaign for Clean Air.",
-        user: User.all.sample, # Assign to a random user
-        discussion: discussion
+  # Function to create discussions and comments for a charity project
+  def create_discussions_with_comments(charity_project, discussion_titles, discussion_descriptions, comment_contents, users)
+    discussion_titles.each_with_index do |title, index|
+      discussion = charity_project.discussions.create!(
+        title: title,
+        description: discussion_descriptions[index],
+        user: users.sample # Assign a random user as the author
       )
-    end
+      puts "Discussion '#{discussion.title}' created for #{charity_project.name}"
 
-    puts "Created discussion ##{i + 1} with 5 comments for Campaign for Clean Air."
+      # Create comments for each discussion
+      5.times do
+        discussion.comments.create!(
+          content: comment_contents.sample,
+          user: users.sample # Assign a random user as the author
+        )
+      end
+      puts "5 comments created for discussion '#{discussion.title}'"
+    end
   end
 
-  # Create discussions and comments for "Campaigning for Decarbonization in Brussels"
-  3.times do |i|
-    discussion = Discussion.create!(
-      title: "Discussion ##{i + 1} for Campaigning for Decarbonization in Brussels",
-      description: "This is a sample discussion ##{i + 1} for the Campaigning for Decarbonization in Brussels project.",
-      user: User.all.sample, # Assign to a random user
-      charity_project: decarbonization_in_brussels
-    )
+  # Get all users to assign authorship randomly
+  users = User.all
 
-    # Add 5 comments to each discussion
-    5.times do |j|
-      Comment.create!(
-        content: "This is comment ##{j + 1} on discussion ##{i + 1} for Campaigning for Decarbonization in Brussels.",
-        user: User.all.sample, # Assign to a random user
-        discussion: discussion
-      )
-    end
+  # Create discussions and comments for each specified charity project
+  create_discussions_with_comments(charity_project_clean_air, discussion_titles, discussion_descriptions, comment_contents, users) if charity_project_clean_air
+  create_discussions_with_comments(charity_project_decarbonization, discussion_titles, discussion_descriptions, comment_contents, users) if charity_project_decarbonization
 
-    puts "Created discussion ##{i + 1} with 5 comments for Campaigning for Decarbonization in Brussels."
-  end
-
-  puts "Discussions and comments created for selected charity projects."
+  puts "Discussions and comments seeded successfully!"
 
 
 puts "Seeding complete!"
