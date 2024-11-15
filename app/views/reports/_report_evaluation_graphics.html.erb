@@ -1,0 +1,36 @@
+<div class="report-score-bars">
+  <div class="main-score-bar">
+    <label> Overall Score </label>
+    <div class="progress">
+      <div class="progress-bar" role="progressbar" style="width: <%= report.score %>%" aria-valuenow="<%= report.score %>" aria-valuemin="0" aria-valuemax="100"><span><%= report.score %> %</span></div>
+    </div>
+  </div>
+  <div>
+    <%#  Progress Bar for score_impact %>
+    <label> Impact Score </label>
+    <div class="progress">
+      <div class="progress-bar" role="progressbar" style="width: <%= report.score_impact %>%" aria-valuenow="<%= report.score_impact %>" aria-valuemin="0" aria-valuemax="100"><span><%= report.score_impact %> %</span></div>
+    </div>
+  </div>
+  <div>
+    <%#  Progress Bar for score_communication %>
+    <label> Communication Score </label>
+    <div class="progress">
+      <div class="progress-bar" role="progressbar" style="width: <%= report.score_communication %>%" aria-valuenow="<%= report.score_communication %>" aria-valuemin="0" aria-valuemax="100"><span><%= report.score_communication %> %</span></div>
+    </div>
+  </div>
+  <div>
+    <%#  Progress Bar for score_efficiency %>
+    <label> Efficiency Score </label>
+    <div class="progress">
+      <div class="progress-bar" role="progressbar" style="width: <%= report.score_efficiency %>%" aria-valuenow="<%= report.score_efficiency %>" aria-valumin="0" aria-valuemax="100"><span><%= report.score_efficiency %> %</span></div>
+    </div>
+  </div>
+  <div>
+    <%#  Progress Bar for score_adaptability %>
+    <label> Adaptability Score </label>
+    <div class="progress">
+      <div class="progress-bar" role="progressbar" style="width: <%= report.score_adaptability %>%" aria-valuenow="<%= report.score_adaptability %>" aria-valuemin="0" aria-valuemax="100"><span><%= report.score_adaptability %> %</span></div>
+    </div>
+  </div>
+</div>
