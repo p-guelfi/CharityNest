@@ -11,6 +11,14 @@ class CharityProject < ApplicationRecord
   validates :description, presence: true
   validates :location, presence: true
 
+  def evaluations
+    reports.where(report_type: "Evaluation")
+  end
+
+  def articles
+    reports.where(report_type: "Article")
+  end
+
   include PgSearch::Model
   pg_search_scope :global_search,
     against: [:name, :description, :location],

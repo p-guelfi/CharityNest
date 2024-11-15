@@ -5,7 +5,7 @@ class Report < ApplicationRecord
   has_many_attached :photos, dependent: :destroy
   has_rich_text :body
 
-  validates :title, presence: true, length: { maximum: 100 }
+  validates :title, presence: true, length: { maximum: 110 }
   validates :charity_project, presence: true
   validates :user, presence: true
   validates :report_type, presence: true, inclusion: { in: %w[Article Evaluation] }
@@ -13,7 +13,6 @@ class Report < ApplicationRecord
   validates :teaser, presence: true, length: { maximum: 300 }
 
   enum report_type: { Article: 0, Evaluation: 1 }
-
 
   private
 

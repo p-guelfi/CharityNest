@@ -1,0 +1,49 @@
+$nav-width: 100px;
+
+.grid-show-background {
+  background-color: $coral-white;
+}
+.grid-show-container {
+  background-color: white;
+  margin: 0 calc( #{$nav-width} + 4rem ) 0 2rem;
+  padding: 1.25rem 0px;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: auto;
+  grid-gap: 1.25rem;
+  justify-items: stretch;
+  .section-title {
+    grid-column: span 12;
+    padding: 2rem;
+    min-width: 0;
+    min-height: 0;
+    width: 100%;
+  }
+  .card-report-teaser, .card-photos, .card-basic {
+    grid-column: span 6;
+    margin: 0;
+  }
+
+  .card-project-graphs, .card-project-aim {
+    grid-column: span 6;
+  }
+  .container-evaluations {
+    grid-column: span 6;
+  }
+  .container-articles {
+    grid-column: 2 / span 10;
+  }
+  .report-article {
+    grid-column: span 6;
+  }
+}
+.show-container{
+  display: flex;
+}
+.show-nav-container {
+  width: $nav-width;
+  margin-left: 2rem;
+}
+.show-content-container {
+  margin-left: 1.25rem;
+}

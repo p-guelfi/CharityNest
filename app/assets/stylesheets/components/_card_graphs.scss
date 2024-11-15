@@ -1,0 +1,24 @@
+.card-project-graphs {
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 30vh  30vh 30vh;
+  gap: 1rem;
+}
+
+.main-graph {
+  grid-column: span 2;
+  grid-row: span 1;
+  div, canvas {
+    width: 100%!important;
+    max-height: 80%!important;
+  }
+}
+.detailed-graph {
+  grid-column: span 1;
+  grid-row: span 1;
+  div, canvas {
+    width: 100%!important;
+    max-height: 80%!important;
+  }
+}

@@ -3,6 +3,7 @@
   padding: 50px;
   display: grid;
   grid-template-columns: 1fr 1fr;
+  gap: 1rem;
 }
 .banner-intro {
  grid-column: span 1;
