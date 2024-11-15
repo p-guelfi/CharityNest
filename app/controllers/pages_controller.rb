@@ -4,4 +4,8 @@ class PagesController < ApplicationController
   def home
     @categories = Category.all
   end
+
+# app/controllers/pages_controller.rb
+  def about
+  end
 end
