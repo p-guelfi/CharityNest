@@ -18,6 +18,10 @@ class Charity < ApplicationRecord
       reports_score = reports_sum_score / reports_sum
       score += reports_score
     end
-    return ( score / charity_projects.count )
+    unless charity_projects.count == 0
+      return ( score / charity_projects.count )
+    else
+      return score
+    end
   end
 end
