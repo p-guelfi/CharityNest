@@ -15,3 +15,7 @@
     padding: 0 10%;
   }
 }
+.viewport-above-cta {
+  height: calc(100dvh - 8rem - 74px);
+  overflow: scroll;
+}

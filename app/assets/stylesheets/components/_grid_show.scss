@@ -12,16 +12,29 @@ $nav-width: 100px;
   grid-template-rows: auto;
   grid-gap: 1.25rem;
   justify-items: stretch;
-  grid-auto-flow: column;
+  .section-title {
+    grid-column: span 12;
+    padding: 2rem;
+    min-width: 0;
+    min-height: 0;
+    width: 100%;
+  }
   .card-report-teaser, .card-photos, .card-basic {
     grid-column: span 6;
     margin: 0;
   }
-  .report-evaluation {
-    grid-column: 1 / span 6;
+
+  .card-project-graphs, .card-project-aim {
+    grid-column: span 6;
+  }
+  .container-evaluations {
+    grid-column: span 6;
+  }
+  .container-articles {
+    grid-column: 2 / span 10;
   }
   .report-article {
-    grid-column: 7 / span 6;
+    grid-column: span 6;
   }
 }
 .show-container{

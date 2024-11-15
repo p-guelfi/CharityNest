@@ -1,53 +1,66 @@
-<%# Banner with charity description %>
-<div class="banner-charities">
-  <div class="banner-heading">
-    <h1><%= @charity_project.name %></h1>
+<div class="viewport-above-cta">
+  <%# Banner with charity description %>
+  <div class="banner-charities">
+    <div class="banner-heading">
+      <h1><%= @charity_project.name %></h1>
+    </div>
+    <div class="banner-intro">
+      <p><%= @charity_project.description %></p>
+    </div>
   </div>
-  <div class="banner-intro">
-    <p><%= @charity_project.description %></p>
-  </div>
-</div>
-<%# List %>
-<div class="grid-show-background show-container" data-controller="sort-index">
-  <div class="show-nav-container">
-    <%# Nav Bar Show Content %>
-    <%= render "show_nav" %>
-  </div>
-  <%# Grid with Charity Cards %>
-  <div class="show-content-container">
-    <section id="aim">
-      <div class="grid-show-container">
-        <%= render "show_card_photos" %>
-        <%= render "show_card_aim" %>
-      </div>
-    </section>
-    <section id="data">
-      <div class="grid-show-container">
-        <%= render "show_card_photos" %>
-        <%= render "show_card_aim" %>
-      </div>
-    </section>
-    <section id="reporting">
-      <div class="grid-show-container">
-        <% @charity_project.evaluations.each do |evaluation| %>
-          <%= render "reports/card_report_teaser", report: evaluation %>
-        <% end %>
-        <%# Iterate over articles %>
-        <% @charity_project.articles.each do |article| %>
-          <%= render "reports/card_report_teaser", report: article %>
-        <% end %>
-      </div>
-    </section>
-    <section id="forum">
-      <div class="grid-show-container">
-
-      </div>
-    </section>
+  <%# List %>
+  <div class="grid-show-background show-container" data-controller="sort-index">
+    <div class="show-nav-container">
+      <%# Nav Bar Show Content %>
+      <%= render "show_nav" %>
+    </div>
+    <%# Grid with Charity Cards %>
+    <div class="show-content-container">
+      <section id="aim">
+        <div class="grid-show-container">
+          <div class="section-title">
+            <h2>Aim</h2>
+          </div>
+          <%= render "show_card_aim" %>
+          <%= render "show_card_photos" %>
+        </div>
+      </section>
+      <section id="data">
+        <div class="grid-show-container">
+          <div class="section-title">
+            <h2>External Evaluation</h2>
+          </div>
+          <%= render "show_card_graphs" %>
+          <div class="container-evaluations">
+              <%= render "reports_carousel", carousel_id: "evaluations", objects: @charity_project.evaluations %>
+          </div>
+        </div>
+      </section>
+      <section id="reporting">
+        <div class="grid-show-container">
+          <div class="section-title">
+            <h2>Organisation Reporting</h2>
+          </div>
+          <%# Iterate over articles %>
+          <div class="container-articles">
+            <%= render "reports_carousel", carousel_id: "articles", objects: @charity_project.articles %>
+          </div>
+        </div>
+      </section>
+      <section id="forum">
+        <div class="grid-show-container">
+          <div class="section-title">
+            <h2>Forum</h2>
+          </div>
+          <%= render "show_card_map" %>
+          <% @charity_project.donations.each do |donation|
+            donation.discussions.each do |discussion| %>
+              <%= render "discussions/card_discussion", discussion: discussion %>
+            <% end %>
+          <% end %>
+        </div>
+      </section>
+    </div>
   </div>
 </div>
 <%= render "show_cta_donation", project: @charity_project %>
-
-<% if current_user.donations.exists?(charity_project: @charity_project) %>
-  <!-- Display the "Discuss" button only if the user has donated to this project -->
-  <%= link_to 'Discuss', donation_discussions_path(current_user.donations.find_by(charity_project: @charity_project)), class: 'btn btn-primary ' %>
-<% end %>

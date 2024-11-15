@@ -1,7 +1,7 @@
-<div class="card-basic card-photos">
+<div class="card-photos">
   <% if @charity_project.photos.attached? %>
     <% if @charity_project.photos.length > 1 %>
-      <%= render "photos_carousel", carousel_id: "show", object: @charity_project %>
+      <%= render "photos_carousel", carousel_id: "photos", object: @charity_project %>
     <% else %>
       <%= cl_image_tag @charity_project.photos.first.key, crop: :fill, class: "banner-square" %>
     <% end %>

@@ -87,3 +87,5 @@ gem "pg_search"
 gem 'ruby-openai'
 
 gem 'hotwire-rails'
+
+gem "chartkick"
