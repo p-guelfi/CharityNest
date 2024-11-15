@@ -2,7 +2,10 @@ class CharityProject < ApplicationRecord
   belongs_to :charity
   has_one :category, through: :charity
   has_many :donations, dependent: :destroy
+
+  has_many :discussions, dependent: :destroy
   has_many :reports, dependent: :destroy
+
   has_many :discussions
   has_many :users, through: :donations
   has_many_attached :photos, dependent: :destroy

@@ -7,12 +7,14 @@ puts "Seeding database..."
 
   puts "Cleaning database..."
 
-  # Charity.destroy_all
-  # User.destroy_all
-  # Category.destroy_all
-  # CharityProject.destroy_all
-  # Donation.destroy_all
-  Report.destroy_all
+  Comment.destroy_all
+  Discussion.destroy_all
+  Charity.destroy_all
+  User.destroy_all
+  Category.destroy_all
+  CharityProject.destroy_all
+  Donation.destroy_all
+  #Report.destroy_all
 
   puts "Database cleaned."
 
@@ -822,6 +824,60 @@ puts "Seeding database..."
   end
 
 
+
+
+
+# Create discussions for specific charity projects
+  puts "Creating discussions and comments for selected charity projects..."
+
+  # Find the charity projects to add discussions to
+  charity_project_clean_air = CharityProject.find_by(name: "Campaign for Clean Air")
+  charity_project_decarbonization = CharityProject.find_by(name: "Campaigning for Decarbonization in Brussels")
+
+  # Define sample discussions and comments
+  discussion_titles = ["Future of Air Quality", "Renewable Energy Solutions", "Community Initiatives for Clean Air"]
+  discussion_descriptions = [
+    "Let's discuss the various factors impacting air quality and how we can make a difference.",
+    "How renewable energy sources can help reduce pollution and improve air quality.",
+    "Exploring community-driven efforts to improve air quality and reduce pollution."
+  ]
+  comment_contents = [
+    "Great point! I think awareness is key.",
+    "This initiative will have a significant impact on future generations.",
+    "We need more government support for these projects.",
+    "Public engagement is crucial for success.",
+    "Looking forward to seeing positive changes!"
+  ]
+
+  # Function to create discussions and comments for a charity project
+  def create_discussions_with_comments(charity_project, discussion_titles, discussion_descriptions, comment_contents, users)
+    discussion_titles.each_with_index do |title, index|
+      discussion = charity_project.discussions.create!(
+        title: title,
+        description: discussion_descriptions[index],
+        user: users.sample # Assign a random user as the author
+      )
+      puts "Discussion '#{discussion.title}' created for #{charity_project.name}"
+
+      # Create comments for each discussion
+      5.times do
+        discussion.comments.create!(
+          content: comment_contents.sample,
+          user: users.sample # Assign a random user as the author
+        )
+      end
+      puts "5 comments created for discussion '#{discussion.title}'"
+    end
+  end
+
+  # Get all users to assign authorship randomly
+  users = User.all
+
+  # Create discussions and comments for each specified charity project
+  create_discussions_with_comments(charity_project_clean_air, discussion_titles, discussion_descriptions, comment_contents, users) if charity_project_clean_air
+  create_discussions_with_comments(charity_project_decarbonization, discussion_titles, discussion_descriptions, comment_contents, users) if charity_project_decarbonization
+
+  puts "Discussions and comments seeded successfully!"
 
 
 puts "Seeding complete!"

@@ -1,11 +1,10 @@
 class DiscussionsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_donation
+  before_action :set_charity_project
   before_action :set_discussion, only: [:show, :edit, :update, :destroy]
-  before_action :authorize_user_access, only: [:index, :show, :new, :create]
 
   def index
-    @discussions = @donation.discussions
+    @discussions = @charity_project.discussions
   end
 
   def show
@@ -13,14 +12,14 @@ class DiscussionsController < ApplicationController
   end
 
   def new
-    @discussion = @donation.discussions.build
+    @discussion = @charity_project.discussions.build
   end
 
   def create
-    @discussion = @donation.discussions.build(discussion_params)
+    @discussion = @charity_project.discussions.build(discussion_params)
     @discussion.user = current_user
     if @discussion.save
-      redirect_to donation_discussions_path(@donation), notice: 'Discussion created successfully.'
+      redirect_to charity_project_discussions_path(@charity_project), notice: 'Discussion created successfully.'
     else
       render :new
     end
@@ -31,7 +30,7 @@ class DiscussionsController < ApplicationController
 
   def update
     if @discussion.update(discussion_params)
-      redirect_to donation_discussion_path(@donation, @discussion), notice: 'Discussion updated successfully.'
+      redirect_to charity_project_discussion_path(@charity_project, @discussion), notice: 'Discussion updated successfully.'
     else
       render :edit
     end
@@ -39,25 +38,18 @@ class DiscussionsController < ApplicationController
 
   def destroy
     @discussion.destroy
-    redirect_to donation_discussions_path(@donation), notice: 'Discussion deleted.'
+    redirect_to charity_project_discussions_path(@charity_project), notice: 'Discussion deleted.'
   end
 
   private
 
-  def set_donation
-    @donation = Donation.find(params[:donation_id])
+  def set_charity_project
+    @charity_project = CharityProject.find(params[:charity_project_id])
   end
 
   def set_discussion
-    @discussion = @donation.discussions.find_by(id: params[:id])
-    redirect_to donation_discussions_path(@donation), alert: 'Discussion not found' if @discussion.nil?
-  end
-
-  def authorize_user_access
-    # Ensure the user owns the donation
-    unless current_user == @donation.user
-      redirect_to root_path, alert: 'You can only access discussions for your donations.'
-    end
+    @discussion = @charity_project.discussions.find_by(id: params[:id])
+    redirect_to charity_project_discussions_path(@charity_project), alert: 'Discussion not found' if @discussion.nil?
   end
 
   def discussion_params

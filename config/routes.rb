@@ -19,7 +19,15 @@ Rails.application.routes.draw do
   end
 
   resources :charity_projects, except: %i[new create] do
-    resources :donations, only: %i[new create]
+
+    resources :donations, only: [:new, :create]
+
+    # Discussions nested under Charity Projects to enable discussions for all projects
+    resources :discussions do
+    # Comments nested under discussions
+      resources :comments, only: [:create, :destroy]
+    end
+
     resources :reports, only: %i[new create index]
   end
 
