@@ -1,0 +1,56 @@
+<div class="discussion-show-container">
+  <div class="discussion-details">
+    <h1 class="discussion-title"><%= @discussion.title %></h1>
+    <p class="discussion-description"><%= @discussion.description %></p>
+
+    <% if @discussion.user.present? %>
+      <% name = "#{@discussion.user.first_name} #{@discussion.user.last_name}".strip.presence || @discussion.user.email %>
+      <small class="comment-author">by <%= name %> | <%= time_ago_in_words(@discussion.created_at) %> ago</p>
+    <% else %>
+      <small class="comment-author">Anonymous | <%= time_ago_in_words(@discussion.created_at) %> ago</p>
+    <% end %>
+
+    <!-- Delete Discussion button
+    <% if @discussion.user == current_user %>
+      <div class="delete-button">
+        <%= form_with url: donation_discussion_path(@donation, @discussion), method: :delete, local: true, data: { confirm: 'Are you sure you want to delete this discussion?' }, class: 'inline-form' do %>
+          <%= submit_tag 'Delete Discussion', class: 'btn btn-danger' %>
+        <% end %>
+      </div>
+    <% end %> -->
+  </div>
+
+  <div class="comments-section">
+    <h2>Comments</h2>
+    <div class="comments-list">
+      <% @discussion.comments.each do |comment| %>
+        <div class="comment-card">
+          <p class="comment-content"><%= comment.content %></p>
+          <% if comment.user.present? %>
+            <% name = "#{comment.user.first_name} #{comment.user.last_name}".strip.presence || comment.user.email %>
+            <small class="comment-author">by <%= name %> | <%= comment.created_at.present? ? time_ago_in_words(comment.created_at) : 'Unknown time' %> ago</small>
+          <% else %>
+            <small class="comment-author">Anonymous | <%= comment.created_at.present? ? time_ago_in_words(comment.created_at) : 'Unknown time' %> ago</small>
+          <% end %>
+
+          <!-- Delete Comment button
+          <% if comment.user == current_user %>
+            <%= form_with url: donation_discussion_comment_path(@donation, @discussion, comment), method: :delete, local: true, data: { confirm: 'Are you sure you want to delete this comment?' }, class: 'inline-form' do %>
+              <%= submit_tag 'Delete', class: 'btn btn-danger' %>
+            <% end %>
+          <% end %> -->
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="new-comment-form">
+    <h3>Add a Comment</h3>
+    <%= form_with model: [@donation, @discussion, @discussion.comments.build], local: true do |f| %>
+      <div class="form-group" style="margin-bottom: 1rem;">
+        <%= f.text_area :content, rows: 3, class: "form-control input-field" %>
+      </div>
+      <%= f.submit "Add Comment", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

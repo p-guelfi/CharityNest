@@ -3,6 +3,8 @@ class CharityProject < ApplicationRecord
   has_one :category, through: :charity
   has_many :donations, dependent: :destroy
   has_many :reports, dependent: :destroy
+  has_many :discussions
+  has_many :users, through: :donations
   has_many_attached :photos, dependent: :destroy
 
   validates :name, presence: true

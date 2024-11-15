@@ -1,0 +1,11 @@
+<h1 class="form-heading">New Discussion for <%= @donation.charity_project.name %></h1>
+
+<div class="new-discussion-container">
+  <%= simple_form_for [@donation, @discussion], html: { class: 'new-discussion-form' } do |f| %>
+    <div class="form-group">
+      <%= f.input :title, label: 'Title', input_html: { class: 'input-field' } %>
+      <%= f.input :description, label: 'Description', input_html: { class: 'input-field' } %>
+    </div>
+    <%= f.button :submit, 'Create Discussion', class: 'btn btn-primary' %>
+  <% end %>
+</div>
