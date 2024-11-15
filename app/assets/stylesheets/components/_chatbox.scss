@@ -272,3 +272,16 @@ body.modal-open {
   color: black; /* Darker blue on hover */
   cursor: pointer; /* Change cursor to pointer */
 }
+
+@keyframes breathe {
+  0%, 100% {
+    transform: scale(1) translateY(0); /* Original size and position */
+  }
+  50% {
+    transform: scale(1.3) translateY(-5px); /* Exaggerated scale and stronger upward shift */
+  }
+}
+
+.titillating {
+  animation: breathe 0.8s ease-in-out infinite; /* Faster and more exaggerated effect */
+}

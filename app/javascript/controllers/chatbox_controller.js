@@ -119,7 +119,18 @@ export default class extends Controller {
       this.inputTarget.value = "";
       this.saveChatHistory(chatHistory);
 
-      // Scroll to the bottom after the user sends a message
+      // Show the titillating crow icon immediately after sending the user message
+      const aiIconElement = document.createElement("div");
+      aiIconElement.classList.add("message-icon", "titillating");
+      aiIconElement.innerHTML = '<i class="fa-solid fa-crow"></i>';
+      aiIconElement.setAttribute("id", "ai-titillating-crow"); // Add a unique ID
+      const aiMessageWrapper = document.createElement("div");
+      aiMessageWrapper.classList.add("message-wrapper");
+      aiMessageWrapper.appendChild(aiIconElement);
+      aiMessageWrapper.appendChild(document.createElement("div"));
+      messagesDiv.appendChild(aiMessageWrapper);
+
+      // Scroll to the bottom after sending the message
       messagesDiv.scrollTop = messagesDiv.scrollHeight;
 
       // Send the full conversation history to the server
@@ -134,6 +145,12 @@ export default class extends Controller {
         .then((response) => response.json())
         .then((data) => {
           chatHistory.push({ sender: "CharityNest AI", text: data.response });
+
+          // After AI's response is received, remove the titillating crow
+          const titillatingCrow = document.getElementById("ai-titillating-crow");
+          if (titillatingCrow) {
+            titillatingCrow.parentElement.remove(); // Remove the titillating crow element
+          }
 
           const aiMessageWrapper = document.createElement("div");
           aiMessageWrapper.classList.add("message-wrapper");
