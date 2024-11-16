@@ -2,7 +2,10 @@ class CharityProject < ApplicationRecord
   belongs_to :charity
   has_one :category, through: :charity
   has_many :donations, dependent: :destroy
+
+  has_many :discussions, dependent: :destroy
   has_many :reports, dependent: :destroy
+
   has_many :discussions
   has_many :users, through: :donations
   has_many_attached :photos, dependent: :destroy
@@ -10,6 +13,10 @@ class CharityProject < ApplicationRecord
   validates :name, presence: true
   validates :description, presence: true
   validates :location, presence: true
+
+
+  geocoded_by :location
+  after_validation :geocode, if: :will_save_change_to_location?
 
   def evaluations
     reports.where(report_type: "Evaluation")

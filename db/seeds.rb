@@ -7,12 +7,14 @@ puts "Seeding database..."
 
   puts "Cleaning database..."
 
-  # Charity.destroy_all
-  # User.destroy_all
-  # Category.destroy_all
-  # CharityProject.destroy_all
-  # Donation.destroy_all
-  Report.destroy_all
+  Comment.destroy_all
+  Discussion.destroy_all
+  Charity.destroy_all
+  User.destroy_all
+  Category.destroy_all
+  CharityProject.destroy_all
+  Donation.destroy_all
+  #Report.destroy_all
 
   puts "Database cleaned."
 
@@ -60,7 +62,7 @@ puts "Seeding database..."
     puts "#{User.count} users created."
   end
 
-  # create_users
+  create_users
 
 # Create charity cause categories
   def create_categories
@@ -114,7 +116,7 @@ puts "Seeding database..."
     puts "#{Category.count} categories created."
   end
 
-  # create_categories
+  create_categories
 
 # Create charities
   def create_charities
@@ -301,7 +303,7 @@ puts "Seeding database..."
         puts "Photos attached to #{charity.name}."
       end
       if charity.name == "Friends of the Earth"
-        photo_path1 = Rails.root.join("db/seed-images/greenpeace/GP0STPOUA_8.webp")
+        photo_path1 = Rails.root.join("db/seed-images/friends-of-earth/banner.png")
         photo_path2 = Rails.root.join("db/seed-images/greenpeace/gp0stown2.webp")
         photo_path3 = Rails.root.join("db/seed-images/greenpeace/gp0stqdu4.webp")
         photo_path4 = Rails.root.join("db/seed-images/greenpeace/GP01CK9.webp")
@@ -344,7 +346,7 @@ puts "Seeding database..."
     puts "#{Charity.count} charities created."
   end
 
-  # create_charities
+  create_charities
 
 # Create charity projects
 
@@ -550,43 +552,43 @@ puts "Seeding database..."
     ]
 
     charity_projects_friends_of_the_earth = [{
-        name: "Friends of the Earth",  # Replace with the actual title of the new project
-        description: "This project directly funds Friends of the Earth, helping to support its mission of promoting environmental justice and sustainability worldwide.",
-        location: "Amsterdam, Netherlands",  # Specify the location
-        goal: 70000,  # Set a funding goal
-        charity: Charity.find_by(name: "Friends of the Earth"),  # Link to the charity
-        photos: [
-          Rails.root.join("db/seed-images/greenpeace/GP0STPOUA_8.webp")  # Path to an image related to the new project
-        ]
-      }, {
-        name: "Campaign for Clean Air",
-        description: "Friends of the Earth is leading a campaign to improve air quality in urban areas by reducing pollution and promoting green energy solutions.",
-        location: "London, UK",
-        goal: 60000,
-        charity: Charity.find_by(name: "Friends of the Earth"),
-        photos: [
-          Rails.root.join("db/seed-images/greenpeace/GP01EFS-polar-bear-600x450-c-default.webp")
-        ]
-      }, {
-        name: "Protecting Pollinators",
-        description: "Friends of the Earth is working to protect pollinators like bees by advocating against harmful pesticides and supporting organic farming.",
-        location: "California, USA",
-        goal: 75000,
-        charity: Charity.find_by(name: "Friends of the Earth"),
-        photos: [
-          Rails.root.join("db/seed-images/greenpeace/030321_decarbonization.jpg")
-        ]
-      }, {
-        name: "Fighting Plastic Pollution",
-        description: "Friends of the Earth is fighting plastic pollution by promoting sustainable alternatives and reducing single-use plastics.",
-        location: "Sydney, Australia",
-        goal: 65000,
-        charity: Charity.find_by(name: "Friends of the Earth"),
-        photos: [
-          Rails.root.join("db/seed-images/greenpeace/DSC_9026-1.jpg")
-        ]
-      }
-    ]
+      name: "Friends of the Earth",  # Replace with the actual title of the new project
+      description: "This project directly funds Friends of the Earth, helping to support its mission of promoting environmental justice and sustainability worldwide.",
+      location: "Amsterdam, Netherlands",  # Specify the location
+      goal: 70000,  # Set a funding goal
+      charity: Charity.find_by(name: "Friends of the Earth"),  # Link to the charity
+      photos: [
+        Rails.root.join("db/seed-images/friends-of-earth/banner.png")  # Path to an image related to the new project
+      ]
+    }, {
+      name: "Campaign for Clean Air",
+      description: "Friends of the Earth is leading a campaign to improve air quality in urban areas by reducing pollution and promoting green energy solutions.",
+      location: "London, UK",
+      goal: 60000,
+      charity: Charity.find_by(name: "Friends of the Earth"),
+      photos: [
+        Rails.root.join("db/seed-images/friends-of-earth/dust-delhi-01-10-24-E-hero.jpg")
+      ]
+    }, {
+      name: "Protecting Pollinators",
+      description: "Friends of the Earth is working to protect pollinators like bees by advocating against harmful pesticides and supporting organic farming.",
+      location: "California, USA",
+      goal: 75000,
+      charity: Charity.find_by(name: "Friends of the Earth"),
+      photos: [
+        Rails.root.join("db/seed-images/friends-of-earth/Protecting-Pollinators-Safeguarding-Natures-Essential-Insect-Workforce.jpg")
+      ]
+    }, {
+      name: "Fighting Plastic Pollution",
+      description: "Friends of the Earth is fighting plastic pollution by promoting sustainable alternatives and reducing single-use plastics.",
+      location: "Sydney, Australia",
+      goal: 65000,
+      charity: Charity.find_by(name: "Friends of the Earth"),
+      photos: [
+        Rails.root.join("db/seed-images/friends-of-earth/istockphoto-1442904386-612x612-2.jpg")
+      ]
+    }
+  ]
 
     charity_projects_rainforest_alliance = [{
         name: "Rainforest Alliance",  # Replace with the actual title of the new project
@@ -686,7 +688,7 @@ puts "Seeding database..."
     puts "#{CharityProject.count} charity projects created."
   end
 
-  # create_charity_projects
+  create_charity_projects
 
 # Create donations
   def create_donations
@@ -704,7 +706,7 @@ puts "Seeding database..."
     puts "#{Donation.count} donations created."
   end
 
-  # create_donations
+  create_donations
 
 # Create reports
 
@@ -778,6 +780,7 @@ puts "Seeding database..."
   if reports_file.empty?
     report_scraper
     reports_file = File.read("db/reports.json")
+
   end
   article_reports  = JSON.parse(reports_file)
 
@@ -822,6 +825,101 @@ puts "Seeding database..."
   end
 
 
+
+
+  charity_projects_oxfam = [{
+    name: "Oxfam",  # This is now the first project
+    description: "This project directly funds Oxfam, helping to support its core mission of fighting poverty and inequality around the world.",
+    location: "Nairobi, Kenya",
+    goal: 50000,
+    charity: Charity.find_by(name: "Oxfam"),
+    photos: [
+      Rails.root.join("db/seed-images/greenpeace/GP0STPOUA_8.webp")
+    ]
+  }, {
+    name: "Fighting Poverty in Africa",
+    description: "Oxfam is working to fight poverty in Africa by providing clean water, food, and education to communities in need.",
+    # A village in Niger named Bilma
+    location: "Bilma, Niger",
+    goal: 50000,
+    charity: Charity.find_by(name: "Oxfam"),
+    photos: [
+      Rails.root.join("db/seed-images/greenpeace/GP01EFS-polar-bear-600x450-c-default.webp")
+    ]
+  }, {
+    name: "Emergency Aid in Yemen",
+    description: "Oxfam is providing emergency aid in Yemen by delivering food, water, and medical supplies to families affected by the conflict.",
+    # A village in Yemen named Al-Hudaydah
+    location: "Al-Hudaydah, Yemen",
+    goal: 50000,
+    charity: Charity.find_by(name: "Oxfam"),
+    photos: [
+      Rails.root.join("db/seed-images/greenpeace/030321_decarbonization.jpg")
+    ]
+  }, {
+    name: "Promoting Sustainable Development in India",
+    description: "Oxfam is promoting sustainable development in India by supporting small-scale farmers.",
+    # A village in India named Khandwa
+    location: "Khandwa, India",
+    goal: 50000,
+    charity: Charity.find_by(name: "Oxfam"),
+    photos: [
+      Rails.root.join("db/seed-images/greenpeace/DSC_9026-1.jpg")
+    ]
+  }
+]
+
+# Create discussions for specific charity projects
+  puts "Creating discussions and comments for selected charity projects..."
+
+  # Find the charity projects to add discussions to
+  charity_project_clean_air = CharityProject.find_by(name: "Campaign for Clean Air")
+  charity_project_decarbonization = CharityProject.find_by(name: "Campaigning for Decarbonization in Brussels")
+
+  # Define sample discussions and comments
+  discussion_titles = ["Future of Air Quality", "Renewable Energy Solutions", "Community Initiatives for Clean Air"]
+  discussion_descriptions = [
+    "Let's discuss the various factors impacting air quality and how we can make a difference.",
+    "How renewable energy sources can help reduce pollution and improve air quality.",
+    "Exploring community-driven efforts to improve air quality and reduce pollution."
+  ]
+  comment_contents = [
+    "Great point! I think awareness is key.",
+    "This initiative will have a significant impact on future generations.",
+    "We need more government support for these projects.",
+    "Public engagement is crucial for success.",
+    "Looking forward to seeing positive changes!"
+  ]
+
+  # Function to create discussions and comments for a charity project
+  def create_discussions_with_comments(charity_project, discussion_titles, discussion_descriptions, comment_contents, users)
+    discussion_titles.each_with_index do |title, index|
+      discussion = charity_project.discussions.create!(
+        title: title,
+        description: discussion_descriptions[index],
+        user: users.sample # Assign a random user as the author
+      )
+      puts "Discussion '#{discussion.title}' created for #{charity_project.name}"
+
+      # Create comments for each discussion
+      5.times do
+        discussion.comments.create!(
+          content: comment_contents.sample,
+          user: users.sample # Assign a random user as the author
+        )
+      end
+      puts "5 comments created for discussion '#{discussion.title}'"
+    end
+  end
+
+  # Get all users to assign authorship randomly
+  users = User.all
+
+  # Create discussions and comments for each specified charity project
+  create_discussions_with_comments(charity_project_clean_air, discussion_titles, discussion_descriptions, comment_contents, users) if charity_project_clean_air
+  create_discussions_with_comments(charity_project_decarbonization, discussion_titles, discussion_descriptions, comment_contents, users) if charity_project_decarbonization
+
+  puts "Discussions and comments seeded successfully!"
 
 
 puts "Seeding complete!"

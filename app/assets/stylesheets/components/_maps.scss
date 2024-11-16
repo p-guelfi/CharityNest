@@ -1,0 +1,64 @@
+.map-container {
+  position: sticky;
+  border-radius: 10px;
+  top:  13.3rem;  /* Adjust this based on your banner height */
+  top:  10.3rem;  /* Adjust this based on your banner height */
+  height: 38rem;  /* Adjust the map height */
+  z-index: 10;
+  margin-top: 4rem;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.map-container-project-show {
+  position: sticky;
+  border-radius: 10px;
+  top:  4.3rem;  /* Adjust this based on your banner height */
+  height: 38rem;  /* Adjust the map height */
+  z-index: 10;
+  margin-top: 2.9rem;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.mapboxgl-ctrl-logo {
+  display: none !important;
+}
+
+.mapboxgl-popup {
+  border-radius: 10px;
+  padding: 10px;
+  background-color: transparent;
+}
+
+.mapboxgl-popup-content {
+  text-align: center;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.charity-project-info {
+  padding: 15px;
+  border-radius: 10px;
+}
+.mapboxgl-popup-close-button {
+  display: none;
+}
+
+.mapboxgl-popup-content a {
+  outline: none; /* Removes the outline around the link when focused */
+  border: none;  /* Removes any border around the link */
+}
+
+.map-icon {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  color: #333;
+  border-radius: 50%;
+  font-size: 18px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}

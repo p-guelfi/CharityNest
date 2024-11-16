@@ -1,7 +1,7 @@
-<h1 class="discussions-heading">Discussions for <%= @donation.charity_project.name %></h1>
+<h1 class="discussions-heading">Discussions for <%= @charity_project.name %></h1>
 
 <div class="button-container">
-  <%= link_to 'New Discussion', new_donation_discussion_path(@donation), class: 'btn-primary' %>
+  <%= link_to 'New Discussion', new_charity_project_discussion_path(@charity_project), class: 'btn-primary' %>
 </div>
 
 <div class="discussions-list">
@@ -9,7 +9,7 @@
     <div class="discussion-card">
       <div class="discussion-card-header">
         <div class="discussion-title">
-          <h3><%= link_to discussion.title, donation_discussion_path(@donation, discussion) %></h3>
+          <h3><%= link_to discussion.title, charity_project_discussion_path(@charity_project, discussion) %></h3>
         </div>
         <div class="discussion-content">
           <p><%= discussion.description %></p>
