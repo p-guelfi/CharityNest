@@ -53,11 +53,11 @@
             <h2>Forum</h2>
           </div>
           <%= render "show_card_map" %>
-          <% @charity_project.donations.each do |donation|
-            donation.discussions.each do |discussion| %>
+          <div class="container-forum">
+            <% @charity_project.discussions.each do |discussion| %>
               <%= render "discussions/card_discussion", discussion: discussion %>
             <% end %>
-          <% end %>
+          </div>
         </div>
       </section>
     </div>

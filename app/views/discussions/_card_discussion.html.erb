@@ -4,10 +4,10 @@
     <p class="discussion-description"><%= discussion.description %></p>
 
     <% if discussion.user.present? %>
-      <% name = "#{discussion.user.first_name} #{@discussion.user.last_name}".strip.presence || discussion.user.email %>
-      <small class="comment-author">by <%= name %> | <%= time_ago_in_words(@discussion.created_at) %> ago</small>
+      <% name = "#{discussion.user.first_name} #{discussion.user.last_name}".strip.presence || discussion.user.email %>
+      <small class="comment-author">by <%= name %> | <%= time_ago_in_words(discussion.created_at) %> ago</small>
     <% else %>
-      <small class="comment-author">Anonymous | <%= time_ago_in_words(@discussion.created_at) %> ago</small>
+      <small class="comment-author">Anonymous | <%= time_ago_in_words(discussion.created_at) %> ago</small>
     <% end %>
   </div>
 </div>
