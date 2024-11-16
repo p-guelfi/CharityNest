@@ -5,15 +5,30 @@ export default class extends Controller {
 
   connect() {
     console.log("Chatbox controller connected.");
+
+    // Ensure we get the user login state correctly from the body tag
+    const userLoggedIn = document.body.dataset.userLoggedIn === "true";
+    console.log("User Logged In:", userLoggedIn);
+
+    // Use localStorage for logged-in users, sessionStorage otherwise
+    this.storage = userLoggedIn ? localStorage : sessionStorage;
+
+    // Log storage type to verify
+    console.log("Using storage:", this.storage);
+
+    if (!this.storage) {
+      this.storage = sessionStorage;  // Fallback to sessionStorage if undefined
+    }
+
     this.loadChatHistory();
     this.inputTarget.addEventListener("keydown", this.handleKeyDown.bind(this));
 
-    if (!sessionStorage.getItem("hasOpenedChat")) {
+    if (!this.storage.getItem("hasOpenedChat")) {
       this.sendGreetingMessage();
-      sessionStorage.setItem("hasOpenedChat", "true");
+      this.storage.setItem("hasOpenedChat", "true");
     }
 
-    if (sessionStorage.getItem("commonQuestionsHidden") === "true") {
+    if (this.storage.getItem("commonQuestionsHidden") === "true") {
       this.hideCommonQuestions();
     }
 
@@ -31,7 +46,8 @@ export default class extends Controller {
   }
 
   loadChatHistory() {
-    const chatHistory = JSON.parse(sessionStorage.getItem("chatHistory")) || [];
+    const chatHistory = JSON.parse(this.storage.getItem("chatHistory")) || [];
+    console.log("Loaded Chat History:", chatHistory); // Log chat history
     this.messagesTarget.innerHTML = chatHistory.map(this.formatMessage).join("");
     this.scrollToBottom();
   }
@@ -50,7 +66,7 @@ export default class extends Controller {
   }
 
   saveChatHistory(messages) {
-    sessionStorage.setItem("chatHistory", JSON.stringify(messages));
+    this.storage.setItem("chatHistory", JSON.stringify(messages));
   }
 
   sendGreetingMessage() {
@@ -103,7 +119,7 @@ export default class extends Controller {
   }
 
   getChatHistory() {
-    return JSON.parse(sessionStorage.getItem("chatHistory")) || [];
+    return JSON.parse(this.storage.getItem("chatHistory")) || [];
   }
 
   displayError(error) {
@@ -128,7 +144,7 @@ export default class extends Controller {
     const commonQuestions = this.element.querySelector(".common-questions");
     if (commonQuestions) {
       commonQuestions.style.display = "none";
-      sessionStorage.setItem("commonQuestionsHidden", "true");
+      this.storage.setItem("commonQuestionsHidden", "true");
     }
   }
 }
