@@ -8,12 +8,12 @@ export default class extends Controller {
     this.loadChatHistory();
     this.inputTarget.addEventListener("keydown", this.handleKeyDown.bind(this));
 
-    if (!localStorage.getItem("hasOpenedChat")) {
+    if (!sessionStorage.getItem("hasOpenedChat")) {
       this.sendGreetingMessage();
-      localStorage.setItem("hasOpenedChat", "true");
+      sessionStorage.setItem("hasOpenedChat", "true");
     }
 
-    if (localStorage.getItem("commonQuestionsHidden") === "true") {
+    if (sessionStorage.getItem("commonQuestionsHidden") === "true") {
       this.hideCommonQuestions();
     }
 
@@ -31,7 +31,7 @@ export default class extends Controller {
   }
 
   loadChatHistory() {
-    const chatHistory = JSON.parse(localStorage.getItem("chatHistory")) || [];
+    const chatHistory = JSON.parse(sessionStorage.getItem("chatHistory")) || [];
     this.messagesTarget.innerHTML = chatHistory.map(this.formatMessage).join("");
     this.scrollToBottom();
   }
@@ -50,7 +50,7 @@ export default class extends Controller {
   }
 
   saveChatHistory(messages) {
-    localStorage.setItem("chatHistory", JSON.stringify(messages));
+    sessionStorage.setItem("chatHistory", JSON.stringify(messages));
   }
 
   sendGreetingMessage() {
@@ -91,7 +91,7 @@ export default class extends Controller {
         document.getElementById("titillating-crow")?.remove();
         this.displayError(error.message);
       });
-}
+  }
 
   addMessage(message) {
     const chatHistory = this.getChatHistory();
@@ -103,7 +103,7 @@ export default class extends Controller {
   }
 
   getChatHistory() {
-    return JSON.parse(localStorage.getItem("chatHistory")) || [];
+    return JSON.parse(sessionStorage.getItem("chatHistory")) || [];
   }
 
   displayError(error) {
@@ -128,7 +128,7 @@ export default class extends Controller {
     const commonQuestions = this.element.querySelector(".common-questions");
     if (commonQuestions) {
       commonQuestions.style.display = "none";
-      localStorage.setItem("commonQuestionsHidden", "true");
+      sessionStorage.setItem("commonQuestionsHidden", "true");
     }
   }
 }
