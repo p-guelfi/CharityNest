@@ -11,10 +11,8 @@ export default class extends Controller {
     console.log("User Logged In:", userLoggedIn);
 
     // Use localStorage for logged-in users, sessionStorage otherwise
+    // localStorage works across tabs, sessionStorage is tab-specific.
     this.storage = userLoggedIn ? localStorage : sessionStorage;
-
-    // Log storage type to verify
-    console.log("Using storage:", this.storage);
 
     if (!this.storage) {
       this.storage = sessionStorage;  // Fallback to sessionStorage if undefined
