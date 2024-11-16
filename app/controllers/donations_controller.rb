@@ -6,6 +6,11 @@ class DonationsController < ApplicationController
 
   def index
     @donations = @user.donations.order(created_at: :desc)
+    # get all discussions and reports for the user's charity projects he donated to with an active record query and sort them by creation date in descending order and save in variable @news
+    charity_project_ids = @user.donations.map(&:charity_project_id)
+    discussions = Discussion.where(charity_project_id: charity_project_ids)
+    reports = Report.where(charity_project_id: charity_project_ids)
+    @news = (discussions + reports).sort_by{ |news| news.created_at }.reverse
 
     if params[:payment_status] == 'success'
       flash[:notice] = "Payment successful! Thank you for your donation. Stay tuned for updates on the project: #{ @donations.first.charity_project.name}."

@@ -1,0 +1,16 @@
+.card-project-donation {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+}
+.project-ticker {
+  background-color: $dark-ocean-blue;
+  color: white;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  gap: 1rem;
+}
+.donation-manage {
+  display: flex;
+}

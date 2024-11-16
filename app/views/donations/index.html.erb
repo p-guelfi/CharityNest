@@ -1,5 +1,28 @@
-<div class="donations-container">
+<%# <div class="donations-container">
   <% @donations.each do |donation| %>
-    <%= render partial: "donations/card_donation", locals: { donation: donation } %>
-  <% end %>
+    <%# <%= render partial: "donations/card_donation", locals: { donation: donation } %>
+  <%# <% end %>
+<%# </div> %>
+<div class="grid-dashboard">
+  <div class="column-donations">
+    <% @donations.each do |donation| %>
+      <%= render "card_project_donation", donation: donation %>
+    <% end %>
+  </div>
+  <div class="column-news">
+    <%# Render all Reports that belong to charity projects that belong to @donations %>
+
+    <%# Render all discusssions belonging to the donation %>
+    <% @news.each do |news| %>
+      <% if news.class == Report %>
+        <div class="card-news">
+          <%= render "reports/card_report_teaser", report: news %>
+        </div>
+      <% elsif news.class == Discussion %>
+        <div class="card-news">
+          <%= render "discussions/card_discussion", discussion: news %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
 </div>
