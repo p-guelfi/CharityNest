@@ -33,6 +33,14 @@ $nav-width: 100px;
   .container-articles {
     grid-column: 2 / span 10;
   }
+  .container-forum {
+    grid-column: span 6;
+    padding: 0 2rem;
+    .discussion-card {
+      margin-top: 0;
+      margin-bottom: 2rem;
+    }
+  }
   .report-article {
     grid-column: span 6;
   }

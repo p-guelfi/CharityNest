@@ -1,13 +1,19 @@
-<div class="discussion-show-container">
-  <div class="discussion-details">
-    <h1 class="discussion-title"><%= discussion.title %></h1>
-    <p class="discussion-description"><%= discussion.description %></p>
+<div class="discussion-card">
+  <div class="discussion-card-header">
+    <div class="discussion-title">
+      <h3><%= link_to discussion.title, charity_project_discussion_path(@charity_project, discussion) %></h3>
+    </div>
+    <div class="discussion-content">
+      <p><%= discussion.description %></p>
+    </div>
+  </div>
 
+  <div class="discussion-info">
     <% if discussion.user.present? %>
-      <% name = "#{discussion.user.first_name} #{@discussion.user.last_name}".strip.presence || discussion.user.email %>
-      <small class="comment-author">by <%= name %> | <%= time_ago_in_words(@discussion.created_at) %> ago</small>
+      <% name = "#{discussion.user.first_name} #{discussion.user.last_name}".strip.presence || discussion.user.email %>
+      <p class="user-info"> by <%= name %> | <%= time_ago_in_words(discussion.created_at) %> ago</p>
     <% else %>
-      <small class="comment-author">Anonymous | <%= time_ago_in_words(@discussion.created_at) %> ago</small>
+      <p class="user-info">Anonymous | <%= time_ago_in_words(discussion.created_at) %> ago</p>
     <% end %>
   </div>
 </div>
