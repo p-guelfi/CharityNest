@@ -4,9 +4,9 @@ class CharityProject < ApplicationRecord
   has_many :donations, dependent: :destroy
 
   has_many :discussions, dependent: :destroy
+  has_many :comments, through: :discussions
   has_many :reports, dependent: :destroy
 
-  has_many :discussions
   has_many :users, through: :donations
   has_many_attached :photos, dependent: :destroy
 

@@ -37,7 +37,7 @@
 
   <div class="new-comment-form">
     <h3>Add a Comment</h3>
-    <%= form_with model: [@charity_project, @discussion, @discussion.comments.build], local: true do |f| %>
+    <%= form_with model: [@discussion, @discussion.comments.build], local: true do |f| %>
       <div class="form-group" style="margin-bottom: 1rem;">
         <%= f.text_area :content, rows: 3, class: "form-control input-field" %>
       </div>
