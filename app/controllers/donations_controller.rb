@@ -8,17 +8,23 @@ class DonationsController < ApplicationController
     @donations = @user.donations.order(created_at: :desc)
     # get all discussions and reports for the user's charity projects he donated to with an active record query and sort them by creation date in descending order and save in variable @news
     charity_project_ids = @user.donations.map(&:charity_project_id)
+    @charity_projects = CharityProject.geocoded.where(id: charity_project_ids)
     discussions = Discussion.where(charity_project_id: charity_project_ids)
     reports = Report.where(charity_project_id: charity_project_ids)
     @news = (discussions + reports).sort_by{ |news| news.created_at }.reverse
 
+    @markers = @charity_projects.map do |charity_project|
+      {
+        lat: charity_project.latitude,
+        lng: charity_project.longitude,
+        info_window_html: render_to_string(partial: "charity_projects/info_window", locals: { charity_project: charity_project }),
+        marker_html: render_to_string(partial: "charity_projects/marker")
+      }
+    end
+
     if params[:payment_status] == 'success'
       flash[:notice] = "Payment successful! Thank you for your donation. Stay tuned for updates on the project: #{ @donations.first.charity_project.name}."
     end
-  end
-
-  def new
-    @donation = Donation.new
   end
 
   # def create
