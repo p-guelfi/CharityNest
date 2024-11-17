@@ -5,203 +5,144 @@ export default class extends Controller {
 
   connect() {
     console.log("Chatbox controller connected.");
+
+    // Ensure we get the user login state correctly from the body tag
+    const userLoggedIn = document.body.dataset.userLoggedIn === "true";
+    console.log("User Logged In:", userLoggedIn);
+
+    // Use localStorage for logged-in users, sessionStorage otherwise
+    // localStorage works across tabs, sessionStorage is tab-specific.
+    this.storage = userLoggedIn ? localStorage : sessionStorage;
+
+    if (!this.storage) {
+      this.storage = sessionStorage;  // Fallback to sessionStorage if undefined
+    }
+
     this.loadChatHistory();
     this.inputTarget.addEventListener("keydown", this.handleKeyDown.bind(this));
 
-    if (!sessionStorage.getItem("hasOpenedChat")) {
+    if (!this.storage.getItem("hasOpenedChat")) {
       this.sendGreetingMessage();
-      sessionStorage.setItem("hasOpenedChat", "true");
+      this.storage.setItem("hasOpenedChat", "true");
     }
 
-    // Check if common questions were hidden on previous page load
-    if (sessionStorage.getItem("commonQuestionsHidden") === "true") {
+    if (this.storage.getItem("commonQuestionsHidden") === "true") {
       this.hideCommonQuestions();
     }
+
+    window.addEventListener("storage", (event) => {
+      if (event.key === "chatHistory") this.loadChatHistory();
+    });
   }
 
   handleKeyDown(event) {
     if (event.key === "Enter" && !event.shiftKey) {
       event.preventDefault();
-      this.sendMessage(event);
-
-      // Hide the common questions section when the user types a question
+      this.sendMessage();
       this.hideCommonQuestions();
     }
   }
 
   loadChatHistory() {
-    const messagesDiv = this.messagesTarget;
-    const chatHistory = JSON.parse(sessionStorage.getItem("chatHistory")) || [];
+    const chatHistory = JSON.parse(this.storage.getItem("chatHistory")) || [];
+    console.log("Loaded Chat History:", chatHistory); // Log chat history
+    this.messagesTarget.innerHTML = chatHistory.map(this.formatMessage).join("");
+    this.scrollToBottom();
+  }
 
-    chatHistory.forEach((message) => {
-      const messageWrapper = document.createElement("div");
-      messageWrapper.classList.add("message-wrapper");
+  formatMessage({ sender, text }) {
+    const isUser = sender === "You";
+    const messageContent = isUser
+      ? `<div class="user-message">${text}</div>`
+      : `<div class="ai-message">${text}</div>`; // AI message uses innerHTML for potential HTML content
 
-      const iconElement = document.createElement("div");
-      iconElement.classList.add("message-icon");
-
-      const messageElement = document.createElement("div");
-      messageElement.textContent = message.text;
-
-      if (message.sender === "You") {
-        iconElement.innerHTML = '<i class="fa-solid fa-user"></i>';
-        messageElement.classList.add("user-message");
-      } else if (message.sender === "CharityNest AI") {
-        iconElement.innerHTML = '<i class="fa-solid fa-crow"></i>';
-        messageElement.classList.add("ai-message");
-      }
-
-      messageWrapper.appendChild(iconElement);
-      messageWrapper.appendChild(messageElement);
-      messagesDiv.appendChild(messageWrapper);
-    });
-
-    // Scroll to the bottom after loading the chat history
-    messagesDiv.scrollTop = messagesDiv.scrollHeight;
+    return `
+      <div class="message-wrapper">
+        <div class="message-icon"><i class="fa-solid fa-${isUser ? "user" : "crow"}"></i></div>
+        ${messageContent}
+      </div>`;
   }
 
   saveChatHistory(messages) {
-    sessionStorage.setItem("chatHistory", JSON.stringify(messages));
+    this.storage.setItem("chatHistory", JSON.stringify(messages));
   }
 
   sendGreetingMessage() {
-    const messagesDiv = this.messagesTarget;
-    let chatHistory = JSON.parse(sessionStorage.getItem("chatHistory")) || [];
-
-    const greetingMessage = "Hello, I'm the CharityNest AI assistant. How can I help you?";
-    chatHistory.push({ sender: "CharityNest AI", text: greetingMessage });
-
-    const messageWrapper = document.createElement("div");
-    messageWrapper.classList.add("message-wrapper");
-
-    const iconElement = document.createElement("div");
-    iconElement.classList.add("message-icon");
-    iconElement.innerHTML = '<i class="fa-solid fa-crow"></i>';
-
-    const messageElement = document.createElement("div");
-    messageElement.classList.add("ai-message");
-    messageElement.textContent = greetingMessage;
-
-    messageWrapper.appendChild(iconElement);
-    messageWrapper.appendChild(messageElement);
-    messagesDiv.appendChild(messageWrapper);
-
-    this.saveChatHistory(chatHistory);
-
-    // Scroll to the bottom after sending the greeting
-    messagesDiv.scrollTop = messagesDiv.scrollHeight;
+    const greeting = "Hello, I'm the CharityNest AI assistant. How can I help you?";
+    this.addMessage({ sender: "CharityNest AI", text: greeting });
   }
 
-  sendMessage(event) {
-    const message = this.inputTarget.value;
-    if (message) {
-      const messagesDiv = this.messagesTarget;
-      let chatHistory = JSON.parse(sessionStorage.getItem("chatHistory")) || [];
+  sendMessage() {
+    const message = this.inputTarget.value.trim();
+    if (!message) return;
 
-      // Add user message to chat history
-      chatHistory.push({ sender: "You", text: message });
+    this.addMessage({ sender: "You", text: message });
+    this.inputTarget.value = "";
 
-      const messageWrapper = document.createElement("div");
-      messageWrapper.classList.add("message-wrapper");
+    // Show the titillating crow icon
+    const crowIcon = `
+      <div class="message-wrapper" id="titillating-crow">
+        <div class="message-icon"><i class="fa-solid fa-crow titillating"></i></div>
+      </div>`;
+    this.messagesTarget.insertAdjacentHTML("beforeend", crowIcon);
+    this.scrollToBottom();
 
-      const iconElement = document.createElement("div");
-      iconElement.classList.add("message-icon");
-      iconElement.innerHTML = '<i class="fa-solid fa-user"></i>';
-
-      const userMessageElement = document.createElement("div");
-      userMessageElement.classList.add("user-message");
-      userMessageElement.textContent = message;
-
-      messageWrapper.appendChild(iconElement);
-      messageWrapper.appendChild(userMessageElement);
-      messagesDiv.appendChild(messageWrapper);
-
-      this.inputTarget.value = "";
-      this.saveChatHistory(chatHistory);
-
-      // Show the titillating crow icon immediately after sending the user message
-      const aiIconElement = document.createElement("div");
-      aiIconElement.classList.add("message-icon", "titillating");
-      aiIconElement.innerHTML = '<i class="fa-solid fa-crow"></i>';
-      aiIconElement.setAttribute("id", "ai-titillating-crow"); // Add a unique ID
-      const aiMessageWrapper = document.createElement("div");
-      aiMessageWrapper.classList.add("message-wrapper");
-      aiMessageWrapper.appendChild(aiIconElement);
-      aiMessageWrapper.appendChild(document.createElement("div"));
-      messagesDiv.appendChild(aiMessageWrapper);
-
-      // Scroll to the bottom after sending the message
-      messagesDiv.scrollTop = messagesDiv.scrollHeight;
-
-      // Send the full conversation history to the server
-      fetch("/chat", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "X-CSRF-Token": document.querySelector("[name='csrf-token']").content,
-        },
-        body: JSON.stringify({ messages: chatHistory }), // Send the full chat history
+    fetch("/chat", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-CSRF-Token": document.querySelector("[name='csrf-token']").content,
+      },
+      body: JSON.stringify({ messages: this.getChatHistory() }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        // Remove the titillating crow icon
+        document.getElementById("titillating-crow")?.remove();
+        this.addMessage({ sender: "CharityNest AI", text: data.response });
       })
-        .then((response) => response.json())
-        .then((data) => {
-          chatHistory.push({ sender: "CharityNest AI", text: data.response });
+      .catch((error) => {
+        document.getElementById("titillating-crow")?.remove();
+        this.displayError(error.message);
+      });
+  }
 
-          // After AI's response is received, remove the titillating crow
-          const titillatingCrow = document.getElementById("ai-titillating-crow");
-          if (titillatingCrow) {
-            titillatingCrow.parentElement.remove(); // Remove the titillating crow element
-          }
+  addMessage(message) {
+    const chatHistory = this.getChatHistory();
+    chatHistory.push(message);
+    this.saveChatHistory(chatHistory);
 
-          const aiMessageWrapper = document.createElement("div");
-          aiMessageWrapper.classList.add("message-wrapper");
+    this.messagesTarget.insertAdjacentHTML("beforeend", this.formatMessage(message));
+    this.scrollToBottom();
+  }
 
-          const aiIconElement = document.createElement("div");
-          aiIconElement.classList.add("message-icon");
-          aiIconElement.innerHTML = '<i class="fa-solid fa-crow"></i>';
+  getChatHistory() {
+    return JSON.parse(this.storage.getItem("chatHistory")) || [];
+  }
 
-          const aiMessageElement = document.createElement("div");
-          aiMessageElement.classList.add("ai-message");
-          aiMessageElement.textContent = data.response;
+  displayError(error) {
+    this.messagesTarget.insertAdjacentHTML(
+      "beforeend",
+      `<div class="error-message">Error: ${error}</div>`
+    );
+    this.scrollToBottom();
+  }
 
-          aiMessageWrapper.appendChild(aiIconElement);
-          aiMessageWrapper.appendChild(aiMessageElement);
-          messagesDiv.appendChild(aiMessageWrapper);
-
-          this.saveChatHistory(chatHistory);
-
-          // Scroll to the bottom after the AI sends a response
-          messagesDiv.scrollTop = messagesDiv.scrollHeight;
-        })
-        .catch((error) => {
-          console.error("Error:", error);
-
-          const errorElement = document.createElement("div");
-          errorElement.classList.add("error-message");
-          errorElement.textContent = `Error: ${error.message}`;
-          messagesDiv.appendChild(errorElement);
-          messagesDiv.scrollTop = messagesDiv.scrollHeight;
-        });
-    }
+  scrollToBottom() {
+    this.messagesTarget.scrollTop = this.messagesTarget.scrollHeight;
   }
 
   askQuestion(event) {
-    // Set the clicked question as input message
-    const question = event.target.textContent;
-    this.inputTarget.value = question;
-    this.sendMessage(event); // Optionally, auto-send the question
-
-    // Remove the clicked question
-    event.target.closest('.question-wrapper').remove();
-
-    // Hide the entire common questions section
+    this.inputTarget.value = event.target.textContent;
+    this.sendMessage();
     this.hideCommonQuestions();
   }
 
   hideCommonQuestions() {
-    const commonQuestionsDiv = this.element.querySelector('.common-questions');
-    if (commonQuestionsDiv) {
-      commonQuestionsDiv.style.display = 'none';
-      sessionStorage.setItem("commonQuestionsHidden", "true"); // Save state to sessionStorage
+    const commonQuestions = this.element.querySelector(".common-questions");
+    if (commonQuestions) {
+      commonQuestions.style.display = "none";
+      this.storage.setItem("commonQuestionsHidden", "true");
     }
   }
 }

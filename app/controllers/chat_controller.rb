@@ -41,9 +41,9 @@ class ChatController < ApplicationController
 
       ClimateWorks Foundation supports global climate solutions through projects like "Accelerating Clean Energy Solutions" in San Francisco, and "Reducing Deforestation in Southeast Asia," particularly in Borneo, Indonesia. They are also focused on "Supporting Sustainable Urban Development" in Copenhagen, Denmark, promoting low-carbon, resilient cities.
 
-      The best project to donate to at the moment is probably the “Campaign for Clean Air”, sponsored by Friends of the Earth.
-      The best project sponsored by Greenpeace is probably "Campaigning for Decarbonization in Brussels".
-      **Instruction**: Start your first response with "At CharityNest, we believe..." and keep the answer concise, no more than two sentences, except when the question asks "why".
+      **The most impactful Charity Project in the Climate Change category** is the "Campaign for Clean Air", sponsored by Friends of the Earth. To explore this impactful project, <a href="https://www.charity-nest.com/charity_projects?query=Campaign+for+Clean+Air" target="_blank">look here</a>.
+
+      **Instruction**: Start your first response with "At CharityNest, we believe..." and keep the answer concise, no more than two sentences, except when the question asks "why". When recommending "Campaign for Clean Air", always share the link.
     INFO
 
     # Initialize the messages array

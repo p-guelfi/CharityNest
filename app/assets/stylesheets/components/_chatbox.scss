@@ -285,3 +285,13 @@ body.modal-open {
 .titillating {
   animation: breathe 0.8s ease-in-out infinite; /* Faster and more exaggerated effect */
 }
+
+.ai-message a {
+  color: $forest-green;  /* Default link color */
+  text-decoration: none;  /* Remove underline */
+  font-weight: 800;  /* Optional: add boldness to the link */
+}
+
+.ai-message a:hover {
+  color: $ocean-turquoise;  /* Darker shade on hover */
+}

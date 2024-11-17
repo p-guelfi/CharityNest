@@ -14,7 +14,7 @@
 
   </head>
 
-  <body>
+  <body data-user-logged-in="<%= user_signed_in? %>">
     <%= render "shared/navbar" %>
     <%= render "shared/flashes" %>
     <%= yield %>
