@@ -44,11 +44,13 @@ class DiscussionsController < ApplicationController
   private
 
   def set_charity_project
-    @charity_project = CharityProject.find(params[:charity_project_id])
+    if params[:charity_project_id].present?
+      @charity_project = CharityProject.find(params[:charity_project_id])
+    end
   end
 
   def set_discussion
-    @discussion = @charity_project.discussions.find_by(id: params[:id])
+    @discussion = Discussion.find(params[:id])
     redirect_to charity_project_discussions_path(@charity_project), alert: 'Discussion not found' if @discussion.nil?
   end
 

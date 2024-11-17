@@ -33,6 +33,10 @@ Rails.application.routes.draw do
     resources :reports, only: %i[new create index]
   end
 
+  resources :discussions, only: %i[show] do
+    resources :comments, only: [:create, :destroy]
+  end
+
   resources :reports, only: %i[show edit update index]
 
   resources :donations, only: %i[index show edit update] do

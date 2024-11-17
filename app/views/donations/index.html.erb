@@ -6,7 +6,9 @@
 <div class="grid-dashboard">
   <div class="column-donations">
     <% @donations.each do |donation| %>
-      <%= render "card_project_donation", donation: donation %>
+      <div class="card-ticker">
+        <%= render "card_project_donation", donation: donation %>
+      </div>
     <% end %>
   </div>
   <div class="column-news">

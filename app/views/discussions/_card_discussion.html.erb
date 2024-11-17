@@ -1,7 +1,7 @@
 <div class="discussion-card">
   <div class="discussion-card-header">
     <div class="discussion-title">
-      <h3><%= link_to discussion.title, charity_project_discussion_path(@charity_project, discussion) %></h3>
+      <h3><%= link_to discussion.title, discussion_path(discussion) %></h3>
     </div>
     <div class="discussion-content">
       <p><%= discussion.description %></p>

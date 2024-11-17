@@ -6,9 +6,9 @@ class CommentsController < ApplicationController
     @comment = @discussion.comments.build(comment_params)
     @comment.user = current_user
     if @comment.save
-      redirect_to donation_discussion_path(@donation, @discussion), notice: 'Comment added successfully.'
+      redirect_to discussion_path(@discussion), notice: 'Comment added successfully.'
     else
-      redirect_to donation_discussion_path(@donation, @discussion), alert: 'Failed to add comment.'
+      redirect_to discussion_path(@discussion), alert: 'Failed to add comment.'
     end
   end
 
@@ -24,8 +24,10 @@ class CommentsController < ApplicationController
   private
 
   def set_donation_and_discussion
-    @donation = Donation.find(params[:donation_id])
-    @discussion = @donation.discussions.find(params[:discussion_id])
+    if params[:donation_id].present?
+      @donation = Donation.find(params[:donation_id])
+    end
+    @discussion = Discussion.find(params[:discussion_id])
   end
 
   def comment_params
