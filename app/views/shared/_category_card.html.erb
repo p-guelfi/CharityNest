@@ -1,17 +1,17 @@
 <div class="category-card">
   <div class="icon">
     <% if title == "Famine" %>
-      <i class="fa-solid fa-wheat-awn"></i> <!-- Icon for Famine -->
+      <%= image_tag("icons/food.svg", alt: "Famine Icon", class: "icon-svg") %>
     <% elsif title == "Climate Change" %>
-      <i class="fa-solid fa-tree"></i> <!-- Icon for Climate Change -->
+      <%= image_tag("icons/tree.svg", alt: "Climate Change Icon", class: "icon-svg") %>
     <% elsif title == "Natural Disasters" %>
-      <i class="fa-solid fa-tornado"></i> <!-- Icon for Natural Disasters -->
+      <%= image_tag("icons/tornado.svg", alt: "Natural Disasters Icon", class: "icon-svg") %>
     <% elsif title == "Education" %>
-      <i class="fa-solid fa-book"></i> <!-- Icon for Education -->
+      <%= image_tag("icons/book.svg", alt: "Education Icon", class: "icon-svg") %>
     <% elsif title == "Health" %>
-      <i class="fa-solid fa-notes-medical"></i> <!-- Icon for Health -->
+      <%= image_tag("icons/health.svg", alt: "Health Icon", class: "icon-svg") %>
     <% elsif title == "Basic Needs" %>
-      <i class="fa-solid fa-droplet"></i> <!-- Icon for Basic Needs -->
+      <%= image_tag("icons/house.svg", alt: "Basic Needs Icon", class: "icon-svg") %>
     <% end %>
   </div>
   <div class="title"><%= title %></div>
