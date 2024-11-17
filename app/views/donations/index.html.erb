@@ -12,19 +12,31 @@
         <div class="first-subcolumn" style="flex: 1; background-color: white; padding: 1rem; display: flex; flex-direction: column; justify-content: center; align-items: left; overflow: auto;">
           <p><strong>Beneficiaries</strong></p>
           <ul>
-            <li>1 Charity Project</li>
-            <li>2 Charity Organisations</li>
-            <li>1 Category</li>
-            <li>2 Countries</li>
+            <li><%= current_user.donations
+                    .joins(charity_project: :charity)
+                    .where('charity_projects.name != charities.name')
+                    .distinct
+                    .count('charity_projects.id') %> Charity Projects</li>
+            <li><%= current_user.donations
+                    .joins(charity_project: :charity)
+                    .where('charity_projects.name = charities.name')
+                    .count %> Charity Organisations</li>
+            <li><%= CharityProject.joins(:category).where(id: current_user.donations.pluck(:charity_project_id)).distinct.count('categories.id') %> Categories</li>
+            <li><%= CharityProject
+                    .where(id: current_user.donations.pluck(:charity_project_id))
+                    .pluck(:location)
+                    .map { |location| location.split(',').last.strip }
+                    .uniq
+                    .count %> Countries</li>
           </ul>
 
           <p><strong>Generous since</strong></p>
-          <p>10th of October 2024</p>
+          <p><%= current_user.donations.order(:created_at).first.created_at.strftime('%d %B %Y') %></p>
 
           <p><strong>Payments</strong></p>
           <ul>
-            <li>2 one-time payments</li>
-            <li>1 subscription</li>
+            <li><%= current_user.donations.where(recurrent: false).count %> one-time payments</li>
+            <li><%= current_user.donations.where(recurrent: true).count %> subscriptions</li>
           </ul>
         </div>
 
@@ -37,24 +49,10 @@
             .map { |project_name, total_cents| [project_name, total_cents / 100.0] },
             colors: ["#35A28C"],
             legend: false,
-            library: {
-              plugins: {
-                datalabels: {
-                  display: true,
-                  color: '#ffffff',
-                  font: {
-                    weight: 'bold',
-                    size: 14
-                  },
-                  formatter: "function(value, context) {
-                    var percentage = context.chart.data.datasets[0].data[context.dataIndex] / context.chart.getData()[0].reduce(function(a,b) { return a + b; }, 0) * 100;
-                    return context.chart.data.labels[context.dataIndex] + ': ' + value.toFixed(2) + ' USD (' + percentage.toFixed(2) + '%)';
-                  }",
-                  align: 'center',
-                  anchor: 'center'
-                }
-              }
-            }
+            prefix: "€",
+            thousands: ".",
+            decimal: ","
+
           %>
           <p style="text-align: center;">Total <span style="font-size: 18px;"><%= humanized_money_with_symbol(@total_donations) %></span> <!-- Displaying the total donations -->
         </div>
