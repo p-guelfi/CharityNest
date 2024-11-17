@@ -5,6 +5,7 @@ class DonationsController < ApplicationController
   # before_action :authorize_donation
 
   def index
+    @total_donations = current_user.donations.sum(:amount_cents) / 100.0
     @donations = @user.donations.order(created_at: :desc)
     # get all discussions and reports for the user's charity projects he donated to with an active record query and sort them by creation date in descending order and save in variable @news
     charity_project_ids = @user.donations.map(&:charity_project_id)
