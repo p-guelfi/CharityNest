@@ -3,6 +3,83 @@
     <%# <%= render partial: "donations/card_donation", locals: { donation: donation } %>
   <%# <% end %>
 <%# </div> %>
+<div class="top-dashboard" style="display: flex; width: 100%; padding-right: 3rem; padding-left: 3rem; padding-top: 3rem; padding-bottom: 2rem; border-radius: 10px; overflow: hidden;">
+  <!-- Inner wrapper for the shadow and border radius -->
+  <div style="flex: 1; display: flex; width: 100%; border-radius: 10px; box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1); overflow: hidden;">
+    <!-- First Column -->
+    <div class="first-column" style="flex: 1; display: flex; flex-direction: column; background-color: white; height: 30rem; border-radius: 0 0 10px 10px;">
+      <!-- Header -->
+      <h2 style="text-align: left; margin-top: 2rem; padding-left: 2rem;">All your Donations</h2>
+
+      <!-- Inner flex container for subcolumns -->
+      <div style="display: flex; width: 100%; justify-content: space-between; flex: 1; padding-left: 1rem;">
+        <!-- First Subcolumn -->
+        <div class="first-subcolumn" style="flex: 1; background-color: white; padding: 1rem; display: flex; flex-direction: column; justify-content: center; align-items: left;">
+          <p><strong>Beneficiaries</strong></p>
+          <ul>
+            <li>1 Charity Project</li>
+            <li>2 Charity Organisations</li>
+            <li>1 Category</li>
+            <li>2 Countries</li>
+          </ul>
+
+          <p><strong>Generous since</strong></p>
+          <p>10th of October 2024</p>
+
+          <p><strong>Payments</strong></p>
+          <ul>
+            <li>2 one-time payments</li>
+            <li>1 subscription</li>
+          </ul>
+        </div>
+
+        <!-- Second Subcolumn -->
+        <div class="second-subcolumn" style="flex: 1; background-color: white; padding: 1rem;">
+          <%= pie_chart current_user.donations
+            .joins(:charity_project)
+            .group('charity_projects.name')
+            .sum('donations.amount_cents')
+            .map { |project_name, total_cents| [project_name, total_cents / 100.0] },
+            donut: true,
+            colors: ["#35A28C"],
+            legend: false,
+            library: {
+              plugins: {
+                datalabels: {
+                  display: true,
+                  color: '#ffffff',
+                  font: {
+                    weight: 'bold',
+                    size: 14
+                  },
+                  formatter: "function(value, context) {
+                    var percentage = context.chart.data.datasets[0].data[context.dataIndex] / context.chart.getData()[0].reduce(function(a,b) { return a + b; }, 0) * 100;
+                    return context.chart.data.labels[context.dataIndex] + ': ' + value.toFixed(2) + ' USD (' + percentage.toFixed(2) + '%)';
+                  }",
+                  align: 'center',
+                  anchor: 'center'
+                }
+              }
+            }
+          %>
+          <p style="margin-top: 2rem; text-align: center;">Total</p> <!-- Centered Header Below the Pie Chart -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Second Column -->
+    <div class="second-column" style="flex: 1; display: flex; justify-content: center; align-items: center; height: 30rem; border-radius: 0 0 10px 10px;">
+      <div style="height: 30rem; width: 100%; border-radius: 10px;"
+           data-controller="map"
+           data-map-markers-value="<%= @markers.to_json %>"
+           data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 <div class="grid-dashboard">
   <div class="column-donations">
     <% @donations.each do |donation| %>
