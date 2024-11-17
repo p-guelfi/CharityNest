@@ -7,27 +7,40 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  background: asset-url('hero_background.png') no-repeat center center;
+  background: asset-url('hero_background.jpg') no-repeat center center;
   background-size: cover; // Ensures the image covers the section
   color: $dark-ocean-blue;
 
   .hero-content {
     padding: 2rem;
     border-radius: 10px;
-    max-width: 800px;
-    background-color: #fffaf5;
+    max-width: 1500px;
+    margin-bottom: 15rem;
 
     .hero-title {
+      max-width: 600px;
       color: $ocean-turquoise;
       font-family: $headers-font;
-      font-size: 2.2rem
+      font-size: 3rem
     }
 
     .hero-description {
       font-family: $body-font;
-      font-size: 1.2rem;
+      font-size: 2.75rem;
       color: $ocean-turquoise;
-      margin: 1rem 0;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-button {
+      color: #0B666A;
+      border: 0px solid #0B666A;
+      background-color: white;
+      border-radius: 1rem;
+      text-decoration: none;
+      font-weight: bold;
+      width: 40rem;
+      padding: 0.5rem;
+      font-size: 1.75rem;
     }
   }
 }
