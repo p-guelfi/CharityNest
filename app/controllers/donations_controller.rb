@@ -77,7 +77,7 @@ class DonationsController < ApplicationController
           quantity: 1
         }],
         mode: @donation.recurrent ? 'subscription' : 'payment', # Use subscription mode if recurrent
-        success_url: donations_url(payment_status: 'success'),
+        success_url: donation_url(@donation, payment_status: 'success'),
         cancel_url: new_donation_payment_url(@donation)
       }
 
