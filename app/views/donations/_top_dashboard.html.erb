@@ -10,36 +10,35 @@
       <div style="display: flex; width: 100%; justify-content: space-between; flex: 1; padding-left: 1rem;">
         <!-- First Subcolumn -->
         <div class="first-subcolumn" style="flex: 1; background-color: white; padding: 1rem; display: flex; flex-direction: column; justify-content: center; align-items: left; overflow: auto;">
-  <p><strong>Beneficiaries</strong></p>
-  <ul style="list-style-type: none; margin-left: 0; padding-left: 0;">
-    <% if current_user.donations.joins(charity_project: :charity).where('charity_projects.name != charities.name').distinct.count('charity_projects.id') > 0 %>
-      <li><%= pluralize(current_user.donations.joins(charity_project: :charity).where('charity_projects.name != charities.name').distinct.count('charity_projects.id'), 'Charity Project') %></li>
-    <% end %>
-    <% if current_user.donations.joins(charity_project: :charity).where('charity_projects.name = charities.name').count > 0 %>
-      <li><%= pluralize(current_user.donations.joins(charity_project: :charity).where('charity_projects.name = charities.name').count, 'Charity Organisation') %></li>
-    <% end %>
-    <% if CharityProject.joins(:category).where(id: current_user.donations.pluck(:charity_project_id)).distinct.count('categories.id') > 0 %>
-      <li><%= pluralize(CharityProject.joins(:category).where(id: current_user.donations.pluck(:charity_project_id)).distinct.count('categories.id'), 'Category') %></li>
-    <% end %>
-    <% if CharityProject.where(id: current_user.donations.pluck(:charity_project_id)).pluck(:location).map { |location| location.split(',').last.strip }.uniq.count > 0 %>
-      <li><%= pluralize(CharityProject.where(id: current_user.donations.pluck(:charity_project_id)).pluck(:location).map { |location| location.split(',').last.strip }.uniq.count, 'Country') %></li>
-    <% end %>
-  </ul>
+          <p><strong>Beneficiaries</strong></p>
+          <ul style="list-style-type: none; margin-left: 0; padding-left: 0;">
+            <% if current_user.donations.joins(charity_project: :charity).where('charity_projects.name != charities.name').distinct.count('charity_projects.id') > 0 %>
+              <li><%= pluralize(current_user.donations.joins(charity_project: :charity).where('charity_projects.name != charities.name').distinct.count('charity_projects.id'), 'Charity Project') %></li>
+            <% end %>
+            <% if current_user.donations.joins(charity_project: :charity).where('charity_projects.name = charities.name').count > 0 %>
+              <li><%= pluralize(current_user.donations.joins(charity_project: :charity).where('charity_projects.name = charities.name').count, 'Charity Organisation') %></li>
+            <% end %>
+            <% if CharityProject.joins(:category).where(id: current_user.donations.pluck(:charity_project_id)).distinct.count('categories.id') > 0 %>
+              <li><%= pluralize(CharityProject.joins(:category).where(id: current_user.donations.pluck(:charity_project_id)).distinct.count('categories.id'), 'Category') %></li>
+            <% end %>
+            <% if CharityProject.where(id: current_user.donations.pluck(:charity_project_id)).pluck(:location).map { |location| location.split(',').last.strip }.uniq.count > 0 %>
+              <li><%= pluralize(CharityProject.where(id: current_user.donations.pluck(:charity_project_id)).pluck(:location).map { |location| location.split(',').last.strip }.uniq.count, 'Country') %></li>
+            <% end %>
+          </ul>
 
-  <p><strong>Generous since</strong></p>
-  <p><%= current_user.donations.order(:created_at).first.created_at.strftime('%d %B %Y') %></p>
+          <p><strong>Generous since</strong></p>
+          <p><%= current_user.donations.order(:created_at).first.created_at.strftime('%d %B %Y') %></p>
 
-  <p><strong>Payments</strong></p>
-  <ul style="list-style-type: none; margin-left: 0; padding-left: 0;">
-    <% if current_user.donations.where(recurrent: false).count > 0 %>
-      <li><%= pluralize(current_user.donations.where(recurrent: false).count, 'one-time payment') %></li>
-    <% end %>
-    <% if current_user.donations.where(recurrent: true).count > 0 %>
-      <li><%= pluralize(current_user.donations.where(recurrent: true).count, 'subscription') %></li>
-    <% end %>
-  </ul>
-</div>
-
+          <p><strong>Payments</strong></p>
+          <ul style="list-style-type: none; margin-left: 0; padding-left: 0;">
+            <% if current_user.donations.where(recurrent: false).count > 0 %>
+              <li><%= pluralize(current_user.donations.where(recurrent: false).count, 'one-time payment') %></li>
+            <% end %>
+            <% if current_user.donations.where(recurrent: true).count > 0 %>
+              <li><%= pluralize(current_user.donations.where(recurrent: true).count, 'subscription') %></li>
+            <% end %>
+          </ul>
+        </div>
 
         <!-- Second Subcolumn -->
         <div class="second-subcolumn" style="flex: 1; background-color: white; padding: 2rem; overflow: auto;">
