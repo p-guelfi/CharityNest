@@ -1,21 +1,95 @@
 <div class="donation-page-container">
-  <div class="donation-card">
-    <h3><%= @donation.charity_project.name %></h3>
-    <p>Amount Donated: <%= number_to_currency(@donation.amount_cents / 100.0, precision: 0) %></p>
-    <p>Date: <%= @donation.created_at.strftime('%b %d, %Y') %></p>
+  <div class="card-basic card-project-donation col-md-8 col-lg-6 mx-auto">
+    <div class="donation-manage">
+      <div class="donation-info">
+        <div class="donation-piechart">
+          <% project = @donation.charity_project %>
+          <%= pie_chart [[project.name, @donation.amount_cents / 100],
+                         ["All Donations", (current_user.donations.sum(:amount_cents) - @donation.amount_cents) / 100]],
+                         colors: ["#35A28C"], legend: false %>
+        </div>
+        <div class="donation-amount">
+          <h6>My Donation</h6>
+          <% if @donation.recurrent %>
+            <p><%= humanized_money_with_symbol @donation.amount %> monthly</p>
+            <p>since <%= @donation.created_at.strftime('%b %d, %Y') %></p>
+          <% else %>
+            <p><%= humanized_money_with_symbol @donation.amount %> on <%= @donation.created_at.strftime('%b %d, %Y') %></p>
+          <% end %>
+        </div>
+      </div>
 
-    <% if @donation.recurrent %>
-      <p><strong>Monthly subscription</strong></p>
-    <% else %>
-      <p><strong>One-time donation</strong></p>
-    <% end %>
+      <div class="d-flex flex-column align-items-center gap-4">
+        <%= link_to 'See all my donations', donations_path, class: 'button text-decoration-none w-100' %>
+        <% if @donation.recurrent %>
+          <%= link_to 'Manage Subscription', edit_donation_path(@donation), class: 'button text-decoration-none w-100' %>
+        <% end %>
+      </div>
+    </div>
 
-    <div class="donation-actions">
-      <% if @donation.recurrent %>
-        <%= button_to 'Unsubscribe', donation_path(@donation), method: :patch, params: { donation: { recurrent: false } }, data: { confirm: 'Are you sure you want to unsubscribe?' }, class: 'button button-unsubscribe w-100' %>
-        <%= link_to 'Change Amount', edit_donation_path(@donation), class: 'button button-edit w-100 text-decoration-none' %>
-      <% end %>
-      <%= link_to 'See all my donations', donations_path, class: 'button button-view-all w-100 text-decoration-none' %>
+    <div class="project-ticker">
+      <div class="project-ticker-info">
+        <h4><%= project.name %></h4>
+        <ul>
+          <%= link_to donations_path(charity_project_id: project) do %>
+            <li class="ticker-info-title">
+              <div class="ticker-notification">
+                <span><%= project.reports.count + project.discussions.count + project.comments.count %></span>
+              </div>
+              <span>News</span>
+            </li>
+          <% end %>
+          <li>
+            <div class="ticker-notification">
+              <span><%= project.articles.count %></span>
+            </div>
+            <span>Articles</span>
+          </li>
+          <li>
+            <div class="ticker-notification">
+              <span><%= project.evaluations.count %></span>
+            </div>
+            <span>Evaluations</span>
+          </li>
+          <li>
+            <div class="ticker-notification">
+              <span><%= project.discussions.count %></span>
+            </div>
+            <span>Discussions</span>
+          </li>
+          <li>
+            <div class="ticker-notification">
+              <span><%= project.comments.count %></span>
+            </div>
+            <span>Comments</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="project-ticker-graph">
+        <%= line_chart @donation.charity_project.evaluations.map { |report| [report.title, report.score] },
+                       colors: ["#35A28C"],
+                       library: {
+                         legend: {
+                           labels: { fontColor: "white" }
+                         },
+                         scales: {
+                           x: {
+                             grid: { color: 'white', tickColor: 'white' },
+                             ticks: { color: 'white' }
+                           },
+                           y: {
+                             grid: { color: 'white', tickColor: 'white' },
+                             ticks: { color: 'white' }
+                           }
+                         }
+                       } %>
+        <h6>Evaluation Score</h6>
+      </div>
+
+      <div class="project-ticker-progress">
+        <%= render "charity_projects/progress_bar", project: @donation.charity_project %>
+      </div>
     </div>
   </div>
 </div>

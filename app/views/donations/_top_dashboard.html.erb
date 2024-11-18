@@ -1,0 +1,77 @@
+<div class="top-dashboard" style="display: flex; width: 100%; padding-right: 3rem; padding-left: 3rem; padding-top: 3rem; padding-bottom: 2rem; border-radius: 10px; overflow: hidden; flex-direction: column; height: auto;">
+  <!-- Inner wrapper for the shadow and border radius -->
+  <div style="flex: 1; display: flex; width: 100%; border-radius: 10px; box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1); overflow: hidden;">
+
+    <!-- First Column -->
+    <div class="first-column" style="flex: 1; display: flex; flex-direction: column; background-color: white; height: auto; min-height: 30rem; border-radius: 0 0 10px 10px;">
+
+      <!-- Header -->
+      <h2 style="text-align: left; margin-top: 2rem; padding-left: 2rem;">All your Donations</h2>
+
+      <!-- Inner flex container for subcolumns -->
+      <div style="display: flex; width: 100%; justify-content: space-between; flex: 1; padding-left: 1rem;">
+
+        <!-- First Subcolumn -->
+        <div class="first-subcolumn" style="flex: 1; background-color: white; padding: 1rem; display: flex; flex-direction: column; justify-content: center; align-items: left; overflow: auto;">
+          <p><strong>Beneficiaries</strong></p>
+          <ul style="list-style-type: none; margin-left: 0; padding-left: 0;">
+            <li><%= current_user.donations
+                    .joins(charity_project: :charity)
+                    .where('charity_projects.name != charities.name')
+                    .distinct
+                    .count('charity_projects.id') %> Charity Projects</li>
+            <li><%= current_user.donations
+                    .joins(charity_project: :charity)
+                    .where('charity_projects.name = charities.name')
+                    .count %> Charity Organisations</li>
+            <li><%= CharityProject.joins(:category).where(id: current_user.donations.pluck(:charity_project_id)).distinct.count('categories.id') %> Categories</li>
+            <li><%= CharityProject
+                    .where(id: current_user.donations.pluck(:charity_project_id))
+                    .pluck(:location)
+                    .map { |location| location.split(',').last.strip }
+                    .uniq
+                    .count %> Countries</li>
+          </ul>
+
+          <p><strong>Generous since</strong></p>
+          <p><%= current_user.donations.order(:created_at).first.created_at.strftime('%d %B %Y') %></p>
+
+          <p><strong>Payments</strong></p>
+          <ul style="list-style-type: none; margin-left: 0; padding-left: 0;">
+            <li><%= current_user.donations.where(recurrent: false).count %> one-time payments</li>
+            <li><%= current_user.donations.where(recurrent: true).count %> subscriptions</li>
+          </ul>
+        </div>
+
+        <!-- Second Subcolumn -->
+        <div class="second-subcolumn" style="flex: 1; background-color: white; padding: 2rem; overflow: auto;">
+          <%= pie_chart(
+              current_user.donations
+                .joins(:charity_project)
+                .group('charity_projects.name')
+                .sum('donations.amount_cents')
+                .map do |project_name, total_cents|
+                  total_euros = total_cents / 100.0
+                  percentage = (total_cents.to_f / current_user.donations.sum(:amount_cents) * 100).round(2)
+                  ["#{project_name} (#{percentage}%)", total_euros]
+                end,
+              colors: ["#35A28C"],
+              legend: false,
+              thousands: ".",
+              decimal: ","
+          ) %>
+          <p style="text-align: center;">Total <span style="font-size: 18px;"><%= humanized_money_with_symbol(@total_donations) %></span></p> <!-- Displaying the total donations -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Second Column -->
+    <div class="second-column" style="flex: 1; display: flex; justify-content: center; align-items: center; height: auto; min-height: 30rem; border-radius: 0 0 10px 10px;">
+      <div style="height: 30rem; width: 100%; border-radius: 10px;"
+           data-controller="map"
+           data-map-markers-value="<%= @markers.to_json %>"
+           data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
+    </div>
+  </div>
+</div>
