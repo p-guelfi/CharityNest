@@ -1,36 +1,29 @@
 <div class="top-dashboard" style="display: flex; width: 100%; padding-right: 3rem; padding-left: 3rem; padding-top: 3rem; padding-bottom: 2rem; border-radius: 10px; overflow: hidden; flex-direction: column; height: auto;">
   <!-- Inner wrapper for the shadow and border radius -->
   <div style="flex: 1; display: flex; width: 100%; border-radius: 10px; box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1); overflow: hidden;">
-
     <!-- First Column -->
     <div class="first-column" style="flex: 1; display: flex; flex-direction: column; background-color: white; height: auto; min-height: 30rem; border-radius: 0 0 10px 10px;">
-
       <!-- Header -->
       <h2 style="text-align: left; margin-top: 2rem; padding-left: 2rem;">All your Donations</h2>
 
       <!-- Inner flex container for subcolumns -->
       <div style="display: flex; width: 100%; justify-content: space-between; flex: 1; padding-left: 1rem;">
-
         <!-- First Subcolumn -->
         <div class="first-subcolumn" style="flex: 1; background-color: white; padding: 1rem; display: flex; flex-direction: column; justify-content: center; align-items: left; overflow: auto;">
           <p><strong>Beneficiaries</strong></p>
           <ul style="list-style-type: none; margin-left: 0; padding-left: 0;">
-            <li><%= current_user.donations
-                    .joins(charity_project: :charity)
-                    .where('charity_projects.name != charities.name')
-                    .distinct
-                    .count('charity_projects.id') %> Charity Projects</li>
-            <li><%= current_user.donations
-                    .joins(charity_project: :charity)
-                    .where('charity_projects.name = charities.name')
-                    .count %> Charity Organisations</li>
-            <li><%= CharityProject.joins(:category).where(id: current_user.donations.pluck(:charity_project_id)).distinct.count('categories.id') %> Categories</li>
-            <li><%= CharityProject
-                    .where(id: current_user.donations.pluck(:charity_project_id))
-                    .pluck(:location)
-                    .map { |location| location.split(',').last.strip }
-                    .uniq
-                    .count %> Countries</li>
+            <% if current_user.donations.joins(charity_project: :charity).where('charity_projects.name != charities.name').distinct.count('charity_projects.id') > 0 %>
+              <li><%= pluralize(current_user.donations.joins(charity_project: :charity).where('charity_projects.name != charities.name').distinct.count('charity_projects.id'), 'Charity Project') %></li>
+            <% end %>
+            <% if current_user.donations.joins(charity_project: :charity).where('charity_projects.name = charities.name').count > 0 %>
+              <li><%= pluralize(current_user.donations.joins(charity_project: :charity).where('charity_projects.name = charities.name').count, 'Charity Organisation') %></li>
+            <% end %>
+            <% if CharityProject.joins(:category).where(id: current_user.donations.pluck(:charity_project_id)).distinct.count('categories.id') > 0 %>
+              <li><%= pluralize(CharityProject.joins(:category).where(id: current_user.donations.pluck(:charity_project_id)).distinct.count('categories.id'), 'Category') %></li>
+            <% end %>
+            <% if CharityProject.where(id: current_user.donations.pluck(:charity_project_id)).pluck(:location).map { |location| location.split(',').last.strip }.uniq.count > 0 %>
+              <li><%= pluralize(CharityProject.where(id: current_user.donations.pluck(:charity_project_id)).pluck(:location).map { |location| location.split(',').last.strip }.uniq.count, 'Country') %></li>
+            <% end %>
           </ul>
 
           <p><strong>Generous since</strong></p>
@@ -38,8 +31,12 @@
 
           <p><strong>Payments</strong></p>
           <ul style="list-style-type: none; margin-left: 0; padding-left: 0;">
-            <li><%= current_user.donations.where(recurrent: false).count %> one-time payments</li>
-            <li><%= current_user.donations.where(recurrent: true).count %> subscriptions</li>
+            <% if current_user.donations.where(recurrent: false).count > 0 %>
+              <li><%= pluralize(current_user.donations.where(recurrent: false).count, 'one-time payment') %></li>
+            <% end %>
+            <% if current_user.donations.where(recurrent: true).count > 0 %>
+              <li><%= pluralize(current_user.donations.where(recurrent: true).count, 'subscription') %></li>
+            <% end %>
           </ul>
         </div>
 
@@ -52,13 +49,14 @@
                 .sum('donations.amount_cents')
                 .map do |project_name, total_cents|
                   total_euros = total_cents / 100.0
-                  percentage = (total_cents.to_f / current_user.donations.sum(:amount_cents) * 100).round(2)
-                  ["#{project_name} (#{percentage}%)", total_euros]
+                  percentage = (total_cents.to_f / current_user.donations.sum(:amount_cents) * 100).round
+                  ["#{percentage}% for #{project_name}", total_euros]
                 end,
               colors: ["#35A28C"],
               legend: false,
               thousands: ".",
-              decimal: ","
+              decimal: ",",
+              prefix: "€"
           ) %>
           <p style="text-align: center;">Total <span style="font-size: 18px;"><%= humanized_money_with_symbol(@total_donations) %></span></p> <!-- Displaying the total donations -->
         </div>

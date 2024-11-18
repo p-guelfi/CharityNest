@@ -1,0 +1,147 @@
+.login-page-container {
+  max-height: 100rem;
+  margin: 0 auto;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4rem;
+  background-color: $white;
+  border-radius: 1rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  margin: auto;
+}
+
+.login-form-title {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: $ocean-turquoise;
+  text-align: center;
+}
+
+.login-form-inputs {
+  width: 30rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.login-form-row {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+}
+
+.login-form-row .login-form-input-container {
+  flex: 1;
+}
+
+.login-form-input {
+  padding: 0.75rem;
+  border: 2px solid $light-gray;
+  border-radius: 0.5rem;
+  width: 100%;
+  margin-bottom: 1rem;
+  background-color: $coral-white;
+
+  &:focus {
+    outline: none;
+    border-color: $ocean-turquoise;
+  }
+}
+
+.login-form-submit-btn {
+  width: 100%;
+  padding: 0.75rem;
+  font-weight: bold;
+  color: $coral-white;
+  background-color: $ocean-turquoise;
+  border: none;
+  border-radius: 0.5rem;
+  text-transform: uppercase;
+
+  &:hover {
+    background-color: $forest-green;
+  }
+}
+
+.login-form-links {
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: 0.9rem;
+
+  a {
+    color: $ocean-turquoise;
+    text-decoration: none;
+    margin: 0 0.5rem;
+
+    &:hover {
+      color: $forest-green;
+    }
+  }
+}
+
+.login-form-remember {
+  margin-top: 1rem;
+}
+
+.login-form-actions {
+  width: 100%;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .login-form-container {
+    padding: 2rem;
+  }
+
+  .login-form-title {
+    font-size: 1.5rem;
+  }
+
+  .login-form-inputs {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .login-form-submit-btn {
+    width: 100%;
+    padding: 1rem;
+  }
+
+  .login-form-links {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-form-container {
+    padding: 1rem;
+  }
+
+  .login-form-title {
+    font-size: 1.25rem;
+  }
+
+  .login-form-inputs {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .login-form-submit-btn {
+    width: 100%;
+    padding: 1rem;
+  }
+
+  .login-form-links {
+    font-size: 0.8rem;
+    margin-top: 1rem;
+  }
+}
