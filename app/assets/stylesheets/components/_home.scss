@@ -2,7 +2,7 @@
 @import 'config/fonts';
 
 .hero-section {
-  height: 55rem;
+  height: 49rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -49,6 +49,56 @@
   }
 }
 
+.usp-section {
+  padding: 6rem 2rem; // Top and bottom padding
+  background-color: white; // Same as the Categories background
+  color: $dark-ocean-blue; // Consistent text color
+  text-align: center;
+
+  .usp-title {
+    font-family: $headers-font;
+    font-size: 2.5rem; // Same as the Categories title
+    margin-bottom: 3rem;
+    color: $ocean-turquoise; // Highlighted header color
+  }
+
+  .usp-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); // 3 cards in a row
+    gap: 2rem; // Spacing between cards
+    max-width: 1200px;
+    margin: 0 auto;
+
+    .usp-card {
+      background-color: $coral-white; // Coral White card background
+      padding: 2rem;
+      border-radius: 10px; // Rounded corners for consistency
+      box-shadow: 0 4px 6px rgba(0.1, 0.1, 0.1, 0.1); // Subtle shadow for depth
+      text-align: center;
+
+      .usp-icon {
+        font-size: 3rem; // Placeholder for an icon or emoji
+        margin-bottom: 1rem;
+        color: $forest-green; // Icon color
+      }
+
+      .usp-title {
+        font-family: $headers-font;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: $ocean-turquoise;
+        margin-bottom: 0.75rem;
+      }
+
+      .usp-description {
+        font-family: $body-font;
+        font-size: 1.25rem;
+        color: $dark-ocean-blue-700; // Slightly muted for readability
+      }
+    }
+  }
+}
+
 .categories {
   background-color: $coral-white;
   padding: 4rem 0rem 6rem 0rem;
@@ -57,17 +107,17 @@
     font-family: $headers-font;
     font-size: 2.75rem;
     color: #0B666A;
-    margin: 0rem 11.5rem;
+    margin: 0rem 13.5rem;
     padding: 0rem 0rem 4rem 0rem;
   }
 
   .category-cards {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 5rem;
+    gap: 1rem;
     justify-items: center;
     align-items: start;
-    margin: 0 10rem;
+    margin: 0 13.5rem;
 
     .no-underline-link {
       text-decoration: none;
