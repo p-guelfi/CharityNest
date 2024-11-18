@@ -28,18 +28,6 @@ class DonationsController < ApplicationController
     end
   end
 
-  # def create
-  #   @donation = Donation.new(donation_params)
-  #   @donation.user = @user
-  #   @donation.charity_project = @charity_project
-
-  #   if @donation.save
-  #     redirect_to donation_path(@donation)
-  #   else
-  #     render :new, status: :unprocessable_entity
-  #   end
-  # end
-
   def create
     @donation = Donation.new(donation_params)
     @donation.user = current_user
