@@ -1,10 +1,31 @@
-<div class="container">
-  <h2>Your donation for <%= @charity_project.name %></h2>
-  <%= simple_form_for [@charity_project, @donation] do |f| %>
-  <%= f.input :amount, label: "Donation amount" %>
-  <%= f.input :state, as: :hidden, input_html: { value: 'pending' } %>
-  <%= f.input :checkout_session_id, as: :hidden %>
-  <%= f.input :recurrent, label: "Monthly donation" %>
-  <%= f.button :submit, "Donate Now", class: "btn btn-primary" %>
-  <% end %>
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow-sm" style="border-radius: 10px;">
+        <div class="card-header bg-primary text-white" style="border-top-left-radius: 10px; border-top-right-radius: 10px;">
+          <h5 class="mb-0">Your donation for <%= @charity_project.name %></h5>
+        </div>
+        <div class="card-body" style="border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+          <%= simple_form_for [@charity_project, @donation] do |f| %>
+            <div class="form-group">
+              <%= f.input :amount, label: "Donation amount", class: "form-control" %>
+            </div>
+            <%= f.input :state, as: :hidden, input_html: { value: 'pending' } %>
+            <%= f.input :checkout_session_id, as: :hidden %>
+            <div class="btn-group btn-group-toggle d-flex justify-content-center mb-3" data-toggle="buttons">
+              <label class="btn btn-outline-primary custom-checkbox-button">
+                <%= f.radio_button :recurrent, false, checked: true, class: "d-none" %>
+                One-time
+              </label>
+              <label class="btn btn-outline-primary custom-checkbox-button">
+                <%= f.radio_button :recurrent, true, class: "d-none" %>
+                Monthly
+              </label>
+            </div>
+            <%= f.button :submit, "Donate Now", class: "btn btn-primary w-100" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

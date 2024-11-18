@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row py-4 justify-content-center">
     <div class="col-lg-8 col-md-10"> <!-- Increased column size -->
-      <div class="card shadow-lg" style="border-radius: 15px;"> <!-- Added shadow and rounded corners -->
+      <div class="card shadow-lg" style="border-radius: 10px 10px 10px 10px;"> <!-- Apply the same border-radius to all corners -->
         <div class="card-body text-center"> <!-- Centered text -->
           <h5 class="card-title mb-4">Checkout Summary</h5> <!-- Added margin-bottom for spacing -->
           <p class="card-text">Donation for <strong><%= @charity_project.name %></strong></p>
@@ -11,9 +11,9 @@
         <div class="row no-gutters">
           <div class="col-12">
             <% if @charity_project.photos.attached? %>
-              <%= cl_image_tag @charity_project.photos.first.key, width: 800, height: 350, gravity: "center", crop: "fill", class: "card-img-bottom" %> <!-- Reduced image size -->
+              <%= cl_image_tag @charity_project.photos.first.key, width: 800, height: 350, gravity: "center", crop: "fill", class: "card-img-bottom", style: "border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;" %> <!-- Reduced image size -->
             <% else %>
-              <%= cl_image_tag 'placeholder_image.png', width: 800, height: 400, gravity: "center", crop: "fill", class: "card-img-bottom" %> <!-- Placeholder with reduced size -->
+              <%= cl_image_tag 'placeholder_image.png', width: 800, height: 400, gravity: "center", crop: "fill", class: "card-img-bottom", style: "border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;" %> <!-- Placeholder with reduced size -->
             <% end %>
           </div>
         </div>
