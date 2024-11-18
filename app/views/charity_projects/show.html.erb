@@ -1,13 +1,6 @@
 <div class="viewport-above-cta">
+  <div class="dropshadow-nav"></div>
   <%# Banner with charity description %>
-  <div class="banner-charities">
-    <div class="banner-heading">
-      <h1><%= @charity_project.name %></h1>
-    </div>
-    <div class="banner-intro">
-      <p><%= @charity_project.description %></p>
-    </div>
-  </div>
   <%# List %>
   <div class="grid-show-background show-container" data-controller="sort-index">
     <div class="show-nav-container">
@@ -16,6 +9,14 @@
     </div>
     <%# Grid with Charity Cards %>
     <div class="show-content-container">
+      <div class="grid-show-container">
+        <div class="show-heading">
+          <h1><%= @charity_project.name %></h1>
+        </div>
+        <div class="show-intro">
+          <p><%= @charity_project.description %></p>
+        </div>
+      </div>
       <section id="aim">
         <div class="grid-show-container">
           <div class="section-title">

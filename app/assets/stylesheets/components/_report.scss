@@ -99,22 +99,24 @@
   gap: 2rem;
   img {
     object-fit: cover;
+    object-position: center;
     margin: -2rem 0 -2rem -2rem;
     width: calc(100% + 2rem);
-    height: calc(100% + 2*2rem);
+    height: 20rem;
   }
 }
+$report-full-padding-x: 4rem;
 .report-full {
   background-color: white;
   max-width: 800px;
   margin: 0 auto;
   box-shadow: $default-box-shadow;
   min-height: 100vh;
-  padding: 2rem 4rem;
+  padding: 2rem $report-full-padding-x;
   img {
     object-fit: contain;
-    margin: -2rem -2rem 2rem -2rem;
-    width: calc(100% + 4rem)
+    margin: -2rem (-$report-full-padding-x) 2rem (-$report-full-padding-x);
+    width: calc(100% + 2*(#{$report-full-padding-x}))
   }
   .report-score-bars {
     margin-bottom: 2rem;
