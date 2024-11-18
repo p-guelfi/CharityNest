@@ -23,12 +23,18 @@
   </div>
 
   <div class="navbar-right">
-    <% if user_signed_in? %>
-      <%= link_to "Profile", edit_user_registration_path, class: "button login" %>
-      <%= link_to "Log-out", destroy_user_session_path, data: { turbo_method: :delete, action: "click->notification-updater#stop" }, class: "button login" %>
-    <% else %>
-      <%= link_to "Log-in", new_user_session_path, class: "button login" %>
-      <%= link_to "Sign-up", new_user_registration_path, class: "button signup" %>
-    <% end %>
-  </div>
+  <% if user_signed_in? %>
+    <div class="dropdown" style="position: relative;">
+      <%= link_to "#", class: "button login dropdown-toggle", id: "profileDropdown", data: { bs_toggle: "dropdown", bs_target: "#profileDropdownMenu" }, style: "padding: 0.5rem 1rem; border-radius: 0.5rem; text-decoration: none; font-weight: bold; background-color: transparent; color: #0B666A; border: 1px solid #0B666A;" do %>
+        <i class="fa-regular fa-user"></i>
+      <% end %>
+      <ul class="dropdown-menu" aria-labelledby="profileDropdown" id="profileDropdownMenu" style="position: absolute; top: 100%; left: 0; background-color: #ffffff; border-radius: 0.5rem; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); padding: 0.5rem 0; margin: 0; min-width: 160px;">
+        <li><%= link_to "Profile", edit_user_registration_path, class: "dropdown-item", style: "color: #0B666A; padding: 0.5rem 1rem; text-decoration: none;" %></li>
+        <li><%= link_to "Logout", destroy_user_session_path, data: { turbo_method: :delete, action: "click->notification-updater#stop" }, class: "dropdown-item", style: "color: #0B666A; padding: 0.5rem 1rem; text-decoration: none;" %></li>
+      </ul>
+    </div>
+  <% else %>
+    <%= link_to "Log-in", new_user_session_path, class: "button login" %>
+  <% end %>
+</div>
 </nav>
