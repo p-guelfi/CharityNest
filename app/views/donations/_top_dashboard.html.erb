@@ -14,7 +14,7 @@
         <!-- First Subcolumn -->
         <div class="first-subcolumn" style="flex: 1; background-color: white; padding: 1rem; display: flex; flex-direction: column; justify-content: center; align-items: left; overflow: auto;">
           <p><strong>Beneficiaries</strong></p>
-          <ul>
+          <ul style="list-style-type: none; margin-left: 0; padding-left: 0;">
             <li><%= current_user.donations
                     .joins(charity_project: :charity)
                     .where('charity_projects.name != charities.name')
@@ -37,7 +37,7 @@
           <p><%= current_user.donations.order(:created_at).first.created_at.strftime('%d %B %Y') %></p>
 
           <p><strong>Payments</strong></p>
-          <ul>
+          <ul style="list-style-type: none; margin-left: 0; padding-left: 0;">
             <li><%= current_user.donations.where(recurrent: false).count %> one-time payments</li>
             <li><%= current_user.donations.where(recurrent: true).count %> subscriptions</li>
           </ul>
