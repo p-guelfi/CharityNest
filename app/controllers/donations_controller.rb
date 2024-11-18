@@ -34,6 +34,11 @@ class DonationsController < ApplicationController
     @donation.charity_project = @charity_project
     @donation.state = 'pending' # Set the state to pending
 
+    if @donation.amount.blank? || @donation.amount <= 0
+      flash[:alert] = "Please enter a valid donation amount."
+      render :new, status: :unprocessable_entity and return
+    end
+
     if @donation.save
       # Define amount based on user input
       amount_cents = @donation.amount.cents
