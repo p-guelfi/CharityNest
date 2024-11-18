@@ -1,5 +1,17 @@
-<!-- app/views/pages/about.html.erb -->
-<h1>About CharityNest</h1>
-<p>CharityNest is a platform dedicated to connecting donors with charitable projects. Our mission is to make it easy for people to find and support projects that make a difference in their communities and around the world.</p>
-<p>We believe in transparency, accountability, and the power of collective action. By providing detailed information about each project and its impact, we empower donors to make informed decisions and see the real-world results of their contributions.</p>
-<p>Join us in making a positive impact and supporting the causes you care about. Together, we can create a better future for everyone.</p>
+<div class="hero-section">
+  <div class="hero-content">
+    <p class="hero-description">About CharityNest</p>
+
+    <div class="content bg-transparent">
+      <div class="section bg-transparent mb-4">
+        <p>
+          CharityNest is a platform dedicated to connecting donors with charitable projects. Our mission is to make it easy for people to find and support projects that make a difference in their communities and around the world.<br>
+          We believe in transparency, accountability, and the power of collective action. By providing detailed information about each project and its impact, we empower donors to make informed decisions and see the real-world results of their contributions.<br>
+          Join us in making a positive impact and supporting the causes you care about. Together, we can create a better future for everyone.
+        </p>
+      </div>
+    </div>
+
+    <%= link_to 'Make your first donation', charity_projects_path, class: 'hero-button' %>
+  </div>
+</div>
