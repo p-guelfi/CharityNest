@@ -1,9 +1,21 @@
-<div class="container">
-  <h4>Manage your monthly Donation for <%= @donation.charity_project.name %></h4>
-  <%= simple_form_for [@donation] do |f| %>
-    <%= f.input :amount, label: "Donation amount" %>
-    <%# Checkbox-Input if a monthly recurring donation is wished %>
-    <%= f.button :submit, class: "button w-100 mb-5" %>
-  <% end %>
-  <%= button_to 'Unsubscribe', donation_path(@donation), method: :patch, params: { donation: { recurrent: false } }, data: { confirm: 'Are you sure you want to unsubscribe?' }, class: 'button-outline w-100' %>
+<div class="donation-page-container">
+  <div class="donation-form-container">
+    <h5><%= @donation.charity_project.name %></h5>
+    <h5 class="donation-form-title">Manage your monthly Donation</h5>
+
+    <%= simple_form_for [@donation] do |f| %>
+      <div class="donation-form-inputs">
+        <%= f.input :amount, label: "Donation amount", input_html: { class: 'donation-form-input' } %>
+      </div>
+
+      <div class="donation-form-actions">
+        <%= f.button :submit, class: "donation-form-submit-btn" %>
+        <%= button_to 'Unsubscribe', donation_path(@donation),
+            method: :patch,
+            params: { donation: { recurrent: false } },
+            data: { confirm: 'Are you sure you want to unsubscribe?' },
+            class: 'donation-form-unsubscribe-btn' %>
+      </div>
+    <% end %>
+  </div>
 </div>
