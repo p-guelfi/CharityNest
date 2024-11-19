@@ -252,9 +252,9 @@ puts "Seeding database..."
       end
       if charity.name == "Save the Children"
         photo_path1 = Rails.root.join("db/seed-images/save-the-children/save-the-children.avif")
-        photo_path2 = Rails.root.join("db/seed-images/greenpeace/gp0stown2.webp")
-        photo_path3 = Rails.root.join("db/seed-images/greenpeace/gp0stqdu4.webp")
-        photo_path4 = Rails.root.join("db/seed-images/greenpeace/GP01CK9.webp")
+        photo_path2 = Rails.root.join("db/seed-images/save-the-children/sudan.avif")
+        photo_path3 = Rails.root.join("db/seed-images/save-the-children/save-the-children.avif")
+        photo_path4 = Rails.root.join("db/seed-images/save-the-children/share-ideas.avif")
 
         charity.photos.attach(io: File.open(photo_path1), filename: File.basename(photo_path1))
         charity.photos.attach(io: File.open(photo_path2), filename: File.basename(photo_path2))
@@ -265,9 +265,9 @@ puts "Seeding database..."
       end
       if charity.name == "Oxfam"
         photo_path1 = Rails.root.join("db/seed-images/oxfam/oxfam.webp")
-        photo_path2 = Rails.root.join("db/seed-images/greenpeace/gp0stown2.webp")
-        photo_path3 = Rails.root.join("db/seed-images/greenpeace/gp0stqdu4.webp")
-        photo_path4 = Rails.root.join("db/seed-images/greenpeace/GP01CK9.webp")
+        photo_path2 = Rails.root.join("db/seed-images/oxfam/povafrica.avif")
+        photo_path3 = Rails.root.join("db/seed-images/oxfam/oxfam.webp")
+        photo_path4 = Rails.root.join("db/seed-images/save-the-children/share-ideas.avif")
 
         charity.photos.attach(io: File.open(photo_path1), filename: File.basename(photo_path1))
         charity.photos.attach(io: File.open(photo_path2), filename: File.basename(photo_path2))
@@ -278,9 +278,9 @@ puts "Seeding database..."
       end
       if charity.name == "World Wildlife Fund (WWF)"
         photo_path1 = Rails.root.join("db/seed-images/wwf/wwf.png")
-        photo_path2 = Rails.root.join("db/seed-images/greenpeace/gp0stown2.webp")
-        photo_path3 = Rails.root.join("db/seed-images/greenpeace/gp0stqdu4.webp")
-        photo_path4 = Rails.root.join("db/seed-images/greenpeace/GP01CK9.webp")
+        photo_path2 = Rails.root.join("db/seed-images/wwf/endangered.avif")
+        photo_path3 = Rails.root.join("db/seed-images/wwf/wwf.png")
+        photo_path4 = Rails.root.join("db/seed-images/save-the-children/share-ideas.avif")
 
         charity.photos.attach(io: File.open(photo_path1), filename: File.basename(photo_path1))
         charity.photos.attach(io: File.open(photo_path2), filename: File.basename(photo_path2))
@@ -291,9 +291,9 @@ puts "Seeding database..."
       end
       if charity.name == "The Sierra Club Foundation"
         photo_path1 = Rails.root.join("db/seed-images/sierra-club/sierra-club.jpg")
-        photo_path2 = Rails.root.join("db/seed-images/greenpeace/gp0stown2.webp")
-        photo_path3 = Rails.root.join("db/seed-images/greenpeace/gp0stqdu4.webp")
-        photo_path4 = Rails.root.join("db/seed-images/greenpeace/GP01CK9.webp")
+        photo_path2 = Rails.root.join("db/seed-images/sierra-club/habitats.avif")
+        photo_path3 = Rails.root.join("db/seed-images/sierra-club/sierra-club.jpg")
+        photo_path4 = Rails.root.join("db/seed-images/save-the-children/share-ideas.avif")
 
         charity.photos.attach(io: File.open(photo_path1), filename: File.basename(photo_path1))
         charity.photos.attach(io: File.open(photo_path2), filename: File.basename(photo_path2))
@@ -304,9 +304,9 @@ puts "Seeding database..."
       end
       if charity.name == "Friends of the Earth"
         photo_path1 = Rails.root.join("db/seed-images/friends-of-earth/banner.png")
-        photo_path2 = Rails.root.join("db/seed-images/greenpeace/gp0stown2.webp")
-        photo_path3 = Rails.root.join("db/seed-images/greenpeace/gp0stqdu4.webp")
-        photo_path4 = Rails.root.join("db/seed-images/greenpeace/GP01CK9.webp")
+        photo_path2 = Rails.root.join("db/seed-images/friends-of-earth/friends-of-earth-support-project.webp")
+        photo_path3 = Rails.root.join("db/seed-images/friends-of-earth/friends-support-charity.avif")
+        photo_path4 = Rails.root.join("db/seed-images/friends-of-earth/friends-of-earth-ideas.avif")
 
         charity.photos.attach(io: File.open(photo_path1), filename: File.basename(photo_path1))
         charity.photos.attach(io: File.open(photo_path2), filename: File.basename(photo_path2))
@@ -317,9 +317,9 @@ puts "Seeding database..."
       end
       if charity.name == "Rainforest Alliance"
         photo_path1 = Rails.root.join("db/seed-images/rainforest-alliance/rainforest-alliance.avif")
-        photo_path2 = Rails.root.join("db/seed-images/greenpeace/gp0stown2.webp")
-        photo_path3 = Rails.root.join("db/seed-images/greenpeace/gp0stqdu4.webp")
-        photo_path4 = Rails.root.join("db/seed-images/greenpeace/GP01CK9.webp")
+        photo_path2 = Rails.root.join("db/seed-images/rainforest-alliance/indigenous.avif")
+        photo_path3 = Rails.root.join("db/seed-images/rainforest-alliance/rainforest-alliance.avif")
+        photo_path4 = Rails.root.join("db/seed-images/save-the-children/share-ideas.avif")
 
         charity.photos.attach(io: File.open(photo_path1), filename: File.basename(photo_path1))
         charity.photos.attach(io: File.open(photo_path2), filename: File.basename(photo_path2))
@@ -330,9 +330,9 @@ puts "Seeding database..."
       end
       if charity.name == "ClimateWorks Foundation"
         photo_path1 = Rails.root.join("db/seed-images/climateworks/climate-works.avif")
-        photo_path2 = Rails.root.join("db/seed-images/greenpeace/gp0stown2.webp")
-        photo_path3 = Rails.root.join("db/seed-images/greenpeace/gp0stqdu4.webp")
-        photo_path4 = Rails.root.join("db/seed-images/greenpeace/GP01CK9.webp")
+        photo_path2 = Rails.root.join("db/seed-images/climateworks/clean-ener-solutions.avif")
+        photo_path3 = Rails.root.join("db/seed-images/climateworks/climate-works.avif")
+        photo_path4 = Rails.root.join("db/seed-images/save-the-children/share-ideas.avif")
 
         charity.photos.attach(io: File.open(photo_path1), filename: File.basename(photo_path1))
         charity.photos.attach(io: File.open(photo_path2), filename: File.basename(photo_path2))
@@ -343,9 +343,9 @@ puts "Seeding database..."
       end
       if charity.name == "Doctors Without Borders"
         photo_path1 = Rails.root.join("db/seed-images/doctors-without-borders/doctors-without-borders.jpg")
-        photo_path2 = Rails.root.join("db/seed-images/greenpeace/gp0stown2.webp")
-        photo_path3 = Rails.root.join("db/seed-images/greenpeace/gp0stqdu4.webp")
-        photo_path4 = Rails.root.join("db/seed-images/greenpeace/GP01CK9.webp")
+        photo_path2 = Rails.root.join("db/seed-images/doctors-without-borders/medical-yemen.jpg")
+        photo_path3 = Rails.root.join("db/seed-images/doctors-without-borders/doctors-without-borders.jpg")
+        photo_path4 = Rails.root.join("db/seed-images/save-the-children/share-ideas.avif")
 
         charity.photos.attach(io: File.open(photo_path1), filename: File.basename(photo_path1))
         charity.photos.attach(io: File.open(photo_path2), filename: File.basename(photo_path2))
@@ -356,9 +356,9 @@ puts "Seeding database..."
       end
       if charity.name == "UNICEF"
         photo_path1 = Rails.root.join("db/seed-images/unicef/unicef.jpeg")
-        photo_path2 = Rails.root.join("db/seed-images/greenpeace/gp0stown2.webp")
-        photo_path3 = Rails.root.join("db/seed-images/greenpeace/gp0stqdu4.webp")
-        photo_path4 = Rails.root.join("db/seed-images/greenpeace/GP01CK9.webp")
+        photo_path2 = Rails.root.join("db/seed-images/unicef/nutrition-sudan.jpg")
+        photo_path3 = Rails.root.join("db/seed-images/unicef/unicef.jpeg")
+        photo_path4 = Rails.root.join("db/seed-images/save-the-children/share-ideas.avif")
 
         charity.photos.attach(io: File.open(photo_path1), filename: File.basename(photo_path1))
         charity.photos.attach(io: File.open(photo_path2), filename: File.basename(photo_path2))
@@ -369,9 +369,9 @@ puts "Seeding database..."
       end
       if charity.name == "Red Cross"
         photo_path1 = Rails.root.join("db/seed-images/red-cross/red-cross.webp")
-        photo_path2 = Rails.root.join("db/seed-images/greenpeace/gp0stown2.webp")
-        photo_path3 = Rails.root.join("db/seed-images/greenpeace/gp0stqdu4.webp")
-        photo_path4 = Rails.root.join("db/seed-images/greenpeace/GP01CK9.webp")
+        photo_path2 = Rails.root.join("db/seed-images/red-cross/healthcare-yemen.webp")
+        photo_path3 = Rails.root.join("db/seed-images/red-cross/red-cross.webp")
+        photo_path4 = Rails.root.join("db/seed-images/save-the-children/share-ideas.avif")
 
         charity.photos.attach(io: File.open(photo_path1), filename: File.basename(photo_path1))
         charity.photos.attach(io: File.open(photo_path2), filename: File.basename(photo_path2))
