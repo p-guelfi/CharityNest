@@ -1,5 +1,6 @@
 <div class="discussion-show-container">
   <div class="discussion-details">
+    <%= link_to "#{@discussion.charity_project.name} • Forum", charity_project_discussions_path(@discussion.charity_project)  %>
     <h1 class="discussion-title"><%= @discussion.title %></h1>
     <p class="discussion-description"><%= @discussion.description %></p>
 

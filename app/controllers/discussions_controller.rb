@@ -25,6 +25,18 @@ class DiscussionsController < ApplicationController
     end
   end
 
+  def create_from_dashboard
+    @discussion = Discussion.new(discussion_params)
+    @discussion.user = current_user
+    @discussion.save
+    if @discussion.save
+      redirect_to donations_path(@discussion), notice: 'Discussion created successfully.'
+    else
+      raise
+      redirect_to donations_path(@discussion), alert: 'Failed to create discussion.'
+    end
+  end
+
   def edit
   end
 
@@ -50,11 +62,11 @@ class DiscussionsController < ApplicationController
   end
 
   def set_discussion
-    @discussion = Discussion.find(params[:id])
+    @discussion = @charity_project.discussions.find_by(id: params[:id])
     redirect_to charity_project_discussions_path(@charity_project), alert: 'Discussion not found' if @discussion.nil?
   end
 
   def discussion_params
-    params.require(:discussion).permit(:title, :description)
+    params.require(:discussion).permit(:title, :description, :charity_project_id)
   end
 end

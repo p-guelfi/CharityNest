@@ -11,9 +11,8 @@
     </div>
 
     <div class="column-news">
-      <%# Render all Reports that belong to charity projects that belong to @donations %>
-
-      <%# Render all discussions belonging to the donation %>
+      <%= render "discussions/card_new" %>
+      <%# Render all news belonging to the donations %>
       <% @news.each do |news| %>
         <% if news.class == Report %>
           <div class="card-news">

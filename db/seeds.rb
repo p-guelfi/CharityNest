@@ -7,19 +7,19 @@ puts "Seeding database..."
 
   puts "Cleaning database..."
 
-  # Comment.destroy_all
-  # Discussion.destroy_all
-  # Charity.destroy_all
-  # User.destroy_all
-  # Category.destroy_all
-  # CharityProject.destroy_all
-  # Donation.destroy_all
-  #Report.destroy_all
+  Comment.destroy_all
+  Discussion.destroy_all
+  Charity.destroy_all
+  User.destroy_all
+  Category.destroy_all
+  CharityProject.destroy_all
+  Donation.destroy_all
+  Report.destroy_all
 
   puts "Database cleaned."
 
 # Define Seeding Methods
-# Define create_users
+# Define Method create_users
   def create_users
     puts "Creating users..."
     users = [{
@@ -64,7 +64,7 @@ puts "Seeding database..."
   end
 
 
-# Define create_categories
+# Define Method create_categories
   def create_categories
     puts "Creating categories..."
     categories = [
@@ -117,7 +117,7 @@ puts "Seeding database..."
   end
 
 
-# Define create_charities
+# Define Method create_charities
   def create_charities
     puts "Creating charities..."
 
@@ -344,7 +344,7 @@ puts "Seeding database..."
 
     puts "#{Charity.count} charities created."
   end
-# Define create_charity_projects
+# Define Method create_charity_projects
 
   def create_charity_projects
     puts "Creating charity projects..."
@@ -412,6 +412,10 @@ puts "Seeding database..."
       }, {
         name: "Campaigning for Decarbonization in Brussels",
         description: "Greenpeace is campaigning for decarbonization in Brussels by promoting renewable energy and reducing greenhouse gas emissions.",
+        description_aim: "The campaign aims to position Brussels as a leader in global decarbonization by promoting renewable energy, reducing greenhouse gas emissions, and advocating for ambitious EU-wide climate policies.",
+        description_steps: "We engage policymakers, organize public events, and collaborate with experts to draft actionable climate policies. Educational outreach and stakeholder engagement ensure widespread support for sustainable energy transitions.",
+        description_impact: "The campaign has influenced key EU regulations, increased awareness of renewable energy benefits, and fostered partnerships across sectors, resulting in tangible emissions reductions and a strengthened commitment to climate goals.",
+        description_scalability: "Our strategies can be adapted across EU member states, providing a blueprint for impactful decarbonization efforts. By sharing best practices, we encourage global adoption of sustainable energy solutions.",
         location: "Brussels, Belgium",
         goal: 30000,
         charity: Charity.find_by(name: "Greenpeace"),
@@ -559,26 +563,10 @@ puts "Seeding database..."
     }, {
       name: "Campaign for Clean Air",
       description: "Friends of the Earth is leading a campaign to improve air quality in urban areas by reducing pollution and promoting green energy solutions.",
-      description_long: "<h1>Aim</h1>
-        <p>Our campaign focuses on enhancing air quality by advocating for cleaner transportation and reducing industrial emissions. By raising awareness, we aim to bring attention to the importance of clean air for public health.</p>
-        <p>We partner with local communities to promote green initiatives and engage in policy advocacy to ensure sustainable air quality improvements.</p>
-        <p>Our goals include lowering pollution levels, implementing eco-friendly technologies, and supporting renewable energy solutions in urban settings.</p>
-        <p>By educating citizens and working with policymakers, we strive to create long-term, impactful changes to the environment.</p>
-        <h1>Steps</h1>
-        <p>We have outlined a series of steps to address air pollution systematically and effectively. First, we conduct comprehensive research to identify pollution hotspots and underlying causes.</p>
-        <p>Next, we organize community workshops to educate citizens about the health impacts of air pollution and the steps they can take to mitigate it.</p>
-        <p>We then collaborate with government agencies to implement clean energy policies and reduce dependence on fossil fuels.</p>
-        <p>Lastly, we monitor progress through regular evaluations and provide recommendations for further improvements.</p>
-        <h1>Impact</h1>
-        <p>The campaign has already yielded measurable improvements in air quality across pilot cities, reducing harmful pollutants such as nitrogen oxides and particulate matter.</p>
-        <p>Local communities report improved respiratory health, and schools are integrating environmental education into their curriculums.</p>
-        <p>Public transportation systems have seen a shift towards cleaner energy alternatives, such as electric and hybrid buses.</p>
-        <p>Our advocacy efforts have also inspired new legislation aimed at controlling emissions and encouraging green technologies.</p>
-        <h1>Scalability</h1>
-        <p>This initiative is designed to be scalable, allowing other cities and countries to adopt our model and replicate its success.</p>
-        <p>We provide open-access tools and resources for policymakers and activists to customize the approach for their regions.</p>
-        <p>By fostering international partnerships, we aim to share best practices and encourage a global commitment to cleaner air.</p>
-        <p>With sufficient funding and collaboration, this campaign can grow into a worldwide   movement for environmental sustainability.</p>",
+      description_aim: "The campaign seeks to improve urban air quality by reducing emissions through clean energy advocacy, promoting green transportation, and fostering awareness of air pollution's health impacts.",
+      description_steps: "Key actions include research to pinpoint pollution sources, hosting educational workshops, collaborating with policymakers for eco-friendly initiatives, and monitoring progress to drive sustainable improvements.",
+      description_impact: "Efforts have reduced harmful pollutants, improved public health, and introduced cleaner energy in urban transportation, inspiring legislation to prioritize sustainability and air quality.",
+      description_scalability: "The campaign's scalable model supports global adoption, providing resources and fostering partnerships to encourage widespread commitment to sustainable environmental practices worldwide.",
       location: "London, UK",
       goal: 60000,
       charity: Charity.find_by(name: "Friends of the Earth"),
@@ -705,7 +693,7 @@ puts "Seeding database..."
     puts "#{CharityProject.count} charity projects created."
   end
 
-# Define create_donations
+# Define Method create_donations
   def create_donations
     puts "Creating donations..."
 
@@ -721,7 +709,7 @@ puts "Seeding database..."
     puts "#{Donation.count} donations created."
   end
 
-# Define article_reports
+# Define Method article_reports
 
   # Scraper for Article Reports
 
@@ -900,7 +888,7 @@ puts "Seeding database..."
 
 
 
-# Define create_evaluation_reports
+# Define Method create_evaluation_reports
 
   def create_evaluation_reports
     puts "Creating evaluation reports..."
@@ -934,6 +922,15 @@ puts "Seeding database..."
     end
   end
 
+# Run Seeding Methods
+
+    create_users
+    create_categories
+    create_charities
+    create_charity_projects
+    create_donations
+    create_article_reports
+    create_evaluation_reports
 
 # Create discussions for specific charity projects
 
@@ -989,15 +986,5 @@ puts "Seeding database..."
 
   puts "Discussions and comments seeded successfully!"
 
-# Rund Seeding Methods
 
-  # create_users
-  # create_categories
-  # create_charities
-  # create_charity_projects
-  create_donations
-  # create_article_reports
-  # create_evaluation_reports
-  # create_discussions
-
-  puts "Seeding complete!"
+puts "Seeding complete!"

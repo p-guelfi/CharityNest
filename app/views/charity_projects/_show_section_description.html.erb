@@ -1,0 +1,14 @@
+<% subsections = {
+  aim: @charity_project.description_aim,
+  steps: @charity_project.description_steps,
+  impact: @charity_project.description_impact,
+  scalability: @charity_project.description_scalability
+  } %>
+
+<% subsections.each do |section, description| %>
+<div class="description-subsection">
+  <%= image_tag "icons/project/#{section.to_s}.svg", alt: "Aim", class: "icon" %>
+  <h4><%= section.to_s.humanize %></h4>
+  <p><%= description %></p>
+</div>
+<% end %>

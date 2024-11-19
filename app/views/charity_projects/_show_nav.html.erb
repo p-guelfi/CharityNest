@@ -1,6 +1,6 @@
 <div class="nav-show">
-  <%= link_to "#aim" do %>
-    <span>Aim</span>
+  <%= link_to "#approach" do %>
+    <span>Approach</span>
   <% end %>
   <div class="nav-line"></div>
   <%= link_to "#data" do %>
@@ -11,7 +11,13 @@
     <span>Reporting</span>
   <% end %>
   <div class="nav-line"></div>
-  <%= link_to "#forum" do %>
-    <span>Forum</span>
+  <% if @charity_project.discussions.any? %>
+    <%= link_to "#forum" do %>
+      <span>Forum</span>
+    <% end %>
+  <% else %>
+    <%= link_to charity_project_discussions_path(@charity_project) do %>
+      <span>Forum</span>
+    <% end %>
   <% end %>
 </div>

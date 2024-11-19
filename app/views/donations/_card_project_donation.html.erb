@@ -2,7 +2,7 @@
   <div class="project-ticker">
     <div class="project-ticker-info">
       <% project = donation.charity_project %>
-      <h4><%= project.name %></h4>
+      <h4><%= link_to project.name, charity_project_path(project) %></h4>
       <ul>
         <%= link_to donations_path(charity_project_id: project) do %>
         <li class="ticker-info-title">
