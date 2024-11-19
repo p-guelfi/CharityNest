@@ -12,7 +12,7 @@
 
 <!-- Modal for Donation -->
 <div class="modal fade" id="donationModal-<%= project.id %>" tabindex="-1" role="dialog" aria-labelledby="donationModalLabel-<%= project.id %>" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog d-flex align-items-center justify-content-center" role="document">
     <div class="modal-content">
       <div class="modal-header d-flex justify-content-between align-items-center">
         <h5 class="modal-title" id="donationModalLabel-<%= project.id %>">Your donation for <%= project.name %></h5>
@@ -20,14 +20,20 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body text-center">
         <%= simple_form_for [project, Donation.new] do |f| %>
           <%= f.input :amount, label: "Donation amount" %>
           <%= f.input :state, as: :hidden, input_html: { value: 'pending' } %>
           <%= f.input :checkout_session_id, as: :hidden %>
-          <div class="form-check mb-3 d-flex justify-content-center align-items-center">
-            <%= f.check_box :recurrent, class: "form-check-input custom-checkbox mr-3" %>
-            <%= f.label :recurrent, "Monthly donation", class: "form-check-label" %>
+          <div class="btn-group btn-group-toggle d-flex justify-content-center mb-3" data-toggle="buttons">
+            <label class="btn btn-outline-primary custom-checkbox-button">
+              <%= f.radio_button :recurrent, false, checked: true, class: "d-none" %>
+              One-time
+            </label>
+            <label class="btn btn-outline-primary custom-checkbox-button">
+              <%= f.radio_button :recurrent, true, class: "d-none" %>
+              Monthly
+            </label>
           </div>
           <%= f.button :submit, "Donate Now", class: "btn button" %>
         <% end %>
