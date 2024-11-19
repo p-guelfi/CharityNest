@@ -38,11 +38,11 @@
 
   <div class="new-comment-form">
     <h3>Add a Comment</h3>
-    <%= form_with model: [@discussion, @discussion.comments.build], local: true do |f| %>
+    <%= form_with model: [@discussion.charity_project, @discussion, @discussion.comments.build], local: true do |f| %>
       <div class="form-group" style="margin-bottom: 1rem;">
         <%= f.text_area :content, rows: 3, class: "form-control input-field" %>
       </div>
-      <%= f.submit "Add Comment", class: "btn btn-primary" %>
+      <%= f.submit "Post Comment", class: "btn btn-primary" %>
     <% end %>
   </div>
 </div>

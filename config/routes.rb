@@ -24,18 +24,16 @@ Rails.application.routes.draw do
 
     resources :donations, only: [:new, :create]
 
-    # Discussions nested under Charity Projects to enable discussions for all projects
     resources :discussions do
-    # Comments nested under discussions
       resources :comments, only: [:create, :destroy]
     end
 
     resources :reports, only: %i[new create index]
   end
 
-  resources :discussions, only: %i[show] do
-    resources :comments, only: [:create, :destroy]
-  end
+  #resources :discussions, only: %i[show] do
+  #  resources :comments, only: [:create, :destroy]
+  #end
 
   post "discussions", to: "discussions#create_from_dashboard", as: :discussions
 
