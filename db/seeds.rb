@@ -707,7 +707,136 @@ puts "Seeding database..."
       }
     ]
 
-    charity_projects_all = charity_projects_oxfam + charity_projects_greenpeace + charity_projects_save_the_children + charity_projects_wwf + charity_projects_sierra_club + charity_projects_friends_of_the_earth + charity_projects_rainforest_alliance + charity_projects_climateworks
+    charity_projects_doctors_without_borders = [
+      {
+        name: "Doctors Without Borders",
+        description: "This project directly funds Doctors Without Borders, supporting its mission to provide medical care to those in crisis around the world, regardless of race, religion, or political affiliation.",
+        location: "Geneva, Switzerland",
+        goal: 60000,
+        charity: Charity.find_by(name: "Doctors Without Borders"),
+        photos: [
+          Rails.root.join("db/seed-images/doctors-without-borders/doctors-without-borders.jpg")
+        ]
+      },
+      {
+        name: "Emergency Medical Aid in Yemen",
+        description: "Doctors Without Borders is providing urgent medical assistance to the conflict-affected population in Yemen, focusing on trauma care, surgery, and nutritional support for children.",
+        location: "Sana'a, Yemen",
+        goal: 70000,
+        charity: Charity.find_by(name: "Doctors Without Borders"),
+        photos: [
+          Rails.root.join("db/seed-images/doctors-without-borders/medical-yemen.jpg")
+        ]
+      },
+      {
+        name: "Ebola Treatment Centers in West Africa",
+        description: "Doctors Without Borders is leading efforts to combat the Ebola outbreak in West Africa, providing treatment, care, and education to stop the spread of the virus.",
+        location: "Conakry, Guinea",
+        goal: 80000,
+        charity: Charity.find_by(name: "Doctors Without Borders"),
+        photos: [
+          Rails.root.join("db/seed-images/doctors-without-borders/ebola-west.png")
+        ]
+      },
+      {
+        name: "Healthcare for Refugees in Greece",
+        description: "Doctors Without Borders is delivering essential healthcare to refugees and migrants stranded in Greece, including treatment for trauma, infectious diseases, and mental health support.",
+        location: "Lesbos, Greece",
+        goal: 75000,
+        charity: Charity.find_by(name: "Doctors Without Borders"),
+        photos: [
+          Rails.root.join("db/seed-images/doctors-without-borders/greece-refugees.webp")
+        ]
+      }
+    ]
+
+    charity_projects_unicef = [
+      {
+        name: "UNICEF",
+        description: "This project directly funds UNICEF, helping to provide lifesaving support to children in need worldwide, including education, nutrition, health care, and emergency assistance.",
+        location: "New York, USA",
+        goal: 80000,
+        charity: Charity.find_by(name: "UNICEF"),
+        photos: [
+          Rails.root.join("db/seed-images/unicef/unicef.jpeg")
+        ]
+      },
+      {
+        name: "Vaccinating Children in Somalia",
+        description: "UNICEF is working to vaccinate children in Somalia against preventable diseases, including measles and polio, to protect their health and prevent outbreaks.",
+        location: "Mogadishu, Somalia",
+        goal: 70000,
+        charity: Charity.find_by(name: "UNICEF"),
+        photos: [
+          Rails.root.join("db/seed-images/unicef/vacc-somalia.jpg")
+        ]
+      },
+      {
+        name: "Education for Refugee Children in Lebanon",
+        description: "UNICEF is providing education to refugee children in Lebanon, ensuring they have access to schooling and learning resources despite the ongoing refugee crisis.",
+        location: "Beirut, Lebanon",
+        goal: 85000,
+        charity: Charity.find_by(name: "UNICEF"),
+        photos: [
+          Rails.root.join("db/seed-images/unicef/children-lebanon.jpeg")
+        ]
+      },
+      {
+        name: "Nutrition Support for Children in South Sudan",
+        description: "UNICEF is addressing child malnutrition in South Sudan by providing life-saving nutritional support to children suffering from hunger and malnutrition.",
+        location: "Juba, South Sudan",
+        goal: 95000,
+        charity: Charity.find_by(name: "UNICEF"),
+        photos: [
+          Rails.root.join("db/seed-images/unicef/nutrition-sudan.jpg")
+        ]
+      }
+    ]
+
+    charity_projects_red_cross = [
+      {
+        name: "Red Cross",
+        description: "This project directly funds the Red Cross, supporting its mission to provide emergency relief and disaster response, and to help vulnerable communities globally in times of crisis.",
+        location: "Geneva, Switzerland",
+        goal: 90000,
+        charity: Charity.find_by(name: "Red Cross"),
+        photos: [
+          Rails.root.join("db/seed-images/red-cross/red-cross.webp")
+        ]
+      },
+      {
+        name: "Disaster Relief in the Philippines",
+        description: "The Red Cross is delivering urgent disaster relief in the Philippines following typhoons, providing food, water, shelter, and medical support to affected communities.",
+        location: "Manila, Philippines",
+        goal: 85000,
+        charity: Charity.find_by(name: "Red Cross"),
+        photos: [
+          Rails.root.join("db/seed-images/red-cross/disaster-philippines.jpg")
+        ]
+      },
+      {
+        name: "Aid for Syrian Refugees",
+        description: "The Red Cross is providing essential aid to Syrian refugees, including shelter, healthcare, and psychosocial support for families displaced by the conflict.",
+        location: "Amman, Jordan",
+        goal: 100000,
+        charity: Charity.find_by(name: "Red Cross"),
+        photos: [
+          Rails.root.join("db/seed-images/red-cross/aid-syrian.jpg")
+        ]
+      },
+      {
+        name: "Supporting Healthcare in Yemen",
+        description: "The Red Cross is supporting healthcare systems in Yemen, providing emergency medical care and helping to rebuild hospitals in conflict zones to treat the wounded.",
+        location: "Sana'a, Yemen",
+        goal: 95000,
+        charity: Charity.find_by(name: "Red Cross"),
+        photos: [
+          Rails.root.join("db/seed-images/red-cross/healthcare-yemen.webp")
+        ]
+      }
+    ]
+
+    charity_projects_all = charity_projects_oxfam + charity_projects_greenpeace + charity_projects_save_the_children + charity_projects_wwf + charity_projects_sierra_club + charity_projects_friends_of_the_earth + charity_projects_rainforest_alliance + charity_projects_climateworks + charity_projects_doctors_without_borders + charity_projects_unicef + charity_projects_red_cross
 
     charity_projects_all.each do |project|
       proj = CharityProject.create!(project.except(:photos))  # Create project without photos
