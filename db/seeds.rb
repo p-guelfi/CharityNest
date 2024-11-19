@@ -1064,42 +1064,6 @@ puts "Seeding database..."
 
 # Define Method create_evaluation_reports
 
-
-
-  # Add a custom evaluation report for "Campaign for Clean Air"
-  charity_project_clean_air = CharityProject.find_by(name: "Campaign for Clean Air")
-  robert_thoughtful = User.find_by(email: "master@evaluator.com")
-
-  if charity_project_clean_air && robert_thoughtful
-    evaluation_report = {
-      report_type: "Evaluation",
-      user: robert_thoughtful,
-      score: 71,
-      score_impact: 70,
-      score_communication: 72,
-      score_efficiency: 69,
-      score_adaptability: 73,
-      title: "Report Q3 2024",
-      body: "This evaluation report provides an overview of the impact and outcomes of the project, including key achievements, challenges, and recommendations for future initiatives.<h1>Impact</h1>
-      <p>The Campaign for Clean Air has achieved measurable success, reducing air pollution by 40% in targeted schools and public spaces. This has improved the quality of life for over 40,000 individuals. However, the report does not provide clear details on how these results were measured or verified, raising questions about the reliability and replicability of the reported impact.</p>
-      <h1>Communication</h1>
-      <p>The project team has communicated effectively through newsletters and reports, but the inclusivity of communication efforts is unclear. It is not mentioned whether marginalized or remote communities were adequately reached and involved in feedback processes, potentially leaving gaps in stakeholder representation.</p>
-      <h1>Efficiency</h1>
-      <p>The project successfully adhered to its budget and timeline. However, the report fails to address long-term plans for maintaining the installed air purifiers, which could undermine the initiative’s sustainability over time. This oversight leaves donors uncertain about the lasting impact of their contributions.</p>
-      <h1>Adaptability</h1>
-      <p>The project demonstrated flexibility in addressing regional pollution challenges. Despite this, the report does not outline any plans for adopting new, more efficient technologies, such as solar-powered air purifiers, which could further enhance the campaign’s sustainability and reduce operational costs.</p>
-      <h1>Overall Score</h1>
-      <p>71%</p>",
-      teaser: "Read the evaluation report to learn more about the impact of this project.",
-      charity_project: charity_project_clean_air
-    }
-    Report.create!(evaluation_report)
-    puts "Custom evaluation report added for Campaign for Clean Air with a score of 71."
-  else
-    puts "Could not find Campaign for Clean Air project or Robert Thoughtful user."
-  end
-
-
   def create_evaluation_reports
     puts "Creating evaluation reports..."
     CharityProject.all.each do |project|
@@ -1132,6 +1096,8 @@ puts "Seeding database..."
     end
   end
 
+
+
 # Run Seeding Methods
 
     create_users
@@ -1141,6 +1107,41 @@ puts "Seeding database..."
     create_donations
     create_article_reports
     create_evaluation_reports
+
+    # Add a custom evaluation report for "Campaign for Clean Air"
+  charity_project_clean_air = CharityProject.find_by(name: "Campaign for Clean Air")
+  robert_thoughtful = User.find_by(email: "master@evaluator.com")
+
+  if charity_project_clean_air && robert_thoughtful
+    evaluation_report = {
+      report_type: "Evaluation",
+      user: robert_thoughtful,
+      score: 71,
+      score_impact: 70,
+      score_communication: 72,
+      score_efficiency: 69,
+      score_adaptability: 73,
+      title: "Report Q3 2024",
+      body: "This evaluation report provides an overview of the impact and outcomes of the project, including key achievements, challenges, and recommendations for future initiatives.<h1>Impact</h1>
+      <p>The Campaign for Clean Air has achieved measurable success, reducing air pollution by 40% in targeted schools and public spaces. This has improved the quality of life for over 40,000 individuals. However, the report does not provide clear details on how these results were measured or verified, raising questions about the reliability and replicability of the reported impact.</p>
+      <h1>Communication</h1>
+      <p>The project team has communicated effectively through newsletters and reports, but the inclusivity of communication efforts is unclear. It is not mentioned whether marginalized or remote communities were adequately reached and involved in feedback processes, potentially leaving gaps in stakeholder representation.</p>
+      <h1>Efficiency</h1>
+      <p>The project successfully adhered to its budget and timeline. However, the report fails to address long-term plans for maintaining the installed air purifiers, which could undermine the initiative’s sustainability over time. This oversight leaves donors uncertain about the lasting impact of their contributions.</p>
+      <h1>Adaptability</h1>
+      <p>The project demonstrated flexibility in addressing regional pollution challenges. Despite this, the report does not outline any plans for adopting new, more efficient technologies, such as solar-powered air purifiers, which could further enhance the campaign’s sustainability and reduce operational costs.</p>",
+      teaser: "Read the evaluation report to learn more about the impact of this project.",
+      charity_project: charity_project_clean_air
+    }
+    Report.create!(evaluation_report)
+    puts "Custom evaluation report added for Campaign for Clean Air with a score of 71."
+  else
+    puts "Could not find Campaign for Clean Air project or Robert Thoughtful user."
+  end
+
+
+
+
 
 # Create discussions for specific charity projects
 
