@@ -75,12 +75,7 @@
   text-align: center;
   overflow: hidden;
   box-sizing: border-box; /* Include padding and border in total width */
-  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
-}
-
-.give-option:hover {
-  transform: translateY(-3px);
-  box-shadow: 0px 15px 40px rgba(0, 0, 0, 0.2); /* More pronounced shadow */
+  box-shadow: 0 4px 6px rgba(0.1, 0.1, 0.1, 0.1);
 }
 
 .give-option h4 {
@@ -159,4 +154,40 @@
 
 .custom-close:focus {
   outline: none; /* Remove focus outline */
+}
+
+
+.category-card-charity {
+  background-color: $white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  width: 18rem; // Adjust as needed for layout
+  height: 18rem; // Ensure it’s a square
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  .icon {
+    font-size: 8rem;
+    text-align: center;
+    width: 10rem;
+    height: 10rem;
+    color: #0B666A1A; /* 10% opacity */
+    -webkit-text-stroke: 2px #0B666A;
+    margin-bottom: 1rem;
+  }
+
+  .title {
+    font-family: $headers-font;
+    font-weight: 200;
+    font-size: 1.5rem;
+    color: #0B666A;
+    text-align: center;
+  }
+
+  &:hover {
+    background-color: #0B666A0D; /* 5% opacity */
+  }
 }
