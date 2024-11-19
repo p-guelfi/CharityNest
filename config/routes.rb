@@ -37,6 +37,8 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :destroy]
   end
 
+  post "discussions", to: "discussions#create_from_dashboard", as: :discussions
+
   resources :reports, only: %i[show edit update index]
 
   resources :donations, only: %i[index show edit update] do

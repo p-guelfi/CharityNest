@@ -1,0 +1,37 @@
+<%# To render this card two attributes are neede:
+  # 1. carousel_id as a String two make the carousel unique and be able to control multiple carousels on one page
+  # 2. object as an ClassInstance to be able to hand over the data from controller
+  %>
+<div id="carouselPhotos<%=carousel_id%>" class="carousel slide">
+  <div class="carousel-inner">
+    <% objects.each_with_index do |object, index| %>
+      <% index == 0 ? attr = "active" : attr = "" %>
+      <div class="carousel-item <%= attr %>">
+        <%= render "discussions/card_discussion", discussion: object %>
+      </div>
+    <% end %>
+  </div>
+  <button class="carousel-control-prev my-5" type="button" data-bs-target="#carouselPhotos<%=carousel_id%>" data-bs-slide="prev">
+    <div class="carousel-control-circle">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </div>
+  </button>
+  <button class="carousel-control-next my-5" type="button" data-bs-target="#carouselPhotos<%=carousel_id%>" data-bs-slide="next">
+    <div class="carousel-control-circle">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </div>
+  </button>
+  <div class="carousel-idicator-rel">
+    <div class="carousel-indicators">
+      <% objects.each_with_index do |report, index|  %>
+        <% if index == 0 %>
+          <button type="button" data-bs-target="#carouselPhotos<%=carousel_id%>Indicators" data-bs-slide-to="<%= index %>" class="active" aria-current="true" aria-label="Slide <%= index + 1%>"></button>
+        <% else %>
+          <button type="button" data-bs-target="#carouselPhotos<%=carousel_id%>Indicators" data-bs-slide-to="<%= index %>" aria-label="Slide <%= index + 1%>"></button>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

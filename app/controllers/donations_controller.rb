@@ -7,6 +7,7 @@ class DonationsController < ApplicationController
   def index
     @total_donations = current_user.donations.sum(:amount_cents) / 100.0
     @donations = @user.donations.order(created_at: :desc)
+    @discussion = Discussion.new
     # get all discussions and reports for the user's charity projects he donated to with an active record query and sort them by creation date in descending order and save in variable @news
     charity_project_ids = @user.donations.map(&:charity_project_id)
     @charity_projects = CharityProject.geocoded.where(id: charity_project_ids)

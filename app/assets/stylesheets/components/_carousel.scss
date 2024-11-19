@@ -1,5 +1,5 @@
 .carousel-inner {
-  padding: 1rem;
+  padding: 1.5rem;
 }
 .carousel-control-prev-icon, .carousel-control-next-icon {
   filter: invert(70%);
@@ -13,8 +13,19 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  box-shadow: $default-box-shadow;
 }
 .carousel-control-prev, .carousel-control-next {
   width: 3rem!important;
   opacity: 1;
+}
+.carousel-indicators {
+  margin-bottom: -1rem;
+
+  [data-bs-target] {
+  height: 0.5rem;
+  width: 0.5rem;
+  background-color: $ocean-turquoise;
+  border-radius: 50%;
+  }
 }
