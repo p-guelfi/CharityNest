@@ -138,7 +138,7 @@ puts "Seeding database..."
       description: "At Doctors Without Borders, we are deeply grateful for the support of individuals and organizations who share our commitment to providing medical care to communities affected by conflict, epidemics, and natural disasters worldwide. Our work is primarily funded by the generous contributions of passionate supporters and grants from foundations that align with our mission of delivering emergency aid and lifesaving treatment to those in need. Upholding our independence is essential for the effectiveness of our initiatives, which is why we adhere to strict fundraising principles. We do not accept funding from governments, corporations, or political parties that may compromise our ability to provide impartial medical care. To ensure that all donations align with our values, we carefully review all significant contributions. If any potential conflicts of interest arise, we are resolute in our commitment to refusing or returning those funds to protect the integrity of our medical programs and the communities we serve.",
       category: Category.find_by(name: "Health"),
       partner: "",
-      youtube_id: "v2vF0g2V2Z8",
+      youtube_id: "f6qxuqw7Kwk",
       user: User.all.sample
     }, {
       # A charity organisation for category Education
@@ -148,7 +148,7 @@ puts "Seeding database..."
       description: "At UNICEF, we are profoundly grateful for the support of individuals and organizations who share our commitment to protecting the rights of children and providing education, healthcare, and protection services worldwide. Our work is primarily funded by the generous contributions of passionate supporters and grants from foundations that align with our mission of advocating for children's well-being and building a brighter future. Upholding our independence is essential for the effectiveness of our initiatives, which is why we adhere to strict fundraising principles. We do not accept funding from governments, corporations, or political parties that may compromise our ability to advocate for children's rights. To ensure that all donations align with our values, we carefully review all significant contributions. If any potential conflicts of interest arise, we are resolute in our commitment to refusing or returning those funds to protect the integrity of our programs and the children we serve.",
       category: Category.find_by(name: "Education"),
       partner: "",
-      youtube_id: "qJqB3KZP8Y4",
+      youtube_id: "NL5Mqoy1jtE",
       user: User.all.sample
     }, {
       # A charity organisation for category Natural Disasters
@@ -159,7 +159,7 @@ puts "Seeding database..."
       to refusing or returning those funds to protect the integrity of our programs and the communities we serve.",
       category: Category.find_by(name: "Natural Disasters"),
       partner: "",
-      youtube_id: "j5V5b3h3yvI",
+      youtube_id: "Hei4pIl_Tr0",
       user: User.all.sample
     }, {
       name: "Oxfam",
@@ -251,7 +251,7 @@ puts "Seeding database..."
         puts "Photos attached to #{charity.name}."
       end
       if charity.name == "Save the Children"
-        photo_path1 = Rails.root.join("db/seed-images/greenpeace/GP0STPOUA_8.webp")
+        photo_path1 = Rails.root.join("db/seed-images/save-the-children/save-the-children.avif")
         photo_path2 = Rails.root.join("db/seed-images/greenpeace/gp0stown2.webp")
         photo_path3 = Rails.root.join("db/seed-images/greenpeace/gp0stqdu4.webp")
         photo_path4 = Rails.root.join("db/seed-images/greenpeace/GP01CK9.webp")
@@ -264,7 +264,7 @@ puts "Seeding database..."
         puts "Photos attached to #{charity.name}."
       end
       if charity.name == "Oxfam"
-        photo_path1 = Rails.root.join("db/seed-images/greenpeace/GP0STPOUA_8.webp")
+        photo_path1 = Rails.root.join("db/seed-images/oxfam/oxfam.webp")
         photo_path2 = Rails.root.join("db/seed-images/greenpeace/gp0stown2.webp")
         photo_path3 = Rails.root.join("db/seed-images/greenpeace/gp0stqdu4.webp")
         photo_path4 = Rails.root.join("db/seed-images/greenpeace/GP01CK9.webp")
@@ -277,7 +277,7 @@ puts "Seeding database..."
         puts "Photos attached to #{charity.name}."
       end
       if charity.name == "World Wildlife Fund (WWF)"
-        photo_path1 = Rails.root.join("db/seed-images/greenpeace/GP0STPOUA_8.webp")
+        photo_path1 = Rails.root.join("db/seed-images/wwf/wwf.png")
         photo_path2 = Rails.root.join("db/seed-images/greenpeace/gp0stown2.webp")
         photo_path3 = Rails.root.join("db/seed-images/greenpeace/gp0stqdu4.webp")
         photo_path4 = Rails.root.join("db/seed-images/greenpeace/GP01CK9.webp")
@@ -290,7 +290,7 @@ puts "Seeding database..."
         puts "Photos attached to #{charity.name}."
       end
       if charity.name == "The Sierra Club Foundation"
-        photo_path1 = Rails.root.join("db/seed-images/greenpeace/GP0STPOUA_8.webp")
+        photo_path1 = Rails.root.join("db/seed-images/sierra-club/sierra-club.jpg")
         photo_path2 = Rails.root.join("db/seed-images/greenpeace/gp0stown2.webp")
         photo_path3 = Rails.root.join("db/seed-images/greenpeace/gp0stqdu4.webp")
         photo_path4 = Rails.root.join("db/seed-images/greenpeace/GP01CK9.webp")
@@ -316,7 +316,7 @@ puts "Seeding database..."
         puts "Photos attached to #{charity.name}."
       end
       if charity.name == "Rainforest Alliance"
-        photo_path1 = Rails.root.join("db/seed-images/greenpeace/GP0STPOUA_8.webp")
+        photo_path1 = Rails.root.join("db/seed-images/rainforest-alliance/rainforest-alliance.avif")
         photo_path2 = Rails.root.join("db/seed-images/greenpeace/gp0stown2.webp")
         photo_path3 = Rails.root.join("db/seed-images/greenpeace/gp0stqdu4.webp")
         photo_path4 = Rails.root.join("db/seed-images/greenpeace/GP01CK9.webp")
@@ -329,7 +329,46 @@ puts "Seeding database..."
         puts "Photos attached to #{charity.name}."
       end
       if charity.name == "ClimateWorks Foundation"
-        photo_path1 = Rails.root.join("db/seed-images/greenpeace/GP0STPOUA_8.webp")
+        photo_path1 = Rails.root.join("db/seed-images/climateworks/climate-works.avif")
+        photo_path2 = Rails.root.join("db/seed-images/greenpeace/gp0stown2.webp")
+        photo_path3 = Rails.root.join("db/seed-images/greenpeace/gp0stqdu4.webp")
+        photo_path4 = Rails.root.join("db/seed-images/greenpeace/GP01CK9.webp")
+
+        charity.photos.attach(io: File.open(photo_path1), filename: File.basename(photo_path1))
+        charity.photos.attach(io: File.open(photo_path2), filename: File.basename(photo_path2))
+        charity.photos.attach(io: File.open(photo_path3), filename: File.basename(photo_path3))
+        charity.photos.attach(io: File.open(photo_path4), filename: File.basename(photo_path4))
+
+        puts "Photos attached to #{charity.name}."
+      end
+      if charity.name == "Doctors Without Borders"
+        photo_path1 = Rails.root.join("db/seed-images/doctors-without-borders/doctors-without-borders.jpg")
+        photo_path2 = Rails.root.join("db/seed-images/greenpeace/gp0stown2.webp")
+        photo_path3 = Rails.root.join("db/seed-images/greenpeace/gp0stqdu4.webp")
+        photo_path4 = Rails.root.join("db/seed-images/greenpeace/GP01CK9.webp")
+
+        charity.photos.attach(io: File.open(photo_path1), filename: File.basename(photo_path1))
+        charity.photos.attach(io: File.open(photo_path2), filename: File.basename(photo_path2))
+        charity.photos.attach(io: File.open(photo_path3), filename: File.basename(photo_path3))
+        charity.photos.attach(io: File.open(photo_path4), filename: File.basename(photo_path4))
+
+        puts "Photos attached to #{charity.name}."
+      end
+      if charity.name == "UNICEF"
+        photo_path1 = Rails.root.join("db/seed-images/unicef/unicef.jpeg")
+        photo_path2 = Rails.root.join("db/seed-images/greenpeace/gp0stown2.webp")
+        photo_path3 = Rails.root.join("db/seed-images/greenpeace/gp0stqdu4.webp")
+        photo_path4 = Rails.root.join("db/seed-images/greenpeace/GP01CK9.webp")
+
+        charity.photos.attach(io: File.open(photo_path1), filename: File.basename(photo_path1))
+        charity.photos.attach(io: File.open(photo_path2), filename: File.basename(photo_path2))
+        charity.photos.attach(io: File.open(photo_path3), filename: File.basename(photo_path3))
+        charity.photos.attach(io: File.open(photo_path4), filename: File.basename(photo_path4))
+
+        puts "Photos attached to #{charity.name}."
+      end
+      if charity.name == "Red Cross"
+        photo_path1 = Rails.root.join("db/seed-images/red-cross/red-cross.webp")
         photo_path2 = Rails.root.join("db/seed-images/greenpeace/gp0stown2.webp")
         photo_path3 = Rails.root.join("db/seed-images/greenpeace/gp0stqdu4.webp")
         photo_path4 = Rails.root.join("db/seed-images/greenpeace/GP01CK9.webp")
@@ -360,7 +399,7 @@ puts "Seeding database..."
       goal: 50000,
       charity: Charity.find_by(name: "Oxfam"),
       photos: [
-        Rails.root.join("db/seed-images/greenpeace/GP0STPOUA_8.webp")
+        Rails.root.join("db/seed-images/oxfam/oxfam.webp")
       ]
     }, {
       name: "Fighting Poverty in Africa",
@@ -370,7 +409,7 @@ puts "Seeding database..."
       goal: 50000,
       charity: Charity.find_by(name: "Oxfam"),
       photos: [
-        Rails.root.join("db/seed-images/greenpeace/GP01EFS-polar-bear-600x450-c-default.webp")
+        Rails.root.join("db/seed-images/oxfam/povafrica.avif")
       ]
     }, {
       name: "Emergency Aid in Yemen",
@@ -380,7 +419,7 @@ puts "Seeding database..."
       goal: 50000,
       charity: Charity.find_by(name: "Oxfam"),
       photos: [
-        Rails.root.join("db/seed-images/greenpeace/030321_decarbonization.jpg")
+        Rails.root.join("db/seed-images/oxfam/yemen.jpg")
       ]
     }, {
       name: "Promoting Sustainable Development in India",
@@ -390,7 +429,7 @@ puts "Seeding database..."
       goal: 50000,
       charity: Charity.find_by(name: "Oxfam"),
       photos: [
-        Rails.root.join("db/seed-images/greenpeace/DSC_9026-1.jpg")
+        Rails.root.join("db/seed-images/oxfam/sus-india.avif")
       ]
     }
     ]
@@ -441,7 +480,7 @@ puts "Seeding database..."
         goal: 50000,  # Set a funding goal
         charity: Charity.find_by(name: "Save the Children"),  # Link to the charity
         photos: [
-          Rails.root.join("db/seed-images/greenpeace/GP0STPOUA_8.webp")  # Path to an image related to the new project
+          Rails.root.join("db/seed-images/save-the-children/save-the-children.avif")  # Path to an image related to the new project
         ]
       }, {
         name: "Providing Education in Afghanistan",
@@ -450,7 +489,7 @@ puts "Seeding database..."
         goal: 50000,
         charity: Charity.find_by(name: "Save the Children"),
         photos: [
-          Rails.root.join("db/seed-images/greenpeace/DSC_9026-1.jpg")
+          Rails.root.join("db/seed-images/save-the-children/education-afghanistan.avif")
         ]
       }, {
         name: "Emergency Aid in Syria",
@@ -459,7 +498,7 @@ puts "Seeding database..."
         goal: 50000,
         charity: Charity.find_by(name: "Save the Children"),
         photos: [
-          Rails.root.join("db/seed-images/greenpeace/DSC_9026-1.jpg")
+          Rails.root.join("db/seed-images/save-the-children/syria.avif")
         ]
       }, {
         name: "Fighting Malnutrition in South Sudan",
@@ -468,7 +507,7 @@ puts "Seeding database..."
         goal: 50000,
         charity: Charity.find_by(name: "Save the Children"),
         photos: [
-          Rails.root.join("db/seed-images/greenpeace/DSC_9026-1.jpg")
+          Rails.root.join("db/seed-images/save-the-children/sudan.avif")
         ]
       }
     ]
@@ -480,7 +519,7 @@ puts "Seeding database..."
         goal: 85000,  # Set a funding goal
         charity: Charity.find_by(name: "World Wildlife Fund (WWF)"),  # Link to the charity
         photos: [
-          Rails.root.join("db/seed-images/greenpeace/GP0STPOUA_8.webp")  # Path to an image related to the new project
+          Rails.root.join("db/seed-images/wwf/wwf.png")  # Path to an image related to the new project
         ]
       }, {
         name: "Protecting Endangered Species",
@@ -489,7 +528,7 @@ puts "Seeding database..."
         goal: 80000,
         charity: Charity.find_by(name: "World Wildlife Fund (WWF)"),
         photos: [
-          Rails.root.join("db/seed-images/greenpeace/GP01EFS-polar-bear-600x450-c-default.webp")
+          Rails.root.join("db/seed-images/wwf/endangered.avif")
         ]
       }, {
         name: "Forest Conservation in the Amazon",
@@ -498,7 +537,7 @@ puts "Seeding database..."
         goal: 100000,
         charity: Charity.find_by(name: "World Wildlife Fund (WWF)"),
         photos: [
-          Rails.root.join("db/seed-images/greenpeace/030321_decarbonization.jpg")
+          Rails.root.join("db/seed-images/wwf/amazon.avif")
         ]
       }, {
         name: "Marine Ecosystem Restoration",
@@ -507,7 +546,7 @@ puts "Seeding database..."
         goal: 90000,
         charity: Charity.find_by(name: "World Wildlife Fund (WWF)"),
         photos: [
-          Rails.root.join("db/seed-images/greenpeace/DSC_9026-1.jpg")
+          Rails.root.join("db/seed-images/wwf/marine-eco.avif")
         ]
       }
     ]
@@ -519,7 +558,7 @@ puts "Seeding database..."
         goal: 80000,  # Set a funding goal
         charity: Charity.find_by(name: "The Sierra Club Foundation"),  # Link to the charity
         photos: [
-          Rails.root.join("db/seed-images/greenpeace/GP0STPOUA_8.webp")  # Path to an image related to the new project
+          Rails.root.join("db/seed-images/sierra-club/sierra-club.jpg")  # Path to an image related to the new project
         ]
       }, {
         name: "Preserving National Parks",
@@ -528,7 +567,7 @@ puts "Seeding database..."
         goal: 85000,
         charity: Charity.find_by(name: "The Sierra Club Foundation"),
         photos: [
-          Rails.root.join("db/seed-images/greenpeace/GP01EFS-polar-bear-600x450-c-default.webp")
+          Rails.root.join("db/seed-images/sierra-club/national-parks.avif")
         ]
       }, {
         name: "Clean Energy Transition",
@@ -537,7 +576,7 @@ puts "Seeding database..."
         goal: 95000,
         charity: Charity.find_by(name: "The Sierra Club Foundation"),
         photos: [
-          Rails.root.join("db/seed-images/greenpeace/030321_decarbonization.jpg")
+          Rails.root.join("db/seed-images/sierra-club/clean-energy.avif")
         ]
       }, {
         name: "Protecting Wildlife Habitats",
@@ -546,7 +585,7 @@ puts "Seeding database..."
         goal: 70000,
         charity: Charity.find_by(name: "The Sierra Club Foundation"),
         photos: [
-          Rails.root.join("db/seed-images/greenpeace/DSC_9026-1.jpg")
+          Rails.root.join("db/seed-images/sierra-club/habitats.avif")
         ]
       }
     ]
@@ -597,7 +636,7 @@ puts "Seeding database..."
         goal: 75000,  # Set a funding goal
         charity: Charity.find_by(name: "Rainforest Alliance"),  # Link to the charity
         photos: [
-          Rails.root.join("db/seed-images/greenpeace/GP0STPOUA_8.webp")  # Path to an image related to the new project
+          Rails.root.join("db/seed-images/rainforest-alliance/rainforest-alliance.avif")  # Path to an image related to the new project
         ]
       }, {
         name: "Sustainable Farming in the Amazon",
@@ -606,7 +645,7 @@ puts "Seeding database..."
         goal: 90000,
         charity: Charity.find_by(name: "Rainforest Alliance"),
         photos: [
-          Rails.root.join("db/seed-images/greenpeace/GP01EFS-polar-bear-600x450-c-default.webp")
+          Rails.root.join("db/seed-images/rainforest-alliance/farming-amazon.jpg")
         ]
       }, {
         name: "Forest Conservation in Central America",
@@ -615,7 +654,7 @@ puts "Seeding database..."
         goal: 80000,
         charity: Charity.find_by(name: "Rainforest Alliance"),
         photos: [
-          Rails.root.join("db/seed-images/greenpeace/030321_decarbonization.jpg")
+          Rails.root.join("db/seed-images/rainforest-alliance/central-forest.avif")
         ]
       }, {
         name: "Protecting Indigenous Land Rights",
@@ -624,7 +663,7 @@ puts "Seeding database..."
         goal: 85000,
         charity: Charity.find_by(name: "Rainforest Alliance"),
         photos: [
-          Rails.root.join("db/seed-images/greenpeace/DSC_9026-1.jpg")
+          Rails.root.join("db/seed-images/rainforest-alliance/indigenous.avif")
         ]
       }
     ]
@@ -636,7 +675,7 @@ puts "Seeding database..."
         goal: 110000,  # Set a funding goal
         charity: Charity.find_by(name: "ClimateWorks Foundation"),  # Link to the charity
         photos: [
-          Rails.root.join("db/seed-images/greenpeace/GP0STPOUA_8.webp")  # Path to an image related to the new project
+          Rails.root.join("db/seed-images/climateworks/climate-works.avif")  # Path to an image related to the new project
         ]
       }, {
         name: "Accelerating Clean Energy Solutions",
@@ -645,7 +684,7 @@ puts "Seeding database..."
         goal: 100000,
         charity: Charity.find_by(name: "ClimateWorks Foundation"),
         photos: [
-          Rails.root.join("db/seed-images/greenpeace/GP01EFS-polar-bear-600x450-c-default.webp")
+          Rails.root.join("db/seed-images/climateworks/clean-ener-solutions.avif")
         ]
       }, {
         name: "Supporting Sustainable Urban Development",
@@ -654,7 +693,7 @@ puts "Seeding database..."
         goal: 120000,
         charity: Charity.find_by(name: "ClimateWorks Foundation"),
         photos: [
-          Rails.root.join("db/seed-images/greenpeace/030321_decarbonization.jpg")
+          Rails.root.join("db/seed-images/climateworks/urban-dev.avif")
         ]
       }, {
         name: "Reducing Deforestation in Southeast Asia",
@@ -663,7 +702,7 @@ puts "Seeding database..."
         goal: 95000,
         charity: Charity.find_by(name: "ClimateWorks Foundation"),
         photos: [
-          Rails.root.join("db/seed-images/greenpeace/DSC_9026-1.jpg")
+          Rails.root.join("db/seed-images/climateworks/deforest.webp")
         ]
       }
     ]
