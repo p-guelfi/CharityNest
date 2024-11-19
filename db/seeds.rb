@@ -1061,7 +1061,6 @@ puts "Seeding database..."
   end
 
 
-
 # Define Method create_evaluation_reports
 
   def create_evaluation_reports
@@ -1108,7 +1107,7 @@ puts "Seeding database..."
     create_article_reports
     create_evaluation_reports
 
-    # Add a custom evaluation report for "Campaign for Clean Air"
+  # Add a custom evaluation report for "Campaign for Clean Air"
   charity_project_clean_air = CharityProject.find_by(name: "Campaign for Clean Air")
   robert_thoughtful = User.find_by(email: "master@evaluator.com")
 
@@ -1139,36 +1138,47 @@ puts "Seeding database..."
     puts "Could not find Campaign for Clean Air project or Robert Thoughtful user."
   end
 
+  # Add a custom evaluation report for "Campaigning for Decarbonization in Brussels"
+  charity_project_decarbonization = CharityProject.find_by(name: "Campaigning for Decarbonization in Brussels")
+  robert_thoughtful = User.find_by(email: "master@evaluator.com")
 
-
+  if charity_project_decarbonization && robert_thoughtful
+    evaluation_report = {
+      report_type: "Evaluation",
+      user: robert_thoughtful,
+      score: 50,
+      score_impact: 48,
+      score_communication: 52,
+      score_efficiency: 45,
+      score_adaptability: 55,
+      title: "Report Q3 2024",
+      body: "This evaluation report highlights critical issues with the project's execution and outcomes.<h1>Impact</h1>
+      <p>The Campaigning for Decarbonization in Brussels has fallen short of its stated goals. While the initiative aimed to significantly reduce carbon emissions, the reported reductions are marginal, with no clear evidence to back the claims. The lack of concrete, measurable outcomes leaves donors questioning the value of their contributions.</p>
+      <h1>Communication</h1>
+      <p>The project’s communication efforts were inconsistent and failed to engage key stakeholders effectively. Updates were sporadic, and critical feedback from community members and partners was not adequately addressed. This has led to frustration among those invested in the campaign's success.</p>
+      <h1>Efficiency</h1>
+      <p>The project encountered significant budget overruns and delays, which were poorly managed. The failure to anticipate and mitigate these challenges has undermined confidence in the team's ability to deliver results efficiently.</p>
+      <h1>Adaptability</h1>
+      <p>The project demonstrated minimal adaptability in the face of challenges. Opportunities to incorporate innovative solutions, such as integrating more effective decarbonization technologies, were missed. This rigidity has hindered the campaign's potential to make a meaningful impact.</p>
+      <h1>Overall Assessment</h1>
+      <p>With an overall score of 50%, the project requires significant improvements to regain stakeholder trust and achieve its stated objectives.</p>",
+      teaser: "Discover the challenges and areas for improvement in this evaluation report.",
+      charity_project: charity_project_decarbonization
+    }
+    Report.create!(evaluation_report)
+    puts "Custom evaluation report added for Campaigning for Decarbonization in Brussels with a score of 50."
+  else
+    puts "Could not find Campaigning for Decarbonization in Brussels project or Robert Thoughtful user."
+  end
 
 
 # Create discussions for specific charity projects
 
 
-  puts "Creating discussions and comments for selected charity projects..."
-
-  # Find the charity projects to add discussions to
-  charity_project_clean_air = CharityProject.find_by(name: "Campaign for Clean Air")
-  charity_project_decarbonization = CharityProject.find_by(name: "Campaigning for Decarbonization in Brussels")
-
-  # Define sample discussions and comments
-  discussion_titles = ["Air Purifiers in Schools: Real Impact or Short-Term Fix?", "How Can We Ensure Long-Term Maintenance for Air Filters?", "Can Solar-Powered Filters Make the Campaign More Sustainable?"]
-  discussion_descriptions = [
-    "I just read the report on the Campaign for Clean Air, and while I’m thrilled about the reduction in air pollution, I wonder if installing air purifiers is just treating the symptom instead of addressing the root cause. Should we also focus on reducing pollution sources like vehicle emissions and industrial waste? What are your thoughts?",
-    "The Campaign for Clean Air has done amazing work installing air filtration systems, but the report didn’t mention maintenance. What happens when the filters need replacing? Should the community be involved in managing and maintaining the systems? I’d love to hear your ideas!",
-    "The report highlighted the success of the air purifiers, but I wonder if we can make them more sustainable. Could solar panels power these systems to reduce electricity costs and environmental impact? Has anyone seen this implemented elsewhere?"
-  ]
-  comment_contents = [
-    "You raise a great point! Air purifiers are great for immediate relief, but I think the long-term focus needs to be on stricter regulations for factories and cars. Maybe both approaches can work together?",
-    "I agree. Purifiers are critical for kids right now, but addressing pollution sources is the only way to create lasting change. Has anyone heard about campaigns targeting vehicle emissions?",
-    "I work with a similar project, and we’ve found that combining purifiers with awareness programs about pollution sources is effective. Maybe we could suggest that to the campaign organizers?",
-    "Maybe partnering with local businesses for sponsorships or discounts on replacement parts could help. It’s a win-win for the community and the donors.",
-    "This would be a fantastic addition! It also sends a powerful message about sustainability. Maybe we can bring this up in the next donor meeting."
-  ]
-
   # Function to create discussions and comments for a charity project
   def create_discussions_with_comments(charity_project, discussion_titles, discussion_descriptions, comment_contents, users)
+    return unless charity_project
+
     discussion_titles.each_with_index do |title, index|
       discussion = charity_project.discussions.create!(
         title: title,
@@ -1188,15 +1198,50 @@ puts "Seeding database..."
     end
   end
 
-  # Get all users to assign authorship randomly
+  # Fetch all users for dynamic assignment
   users = User.all
 
-  # Create discussions and comments for each specified charity project
-  create_discussions_with_comments(charity_project_clean_air, discussion_titles, discussion_descriptions, comment_contents, users) if charity_project_clean_air
-  create_discussions_with_comments(charity_project_decarbonization, discussion_titles, discussion_descriptions, comment_contents, users) if charity_project_decarbonization
+  # Seeding discussions for "Campaign for Clean Air"
+  charity_project_clean_air = CharityProject.find_by(name: "Campaign for Clean Air")
+  if charity_project_clean_air
+    clean_air_titles = ["Air Purifiers in Schools: Real Impact or Short-Term Fix?", "How Can We Ensure Long-Term Maintenance for Air Filters?"]
+    clean_air_descriptions = [
+      "While I’m thrilled about the reduction in air pollution, I wonder if installing air purifiers is treating the symptom instead of the root cause. Should we focus on reducing pollution sources?",
+      "The Campaign has done amazing work installing air filters, but the report didn’t mention maintenance. Should the community be involved in managing these systems?"
+    ]
+    clean_air_comments = [
+      "Air purifiers are great for immediate relief, but stricter regulations for factories and cars are essential.",
+      "Purifiers are critical now, but addressing pollution sources is key for lasting change.",
+      "Partnering with local businesses for filter replacements could be a sustainable solution.",
+      "This would be a fantastic addition! It also sends a message about sustainability."
+    ]
+
+    create_discussions_with_comments(charity_project_clean_air, clean_air_titles, clean_air_descriptions, clean_air_comments, users)
+  else
+    puts "Could not find Charity Project: Campaign for Clean Air."
+  end
+
+  # Seeding discussions for "Campaigning for Decarbonization in Brussels"
+  charity_project_decarbonization = CharityProject.find_by(name: "Campaigning for Decarbonization in Brussels")
+  if charity_project_decarbonization
+    decarb_titles = ["Why Is There Minimal Progress in Decarbonization?", "How Can We Involve Local Businesses in Sustainability Efforts?"]
+    decarb_descriptions = [
+      "The report shows only a 5% decrease in carbon emissions after significant investment. Why is progress so limited? Are the strategies ineffective or poorly executed?",
+      "Decarbonization requires everyone to participate, but local businesses don’t seem engaged. What strategies can ensure their active involvement?"
+    ]
+    decarb_comments = [
+      "Focusing on retrofitting diesel systems was a mistake; renewable energy should have been prioritized.",
+      "The report lacks transparency, and there’s no accountability for where the money went.",
+      "Local businesses need incentives like tax breaks to participate.",
+      "The lack of measurable outcomes makes me wonder if the goals were realistic in the first place."
+    ]
+
+    create_discussions_with_comments(charity_project_decarbonization, decarb_titles, decarb_descriptions, decarb_comments, users)
+  else
+    puts "Could not find Charity Project: Campaigning for Decarbonization in Brussels."
+  end
 
   puts "Discussions and comments seeded successfully!"
-
 
 
   # Create final discussion for Campaign for Clean Air

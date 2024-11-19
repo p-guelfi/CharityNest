@@ -81,9 +81,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_19_100833) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "goal"
-    t.text "description_aim"
     t.float "latitude"
     t.float "longitude"
+    t.text "description_aim"
     t.text "description_steps"
     t.text "description_impact"
     t.text "description_scalability"
