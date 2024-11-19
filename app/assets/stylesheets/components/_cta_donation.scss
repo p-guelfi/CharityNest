@@ -8,6 +8,7 @@
   align-items: center;
   background-color: white;
   height: 8rem;
+  box-shadow: $default-box-shadow;
   > div {
     width: 33%;
   }
@@ -16,6 +17,6 @@
   }
 }
 .viewport-above-cta {
-  height: calc(100dvh - 8rem - 74px);
+  height: $vh-nav-cta;
   overflow: scroll;
 }

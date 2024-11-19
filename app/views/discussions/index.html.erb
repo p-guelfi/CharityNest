@@ -1,4 +1,4 @@
-<h1 class="discussions-heading">Discussions for <%= @charity_project.name %></h1>
+<h1 class="discussions-heading">Discussions for <%= link_to @charity_project.name, charity_project_path(@charity_project) %></h1>
 
 <div class="button-container">
   <%= link_to 'New Discussion', new_charity_project_discussion_path(@charity_project), class: 'btn-primary' %>

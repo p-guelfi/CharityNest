@@ -1,13 +1,6 @@
 <div class="viewport-above-cta">
+  <div class="dropshadow-nav"></div>
   <%# Banner with charity description %>
-  <div class="banner-charities">
-    <div class="banner-heading">
-      <h1><%= @charity_project.name %></h1>
-    </div>
-    <div class="banner-intro">
-      <p><%= @charity_project.description %></p>
-    </div>
-  </div>
   <%# List %>
   <div class="grid-show-background show-container" data-controller="sort-index">
     <div class="show-nav-container">
@@ -16,13 +9,23 @@
     </div>
     <%# Grid with Charity Cards %>
     <div class="show-content-container">
-      <section id="aim">
+      <section id="intro">
+        <div class="grid-show-container">
+          <div class="show-heading">
+            <h1><%= @charity_project.name %></h1>
+            <h6><%= @charity_project.description %></h6>
+          </div>
+          <div class="show-intro">
+            <%= render "show_card_photos" %>
+          </div>
+        </div>
+      </section>
+      <section id="approach">
         <div class="grid-show-container">
           <div class="section-title">
-            <h2>Aim</h2>
+            <h2>Project Approach</h2>
           </div>
-          <%= render "show_card_aim" %>
-          <%= render "show_card_photos" %>
+          <%= render "show_section_description" %>
         </div>
       </section>
       <section id="data">
@@ -47,19 +50,19 @@
           </div>
         </div>
       </section>
-      <section id="forum">
-        <div class="grid-show-container">
-          <div class="section-title">
-            <h2>Forum</h2>
+      <% if @charity_project.discussions.any? %>
+        <section id="forum">
+          <div class="grid-show-container">
+            <div class="section-title">
+              <h2>Forum</h2>
+            </div>
+            <%= render "show_card_map" %>
+            <div class="container-articles">
+              <%= render "discussions_carousel", carousel_id: "Discussions", objects: @charity_project.discussions.first(3)  %>
+            </div>
           </div>
-          <%= render "show_card_map" %>
-          <div class="container-forum">
-            <% @charity_project.discussions.each do |discussion| %>
-              <%= render "discussions/card_discussion", discussion: discussion %>
-            <% end %>
-          </div>
-        </div>
-      </section>
+        </section>
+      <% end %>
     </div>
   </div>
 </div>

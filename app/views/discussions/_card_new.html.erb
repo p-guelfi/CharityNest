@@ -1,0 +1,19 @@
+<div class="card-discussion-new" data-controller="input-discussion">
+  <%= simple_form_for [@discussion], html: { class: 'new-discussion-form' } do |f| %>
+    <div class="form-group">
+      <div class="close">
+        <button type="button" class="close m-0 custom-close d-none" data-action="click->input-discussion#collapse" data-input-discussion-target="close" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <%= f.input :title, label: false, input_html: { class: 'input-field', placeholder: "What do you want to discuss?", data: { action: "focus->input-discussion#uncollapse" } } %>
+    </div>
+    <div class="form-collapsable d-none" data-input-discussion-target="collapsable">
+      <div class="form-group">
+        <%= f.input :description, label: 'Description', input_html: { class: 'input-field' } %>
+        <%= f.input :charity_project_id, collection: current_user.donations.map(&:charity_project) %>
+      </div>
+      <%= f.button :submit, 'Create Discussion', class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+</div>

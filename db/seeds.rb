@@ -14,11 +14,12 @@ puts "Seeding database..."
   Category.destroy_all
   CharityProject.destroy_all
   Donation.destroy_all
-  #Report.destroy_all
+  Report.destroy_all
 
   puts "Database cleaned."
 
-# Create users
+# Define Seeding Methods
+# Define Method create_users
   def create_users
     puts "Creating users..."
     users = [{
@@ -68,9 +69,8 @@ puts "Seeding database..."
     puts "#{User.count} users created."
   end
 
-  create_users
 
-# Create charity cause categories
+# Define Method create_categories
   def create_categories
     puts "Creating categories..."
     categories = [
@@ -122,9 +122,8 @@ puts "Seeding database..."
     puts "#{Category.count} categories created."
   end
 
-  create_categories
 
-# Create charities
+# Define Method create_charities
   def create_charities
     puts "Creating charities..."
 
@@ -144,7 +143,7 @@ puts "Seeding database..."
       description: "At Doctors Without Borders, we are deeply grateful for the support of individuals and organizations who share our commitment to providing medical care to communities affected by conflict, epidemics, and natural disasters worldwide. Our work is primarily funded by the generous contributions of passionate supporters and grants from foundations that align with our mission of delivering emergency aid and lifesaving treatment to those in need. Upholding our independence is essential for the effectiveness of our initiatives, which is why we adhere to strict fundraising principles. We do not accept funding from governments, corporations, or political parties that may compromise our ability to provide impartial medical care. To ensure that all donations align with our values, we carefully review all significant contributions. If any potential conflicts of interest arise, we are resolute in our commitment to refusing or returning those funds to protect the integrity of our medical programs and the communities we serve.",
       category: Category.find_by(name: "Health"),
       partner: "",
-      youtube_id: "v2vF0g2V2Z8",
+      youtube_id: "f6qxuqw7Kwk",
       user: User.all.sample
     }, {
       # A charity organisation for category Education
@@ -154,7 +153,7 @@ puts "Seeding database..."
       description: "At UNICEF, we are profoundly grateful for the support of individuals and organizations who share our commitment to protecting the rights of children and providing education, healthcare, and protection services worldwide. Our work is primarily funded by the generous contributions of passionate supporters and grants from foundations that align with our mission of advocating for children's well-being and building a brighter future. Upholding our independence is essential for the effectiveness of our initiatives, which is why we adhere to strict fundraising principles. We do not accept funding from governments, corporations, or political parties that may compromise our ability to advocate for children's rights. To ensure that all donations align with our values, we carefully review all significant contributions. If any potential conflicts of interest arise, we are resolute in our commitment to refusing or returning those funds to protect the integrity of our programs and the children we serve.",
       category: Category.find_by(name: "Education"),
       partner: "",
-      youtube_id: "qJqB3KZP8Y4",
+      youtube_id: "NL5Mqoy1jtE",
       user: User.all.sample
     }, {
       # A charity organisation for category Natural Disasters
@@ -165,7 +164,7 @@ puts "Seeding database..."
       to refusing or returning those funds to protect the integrity of our programs and the communities we serve.",
       category: Category.find_by(name: "Natural Disasters"),
       partner: "",
-      youtube_id: "j5V5b3h3yvI",
+      youtube_id: "Hei4pIl_Tr0",
       user: User.all.sample
     }, {
       name: "Oxfam",
@@ -257,7 +256,7 @@ puts "Seeding database..."
         puts "Photos attached to #{charity.name}."
       end
       if charity.name == "Save the Children"
-        photo_path1 = Rails.root.join("db/seed-images/greenpeace/GP0STPOUA_8.webp")
+        photo_path1 = Rails.root.join("db/seed-images/save-the-children/save-the-children.avif")
         photo_path2 = Rails.root.join("db/seed-images/greenpeace/gp0stown2.webp")
         photo_path3 = Rails.root.join("db/seed-images/greenpeace/gp0stqdu4.webp")
         photo_path4 = Rails.root.join("db/seed-images/greenpeace/GP01CK9.webp")
@@ -270,7 +269,7 @@ puts "Seeding database..."
         puts "Photos attached to #{charity.name}."
       end
       if charity.name == "Oxfam"
-        photo_path1 = Rails.root.join("db/seed-images/greenpeace/GP0STPOUA_8.webp")
+        photo_path1 = Rails.root.join("db/seed-images/oxfam/oxfam.webp")
         photo_path2 = Rails.root.join("db/seed-images/greenpeace/gp0stown2.webp")
         photo_path3 = Rails.root.join("db/seed-images/greenpeace/gp0stqdu4.webp")
         photo_path4 = Rails.root.join("db/seed-images/greenpeace/GP01CK9.webp")
@@ -283,7 +282,7 @@ puts "Seeding database..."
         puts "Photos attached to #{charity.name}."
       end
       if charity.name == "World Wildlife Fund (WWF)"
-        photo_path1 = Rails.root.join("db/seed-images/greenpeace/GP0STPOUA_8.webp")
+        photo_path1 = Rails.root.join("db/seed-images/wwf/wwf.png")
         photo_path2 = Rails.root.join("db/seed-images/greenpeace/gp0stown2.webp")
         photo_path3 = Rails.root.join("db/seed-images/greenpeace/gp0stqdu4.webp")
         photo_path4 = Rails.root.join("db/seed-images/greenpeace/GP01CK9.webp")
@@ -296,7 +295,7 @@ puts "Seeding database..."
         puts "Photos attached to #{charity.name}."
       end
       if charity.name == "The Sierra Club Foundation"
-        photo_path1 = Rails.root.join("db/seed-images/greenpeace/GP0STPOUA_8.webp")
+        photo_path1 = Rails.root.join("db/seed-images/sierra-club/sierra-club.jpg")
         photo_path2 = Rails.root.join("db/seed-images/greenpeace/gp0stown2.webp")
         photo_path3 = Rails.root.join("db/seed-images/greenpeace/gp0stqdu4.webp")
         photo_path4 = Rails.root.join("db/seed-images/greenpeace/GP01CK9.webp")
@@ -322,7 +321,7 @@ puts "Seeding database..."
         puts "Photos attached to #{charity.name}."
       end
       if charity.name == "Rainforest Alliance"
-        photo_path1 = Rails.root.join("db/seed-images/greenpeace/GP0STPOUA_8.webp")
+        photo_path1 = Rails.root.join("db/seed-images/rainforest-alliance/rainforest-alliance.avif")
         photo_path2 = Rails.root.join("db/seed-images/greenpeace/gp0stown2.webp")
         photo_path3 = Rails.root.join("db/seed-images/greenpeace/gp0stqdu4.webp")
         photo_path4 = Rails.root.join("db/seed-images/greenpeace/GP01CK9.webp")
@@ -335,7 +334,46 @@ puts "Seeding database..."
         puts "Photos attached to #{charity.name}."
       end
       if charity.name == "ClimateWorks Foundation"
-        photo_path1 = Rails.root.join("db/seed-images/greenpeace/GP0STPOUA_8.webp")
+        photo_path1 = Rails.root.join("db/seed-images/climateworks/climate-works.avif")
+        photo_path2 = Rails.root.join("db/seed-images/greenpeace/gp0stown2.webp")
+        photo_path3 = Rails.root.join("db/seed-images/greenpeace/gp0stqdu4.webp")
+        photo_path4 = Rails.root.join("db/seed-images/greenpeace/GP01CK9.webp")
+
+        charity.photos.attach(io: File.open(photo_path1), filename: File.basename(photo_path1))
+        charity.photos.attach(io: File.open(photo_path2), filename: File.basename(photo_path2))
+        charity.photos.attach(io: File.open(photo_path3), filename: File.basename(photo_path3))
+        charity.photos.attach(io: File.open(photo_path4), filename: File.basename(photo_path4))
+
+        puts "Photos attached to #{charity.name}."
+      end
+      if charity.name == "Doctors Without Borders"
+        photo_path1 = Rails.root.join("db/seed-images/doctors-without-borders/doctors-without-borders.jpg")
+        photo_path2 = Rails.root.join("db/seed-images/greenpeace/gp0stown2.webp")
+        photo_path3 = Rails.root.join("db/seed-images/greenpeace/gp0stqdu4.webp")
+        photo_path4 = Rails.root.join("db/seed-images/greenpeace/GP01CK9.webp")
+
+        charity.photos.attach(io: File.open(photo_path1), filename: File.basename(photo_path1))
+        charity.photos.attach(io: File.open(photo_path2), filename: File.basename(photo_path2))
+        charity.photos.attach(io: File.open(photo_path3), filename: File.basename(photo_path3))
+        charity.photos.attach(io: File.open(photo_path4), filename: File.basename(photo_path4))
+
+        puts "Photos attached to #{charity.name}."
+      end
+      if charity.name == "UNICEF"
+        photo_path1 = Rails.root.join("db/seed-images/unicef/unicef.jpeg")
+        photo_path2 = Rails.root.join("db/seed-images/greenpeace/gp0stown2.webp")
+        photo_path3 = Rails.root.join("db/seed-images/greenpeace/gp0stqdu4.webp")
+        photo_path4 = Rails.root.join("db/seed-images/greenpeace/GP01CK9.webp")
+
+        charity.photos.attach(io: File.open(photo_path1), filename: File.basename(photo_path1))
+        charity.photos.attach(io: File.open(photo_path2), filename: File.basename(photo_path2))
+        charity.photos.attach(io: File.open(photo_path3), filename: File.basename(photo_path3))
+        charity.photos.attach(io: File.open(photo_path4), filename: File.basename(photo_path4))
+
+        puts "Photos attached to #{charity.name}."
+      end
+      if charity.name == "Red Cross"
+        photo_path1 = Rails.root.join("db/seed-images/red-cross/red-cross.webp")
         photo_path2 = Rails.root.join("db/seed-images/greenpeace/gp0stown2.webp")
         photo_path3 = Rails.root.join("db/seed-images/greenpeace/gp0stqdu4.webp")
         photo_path4 = Rails.root.join("db/seed-images/greenpeace/GP01CK9.webp")
@@ -351,10 +389,7 @@ puts "Seeding database..."
 
     puts "#{Charity.count} charities created."
   end
-
-  create_charities
-
-# Create charity projects
+# Define Method create_charity_projects
 
   def create_charity_projects
     puts "Creating charity projects..."
@@ -366,7 +401,7 @@ puts "Seeding database..."
       goal: 50000,
       charity: Charity.find_by(name: "Oxfam"),
       photos: [
-        Rails.root.join("db/seed-images/greenpeace/GP0STPOUA_8.webp")
+        Rails.root.join("db/seed-images/oxfam/oxfam.webp")
       ]
     }, {
       name: "Fighting Poverty in Africa",
@@ -376,7 +411,7 @@ puts "Seeding database..."
       goal: 50000,
       charity: Charity.find_by(name: "Oxfam"),
       photos: [
-        Rails.root.join("db/seed-images/greenpeace/GP01EFS-polar-bear-600x450-c-default.webp")
+        Rails.root.join("db/seed-images/oxfam/povafrica.avif")
       ]
     }, {
       name: "Emergency Aid in Yemen",
@@ -386,7 +421,7 @@ puts "Seeding database..."
       goal: 50000,
       charity: Charity.find_by(name: "Oxfam"),
       photos: [
-        Rails.root.join("db/seed-images/greenpeace/030321_decarbonization.jpg")
+        Rails.root.join("db/seed-images/oxfam/yemen.jpg")
       ]
     }, {
       name: "Promoting Sustainable Development in India",
@@ -396,7 +431,7 @@ puts "Seeding database..."
       goal: 50000,
       charity: Charity.find_by(name: "Oxfam"),
       photos: [
-        Rails.root.join("db/seed-images/greenpeace/DSC_9026-1.jpg")
+        Rails.root.join("db/seed-images/oxfam/sus-india.avif")
       ]
     }
     ]
@@ -422,6 +457,10 @@ puts "Seeding database..."
       }, {
         name: "Campaigning for Decarbonization in Brussels",
         description: "Greenpeace is campaigning for decarbonization in Brussels by promoting renewable energy and reducing greenhouse gas emissions.",
+        description_aim: "The campaign aims to position Brussels as a leader in global decarbonization by promoting renewable energy, reducing greenhouse gas emissions, and advocating for ambitious EU-wide climate policies.",
+        description_steps: "We engage policymakers, organize public events, and collaborate with experts to draft actionable climate policies. Educational outreach and stakeholder engagement ensure widespread support for sustainable energy transitions.",
+        description_impact: "The campaign has influenced key EU regulations, increased awareness of renewable energy benefits, and fostered partnerships across sectors, resulting in tangible emissions reductions and a strengthened commitment to climate goals.",
+        description_scalability: "Our strategies can be adapted across EU member states, providing a blueprint for impactful decarbonization efforts. By sharing best practices, we encourage global adoption of sustainable energy solutions.",
         location: "Brussels, Belgium",
         goal: 30000,
         charity: Charity.find_by(name: "Greenpeace"),
@@ -447,7 +486,7 @@ puts "Seeding database..."
         goal: 50000,  # Set a funding goal
         charity: Charity.find_by(name: "Save the Children"),  # Link to the charity
         photos: [
-          Rails.root.join("db/seed-images/greenpeace/GP0STPOUA_8.webp")  # Path to an image related to the new project
+          Rails.root.join("db/seed-images/save-the-children/save-the-children.avif")  # Path to an image related to the new project
         ]
       }, {
         name: "Providing Education in Afghanistan",
@@ -456,7 +495,7 @@ puts "Seeding database..."
         goal: 50000,
         charity: Charity.find_by(name: "Save the Children"),
         photos: [
-          Rails.root.join("db/seed-images/greenpeace/DSC_9026-1.jpg")
+          Rails.root.join("db/seed-images/save-the-children/education-afghanistan.avif")
         ]
       }, {
         name: "Emergency Aid in Syria",
@@ -465,7 +504,7 @@ puts "Seeding database..."
         goal: 50000,
         charity: Charity.find_by(name: "Save the Children"),
         photos: [
-          Rails.root.join("db/seed-images/greenpeace/DSC_9026-1.jpg")
+          Rails.root.join("db/seed-images/save-the-children/syria.avif")
         ]
       }, {
         name: "Fighting Malnutrition in South Sudan",
@@ -474,7 +513,7 @@ puts "Seeding database..."
         goal: 50000,
         charity: Charity.find_by(name: "Save the Children"),
         photos: [
-          Rails.root.join("db/seed-images/greenpeace/DSC_9026-1.jpg")
+          Rails.root.join("db/seed-images/save-the-children/sudan.avif")
         ]
       }
     ]
@@ -486,7 +525,7 @@ puts "Seeding database..."
         goal: 85000,  # Set a funding goal
         charity: Charity.find_by(name: "World Wildlife Fund (WWF)"),  # Link to the charity
         photos: [
-          Rails.root.join("db/seed-images/greenpeace/GP0STPOUA_8.webp")  # Path to an image related to the new project
+          Rails.root.join("db/seed-images/wwf/wwf.png")  # Path to an image related to the new project
         ]
       }, {
         name: "Protecting Endangered Species",
@@ -495,7 +534,7 @@ puts "Seeding database..."
         goal: 80000,
         charity: Charity.find_by(name: "World Wildlife Fund (WWF)"),
         photos: [
-          Rails.root.join("db/seed-images/greenpeace/GP01EFS-polar-bear-600x450-c-default.webp")
+          Rails.root.join("db/seed-images/wwf/endangered.avif")
         ]
       }, {
         name: "Forest Conservation in the Amazon",
@@ -504,7 +543,7 @@ puts "Seeding database..."
         goal: 100000,
         charity: Charity.find_by(name: "World Wildlife Fund (WWF)"),
         photos: [
-          Rails.root.join("db/seed-images/greenpeace/030321_decarbonization.jpg")
+          Rails.root.join("db/seed-images/wwf/amazon.avif")
         ]
       }, {
         name: "Marine Ecosystem Restoration",
@@ -513,7 +552,7 @@ puts "Seeding database..."
         goal: 90000,
         charity: Charity.find_by(name: "World Wildlife Fund (WWF)"),
         photos: [
-          Rails.root.join("db/seed-images/greenpeace/DSC_9026-1.jpg")
+          Rails.root.join("db/seed-images/wwf/marine-eco.avif")
         ]
       }
     ]
@@ -525,7 +564,7 @@ puts "Seeding database..."
         goal: 80000,  # Set a funding goal
         charity: Charity.find_by(name: "The Sierra Club Foundation"),  # Link to the charity
         photos: [
-          Rails.root.join("db/seed-images/greenpeace/GP0STPOUA_8.webp")  # Path to an image related to the new project
+          Rails.root.join("db/seed-images/sierra-club/sierra-club.jpg")  # Path to an image related to the new project
         ]
       }, {
         name: "Preserving National Parks",
@@ -534,7 +573,7 @@ puts "Seeding database..."
         goal: 85000,
         charity: Charity.find_by(name: "The Sierra Club Foundation"),
         photos: [
-          Rails.root.join("db/seed-images/greenpeace/GP01EFS-polar-bear-600x450-c-default.webp")
+          Rails.root.join("db/seed-images/sierra-club/national-parks.avif")
         ]
       }, {
         name: "Clean Energy Transition",
@@ -543,7 +582,7 @@ puts "Seeding database..."
         goal: 95000,
         charity: Charity.find_by(name: "The Sierra Club Foundation"),
         photos: [
-          Rails.root.join("db/seed-images/greenpeace/030321_decarbonization.jpg")
+          Rails.root.join("db/seed-images/sierra-club/clean-energy.avif")
         ]
       }, {
         name: "Protecting Wildlife Habitats",
@@ -552,7 +591,7 @@ puts "Seeding database..."
         goal: 70000,
         charity: Charity.find_by(name: "The Sierra Club Foundation"),
         photos: [
-          Rails.root.join("db/seed-images/greenpeace/DSC_9026-1.jpg")
+          Rails.root.join("db/seed-images/sierra-club/habitats.avif")
         ]
       }
     ]
@@ -569,10 +608,15 @@ puts "Seeding database..."
     }, {
       name: "Campaign for Clean Air",
       description: "Friends of the Earth is leading a campaign to improve air quality in urban areas by reducing pollution and promoting green energy solutions.",
+      description_aim: "The campaign seeks to improve urban air quality by reducing emissions through clean energy advocacy, promoting green transportation, and fostering awareness of air pollution's health impacts.",
+      description_steps: "Key actions include research to pinpoint pollution sources, hosting educational workshops, collaborating with policymakers for eco-friendly initiatives, and monitoring progress to drive sustainable improvements.",
+      description_impact: "Efforts have reduced harmful pollutants, improved public health, and introduced cleaner energy in urban transportation, inspiring legislation to prioritize sustainability and air quality.",
+      description_scalability: "The campaign's scalable model supports global adoption, providing resources and fostering partnerships to encourage widespread commitment to sustainable environmental practices worldwide.",
       location: "London, UK",
       goal: 60000,
       charity: Charity.find_by(name: "Friends of the Earth"),
       photos: [
+        Rails.root.join("db/seed-images/friends-of-earth/clean-air-pollution.webp"),
         Rails.root.join("db/seed-images/friends-of-earth/dust-delhi-01-10-24-E-hero.jpg")
       ]
     }, {
@@ -603,7 +647,7 @@ puts "Seeding database..."
         goal: 75000,  # Set a funding goal
         charity: Charity.find_by(name: "Rainforest Alliance"),  # Link to the charity
         photos: [
-          Rails.root.join("db/seed-images/greenpeace/GP0STPOUA_8.webp")  # Path to an image related to the new project
+          Rails.root.join("db/seed-images/rainforest-alliance/rainforest-alliance.avif")  # Path to an image related to the new project
         ]
       }, {
         name: "Sustainable Farming in the Amazon",
@@ -612,7 +656,7 @@ puts "Seeding database..."
         goal: 90000,
         charity: Charity.find_by(name: "Rainforest Alliance"),
         photos: [
-          Rails.root.join("db/seed-images/greenpeace/GP01EFS-polar-bear-600x450-c-default.webp")
+          Rails.root.join("db/seed-images/rainforest-alliance/farming-amazon.jpg")
         ]
       }, {
         name: "Forest Conservation in Central America",
@@ -621,7 +665,7 @@ puts "Seeding database..."
         goal: 80000,
         charity: Charity.find_by(name: "Rainforest Alliance"),
         photos: [
-          Rails.root.join("db/seed-images/greenpeace/030321_decarbonization.jpg")
+          Rails.root.join("db/seed-images/rainforest-alliance/central-forest.avif")
         ]
       }, {
         name: "Protecting Indigenous Land Rights",
@@ -630,7 +674,7 @@ puts "Seeding database..."
         goal: 85000,
         charity: Charity.find_by(name: "Rainforest Alliance"),
         photos: [
-          Rails.root.join("db/seed-images/greenpeace/DSC_9026-1.jpg")
+          Rails.root.join("db/seed-images/rainforest-alliance/indigenous.avif")
         ]
       }
     ]
@@ -642,7 +686,7 @@ puts "Seeding database..."
         goal: 110000,  # Set a funding goal
         charity: Charity.find_by(name: "ClimateWorks Foundation"),  # Link to the charity
         photos: [
-          Rails.root.join("db/seed-images/greenpeace/GP0STPOUA_8.webp")  # Path to an image related to the new project
+          Rails.root.join("db/seed-images/climateworks/climate-works.avif")  # Path to an image related to the new project
         ]
       }, {
         name: "Accelerating Clean Energy Solutions",
@@ -651,7 +695,7 @@ puts "Seeding database..."
         goal: 100000,
         charity: Charity.find_by(name: "ClimateWorks Foundation"),
         photos: [
-          Rails.root.join("db/seed-images/greenpeace/GP01EFS-polar-bear-600x450-c-default.webp")
+          Rails.root.join("db/seed-images/climateworks/clean-ener-solutions.avif")
         ]
       }, {
         name: "Supporting Sustainable Urban Development",
@@ -660,7 +704,7 @@ puts "Seeding database..."
         goal: 120000,
         charity: Charity.find_by(name: "ClimateWorks Foundation"),
         photos: [
-          Rails.root.join("db/seed-images/greenpeace/030321_decarbonization.jpg")
+          Rails.root.join("db/seed-images/climateworks/urban-dev.avif")
         ]
       }, {
         name: "Reducing Deforestation in Southeast Asia",
@@ -669,12 +713,141 @@ puts "Seeding database..."
         goal: 95000,
         charity: Charity.find_by(name: "ClimateWorks Foundation"),
         photos: [
-          Rails.root.join("db/seed-images/greenpeace/DSC_9026-1.jpg")
+          Rails.root.join("db/seed-images/climateworks/deforest.webp")
         ]
       }
     ]
 
-    charity_projects_all = charity_projects_oxfam + charity_projects_greenpeace + charity_projects_save_the_children + charity_projects_wwf + charity_projects_sierra_club + charity_projects_friends_of_the_earth + charity_projects_rainforest_alliance + charity_projects_climateworks
+    charity_projects_doctors_without_borders = [
+      {
+        name: "Doctors Without Borders",
+        description: "This project directly funds Doctors Without Borders, supporting its mission to provide medical care to those in crisis around the world, regardless of race, religion, or political affiliation.",
+        location: "Geneva, Switzerland",
+        goal: 60000,
+        charity: Charity.find_by(name: "Doctors Without Borders"),
+        photos: [
+          Rails.root.join("db/seed-images/doctors-without-borders/doctors-without-borders.jpg")
+        ]
+      },
+      {
+        name: "Emergency Medical Aid in Yemen",
+        description: "Doctors Without Borders is providing urgent medical assistance to the conflict-affected population in Yemen, focusing on trauma care, surgery, and nutritional support for children.",
+        location: "Sana'a, Yemen",
+        goal: 70000,
+        charity: Charity.find_by(name: "Doctors Without Borders"),
+        photos: [
+          Rails.root.join("db/seed-images/doctors-without-borders/medical-yemen.jpg")
+        ]
+      },
+      {
+        name: "Ebola Treatment Centers in West Africa",
+        description: "Doctors Without Borders is leading efforts to combat the Ebola outbreak in West Africa, providing treatment, care, and education to stop the spread of the virus.",
+        location: "Conakry, Guinea",
+        goal: 80000,
+        charity: Charity.find_by(name: "Doctors Without Borders"),
+        photos: [
+          Rails.root.join("db/seed-images/doctors-without-borders/ebola-west.png")
+        ]
+      },
+      {
+        name: "Healthcare for Refugees in Greece",
+        description: "Doctors Without Borders is delivering essential healthcare to refugees and migrants stranded in Greece, including treatment for trauma, infectious diseases, and mental health support.",
+        location: "Lesbos, Greece",
+        goal: 75000,
+        charity: Charity.find_by(name: "Doctors Without Borders"),
+        photos: [
+          Rails.root.join("db/seed-images/doctors-without-borders/greece-refugees.webp")
+        ]
+      }
+    ]
+
+    charity_projects_unicef = [
+      {
+        name: "UNICEF",
+        description: "This project directly funds UNICEF, helping to provide lifesaving support to children in need worldwide, including education, nutrition, health care, and emergency assistance.",
+        location: "New York, USA",
+        goal: 80000,
+        charity: Charity.find_by(name: "UNICEF"),
+        photos: [
+          Rails.root.join("db/seed-images/unicef/unicef.jpeg")
+        ]
+      },
+      {
+        name: "Vaccinating Children in Somalia",
+        description: "UNICEF is working to vaccinate children in Somalia against preventable diseases, including measles and polio, to protect their health and prevent outbreaks.",
+        location: "Mogadishu, Somalia",
+        goal: 70000,
+        charity: Charity.find_by(name: "UNICEF"),
+        photos: [
+          Rails.root.join("db/seed-images/unicef/vacc-somalia.jpg")
+        ]
+      },
+      {
+        name: "Education for Refugee Children in Lebanon",
+        description: "UNICEF is providing education to refugee children in Lebanon, ensuring they have access to schooling and learning resources despite the ongoing refugee crisis.",
+        location: "Beirut, Lebanon",
+        goal: 85000,
+        charity: Charity.find_by(name: "UNICEF"),
+        photos: [
+          Rails.root.join("db/seed-images/unicef/children-lebanon.jpeg")
+        ]
+      },
+      {
+        name: "Nutrition Support for Children in South Sudan",
+        description: "UNICEF is addressing child malnutrition in South Sudan by providing life-saving nutritional support to children suffering from hunger and malnutrition.",
+        location: "Juba, South Sudan",
+        goal: 95000,
+        charity: Charity.find_by(name: "UNICEF"),
+        photos: [
+          Rails.root.join("db/seed-images/unicef/nutrition-sudan.jpg")
+        ]
+      }
+    ]
+
+    charity_projects_red_cross = [
+      {
+        name: "Red Cross",
+        description: "This project directly funds the Red Cross, supporting its mission to provide emergency relief and disaster response, and to help vulnerable communities globally in times of crisis.",
+        location: "Geneva, Switzerland",
+        goal: 90000,
+        charity: Charity.find_by(name: "Red Cross"),
+        photos: [
+          Rails.root.join("db/seed-images/red-cross/red-cross.webp")
+        ]
+      },
+      {
+        name: "Disaster Relief in the Philippines",
+        description: "The Red Cross is delivering urgent disaster relief in the Philippines following typhoons, providing food, water, shelter, and medical support to affected communities.",
+        location: "Manila, Philippines",
+        goal: 85000,
+        charity: Charity.find_by(name: "Red Cross"),
+        photos: [
+          Rails.root.join("db/seed-images/red-cross/disaster-philippines.jpg")
+        ]
+      },
+      {
+        name: "Aid for Syrian Refugees",
+        description: "The Red Cross is providing essential aid to Syrian refugees, including shelter, healthcare, and psychosocial support for families displaced by the conflict.",
+        location: "Amman, Jordan",
+        goal: 100000,
+        charity: Charity.find_by(name: "Red Cross"),
+        photos: [
+          Rails.root.join("db/seed-images/red-cross/aid-syrian.jpg")
+        ]
+      },
+      {
+        name: "Supporting Healthcare in Yemen",
+        description: "The Red Cross is supporting healthcare systems in Yemen, providing emergency medical care and helping to rebuild hospitals in conflict zones to treat the wounded.",
+        location: "Sana'a, Yemen",
+        goal: 95000,
+        charity: Charity.find_by(name: "Red Cross"),
+        photos: [
+          Rails.root.join("db/seed-images/red-cross/healthcare-yemen.webp")
+        ]
+      }
+    ]
+
+    charity_projects_all = charity_projects_oxfam + charity_projects_greenpeace + charity_projects_save_the_children + charity_projects_wwf + charity_projects_sierra_club + charity_projects_friends_of_the_earth + charity_projects_rainforest_alliance + charity_projects_climateworks + charity_projects_doctors_without_borders + charity_projects_unicef + charity_projects_red_cross
 
     charity_projects_all.each do |project|
       proj = CharityProject.create!(project.except(:photos))  # Create project without photos
@@ -694,9 +867,7 @@ puts "Seeding database..."
     puts "#{CharityProject.count} charity projects created."
   end
 
-  create_charity_projects
-
-# Create donations
+# Define Method create_donations
   def create_donations
     puts "Creating donations..."
 
@@ -712,11 +883,7 @@ puts "Seeding database..."
     puts "#{Donation.count} donations created."
   end
 
-  create_donations
-
-# Create reports
-
-  puts "Creating reports..."
+# Define Method article_reports
 
   # Scraper for Article Reports
 
@@ -782,21 +949,122 @@ puts "Seeding database..."
 
   # Save Article Reports in DB
 
-  reports_file = File.read("db/reports.json")
-  if reports_file.empty?
-    report_scraper
+  def create_article_reports
+    puts "Creating reports..."
     reports_file = File.read("db/reports.json")
+    if reports_file.empty?
+      report_scraper
+      reports_file = File.read("db/reports.json")
+
+    end
+    article_reports  = JSON.parse(reports_file)
+
+    article_reports.each_with_index do |report, index|
+      a_report = Report.new(title: report["title"], body: report["body"], teaser: report["teaser"], report_type: report["report_type"].capitalize)
+      a_report.user = User.find_by(email: report["user"])
+      a_report.charity_project = CharityProject.find_by(name: report["charity_project"])
+      a_report.save!
+      puts "Article Report #{index + 1} / #{article_reports.count}: #{a_report.title} created."
+    end
+
+    # Create Article Reports for the Charity_Project called Campaign for Clean Air
+    charity_project_clean_air = CharityProject.find_by(name: "Campaign for Clean Air")
+    charity_project_decarbonization = CharityProject.find_by(name: "Campaigning for Decarbonization in Brussels")
+    if charity_project_clean_air && charity_project_decarbonization
+      article_content = [{
+        title: "Recent Data of Air Quality in Urban Areas",
+        body: "<h1>Understanding the Current State of Urban Air Quality</h1>
+                <p>Air pollution continues to be one of the most pressing challenges in urban areas globally. Recent data from leading environmental organizations reveal that over 90% of the world's urban population is exposed to air quality levels that exceed the World Health Organization’s recommended limits. Primary pollutants such as nitrogen dioxide (NO2) and particulate matter (PM2.5 and PM10) are linked to transportation emissions, industrial activity, and residential heating. In many cities, the situation is compounded by a lack of green spaces and poor urban planning, which exacerbate pollution levels and their impact on public health.</p>
+                <p>Cities such as Delhi, Beijing, and Mexico City remain hotspots for severe air pollution. However, advancements in monitoring technologies, such as satellite imaging and IoT-based sensors, have improved the ability to track pollution in real time. Governments and environmental agencies are now using these insights to develop targeted policies aimed at reducing emissions, such as transitioning to electric vehicles and adopting renewable energy sources. Public awareness campaigns have also played a significant role in educating urban populations about their role in mitigating pollution.</p>
+                <h1>Recent Improvements and Future Challenges</h1>
+                <p>Despite the alarming statistics, there are some success stories in urban air quality management. European cities like Stockholm and Copenhagen have achieved significant reductions in pollution levels through stringent regulations and the promotion of cycling and public transport. These cities have adopted comprehensive measures, such as congestion pricing, emission-free zones, and significant investments in renewable energy. Furthermore, local governments are collaborating with private industries to deploy innovative technologies like air-purifying towers and green roofs.</p>
+                <p>However, challenges persist in ensuring equitable improvements across all urban areas. Lower-income neighborhoods often face disproportionate exposure to pollution due to proximity to industrial zones and major highways. Additionally, the rapid urbanization of developing countries presents new hurdles as infrastructure development often outpaces environmental regulations. Collaborative efforts involving governments, businesses, and citizens are crucial to building sustainable urban environments where clean air is a fundamental right.</p>
+                <p>In conclusion, while the fight for cleaner urban air remains an uphill battle, recent data and initiatives provide hope for a healthier future. Strategic investments in technology, policy reforms, and community engagement are essential in addressing the complex challenges of air pollution. By prioritizing sustainability and inclusivity, urban areas can become hubs of clean, livable spaces for generations to come.</p>",
+        teaser: "Discover recent data on urban air pollution: over 90% of city dwellers face harmful air quality, but innovative solutions bring hope for cleaner, healthier environments.",
+        charity_project: charity_project_clean_air,
+        photos: [Rails.root.join("db/seed-images/friends-of-earth/clean-air-gasmasks.webp")]
+      }, {
+        title: "Green Transportation Initiatives",
+        body: "<h1>Why Green Transportation Matters</h1>
+                <p>Green transportation initiatives aim to reduce the environmental impact of urban mobility by promoting eco-friendly modes of travel such as biking, walking, and electric vehicles. These initiatives significantly lower greenhouse gas emissions and contribute to improved air quality. Cities like Amsterdam and Oslo lead the charge with extensive cycling infrastructure and incentives for electric vehicle adoption.</p>
+                <p>Public transit systems are also transitioning to greener options, with hybrid and electric buses becoming increasingly common. By making green transportation more accessible and appealing, cities can tackle urban air pollution while enhancing the quality of life for residents.</p>
+                <h1>Implementing Sustainable Solutions</h1>
+                <p>Adopting green transportation requires significant investment in infrastructure, including charging stations, dedicated bike lanes, and pedestrian-friendly urban designs. Policy measures such as subsidies for electric vehicles and congestion charges for fossil-fuel cars further encourage adoption.</p>
+                <p>Community involvement plays a key role in ensuring the success of these initiatives. Educational campaigns and partnerships with local businesses can drive cultural shifts towards more sustainable commuting habits.</p>",
+        teaser: "Explore how green transportation is revolutionizing urban mobility and improving air quality worldwide.",
+        charity_project: charity_project_clean_air,
+        photos: [Rails.root.join("db/seed-images/friends-of-earth/clean-air-traffic.webp")]
+      }, {
+        title: "Community-Led Air Quality Monitoring",
+        body: "<h1>The Power of Grassroots Efforts</h1>
+                <p>Community-led air quality monitoring empowers local residents to actively participate in tackling pollution. By deploying low-cost sensors, communities can collect real-time data to identify pollution hotspots and advocate for change. This grassroots approach has been successful in cities like Oakland and Nairobi, where local groups have influenced urban planning policies and emission regulations.</p>
+                <h1>Scaling Local Efforts Globally</h1>
+                <p>Technology has made it easier to scale community monitoring efforts. Platforms like OpenAQ aggregate data from around the world, enabling researchers and policymakers to make data-driven decisions. With the involvement of citizens, governments can gain invaluable insights into localized pollution sources and prioritize interventions.</p>
+                <p>Community-led monitoring also fosters awareness and accountability, ensuring that all stakeholders are invested in achieving cleaner air.</p>",
+        teaser: "Discover how grassroots initiatives are transforming air quality monitoring and empowering communities globally.",
+        charity_project: charity_project_clean_air,
+        photos: [Rails.root.join("db/seed-images/friends-of-earth/clean-air-protests.webp")]
+      },{
+        title: "Recent Advances in EU Decarbonization Policy",
+        body: "<h1>Milestones Achieved by the Campaign</h1>
+                <p>Over the past year, the Campaign for Decarbonization in Brussels has seen remarkable progress. Key milestones include the adoption of stricter carbon pricing mechanisms under the EU Emissions Trading System (ETS) and an accelerated phase-out of coal subsidies across member states. These achievements highlight the growing influence of climate advocacy in shaping EU regulations.</p>
+                <p>Collaborative efforts between NGOs, policymakers, and industry leaders have resulted in significant commitments to renewable energy targets. For instance, the revised Renewable Energy Directive now aims for a 45% share of renewables in the EU's energy mix by 2030. These advancements underscore the importance of persistent advocacy and grassroots mobilization in achieving systemic change.</p>
+                <h1>The EU as a Global Role Model</h1>
+                <p>The EU’s ambitious regulatory framework is setting a precedent for other regions to follow. By demonstrating the feasibility of large-scale decarbonization, the EU inspires other nations to adopt similar policies. The campaign’s success lies in presenting the EU as a cohesive entity that prioritizes sustainability while fostering economic growth.</p>",
+        teaser: "Discover the latest milestones in EU decarbonization efforts and how advocacy is driving impactful change across Europe.",
+        charity_project: charity_project_decarbonization,
+        photos: [Rails.root.join("db/seed-images/greenpeace/decarbonization-eu.webp")]
+      }, {
+        title: "Unveiling Hidden Opportunities for EU Decarbonization",
+        body: "<h1>Exploring Underutilized Solutions</h1>
+                <p>While renewable energy and carbon pricing dominate the decarbonization discourse, other opportunities remain underexplored. For example, leveraging carbon capture and storage (CCS) technologies can significantly reduce emissions in hard-to-abate sectors like steel and cement production. The campaign is advocating for increased R&D funding for CCS as part of the EU’s Green Deal initiatives.</p>
+                <p>Additionally, promoting sustainable agriculture through rewilding and organic farming can contribute to carbon sequestration and biodiversity preservation. Integrating these approaches into the Common Agricultural Policy (CAP) is a focus area for campaign efforts this year.</p>
+                <h1>Innovative Policy Suggestions</h1>
+                <p>One innovative policy proposed by the campaign is a Europe-wide carbon border adjustment mechanism. This policy would ensure that imported goods meet the same stringent environmental standards as those produced within the EU, preventing carbon leakage and incentivizing global decarbonization.</p>
+                <p>These lesser-known strategies complement mainstream approaches, ensuring a holistic and impactful EU decarbonization agenda.</p>",
+        teaser: "Explore untapped opportunities for EU decarbonization, from carbon capture to sustainable agriculture.",
+        charity_project: charity_project_decarbonization,
+        photos: [Rails.root.join("db/seed-images/greenpeace/decarbonization-ccs.webp")]
+      }, {
+        title: "EU’s Global Leadership in Climate Regulation",
+        body: "<h1>Positioning the EU as a Climate Leader</h1>
+                <p>The EU's ability to influence global climate policy lies in its role as a regulatory powerhouse. Recent successes, such as the Fit for 55 package, exemplify the EU’s leadership in aligning economic growth with environmental responsibility. The package aims to reduce net greenhouse gas emissions by at least 55% by 2030, showcasing a commitment to bold, science-based targets.</p>
+                <p>The campaign is working to amplify the EU’s voice on the international stage by advocating for deeper engagement in global forums like COP28. Strengthening partnerships with developing nations is another key priority, ensuring that the EU’s leadership benefits not only Europe but also the broader global community.</p>
+                <h1>Looking Ahead: Challenges and Opportunities</h1>
+                <p>As the EU progresses in its decarbonization journey, maintaining cohesion among member states is crucial. Disparities in economic resources and energy needs can create resistance to ambitious policies. The campaign emphasizes the importance of solidarity mechanisms, such as the Just Transition Fund, to support vulnerable regions and industries during this transformation.</p>
+                <p>By addressing these challenges, the EU can solidify its position as a global role model for sustainable development and climate action.</p>",
+        teaser: "Learn how the EU is shaping global climate policy and overcoming challenges to lead in decarbonization.",
+        charity_project: charity_project_decarbonization,
+        photos: [Rails.root.join("db/seed-images/greenpeace/decarbonization-cop.webp")]
+      }
+    ]
+      article_content.each_with_index do |article, index|
+        report = Report.create!(
+          report_type: "Article",
+          user: User.where(role: 2).sample,
+          title: article[:title],
+          body: article[:body],
+          teaser: article[:teaser],
+          charity_project: article[:charity_project],
+        )
+        if article[:photos].any?
+          article[:photos].each do |photo_path|
+            report.photos.attach(io: File.open(photo_path), filename: File.basename(photo_path))
+          end
+        end
+        puts "Article Report #{index + 1} created for #{charity_project_clean_air.name}."
+      end
+    end
+
+    puts "#{Report.count} reports created."
 
   end
-  article_reports  = JSON.parse(reports_file)
 
-  article_reports.each_with_index do |report, index|
-    a_report = Report.new(title: report["title"], body: report["body"], teaser: report["teaser"], report_type: report["report_type"].capitalize)
-    a_report.user = User.find_by(email: report["user"])
-    a_report.charity_project = CharityProject.find_by(name: report["charity_project"])
-    a_report.save!
-    puts "Article Report #{index + 1} / #{article_reports.count}: #{a_report.title} created."
-  end
+
+
+# Define Method create_evaluation_reports
+
+
 
   # Add a custom evaluation report for "Campaign for Clean Air"
   charity_project_clean_air = CharityProject.find_by(name: "Campaign for Clean Air")
@@ -832,84 +1100,51 @@ puts "Seeding database..."
   end
 
 
-  # Create Evaluation Reports
-  evaluation_reports = []
-
-  CharityProject.all.each do |project|
-    i = 1
-    3.times do
-      evaluation_report = {
-        report_type: "Evaluation",
-        user: User.where(role: 3).sample,
-        score: rand(75..100),
-        score_impact: rand(75..100),
-        score_communication: rand(75..100),
-        score_efficiency: rand(75..100),
-        score_adaptability: rand(75..100),
-        title: "Report Q#{i} 2024",
-        body: "This evaluation report provides an overview of the impact and outcomes of the project, including key achievements, challenges, and recommendations for future initiatives.<h1>Impact</h1>
-        <p>The project has demonstrated a significant impact on the target community, with measurable improvements in key areas such as access to education, healthcare, and economic opportunities. The implementation of sustainable solutions has led to positive outcomes for local residents, contributing to long-term development and well-being.</p>
-        <h1>Communication</h1>
-        <p>The project team has effectively communicated with stakeholders, partners, and beneficiaries throughout the project lifecycle, ensuring transparency, accountability, and engagement. Regular updates, reports, and feedback mechanisms have facilitated meaningful dialogue and collaboration, enhancing the overall success of the initiative.</p>
-        <h1>Efficiency</h1>
-        <p>The project has demonstrated high levels of efficiency in resource management, budget allocation, and timeline adherence. The team's strategic planning, monitoring, and evaluation processes have optimized project delivery, resulting in cost-effective solutions and timely outcomes.</p>
-        <h1>Adaptability</h1>
-        <p>The project team has shown flexibility and adaptability in responding to changing circumstances, unforeseen challenges, and evolving needs. By adjusting strategies, activities, and approaches as required, the project has maintained relevance, effectiveness, and sustainability over time.</p>",
-        teaser: "Read the evaluation report to learn more about the impact of this project.",
-        charity_project: project
-      }
-      Report.create!(evaluation_report)
-      i += 1
+  def create_evaluation_reports
+    puts "Creating evaluation reports..."
+    CharityProject.all.each do |project|
+      i = 1
+      2.times do
+        evaluation_report = {
+          report_type: "Evaluation",
+          user: User.where(role: 3).sample,
+          score: rand(75..100),
+          score_impact: rand(75..100),
+          score_communication: rand(75..100),
+          score_efficiency: rand(75..100),
+          score_adaptability: rand(75..100),
+          title: "Report Q#{i} 2024",
+          body: "This evaluation report provides an overview of the impact and outcomes of the project, including key achievements, challenges, and recommendations for future initiatives.<h1>Impact</h1>
+          <p>The project has demonstrated a significant impact on the target community, with measurable improvements in key areas such as access to education, healthcare, and economic opportunities. The implementation of sustainable solutions has led to positive outcomes for local residents, contributing to long-term development and well-being.</p>
+          <h1>Communication</h1>
+          <p>The project team has effectively communicated with stakeholders, partners, and beneficiaries throughout the project lifecycle, ensuring transparency, accountability, and engagement. Regular updates, reports, and feedback mechanisms have facilitated meaningful dialogue and collaboration, enhancing the overall success of the initiative.</p>
+          <h1>Efficiency</h1>
+          <p>The project has demonstrated high levels of efficiency in resource management, budget allocation, and timeline adherence. The team's strategic planning, monitoring, and evaluation processes have optimized project delivery, resulting in cost-effective solutions and timely outcomes.</p>
+          <h1>Adaptability</h1>
+          <p>The project team has shown flexibility and adaptability in responding to changing circumstances, unforeseen challenges, and evolving needs. By adjusting strategies, activities, and approaches as required, the project has maintained relevance, effectiveness, and sustainability over time.</p>",
+          teaser: "Read the evaluation report to learn more about the impact of this project.",
+          charity_project: project
+        }
+        Report.create!(evaluation_report)
+        i += 1
+      end
+      puts "#{i - 1} Evaluation reports created for #{project.name}."
     end
-    puts "#{i - 1} Evaluation reports created for #{project.name}."
   end
 
+# Run Seeding Methods
 
-
-
-  charity_projects_oxfam = [{
-    name: "Oxfam",  # This is now the first project
-    description: "This project directly funds Oxfam, helping to support its core mission of fighting poverty and inequality around the world.",
-    location: "Nairobi, Kenya",
-    goal: 50000,
-    charity: Charity.find_by(name: "Oxfam"),
-    photos: [
-      Rails.root.join("db/seed-images/greenpeace/GP0STPOUA_8.webp")
-    ]
-  }, {
-    name: "Fighting Poverty in Africa",
-    description: "Oxfam is working to fight poverty in Africa by providing clean water, food, and education to communities in need.",
-    # A village in Niger named Bilma
-    location: "Bilma, Niger",
-    goal: 50000,
-    charity: Charity.find_by(name: "Oxfam"),
-    photos: [
-      Rails.root.join("db/seed-images/greenpeace/GP01EFS-polar-bear-600x450-c-default.webp")
-    ]
-  }, {
-    name: "Emergency Aid in Yemen",
-    description: "Oxfam is providing emergency aid in Yemen by delivering food, water, and medical supplies to families affected by the conflict.",
-    # A village in Yemen named Al-Hudaydah
-    location: "Al-Hudaydah, Yemen",
-    goal: 50000,
-    charity: Charity.find_by(name: "Oxfam"),
-    photos: [
-      Rails.root.join("db/seed-images/greenpeace/030321_decarbonization.jpg")
-    ]
-  }, {
-    name: "Promoting Sustainable Development in India",
-    description: "Oxfam is promoting sustainable development in India by supporting small-scale farmers.",
-    # A village in India named Khandwa
-    location: "Khandwa, India",
-    goal: 50000,
-    charity: Charity.find_by(name: "Oxfam"),
-    photos: [
-      Rails.root.join("db/seed-images/greenpeace/DSC_9026-1.jpg")
-    ]
-  }
-]
+    create_users
+    create_categories
+    create_charities
+    create_charity_projects
+    create_donations
+    create_article_reports
+    create_evaluation_reports
 
 # Create discussions for specific charity projects
+
+
   puts "Creating discussions and comments for selected charity projects..."
 
   # Find the charity projects to add discussions to

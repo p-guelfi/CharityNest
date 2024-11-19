@@ -1,5 +1,6 @@
 <div class="discussion-card">
   <div class="discussion-card-header">
+    <%= link_to "#{discussion.charity_project.name} • Forum", charity_project_discussions_path(discussion.charity_project)  %>
     <div class="discussion-title">
       <h3><%= link_to discussion.title, discussion_path(discussion) %></h3>
     </div>
