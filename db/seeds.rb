@@ -51,6 +51,12 @@ puts "Seeding database..."
       first_name: "Robert",
       last_name: "Thoughtful",
       role: 3
+      }, {
+      email: "friends-of-the-earth@gmail.com",
+      password: "123456",
+      first_name: "Friends of the",
+      last_name: "Earth",
+      role: 3
       }
     ]
 
@@ -877,18 +883,18 @@ puts "Seeding database..."
   charity_project_decarbonization = CharityProject.find_by(name: "Campaigning for Decarbonization in Brussels")
 
   # Define sample discussions and comments
-  discussion_titles = ["Future of Air Quality", "Renewable Energy Solutions", "Community Initiatives for Clean Air"]
+  discussion_titles = ["Air Purifiers in Schools: Real Impact or Short-Term Fix?", "How Can We Ensure Long-Term Maintenance for Air Filters?", "Can Solar-Powered Filters Make the Campaign More Sustainable?"]
   discussion_descriptions = [
-    "Let's discuss the various factors impacting air quality and how we can make a difference.",
-    "How renewable energy sources can help reduce pollution and improve air quality.",
-    "Exploring community-driven efforts to improve air quality and reduce pollution."
+    "I just read the report on the Campaign for Clean Air, and while I’m thrilled about the reduction in air pollution, I wonder if installing air purifiers is just treating the symptom instead of addressing the root cause. Should we also focus on reducing pollution sources like vehicle emissions and industrial waste? What are your thoughts?",
+    "The Campaign for Clean Air has done amazing work installing air filtration systems, but the report didn’t mention maintenance. What happens when the filters need replacing? Should the community be involved in managing and maintaining the systems? I’d love to hear your ideas!",
+    "The report highlighted the success of the air purifiers, but I wonder if we can make them more sustainable. Could solar panels power these systems to reduce electricity costs and environmental impact? Has anyone seen this implemented elsewhere?"
   ]
   comment_contents = [
-    "Great point! I think awareness is key.",
-    "This initiative will have a significant impact on future generations.",
-    "We need more government support for these projects.",
-    "Public engagement is crucial for success.",
-    "Looking forward to seeing positive changes!"
+    "You raise a great point! Air purifiers are great for immediate relief, but I think the long-term focus needs to be on stricter regulations for factories and cars. Maybe both approaches can work together?",
+    "I agree. Purifiers are critical for kids right now, but addressing pollution sources is the only way to create lasting change. Has anyone heard about campaigns targeting vehicle emissions?",
+    "I work with a similar project, and we’ve found that combining purifiers with awareness programs about pollution sources is effective. Maybe we could suggest that to the campaign organizers?",
+    "Maybe partnering with local businesses for sponsorships or discounts on replacement parts could help. It’s a win-win for the community and the donors.",
+    "This would be a fantastic addition! It also sends a powerful message about sustainability. Maybe we can bring this up in the next donor meeting."
   ]
 
   # Function to create discussions and comments for a charity project
@@ -920,6 +926,89 @@ puts "Seeding database..."
   create_discussions_with_comments(charity_project_decarbonization, discussion_titles, discussion_descriptions, comment_contents, users) if charity_project_decarbonization
 
   puts "Discussions and comments seeded successfully!"
+
+
+
+  # Create final discussion for Campaign for Clean Air
+  puts "Creating discussions and comments for selected charity projects..."
+
+  # Find the charity project to add discussions to
+  charity_project_clean_air = CharityProject.find_by(name: "Campaign for Clean Air")
+
+  # Fetch the specific users for comments
+  mohamed = User.find_by(email: "momoelgazzar@gmail.com")
+  pablo = User.find_by(email: "pguelfi@gmail.com")
+  david = User.find_by(email: "post@david-dicke.de")
+  max = User.find_by(email: "max@richkid.com")
+  friends_of_the_earth = User.find_by(email: "friends-of-the-earth@gmail.com")
+
+  # Define sample discussions
+  discussion_titles = ["How Were Pollution Reductions Measured?"]
+  discussion_descriptions = [
+    "The report highlights an impressive 40% reduction in air pollution, but it doesn’t explain how this was measured or verified. Were air quality monitors installed? Were independent assessments conducted? It’s hard to know how reliable these figures are without more details. Let’s discuss this!"
+  ]
+
+  # Define comments and their specific authors
+  comment_mappings = [
+    { content: "I was wondering about that too. If the data isn’t transparent, how can we trust the results? I’d love to see the methodology in the next report.", user: pablo },
+    { content: "Maybe the project used local air quality data, but it would help to have a breakdown of the metrics and the timeline.", user: david },
+    { content: "Agreed. Impact reports should always include a clear methodology—otherwise, it feels like the numbers might just be estimates.", user: max }
+  ]
+
+  # Function to create discussions and comments for a charity project
+  def create_discussions_with_comments(charity_project, discussion_titles, discussion_descriptions, comment_mappings, mohamed, charity_user)
+    discussion_titles.each_with_index do |title, index|
+      # Create the discussion with Mohamed as the author
+      discussion = charity_project.discussions.create!(
+        title: title,
+        description: discussion_descriptions[index],
+        user: mohamed # Mohamed as the discussion author
+      )
+      puts "Discussion '#{discussion.title}' created for #{charity_project.name}"
+
+      # Add the comments with specific authors
+      comment_mappings.each do |mapping|
+        discussion.comments.create!(
+          content: mapping[:content],
+          user: mapping[:user]
+        )
+      end
+      puts "#{comment_mappings.size} comments created for discussion '#{discussion.title}'"
+
+      # Add final comment by the charity itself
+      create_final_comment_by_charity(discussion, charity_user)
+    end
+  end
+
+  # Function to add a final comment from the charity
+  def create_final_comment_by_charity(discussion, charity_user)
+    return unless charity_user
+
+    # Summarize feedback and propose changes
+    feedback_summary = discussion.comments.map { |comment| "- #{comment.content}\n" }.join
+    final_comment = <<~COMMENT
+      Thank you for your feedback! Based on your feedback we'll include clearer methodology, detailed air quality data, and explore partnerships for transparency in future reports. Stay tuned!
+    COMMENT
+
+    # Add the final comment
+    discussion.comments.create!(
+      content: final_comment,
+      user: charity_user
+    )
+    puts "Final comment added by #{charity_user.email} to discussion '#{discussion.title}'."
+  end
+
+  # Call the function to create discussions and comments
+  create_discussions_with_comments(
+    charity_project_clean_air,
+    discussion_titles,
+    discussion_descriptions,
+    comment_mappings,
+    mohamed,
+    friends_of_the_earth
+  )
+
+  puts "Final discussion and comments for Campaign for Clean Air seeded successfully!"
 
 
 puts "Seeding complete!"
