@@ -68,7 +68,7 @@
 .give-option {
   flex: 1; /* Each option takes equal space */
   max-width: calc(33.33% - 1rem); /* Ensure space between options is accounted for */
-  margin: 0 0.5rem; /* Adjust this as needed */
+  margin: 0 0.7rem; /* Adjust this as needed */
   display: flex;
   flex-direction: column;
   border-radius: 10px;
@@ -165,8 +165,8 @@
   justify-content: center;
   padding: 1rem;
   border-radius: 0.5rem;
-  width: 18rem; // Adjust as needed for layout
-  height: 18rem; // Ensure it’s a square
+  width: 19rem; // Adjust as needed for layout
+  height: 19rem; // Ensure it’s a square
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
   .icon {
