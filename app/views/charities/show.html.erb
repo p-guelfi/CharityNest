@@ -20,40 +20,34 @@
     <div class="ways-to-give">
       <div class="give-option">
         <a href="#projects-sect" style="display: block; text-decoration: none; color: inherit;">
-          <div class="give-photo">
-            <% if @charity.photos.size > 1 %>
-              <%= cl_image_tag @charity.photos.second.key, height: 170, crop: 'fill' %>
-            <% else %>
-              <p>No image available for this option.</p>
-            <% end %>
+        <div class="category-card-charity">
+          <div class="icon">
+            <%= image_tag("icons/support-project.svg", alt: "Basic Needs Icon", class: "icon-svg") %>
           </div>
-          <h4>Support a Project</h4>
+          <div class="title">Support a Project</div>
+        </div>
         </a>
       </div>
 
       <div class="give-option" style="cursor: pointer;" data-toggle="modal" data-target="#donationModal">
-        <div class="give-photo">
-          <% if @charity.photos.size > 2 %>
-            <%= cl_image_tag @charity.photos.third.key, height: 170, crop: 'fill' %>
-          <% else %>
-            <p>No image available for this option.</p>
-          <% end %>
+        <div class="category-card-charity">
+          <div class="icon">
+            <%= image_tag("icons/support-charity.svg", alt: "Basic Needs Icon", class: "icon-svg") %>
+          </div>
+          <div class="title">Support the Charity</div>
         </div>
-        <h4>Support the Charity</h4>
       </div>
 
       <div class="give-option">
         <a href="mailto:<%= @charity.name.gsub(' ', '-').downcase %>@charity-nest.com?subject=Inquiry%20About%20<%= @charity.name.gsub(' ', '%20') %>"
            style="display: block; text-decoration: none; color: inherit;">
-          <div class="give-photo">
-            <% if @charity.photos.size > 3 %>
-              <%= cl_image_tag @charity.photos.fourth.key, height: 170, crop: 'fill' %>
-            <% else %>
-              <p>No image available for this option.</p>
-            <% end %>
+        <div class="category-card-charity">
+          <div class="icon">
+            <%= image_tag("icons/support-ideas.svg", alt: "Basic Needs Icon", class: "icon-svg") %>
           </div>
-          <h4>Share Ideas</h4>
-        </a>
+          <div class="title">Share your Ideas</div>
+        </div>
+         </a>
       </div>
     </div>
   </div>
@@ -81,7 +75,6 @@
   </div>
 </div>
 
-<!-- Modal for Donation -->
 <!-- Modal for Donation -->
 <% if @charity.charity_projects.any? %>
   <% project = @charity.charity_projects.find { |project| project.name == @charity.name } %>

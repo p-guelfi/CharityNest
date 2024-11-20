@@ -11,8 +11,9 @@
         <%= f.input :password,
                     required: false,
                     input_html: { autocomplete: "current-password", class: "login-form-input" } %>
-        <%= f.input :remember_me, as: :boolean, input_html: { class: "login-form-remember" } if devise_mapping.rememberable? %>
-      </div>
+        <div class="login-form-remember">
+          <%= f.input :remember_me, as: :boolean, input_html: { class: "login-form-remember-checkbox" } if devise_mapping.rememberable? %>
+        </div>      </div>
 
       <div class="login-form-actions">
         <%= f.button :submit, "Log in", class: "login-form-submit-btn" %>

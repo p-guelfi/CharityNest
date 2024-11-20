@@ -23,10 +23,6 @@ class DonationsController < ApplicationController
         marker_html: render_to_string(partial: "charity_projects/marker")
       }
     end
-
-    if params[:payment_status] == 'success'
-      flash[:notice] = "Payment successful! Thank you for your donation. Stay tuned for updates on the project: #{ @donations.first.charity_project.name}."
-    end
   end
 
   def create
@@ -89,6 +85,10 @@ class DonationsController < ApplicationController
   def show
     @donation = current_user.donations.find(params[:id])
     @charity_project = @donation.charity_project
+
+    if params[:payment_status] == 'success'
+      flash[:notice] = "Payment successful! Thank you for your donation. Stay tuned for updates on the project: #{ @charity_project.name}."
+    end
   end
 
   def edit
