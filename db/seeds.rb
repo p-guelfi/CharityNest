@@ -1000,7 +1000,7 @@ puts "Seeding database..."
     puts "Creating evaluation reports..."
     CharityProject.all.each do |project|
       i = 1
-      2.times do
+      3.times do
         evaluation_report = {
           report_type: "Evaluation",
           user: User.where(role: 3).sample,
@@ -1021,7 +1021,9 @@ puts "Seeding database..."
           teaser: "Read the evaluation report to learn more about the impact of this project.",
           charity_project: project
         }
-        Report.create!(evaluation_report)
+        unless evaluation_report[:title] == "Report Q3 2024" && ( evaluation_report[:charity_project].name == "Campaign for Clean Air" || evaluation_report[:charity_project].name == "Campaigning for Decarbonization in Brussels" )
+          Report.create!(evaluation_report)
+        end
         i += 1
       end
       puts "#{i - 1} Evaluation reports created for #{project.name}."
