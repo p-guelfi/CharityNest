@@ -6,6 +6,9 @@ class CommentsController < ApplicationController
     @comment = @discussion.comments.build(comment_params)
     @comment.user = current_user
     if @comment.save
+      ForumChannel.broadcast_to(@comment.discussion,
+        render_to_string(partial: "shared/chat_ai_message",
+          locals: { comment: @comment }))
       redirect_to discussion_path(@discussion), notice: 'Comment added successfully.'
     else
       redirect_to discussion_path(@discussion), alert: 'Failed to add comment.'

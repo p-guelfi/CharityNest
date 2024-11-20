@@ -21,4 +21,8 @@ class User < ApplicationRecord
   def can_create_charity?
     charity_admin?
   end
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 end

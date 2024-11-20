@@ -1,0 +1,9 @@
+<%# This Partial gets comment as an argument %>
+<div class="message-wrapper">
+  <div class="message-icon">
+    <i class="fa-solid fa-crow"></i>
+  </div>
+  <div class="ai-message">
+  <%= comment.user.full_name %> has answered to your discussion <%= link_to comment.discussion.title, discussion_path(comment.discussion) %>
+  </div>
+</div>

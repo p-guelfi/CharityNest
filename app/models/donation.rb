@@ -8,4 +8,5 @@ class Donation < ApplicationRecord
 
   # Validate the virtual attribute
   validates :amount, presence: true, numericality: { greater_than: 0 }
+
 end
