@@ -19,6 +19,9 @@ class DiscussionsController < ApplicationController
     @discussion = @charity_project.discussions.build(discussion_params)
     @discussion.user = current_user
     if @discussion.save
+      CharityProjectChannel.broadcast_to(@discussion.charity_project,
+        render_to_string(partial: "discussions/card_discussion",
+          locals: { discussion: @discussion }))
       redirect_to charity_project_discussions_path(@charity_project), notice: 'Discussion created successfully.'
     else
       render :new
@@ -30,6 +33,9 @@ class DiscussionsController < ApplicationController
     @discussion.user = current_user
     @discussion.save
     if @discussion.save
+      CharityProjectChannel.broadcast_to(@discussion.charity_project,
+        render_to_string(partial: "discussions/card_discussion",
+          locals: { discussion: @discussion }))
       redirect_to donations_path(@discussion), notice: 'Discussion created successfully.'
     else
       raise
@@ -62,8 +68,12 @@ class DiscussionsController < ApplicationController
   end
 
   def set_discussion
-    @discussion = @charity_project.discussions.find_by(id: params[:id])
-    redirect_to charity_project_discussions_path(@charity_project), alert: 'Discussion not found' if @discussion.nil?
+    if @charity_project.nil?
+      @discussion = Discussion.find(params[:id])
+    else
+      @discussion = @charity_project.discussions.find_by(id: params[:id])
+      redirect_to charity_project_discussions_path(@charity_project), alert: 'Discussion not found' if @discussion.nil?
+    end
   end
 
   def discussion_params

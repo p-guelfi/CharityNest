@@ -11,6 +11,9 @@ class ReportsController < ApplicationController
     @report.charity_project = @charity_project
     @report.user = set_user
     if @report.save
+      CharityProjectChannel.broadcast_to(@report.charity_project,
+        render_to_string(partial: "reports/card_report_teaser",
+          locals: { report: @report }))
       flash[:notice] = "Your report has been created successfully."
       redirect_to report_path(@report)
     else
