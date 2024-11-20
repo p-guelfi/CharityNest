@@ -1,7 +1,8 @@
 .card-photos {
-  width: calc(100% + 2rem);
-  margin: -1.25rem -2rem 0 0;
-  aspect-ratio: 4/3;
+  width: calc(100% + 4rem);
+  margin: -4rem -4rem -4rem 0;
+  height: calc(100% + 2*(4rem));
+  overflow: hidden;
   img {
     object-fit: cover;
     object-position: center;

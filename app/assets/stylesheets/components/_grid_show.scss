@@ -3,6 +3,9 @@ $nav-width: 100px;
 .grid-show-background {
   background-color: $coral-white;
 }
+.grid-show-container:first-of-type {
+  border-radius: 0 0 10px 10px;
+}
 .grid-show-container {
   background-color: white;
   margin: 0 calc( #{$nav-width} + 4rem ) 6rem 2rem;
@@ -10,12 +13,13 @@ $nav-width: 100px;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: auto;
-  grid-gap: 4rem;
+  grid-gap: 2rem;
   justify-items: stretch;
   border-radius: 10px;
+  overflow: hidden;
   .section-title {
     grid-column: span 12;
-    padding: 2rem 0;
+    padding: 1rem 0;
     min-width: 0;
     min-height: 0;
     width: 100%;
@@ -85,6 +89,7 @@ $nav-width: 100px;
   h1, h6 {
     margin-top: 4rem;
     margin-bottom: 0;
+    padding-right: 2rem;
   }
 }
 .show-intro {
