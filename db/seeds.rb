@@ -1050,11 +1050,11 @@ puts "Seeding database..."
     evaluation_report = {
       report_type: "Evaluation",
       user: robert_thoughtful,
-      score: 71,
-      score_impact: 70,
-      score_communication: 72,
-      score_efficiency: 69,
-      score_adaptability: 73,
+      score: 91,
+      score_impact: 90,
+      score_communication: 92,
+      score_efficiency: 93,
+      score_adaptability: 85,
       title: "Report Q3 2024",
       body: "This evaluation report provides an overview of the impact and outcomes of the project, including key achievements, challenges, and recommendations for future initiatives.<h1>Impact</h1>
       <p>The Campaign for Clean Air has achieved measurable success, reducing air pollution by 40% in targeted schools and public spaces. This has improved the quality of life for over 40,000 individuals. However, the report does not provide clear details on how these results were measured or verified, raising questions about the reliability and replicability of the reported impact.</p>

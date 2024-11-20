@@ -3,22 +3,22 @@
   <div class="main-graph">
     <h6>Overall Score</h6>
     <% main_color =  %>
-    <%= line_chart @charity_project.evaluations.map { |report| [report.title, report.score] }, colors: ["#35A28C"]%>
+    <%= line_chart @charity_project.evaluations.reverse.map { |report| [report.title, report.score] }, colors: ["#35A28C"]%>
   </div>
   <div class="detailed-graph">
     <h6>Impact Score</h6>
-    <%= line_chart @charity_project.evaluations.map { |report| [report.title, report.score_impact] }, colors: ["#94dccd"] %>
+    <%= line_chart @charity_project.evaluations.reverse.map { |report| [report.title, report.score_impact] }, colors: ["#94dccd"] %>
   </div>
   <div class="detailed-graph">
     <h6>Communication Score</h6>
-    <%= line_chart @charity_project.evaluations.map { |report| [report.title, report.score_communication] }, colors: ["#94dccd"]%>
+    <%= line_chart @charity_project.evaluations.reverse.map { |report| [report.title, report.score_communication] }, colors: ["#94dccd"]%>
   </div>
   <div class="detailed-graph">
     <h6>Efficiency Score</h6>
-    <%= line_chart @charity_project.evaluations.map { |report| [report.title, report.score_efficiency] }, colors: ["#94dccd"]%>
+    <%= line_chart @charity_project.evaluations.reverse.map { |report| [report.title, report.score_efficiency] }, colors: ["#94dccd"]%>
   </div>
   <div class="detailed-graph">
     <h6>Adaptability Score</h6>
-    <%= line_chart @charity_project.evaluations.map { |report| [report.title, report.score_adaptability] }, colors: ["#94dccd"]%>
+    <%= line_chart @charity_project.evaluations.reverse.map { |report| [report.title, report.score_adaptability] }, colors: ["#94dccd"]%>
   </div>
 </div>
