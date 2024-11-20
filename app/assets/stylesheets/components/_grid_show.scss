@@ -35,6 +35,7 @@ $nav-width: 100px;
   }
   .container-evaluations {
     grid-column: span 6;
+    padding-left: 2rem;
   }
   .container-articles {
     grid-column: 2 / span 10;
@@ -100,4 +101,13 @@ $nav-width: 100px;
   width: 100%;
   height: 10px;
   margin-bottom: -10px;
+}
+.carousel-detailed-graph {
+  padding: 4rem 0 2rem 0;
+  margin-left: -1.5rem;
+  width: calc(100% + 1rem);
+  h6,p {
+    padding: 0 2rem 0 3.5rem;
+    text-align: center;
+  }
 }
