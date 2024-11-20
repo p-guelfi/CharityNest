@@ -2,18 +2,21 @@
   width: 100%;
   position: fixed;
   bottom: 0;
-  padding: 2rem $index-margin-x;
+  padding: 20px $index-margin-x;
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: white;
-  height: 8rem;
-  box-shadow: $default-box-shadow;
+  height: 6.25rem;
+  box-shadow: 0 -2px 30px rgba(0, 0, 0, 0.1);
   > div {
     width: 33%;
   }
   .donate-button {
     padding: 0 10%;
+  }
+  .progress-info-and-bar {
+    padding-right: 6rem;
   }
 }
 .viewport-above-cta {
