@@ -550,8 +550,7 @@ puts "Seeding database..."
       goal: 60000,
       charity: Charity.find_by(name: "Friends of the Earth"),
       photos: [
-        Rails.root.join("db/seed-images/friends-of-earth/clean-air-pollution.webp"),
-        Rails.root.join("db/seed-images/friends-of-earth/dust-delhi-01-10-24-E-hero.jpg")
+        Rails.root.join("db/seed-images/friends-of-earth/clean-air-pollution.webp")
       ]
     }, {
       name: "Protecting Pollinators",

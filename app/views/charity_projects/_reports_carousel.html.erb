@@ -8,6 +8,15 @@
       <% index == 0 ? attr = "active" : attr = "" %>
       <div class="carousel-item <%= attr %>">
         <%= render "reports/card_report_teaser", report: report %>
+        <% if report.report_type == "Evaluation" %>
+          <div class="carousel-detailed-graph">
+            <h6>Overall Score for all Projects</h6>
+            <p><%= report.title %></p>
+            <% all_scores =  Report.where(title: report.title).order(:score).map { |report| [report.charity_project.name, report.score] }%>
+            <% colors = all_scores.map{ |array| array == [report.charity_project.name, report.score] ? "#0B666A" : "#94dccd" }%>
+            <%= column_chart all_scores, colors: colors, library: { scales: { x: { ticks: { display: false }}}}%>
+          </div>
+        <% end %>
       </div>
     <% end %>
   </div>

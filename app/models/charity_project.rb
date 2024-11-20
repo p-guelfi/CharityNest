@@ -20,11 +20,11 @@ class CharityProject < ApplicationRecord
   after_validation :geocode, if: :will_save_change_to_location?
 
   def evaluations
-    reports.where(report_type: "Evaluation")
+    reports.where(report_type: "Evaluation").order(created_at: :desc)
   end
 
   def articles
-    reports.where(report_type: "Article")
+    reports.where(report_type: "Article").order(created_at: :desc)
   end
 
   include PgSearch::Model
