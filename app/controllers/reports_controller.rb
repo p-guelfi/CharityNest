@@ -1,5 +1,5 @@
 class ReportsController < ApplicationController
-  before_action :set_report, only: %i[show]
+  before_action :set_report, only: %i[show edit update]
   before_action :set_charity_project, only: %i[new create]
 
   def new
@@ -27,6 +27,17 @@ class ReportsController < ApplicationController
       @reports = @charity_project.reports.all
     else
       @reports = Report.all
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    if @report.update(report_params)
+      redirect_to report_path(@report)
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 
