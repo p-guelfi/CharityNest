@@ -53,6 +53,7 @@ Rails.application.routes.draw do
 # config/routes.rb
 
 
+  # mount ActionCable.server => '/cable'
 
   mount StripeEvent::Engine, at: '/webhooks/stripe'
 
