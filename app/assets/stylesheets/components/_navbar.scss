@@ -4,6 +4,7 @@
   align-items: center;
   padding: 1rem 2rem;
   background-color: $white;
+  position: relative;
 
   .navbar-left {
     flex: 1;
@@ -70,6 +71,192 @@
         }
 
       }
+    }
+  }
+
+  .nav-toggle {
+    display: none;
+  }
+
+  .mobile-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    padding: 1rem 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    z-index: 1000;
+
+    .mobile-menu-item {
+      display: block;
+      padding: 0.75rem 2rem;
+      color: $ocean-turquoise;
+      text-decoration: none;
+      font-size: 1.1rem;
+      font-weight: 500;
+      border-bottom: 1px solid #f0f0f0;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      &:hover {
+        background-color: #f8f8f8;
+        color: $forest-green;
+      }
+
+      &:active {
+        background-color: #f0f0f0;
+      }
+    }
+
+    .mobile-search {
+      padding: 1rem 2rem;
+      border: 1px solid $light-gray;
+      border-radius: 0.5rem;
+
+      .mobile-search-form {
+        width: 100%;
+
+        .mobile-search-input {
+          width: 100%;
+          padding: 0.5rem;
+          border: solid $light-gray;
+          font-size: 1rem;
+          border: 1px solid #F4F4F4;
+
+
+          &::placeholder {
+            color: $gray;
+          }
+
+          &:focus {
+            outline: none;
+            border-color: $ocean-turquoise;
+          }
+        }
+      }
+    }
+  }
+
+  .nav-toggle:checked ~ .mobile-menu {
+    display: block;
+  }
+
+  .mobile-menu-button {
+    cursor: pointer;
+
+    .hamburger-icon {
+      width: 24px;
+      height: 24px;
+      transition: opacity 0.2s;
+      margin-left: 1rem;
+
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 1rem 2rem;
+    position: relative;
+
+    .navbar-left {
+      display: none; // Hide search on mobile
+    }
+
+    .navbar-center {
+      gap: 1rem;
+      width: 100%;
+      justify-content: center;
+
+      .nav-link {
+        display: none; // Hide nav links on mobile
+      }
+
+      .brand {
+        width: 120px; // Smaller logo on mobile
+      }
+    }
+
+    .navbar-right {
+      .button {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+
+        &.login {
+          display: none; // Optional: hide login on mobile
+        }
+
+        &.signup {
+          margin-left: 0.5rem;
+        }
+      }
+    }
+
+    // Add hamburger menu
+    .mobile-menu-button {
+      display: block;
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      padding: 0.5rem;
+      z-index: 100;
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+
+  // Tablet view
+  @media (min-width: 769px) and (max-width: 1247px) {
+    .navbar-center {
+      gap: 3rem;
+    }
+  }
+
+  // Show hamburger and hide regular nav items at 1230px and below
+  @media (max-width: 1230px) {
+    justify-content: center; // Center the logo
+    padding: 1rem 2rem;
+
+    .navbar-left,
+    .navbar-right,
+    .navbar-center .nav-link {
+      display: none;  // Hide all nav elements except logo
+    }
+
+    .navbar-center {
+      .brand {
+        height: 40px;  // Adjust logo size if needed
+        margin: 0;     // Remove margin since we're using justify-content: center
+      }
+    }
+
+    .mobile-menu-button {
+      display: block;
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+
+      .hamburger-icon {
+        width: 24px;
+        height: 24px;
+      }
+    }
+  }
+
+  // Desktop (above 1230px)
+  @media (min-width: 1231px) {
+    .mobile-menu-button,
+    .mobile-menu {
+      display: none;
     }
   }
 }
