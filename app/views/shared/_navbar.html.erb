@@ -37,4 +37,43 @@
     <%= link_to "Log-in", new_user_session_path, class: "button login" %>
   <% end %>
 </div>
+
+<!-- Add a hidden checkbox -->
+<input type="checkbox" id="nav-toggle" class="nav-toggle" hidden>
+
+<!-- Change button to label -->
+<label for="nav-toggle" class="mobile-menu-button">
+  <%= image_tag "icons/hamburger-button.svg", class: "hamburger-icon" %>
+</label>
+
+<!-- Your mobile menu -->
+<div class="mobile-menu">
+  <!-- Search -->
+  <div class="mobile-search">
+    <%= form_with url: charity_projects_path, method: :get, local: true, html: { id: "search-form", data: { controller: "search" } } do %>
+      <div class="mobile-search-input">
+        <%= text_field_tag :query,
+              params[:query],
+              placeholder: "🔍 Find a project...",
+              id: "search-query-field",
+              data: { search_target: "queryField" }
+        %>
+      </div>
+    <% end %>
+  </div>
+
+  <!-- Navigation -->
+  <%= link_to "Home", root_path, class: "mobile-menu-item" %>
+  <%= link_to "All Projects", charity_projects_path, class: "mobile-menu-item" %>
+  <%= link_to "Charities", charities_path, class: "mobile-menu-item" %>
+  <%= link_to "About Us", about_path, class: "mobile-menu-item" %>
+
+  <!-- User Authentication -->
+  <% if user_signed_in? %>
+    <%= link_to "Dashboard", donations_path, class: "mobile-menu-item" %>
+    <%= link_to "Log out", destroy_user_session_path, data: { turbo_method: :delete }, class: "mobile-menu-item" %>
+  <% else %>
+    <%= link_to "Log-in", new_user_session_path, class: "mobile-menu-item" %>
+  <% end %>
+</div>
 </nav>

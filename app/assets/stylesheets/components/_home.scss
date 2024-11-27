@@ -48,6 +48,30 @@
       }
     }
   }
+
+  @media (max-width: 768px) {
+    height: 30rem;
+
+    .hero-content {
+      margin-bottom: 5rem;
+      padding: 1rem;
+
+      .hero-title {
+        font-size: 2rem;
+        max-width: 100%;
+      }
+
+      .hero-description {
+        font-size: 1.5rem;
+      }
+
+      .hero-button {
+        width: 90%;
+        max-width: 20rem;
+        font-size: 1.25rem;
+      }
+    }
+  }
 }
 
 .usp-section {
@@ -99,6 +123,32 @@
       }
     }
   }
+
+  @media (max-width: 768px) {
+    padding: 3rem 1rem;
+
+    .usp-title {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .usp-cards {
+      grid-template-columns: 1fr;  // Stack cards vertically
+      gap: 1.5rem;
+
+      .usp-card {
+        padding: 1.5rem;
+
+        .usp-title {
+          font-size: 1.25rem;
+        }
+
+        .usp-description {
+          font-size: 1rem;
+        }
+      }
+    }
+  }
 }
 
 .categories {
@@ -129,5 +179,33 @@
       color: #35A28C;
     }
 
+  }
+
+  @media (max-width: 768px) {
+    padding: 2rem 0;
+
+    h2 {
+      font-size: 2rem;
+      margin: 0 1.5rem;
+      padding: 0 0 2rem 0;
+    }
+
+    .category-cards {
+      grid-template-columns: 1fr;  // Single column for mobile
+      margin: 0 1.5rem;
+      gap: 1rem;
+    }
+  }
+
+  // Tablet view
+  @media (min-width: 769px) and (max-width: 1024px) {
+    h2 {
+      margin: 0 3rem;
+    }
+
+    .category-cards {
+      grid-template-columns: repeat(2, 1fr);  // 2 columns for tablets
+      margin: 0 3rem;
+    }
   }
 }
