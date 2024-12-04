@@ -1,7 +1,7 @@
 .sticky-navbar {
   position: sticky;
   top: 0;
-  z-index: 1045;
+  z-index: 1055;
 }
 
 .banner-projects {
@@ -49,5 +49,30 @@
 
   .banner-intro p {
     font-size: 0.9rem; /* Relative to root font size */
+  }
+
+  .content {
+    order: 2; /* Content will follow map */
+  }
+  #projects-sect {
+    z-index: 1035;
+    padding: 1rem;
+    background-color: $coral-white;
+    width: 100vw;
+  }
+
+  .map-container {
+    order: 1; /* Ensure the map is on top */
+    position: relative; /* Contain the map */
+    z-index: 1; /* Lower z-index to prevent overlapping cards */
+    overflow: hidden; /* Prevent map overflow */
+  }
+
+  .bar-sort-projects {
+    top: 12rem;  /* Sticks the sorting bar at the top of the viewport when you scroll */
+  }
+
+  .banner-projects {
+    top: 3.55rem; /* Keeps the banner at the very top of the viewport */
   }
 }
