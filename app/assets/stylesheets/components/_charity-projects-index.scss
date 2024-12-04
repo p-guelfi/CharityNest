@@ -45,11 +45,14 @@
   }
 
   .banner-heading h1, .banner-heading h2 {
-    font-size: 1.5rem; /* Scales well across devices */
+    font-size: clamp(1rem, 2.5vw, 2rem); /* Dynamically scale font size */
+    margin: 0; /* Add spacing above and below the heading */
   }
 
   .banner-intro p {
-    font-size: 0.9rem; /* Relative to root font size */
+    font-size: clamp(0.8rem, 2vw, 1.2rem); /* Adjust font size for paragraphs */
+    margin: 0; /* Remove extra spacing */
+    line-height: 1.4; /* Adjust line height for readability */
   }
 
   .content {
@@ -70,12 +73,16 @@
   }
 
   .bar-sort-projects {
-    top: 12rem;  /* Sticks the sorting bar at the top of the viewport when you scroll */
+    top: 22vh;  /* Sticks the sorting bar at the top of the viewport when you scroll */
     margin-top: 0;
   }
 
   .banner-projects {
     top: 3.55rem; /* Keeps the banner at the very top of the viewport */
+    height: 20vh;
+    display: flex;
+    padding: 3rem;
+    gap: 2rem;
   }
   .content, .map-container {
     padding: 0;
