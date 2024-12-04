@@ -36,6 +36,7 @@
   .two-columns {
     flex-direction: column;
     padding: 0.3125rem; /* 5px = 0.3125rem */
+    gap: 0;  /* Space between content and map */
   }
 
   .content, .map-container {
@@ -70,9 +71,20 @@
 
   .bar-sort-projects {
     top: 12rem;  /* Sticks the sorting bar at the top of the viewport when you scroll */
+    margin-top: 0;
   }
 
   .banner-projects {
     top: 3.55rem; /* Keeps the banner at the very top of the viewport */
+  }
+  .content, .map-container {
+    padding: 0;
+  }
+
+  .content, .map-container, #projects-sect, .our-projects2 {
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0;
+    padding: 0;
   }
 }

@@ -2,7 +2,6 @@
   position: sticky;
   border-radius: 10px;
   top:  13.3rem;  /* Adjust this based on your banner height */
-  top:  10.3rem;  /* Adjust this based on your banner height */
   height: 38rem;  /* Adjust the map height */
   z-index: 10;
   margin-top: 4rem;
@@ -61,4 +60,29 @@
   border-radius: 50%;
   font-size: 18px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+
+@media (max-width: 1024px) { /* For tablets and smaller devices */
+  .map-container {
+    height: 25rem; /* Reduce height for medium screens */
+    top: 10rem; /* Adjust sticky position if needed */
+    margin-top: 3rem;
+  }
+}
+
+@media (max-width: 768px) { /* For mobile devices */
+  .map-container {
+    height: 18rem; /* Further reduce height for smaller screens */
+    top: 8rem; /* Adjust sticky position for smaller devices */
+    margin-top: 2rem;
+  }
+}
+
+@media (max-width: 480px) { /* For very small devices */
+  .map-container {
+    height: 15rem; /* Compact height for small screens */
+    top: 5rem; /* Adjust sticky position */
+    margin-top: 2rem;
+  }
 }
