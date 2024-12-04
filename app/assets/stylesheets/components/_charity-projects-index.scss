@@ -31,3 +31,23 @@
 .content {
   flex: 1;  /* Takes up remaining space */
 }
+
+@media (max-width: 64rem) { /* 1024px = 64rem if root font-size is 16px */
+  .two-columns {
+    flex-direction: column;
+    padding: 0.3125rem; /* 5px = 0.3125rem */
+  }
+
+  .content, .map-container {
+    flex: none;
+    width: 100%;
+  }
+
+  .banner-heading h1, .banner-heading h2 {
+    font-size: 1.5rem; /* Scales well across devices */
+  }
+
+  .banner-intro p {
+    font-size: 0.9rem; /* Relative to root font size */
+  }
+}
