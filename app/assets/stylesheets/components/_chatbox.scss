@@ -27,6 +27,15 @@
   z-index: 9999;
 }
 
+@media (max-width: 576px) {
+  #chatboxModal .modal-dialog {
+    position: absolute; /* Changed to absolute to ensure proper positioning */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Perfect centering */
+    bottom: 80px; /* Adjust bottom spacing for smaller screens */
+    width: 90%;
+  }
+}
 /* Button to toggle the modal */
 #chatbox-toggle-button {
   position: fixed;
