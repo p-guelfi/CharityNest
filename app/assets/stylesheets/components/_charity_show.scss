@@ -114,31 +114,6 @@
   max-width: 70rem; /* Max width of the project card */
 }
 
-
-
-/* Add media query for smaller screens */
-@media (max-width: 768px) {
-
-  .main-header {
-    border-radius: 0;
-  }
-  .ways-to-give {
-    flex-direction: column; /* Stack vertically */
-    align-items: center; /* Center align items */
-  }
-
-  .give-option {
-    max-width: 100%; /* Full width for each option */
-    margin: 1rem 0; /* Add margin for spacing */
-  }
-}
-
-@media (max-width: 768px) {
-  .banner {
-    height: 35vh; /* Adjust height for smaller screens */
-  }
-}
-
 /* CUSTOM STYLES */
 .custom-checkbox {
   width: 1rem;
@@ -204,8 +179,56 @@
 }
 
 
+@media (max-width: 64rem) {
+  /* BANNER SECTION */
+  .banner {
+    height: 20rem; /* Reduce banner height on smaller screens */
+  }
 
-@media (max-width: 64rem) { /* 1024px = 64rem if root font-size is 16px */
+  .banner img {
+    object-position: 50% 50%; /* Center image vertically for better visibility */
+  }
+
+  /* MAIN HEADER STYLING */
+  .main-header {
+    width: 80%; /* Slightly smaller font size */
+  }
+
+  .main-header h1 {
+    font-size: 1.5rem; /* Slightly smaller font size */
+  }
+
+  /* GENERAL CONTENT STYLING */
+  .content {
+    margin-top: 1rem; /* Reduce top margin */
+    padding: 0 2rem; /* Add padding for better spacing */
+  }
+
+  .section {
+    padding: 0 2rem; /* Adjust padding for smaller screens */
+  }
+
+  /* WAYS TO GIVE SECTION */
+  .ways-to-give {
+    flex-direction: column; /* Stack options vertically */
+    padding: 1.5rem; /* Reduce padding */
+  }
+
+  .give-option {
+    max-width: 100%; /* Full width on smaller screens */
+    margin: 1rem 0; /* Adjust margins */
+    flex: 1 1 45%; /* Make the give options smaller */
+    margin-bottom: 1.5rem; /* More space between options */
+  }
+
+  .give-option h4 {
+    padding: 1rem; /* Reduce padding for a more compact header */
+    font-size: 1.1rem; /* Smaller font size */
+  }
+
+  .give-photo {
+    padding: 1rem; /* Reduce padding inside photo container */
+  }
 
   .map-container-project-show {
     flex: none;
