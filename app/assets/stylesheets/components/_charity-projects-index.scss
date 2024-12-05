@@ -5,7 +5,7 @@
 }
 
 .banner-projects {
-  background-color: white;
+  background-color: #ffffff;
   padding: 50px;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -30,6 +30,11 @@
 
 .content {
   flex: 1;  /* Takes up remaining space */
+}
+
+.modal-backdrop {
+  position: fixed;
+  z-index: 1020;
 }
 
 @media (max-width: 64rem) { /* 1024px = 64rem if root font-size is 16px */
