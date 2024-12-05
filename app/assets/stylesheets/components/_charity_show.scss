@@ -205,7 +205,7 @@
   }
 
   .section {
-    padding: 0 2rem; /* Adjust padding for smaller screens */
+    padding: 0 2rem 4rem;  /* Adjust padding for smaller screens */
   }
 
   /* WAYS TO GIVE SECTION */
@@ -228,6 +228,13 @@
 
   .give-photo {
     padding: 1rem; /* Reduce padding inside photo container */
+  }
+
+  .content h2 {
+    margin: 0;
+    margin-bottom: 2rem;
+    margin-top: 3rem;
+    padding: 0 3rem;
   }
 
   .map-container-project-show {
