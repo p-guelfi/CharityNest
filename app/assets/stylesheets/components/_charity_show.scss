@@ -118,6 +118,10 @@
 
 /* Add media query for smaller screens */
 @media (max-width: 768px) {
+
+  .main-header {
+    border-radius: 0;
+  }
   .ways-to-give {
     flex-direction: column; /* Stack vertically */
     align-items: center; /* Center align items */
@@ -131,7 +135,7 @@
 
 @media (max-width: 768px) {
   .banner {
-    height: 15rem; /* Adjust height for smaller screens */
+    height: 35vh; /* Adjust height for smaller screens */
   }
 }
 
@@ -196,5 +200,25 @@
 
   &:hover {
     background-color: #0B666A0D; /* 5% opacity */
+  }
+}
+
+
+
+@media (max-width: 64rem) { /* 1024px = 64rem if root font-size is 16px */
+
+  .map-container-project-show {
+    flex: none;
+    height: 35vh;
+    order: 1; /* Ensure the map is on top */
+    position: relative; /* Contain the map */
+    z-index: 1; /* Lower z-index to prevent overlapping cards */
+    overflow: hidden;
+    padding: 0;
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0;
+    margin-bottom: 2rem;
+    padding: 0;
   }
 }

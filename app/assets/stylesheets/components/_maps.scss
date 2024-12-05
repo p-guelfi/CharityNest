@@ -64,7 +64,7 @@
 
 
 @media (max-width: 1024px) { /* For tablets and smaller devices */
-  .map-container {
+  .map-container, .map-container-project-show {
     height: 25rem; /* Reduce height for medium screens */
     top: 10rem; /* Adjust sticky position if needed */
     margin-top: 3rem;
@@ -72,7 +72,7 @@
 }
 
 @media (max-width: 768px) { /* For mobile devices */
-  .map-container {
+  .map-container, .map-container-project-show {
     height: 18rem; /* Further reduce height for smaller screens */
     top: 8rem; /* Adjust sticky position for smaller devices */
     margin-top: 2rem;
@@ -80,7 +80,7 @@
 }
 
 @media (max-width: 480px) { /* For very small devices */
-  .map-container {
+  .map-container, .map-container-project-show {
     height: 15rem; /* Compact height for small screens */
     top: 5rem; /* Adjust sticky position */
     margin-top: 2rem;
