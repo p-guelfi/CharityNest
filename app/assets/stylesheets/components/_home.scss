@@ -12,6 +12,8 @@
   color: $dark-ocean-blue;
 
   .hero-content {
+    align-items: center;
+    justify-content: center;
     padding: 2rem;
     border-radius: 10px;
     max-width: 1500px;
@@ -50,7 +52,6 @@
   }
 
   @media (max-width: 768px) {
-    height: 90vh;
 
     .hero-content {
       margin-bottom: 5rem;
