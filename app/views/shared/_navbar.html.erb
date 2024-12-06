@@ -1,7 +1,7 @@
 <nav class="navbar <%= content_for?(:navbar_class) ? yield(:navbar_class) : '' %>">
   <div class="navbar-left">
     <%= form_with url: charity_projects_path, method: :get, local: true, html: { id: "search-form", data: { controller: "search" } } do %>
-      <div class="search-bar">
+      <div class="search-bar" style="padding-right: 1rem;">
         <%= text_field_tag :query,
               params[:query],
               placeholder: "🔍 Find a project...",
