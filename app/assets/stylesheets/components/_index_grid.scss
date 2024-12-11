@@ -7,8 +7,14 @@ $index-margin-x: 3.125rem;
   margin: 0 $index-margin-x;
   padding: 1.25rem 0px;
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(350px, 700px));
   grid-template-rows: auto;
   grid-gap: 1.25rem;
-  justify-items: stretch;
+  justify-content: center;
+  justify-items: center;
+}
+@media (max-width: 730px) {
+  .index-grid-container {
+    margin: 0 0.5rem;
+  }
 }

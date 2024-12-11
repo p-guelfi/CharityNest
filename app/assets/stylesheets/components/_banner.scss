@@ -2,7 +2,8 @@
   background-color: white;
   padding: 50px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 700px));
+  justify-content: center;
   gap: 1rem;
 }
 .banner-intro {
