@@ -1,13 +1,14 @@
 .card-charity {
   @extend .card-basic;
   position: relative;
-  grid-column: span 6;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto;
-  justify-items: stretch;
-  gap: 30px;
+  display: flex;
 }
+@media (max-width: 730px) {
+  .card-charity {
+    flex-direction: column;
+  }
+}
+
 .card-link {
   position: absolute;
   top: 0;
@@ -16,8 +17,8 @@
   width: 50%;
 }
 .card-charity-info {
-  aspect-ratio: 9/16;
-  padding: 40px 40px 40px 0;
+  width: 350px;
+  padding: 40px;
   grid-column: span 1;
   display: grid;
   grid-template-rows: repeat(12, 1fr);
@@ -35,13 +36,17 @@
     text-overflow: ellipsis;
   }
   .header {
-    grid-row: span 3;
+    grid-row: span 2;
   }
   .description {
-    grid-row: span 6;
+    grid-row: span 4;
   }
   .info-points {
-    grid-row: span 1;
+    grid-row: span 2;
+    // last child should be placed at the bottom of container
+    &:last-child {
+      margin-top: auto;
+    }
   }
   .progress {
     font-family: "Mukta Malar", Helvetica, sans-serif;
@@ -50,18 +55,11 @@
 }
 
 .card-charity-video {
+  width: 350px;
   aspect-ratio: 9/16;
   background: black;
   min-width: 0;
   min-height: 0;
-  h2 {
-    color: white;
-    position: absolute;
-    top: 40px;
-    left: 40px;
-    width: 30%;
-    word-wrap: break-word;
-  }
   video {
     object-fit: contain;
     width: 100%;
