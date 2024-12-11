@@ -22,7 +22,7 @@
       </div>
       <div class="modal-body text-center">
         <%= simple_form_for [project, Donation.new] do |f| %>
-          <%= f.input :amount, label: "Donation amount" %>
+          <%= f.input :amount, label: "Amount" %>
           <%= f.input :state, as: :hidden, input_html: { value: 'pending' } %>
           <%= f.input :checkout_session_id, as: :hidden %>
           <div class="btn-group btn-group-toggle d-flex justify-content-center mb-3" data-toggle="buttons">

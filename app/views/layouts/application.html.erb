@@ -30,6 +30,7 @@
     <%= render "shared/navbar" %>
     <%= render "shared/flashes" %>
     <%= yield %>
+    <%= render 'layouts/cookies_bar' if cookies[:allow_cookies].blank? %>
 
     <div class="chat-wrapper" data-controller="forum-subscription">
       <!-- Chatbox Toggle Button (with dynamic ID) -->

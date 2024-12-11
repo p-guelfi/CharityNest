@@ -24,7 +24,7 @@
   max-width: 450px;
   width: 100%;
   transform: translateX(0);
-  z-index: 9999;
+  z-index: 9998;
 }
 
 @media (max-width: 576px) {
@@ -74,7 +74,7 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-#chatbox-toggle-button:hover {
+#chatbox-toggle-button:hover, #chatbox-toggle-button-two:hover {
   background-color: $forest-green;
 }
 
