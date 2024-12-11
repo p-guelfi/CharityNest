@@ -1,11 +1,11 @@
 .sticky-navbar {
   position: sticky;
   top: 0;
-  z-index: 1045;
+  z-index: 1055;
 }
 
 .banner-projects {
-  background-color: white;
+  background-color: #ffffff;
   padding: 50px;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -30,4 +30,73 @@
 
 .content {
   flex: 1;  /* Takes up remaining space */
+}
+
+.modal-backdrop {
+  position: fixed;
+  z-index: 1020;
+}
+
+@media (max-width: 64rem) { /* 1024px = 64rem if root font-size is 16px */
+  .two-columns {
+    flex-direction: column;
+    padding: 0.3125rem; /* 5px = 0.3125rem */
+    gap: 0;  /* Space between content and map */
+  }
+
+  .content, .map-container {
+    flex: none;
+    width: 100%;
+  }
+
+  .banner-heading h1, .banner-heading h2 {
+    font-size: clamp(1rem, 2.5vw, 2rem); /* Dynamically scale font size */
+    margin: 0; /* Add spacing above and below the heading */
+  }
+
+  .banner-intro p {
+    font-size: clamp(0.8rem, 2vw, 1.2rem); /* Adjust font size for paragraphs */
+    margin: 0; /* Remove extra spacing */
+    line-height: 1.4; /* Adjust line height for readability */
+  }
+
+  .content {
+    order: 2; /* Content will follow map */
+  }
+  #projects-sect {
+    z-index: 1035;
+    padding: 1rem;
+    background-color: $coral-white;
+    width: 100vw;
+  }
+
+  .map-container {
+    order: 1; /* Ensure the map is on top */
+    position: relative; /* Contain the map */
+    z-index: 1; /* Lower z-index to prevent overlapping cards */
+    overflow: hidden; /* Prevent map overflow */
+  }
+
+  .bar-sort-projects {
+    top: 22vh;  /* Sticks the sorting bar at the top of the viewport when you scroll */
+    margin-top: 0;
+  }
+
+  .banner-projects {
+    top: 3.55rem; /* Keeps the banner at the very top of the viewport */
+    height: 20vh;
+    display: flex;
+    padding: 3rem;
+    gap: 2rem;
+  }
+  .content, .map-container {
+    padding: 0;
+  }
+
+  .content, .map-container, #projects-sect, .our-projects2 {
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
 }

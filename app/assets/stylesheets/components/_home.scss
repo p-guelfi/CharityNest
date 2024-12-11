@@ -2,16 +2,18 @@
 @import 'config/fonts';
 
 .hero-section {
-  height: 49rem;
+  height: 91vh;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  background: asset-url('hero_background.jpg') no-repeat center center;
+  background: asset-url('hero_background.jpg') no-repeat center bottom;
   background-size: cover; // Ensures the image covers the section
   color: $dark-ocean-blue;
 
   .hero-content {
+    align-items: center;
+    justify-content: center;
     padding: 2rem;
     border-radius: 10px;
     max-width: 1500px;
@@ -50,7 +52,6 @@
   }
 
   @media (max-width: 768px) {
-    height: 30rem;
 
     .hero-content {
       margin-bottom: 5rem;
