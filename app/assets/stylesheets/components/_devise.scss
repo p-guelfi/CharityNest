@@ -122,6 +122,13 @@
 }
 
 @media (max-width: 480px) {
+  .login-page-container {
+    padding: 1rem;
+    form {
+      width: 100%;
+    }
+  }
+
   .login-form-container {
     padding: 1rem;
   }
@@ -143,5 +150,13 @@
   .login-form-links {
     font-size: 0.8rem;
     margin-top: 1rem;
+  }
+}
+@media (max-width: 768px) {
+  .login-page-container {
+    padding: 1rem;
+    form {
+      width: 100%;
+    }
   }
 }
