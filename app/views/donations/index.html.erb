@@ -1,30 +1,44 @@
 <% if current_user.donations.any? %>
-  <%= render "top_dashboard" %>
-
-  <div class="grid-dashboard">
-    <div class="column-donations">
-      <% @donations.each do |donation| %>
-        <div class="card-ticker">
-          <%= render "card_project_donation", donation: donation %>
-        </div>
-      <% end %>
+  <div data-controller="two-grid-columns-to-tabs">
+    <div class="dashboard-tabs">
+      <div class="btn-group btn-group-toggle d-flex justify-content-center" >
+        <button class="btn btn-outline-primary custom-checkbox-button active" data-action="click->two-grid-columns-to-tabs#select1" data-two-grid-columns-to-tabs-target="button1">
+          My Donations
+        </button>
+        <button class="btn btn-outline-primary custom-checkbox-button" data-action="click->two-grid-columns-to-tabs#select2" data-two-grid-columns-to-tabs-target="button2">
+          Updates
+        </button>
+      </div>
     </div>
-
-    <div class="column-news" >
-      <%= render "discussions/card_new" %>
-      <%# Render all news belonging to the donations %>
-      <div data-controller="news-subscription">
-        <% @news.each do |news| %>
-          <% if news.class == Report %>
-            <div class="card-news">
-              <%= render "reports/card_report_teaser", report: news %>
-            </div>
-          <% elsif news.class == Discussion %>
-            <div class="card-news">
-              <%= render "discussions/card_discussion", discussion: news %>
-            </div>
-          <% end %>
+    <div data-two-grid-columns-to-tabs-target="content0">
+      <%= render "top_dashboard" %>
+    </div>
+    <div class="grid-dashboard">
+      <div class="column-donations" data-two-grid-columns-to-tabs-target="content1">
+        <% @donations.map{ |donation| donation.charity_project }.uniq.each do |project| %>
+          <% donations = @donations.where(charity_project: project) %>
+          <div class="card-ticker">
+            <%= render "card_project_donation", project: project, donations: donations %>
+          </div>
         <% end %>
+      </div>
+
+      <div class="column-news" data-two-grid-columns-to-tabs-target="content2" >
+        <%= render "discussions/card_new" %>
+        <%# Render all news belonging to the donations %>
+        <div data-controller="news-subscription">
+          <% @news.each do |news| %>
+            <% if news.class == Report %>
+              <div class="card-news">
+                <%= render "reports/card_report_teaser", report: news %>
+              </div>
+            <% elsif news.class == Discussion %>
+              <div class="card-news">
+                <%= render "discussions/card_discussion", discussion: news %>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>

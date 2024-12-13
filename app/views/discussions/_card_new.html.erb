@@ -11,7 +11,7 @@
     <div class="form-collapsable d-none" data-input-discussion-target="collapsable">
       <div class="form-group">
         <%= f.input :description, label: 'Description', input_html: { class: 'input-field' } %>
-        <%= f.input :charity_project_id, collection: current_user.donations.map(&:charity_project) %>
+        <%= f.input :charity_project_id, collection: current_user.donations.map(&:charity_project).uniq %>
       </div>
       <%= f.button :submit, 'Create Discussion', class: 'btn btn-primary' %>
     </div>

@@ -19,7 +19,7 @@
         </div>
       </div>
 
-      <div class="d-flex flex-column align-items-center gap-4">
+      <div class="donation-manage-action">
         <%= link_to 'See all my donations', donations_path, class: 'button text-decoration-none w-100' %>
         <% if @donation.recurrent %>
           <%= link_to 'Manage Subscription', edit_donation_path(@donation), class: 'button text-decoration-none w-100' %>
