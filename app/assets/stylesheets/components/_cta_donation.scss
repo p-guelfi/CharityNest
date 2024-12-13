@@ -22,4 +22,31 @@
 .viewport-above-cta {
   height: $vh-nav-cta;
   overflow: scroll;
+  width: 100vw;
+}
+@media (max-width: 768px) {
+  .cta-donation {
+    padding: 20px 1rem;
+  }
+  .cta-donation .progress-info-and-bar {
+    padding-right: 3rem;
+    .progress-text {
+      display: inline!important;
+    }
+    h4 {
+      font-size: 0.875rem;
+      margin-bottom: 0.125rem!important;
+    }
+    p {
+      font-size: 0.875rem;
+      margin-left: 0!important;
+      line-height: 1rem;
+    }
+  }
+  .cta-donation .progress {
+    display: none;
+  }
+  .cta-donation .donate-button {
+    padding: 0;
+  }
 }

@@ -9,6 +9,10 @@
 <div class="description-subsection">
   <%= image_tag "icons/project/#{section.to_s}.svg", alt: "Aim", class: "icon" %>
   <h4><%= section.to_s.humanize %></h4>
-  <p><%= description %></p>
+  <% if description.present? %>
+    <p><%= description %></p>
+  <% else %>
+    <p>The Organisation did not provide detailed information on this topic yet. Stay tuned for future updates.</p>
+  <% end %>
 </div>
 <% end %>

@@ -1,6 +1,5 @@
 <div class="viewport-above-cta">
   <div class="dropshadow-nav"></div>
-  <%# Banner with charity description %>
   <%# List %>
   <div class="grid-show-background show-container" data-controller="sort-index">
     <div class="show-nav-container">
@@ -9,7 +8,7 @@
     </div>
     <%# Grid with Charity Cards %>
     <div class="show-content-container">
-      <section id="intro">
+      <section id="intro" class="show-section-card">
         <div class="grid-show-container">
           <div class="show-heading">
             <h1><%= @charity_project.name %></h1>
@@ -20,49 +19,59 @@
           </div>
         </div>
       </section>
-      <section id="approach">
+      <section id="approach" class="show-section-card">
+        <div class="section-title">
+          <h2>Project Approach</h2>
+        </div>
         <div class="grid-show-container">
-          <div class="section-title">
-            <h2>Project Approach</h2>
-          </div>
           <%= render "show_section_description" %>
         </div>
       </section>
-      <section id="data">
+      <section id="data" class="show-section-card">
+        <div class="section-title">
+          <h2>External Evaluation</h2>
+        </div>
         <div class="grid-show-container">
-          <div class="section-title">
-            <h2>External Evaluation</h2>
-          </div>
           <%= render "show_card_graphs" %>
           <div class="container-evaluations">
               <%= render "reports_carousel", carousel_id: "evaluations", objects: @charity_project.evaluations %>
           </div>
         </div>
       </section>
-      <section id="reporting">
-        <div class="grid-show-container">
-          <div class="section-title">
-            <h2>Organisation Reporting</h2>
-          </div>
+
+      <section id="reporting" class="show-section-card">
+        <div class="section-title">
+          <h2>Organisation Reporting</h2>
+        </div>
+        <div class="flex-show-container">
           <%# Iterate over articles %>
           <div class="container-articles">
-            <%= render "reports_carousel", carousel_id: "articles", objects: @charity_project.articles %>
+            <% if @charity_project.articles.any? %>
+              <%= render "reports_carousel", carousel_id: "articles", objects: @charity_project.articles %>
+            <% else %>
+              <div>
+                <p>No Organisation Reporting published yet. Stay tuned for future updates.</p>
+              </div>
+            <% end %>
           </div>
         </div>
       </section>
-      <% if @charity_project.discussions.any? %>
-        <section id="forum">
-          <div class="grid-show-container">
-            <div class="section-title">
-              <h2>Forum</h2>
-            </div>
-            <%= render "show_card_map" %>
+        <section id="forum" class="show-section-card">
+          <div class="section-title">
+            <h2>Forum</h2>
+          </div>
+          <div class="flex-show-container">
             <div class="container-articles">
-              <%= render "discussions_carousel", carousel_id: "Discussions", objects: @charity_project.discussions.first(3)  %>
+              <% if @charity_project.discussions.any? %>
+                <%= render "discussions_carousel", carousel_id: "Discussions", objects: @charity_project.discussions.first(3)  %>
+              <% else %>
+                <div>
+                  <p>No Forum discussions published yet. <%= link_to "Start the first discussion", charity_project_discussions_path(@charity_project) %></p>
+                </div>
+              <% end %>
             </div>
           </div>
         </section>
-      <% end %>
     </div>
   </div>
 </div>
