@@ -1,7 +1,6 @@
 .card-photos {
-  width: calc(100% + 4rem);
-  margin: -4rem -4rem -4rem 0;
-  height: calc(100% + 2*(4rem));
+  width: 100%;
+  height: 100%;
   overflow: hidden;
   img {
     object-fit: cover;

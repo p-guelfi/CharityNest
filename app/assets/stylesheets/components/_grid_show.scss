@@ -3,57 +3,87 @@ $nav-width: 100px;
 .grid-show-background {
   background-color: $coral-white;
 }
-.grid-show-container:first-of-type {
-  border-radius: 0 0 10px 10px;
+.show-content-container {
+  width: 100%;
 }
-.grid-show-container {
+.show-section-card:first-of-type {
+  border-radius: 0 0 10px 10px;
+  padding: 0;
+}
+.show-section-card {
+  border-radius: 10px;
+  overflow: hidden;
   background-color: white;
   margin: 0 calc( #{$nav-width} + 4rem ) 6rem 2rem;
-  padding: 4rem;
+  overflow: hidden;
+  padding: 2rem;
+}
+.section-title {
+  padding: 1rem 0;
+  min-width: 0;
+  min-height: 0;
+  width: 100%;
+  h2 {
+    text-align: center;
+    padding: 0;
+  }
+}
+.grid-show-container {
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
+  grid-template-columns: 1fr 1fr;
   grid-template-rows: auto;
   grid-gap: 2rem;
   justify-items: stretch;
-  border-radius: 10px;
-  overflow: hidden;
-  .section-title {
-    grid-column: span 12;
-    padding: 1rem 0;
-    min-width: 0;
-    min-height: 0;
-    width: 100%;
-    text-align: center;
-  }
+  justify-content: center;
   .card-report-teaser, .card-basic {
-    grid-column: span 6;
     margin: 0;
   }
-
-  .card-project-graphs, .card-project-aim {
-    grid-column: span 6;
-  }
-  .container-evaluations {
-    grid-column: span 6;
-    padding-left: 2rem;
-  }
-  .container-articles {
-    grid-column: 2 / span 10;
-  }
   .container-forum {
-    grid-column: span 6;
     padding: 0;
     .discussion-card {
       margin-top: 0;
       margin-bottom: 2rem;
     }
   }
-  .report-article {
-    grid-column: span 6;
+}
+.container-evaluations {
+  padding-left: 2rem;
+  margin-bottom: 2rem;
+}
+.flex-show-container {
+  display: flex;
+  justify-content: center;
+}
+.container-articles {
+  max-width: 80%;
+  margin-bottom: 2rem;
+}
+@media (max-width: 1280px) {
+  .show-section-card {
+    margin: 0 2rem 6rem 2rem;
+  }
+  .show-nav-container {
+    display: none;
+  }
+  .container-evaluations {
+    padding-left: 0rem;
   }
 }
+@media (max-width: 768px) {
+  .show-section-card {
+    margin: 0 1rem 6rem 1rem;
+    padding: 0.25rem;
+  }
+  .grid-show-container {
+    grid-template-columns: 1fr;
+  }
+  .container-articles {
+  max-width: 100%;
+  }
+}
+
+
 .description-subsection {
-  grid-column: span 6;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -77,24 +107,22 @@ $nav-width: 100px;
 .show-nav-container {
   width: $nav-width;
   margin-left: 2rem;
-}
-.show-content-container {
-  margin-left: 1.25rem;
+  margin-right: 1.25rem;
 }
 .show-heading {
-  grid-column: span 6;
   margin: 2rem 0 0 0;
   display: flex;
   flex-direction: column;
   justify-content: end;
-  h1, h6 {
+  padding: 4rem;
+  h6 {
     margin-top: 4rem;
     margin-bottom: 0;
     padding-right: 2rem;
   }
 }
 .show-intro {
-  grid-column: span 6;
+
 }
 .dropshadow-nav {
   box-shadow: $default-box-shadow;
