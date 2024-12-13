@@ -1,0 +1,50 @@
+.cookies-bar {
+  position: fixed;
+  bottom: 20px;
+  z-index: 9999;
+  border-radius: 10px;
+  margin-right: 10px;
+  margin-left: 10px;
+  padding: 30px;
+  background-color: $coral-white;
+  text-align: center;
+  box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.15);
+
+  .btn {
+    display: block;
+    background-color: black;
+    border-radius: 10px;
+    color: #FFF;
+    padding: 5px;
+    margin-bottom: 5px;
+    text-align: center;
+    text-decoration: none;
+
+    &.accept:hover {
+      background-color: $forest-green;
+    }
+    &.reject:hover {
+      background-color: $forest-green;
+    }
+  }
+
+  @media (min-width: 768px) {
+    left: 20px;
+    display: flex;
+    max-width: 500px;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+
+    /* Increased padding for desktop */
+    p {
+      margin-top: 10px; /* Add space above */
+      margin-right: 20px; /* Keep horizontal spacing */
+    }
+
+    .btn {
+      padding: $button-padding; /* Increased button padding */
+      margin-left: 15px; /* More space between buttons */
+    }
+  }
+}

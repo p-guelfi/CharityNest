@@ -1,0 +1,10 @@
+<div class="cookies-bar" data-controller="cookies-bar">
+  <p>
+    We use cookies to enhance your experience. By continuing to use our site, you agree to our
+    <%= link_to "Privacy Policy", privacy_path, target: "_blank", rel: "noopener noreferrer" %> and
+    <%= link_to "Cookies Policy", cookies_path, target: "_blank", rel: "noopener noreferrer" %>.
+  </p>
+
+  <%= link_to "Accept", request.original_url, class: "btn accept", data: { action: "click->cookies-bar#allowCookies" } %>
+  <%= link_to "Reject", request.original_url, class: "btn reject", data: { action: "click->cookies-bar#rejectCookies" } %>
+</div>

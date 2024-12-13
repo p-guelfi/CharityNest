@@ -8,7 +8,7 @@
   justify-content: center;
   text-align: center;
   background: asset-url('hero_background.jpg') no-repeat center bottom;
-  background-size: cover; // Ensures the image covers the section
+  background-size: cover;
   color: $dark-ocean-blue;
 
   .hero-content {
@@ -17,13 +17,13 @@
     padding: 2rem;
     border-radius: 10px;
     max-width: 1500px;
-    margin-bottom: 15rem;
+    margin-bottom: 10vh; /* Adjust to relative units for better responsiveness */
 
     .hero-title {
       max-width: 600px;
       color: $ocean-turquoise;
       font-family: $headers-font;
-      font-size: 3rem
+      font-size: 3rem;
     }
 
     .hero-description {
@@ -52,7 +52,6 @@
   }
 
   @media (max-width: 768px) {
-
     .hero-content {
       margin-bottom: 5rem;
       padding: 1rem;
@@ -73,6 +72,22 @@
       }
     }
   }
+
+  @media (max-width: 576px) {
+    .hero-title {
+      font-size: 1.75rem;  /* Smaller title for very small screens */
+    }
+
+    .hero-description {
+      font-size: 1.25rem;  /* Smaller description for very small screens */
+    }
+
+    .hero-button {
+      width: 90%;
+      max-width: 18rem;  /* Adjust width for small screens */
+      font-size: 1.15rem;  /* Slightly smaller button font */
+    }
+  }
 }
 
 .usp-section {
@@ -86,6 +101,7 @@
     font-size: 2.5rem; // Same as the Categories title
     margin-bottom: 3rem;
     color: $ocean-turquoise; // Highlighted header color
+    text-align: center; // Ensure the title is centered
   }
 
   .usp-cards {

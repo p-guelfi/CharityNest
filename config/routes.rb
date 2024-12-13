@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   get 'about', to: 'pages#about'
+  get 'cookies', to: 'pages#cookies'
+  get 'privacy', to: 'pages#privacy'
+  get 'impressum', to: 'pages#impressum'
   get 'charity_projects/index'
   devise_for :users
   root to: "pages#home"
