@@ -4,6 +4,8 @@ $button-padding: 10px 20px; // Padding for the button
 $button-border-radius: 10px; // Rounded corners
 
 .button {
+  display: inline-block;
+  text-align: center;
   font-family: $button-font; // Use Geologica font
   font-weight: 700; // Bold weight
   font-size: 16px; // Font size

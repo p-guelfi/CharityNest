@@ -9,6 +9,11 @@
   overflow: hidden;
   flex-direction: column;
   height: auto;
+  h2 {
+    text-align: left;
+    margin-top: 2rem;
+    padding-left: 2rem;
+  }
 }
 
 .inner-wrapper {
@@ -29,11 +34,7 @@
   border-radius: 0 0 10px 10px;
 }
 
-h2 {
-  text-align: left;
-  margin-top: 2rem;
-  padding-left: 2rem;
-}
+
 
 .inner-flex-container {
   display: flex;

@@ -1,3 +1,7 @@
+.dashboard-tabs {
+  display: none;
+}
+
 .grid-dashboard {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -6,6 +10,8 @@
   margin: 0 3rem;
 }
 .column-donations {
+  container-type: inline-size;
+  container-name: dashboardColumn;
   grid-column: span 1;
   display: flex;
   flex-direction: column;
@@ -20,5 +26,28 @@
   overflow: scroll;
   .discussion-card {
     margin-top: 2rem;
+  }
+}
+@media (max-width: 768px) {
+  .grid-dashboard {
+    grid-template-columns: 1fr;
+    margin: 0 1rem;
+  }
+  .dashboard-tabs {
+    position: sticky;
+    z-index: 100;
+    background: white;
+    top: 0;
+    display: block;
+    margin: 2rem 1rem;
+    padding: 1rem;
+    .mapboxgl-map {
+      position: unset;
+    }
+  }
+  .column-donations, .column-news {
+    height: auto;
+    overflow: unset;
+    width: 100%
   }
 }

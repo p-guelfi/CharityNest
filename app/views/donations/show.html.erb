@@ -1,4 +1,4 @@
-<div class="donation-page-container">
+<div class="donation-page-container column-donations">
   <div class="card-basic card-project-donation col-md-8 col-lg-6 mx-auto">
     <div class="donation-manage">
       <div class="donation-info">
@@ -19,7 +19,7 @@
         </div>
       </div>
 
-      <div class="d-flex flex-column align-items-center gap-4">
+      <div class="donation-manage-action">
         <%= link_to 'See all my donations', donations_path, class: 'button text-decoration-none w-100' %>
         <% if @donation.recurrent %>
           <%= link_to 'Manage Subscription', edit_donation_path(@donation), class: 'button text-decoration-none w-100' %>
@@ -28,65 +28,66 @@
     </div>
 
     <div class="project-ticker">
-      <div class="project-ticker-info">
-        <h4><%= project.name %></h4>
-        <ul>
-          <%= link_to donations_path(charity_project_id: project) do %>
-            <li class="ticker-info-title">
+      <h4><%= project.name %></h4>
+      <div class="ticker-content">
+        <div class="project-ticker-graph">
+          <%= line_chart @donation.charity_project.evaluations.map { |report| [report.title, report.score] },
+                        colors: ["#35A28C"],
+                        height: "180px",
+                        library: {
+                          legend: {
+                            labels: { fontColor: "white" }
+                          },
+                          scales: {
+                            x: {
+                              grid: { color: 'white', tickColor: 'white' },
+                              ticks: { color: 'white' }
+                            },
+                            y: {
+                              grid: { color: 'white', tickColor: 'white' },
+                              ticks: { color: 'white' }
+                            }
+                          }
+                        } %>
+          <h6>Evaluation Score</h6>
+        </div>
+        <div class="project-ticker-info">
+          <ul>
+            <%= link_to donations_path(charity_project_id: project) do %>
+              <li class="ticker-info-title">
+                <div class="ticker-notification">
+                  <span><%= project.reports.count + project.discussions.count + project.comments.count %></span>
+                </div>
+                <span>News</span>
+              </li>
+            <% end %>
+            <li>
               <div class="ticker-notification">
-                <span><%= project.reports.count + project.discussions.count + project.comments.count %></span>
+                <span><%= project.articles.count %></span>
               </div>
-              <span>News</span>
+              <span>Articles</span>
             </li>
-          <% end %>
-          <li>
-            <div class="ticker-notification">
-              <span><%= project.articles.count %></span>
-            </div>
-            <span>Articles</span>
-          </li>
-          <li>
-            <div class="ticker-notification">
-              <span><%= project.evaluations.count %></span>
-            </div>
-            <span>Evaluations</span>
-          </li>
-          <li>
-            <div class="ticker-notification">
-              <span><%= project.discussions.count %></span>
-            </div>
-            <span>Discussions</span>
-          </li>
-          <li>
-            <div class="ticker-notification">
-              <span><%= project.comments.count %></span>
-            </div>
-            <span>Comments</span>
-          </li>
-        </ul>
+            <li>
+              <div class="ticker-notification">
+                <span><%= project.evaluations.count %></span>
+              </div>
+              <span>Evaluations</span>
+            </li>
+            <li>
+              <div class="ticker-notification">
+                <span><%= project.discussions.count %></span>
+              </div>
+              <span>Discussions</span>
+            </li>
+            <li>
+              <div class="ticker-notification">
+                <span><%= project.comments.count %></span>
+              </div>
+              <span>Comments</span>
+            </li>
+          </ul>
+        </div>
       </div>
-
-      <div class="project-ticker-graph">
-        <%= line_chart @donation.charity_project.evaluations.map { |report| [report.title, report.score] },
-                       colors: ["#35A28C"],
-                       library: {
-                         legend: {
-                           labels: { fontColor: "white" }
-                         },
-                         scales: {
-                           x: {
-                             grid: { color: 'white', tickColor: 'white' },
-                             ticks: { color: 'white' }
-                           },
-                           y: {
-                             grid: { color: 'white', tickColor: 'white' },
-                             ticks: { color: 'white' }
-                           }
-                         }
-                       } %>
-        <h6>Evaluation Score</h6>
-      </div>
-
       <div class="project-ticker-progress">
         <%= render "charity_projects/progress_bar", project: @donation.charity_project %>
       </div>

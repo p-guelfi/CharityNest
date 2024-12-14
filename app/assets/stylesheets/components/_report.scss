@@ -131,6 +131,10 @@ $report-full-padding-x: 4rem;
   h1 {
     margin: 2rem 0 1rem 0;
   }
+  div {
+    padding: 0;
+  }
+
 }
 .report-date {
   margin-bottom: 1rem;
@@ -174,4 +178,12 @@ $report-full-padding-x: 4rem;
 }
 .report-edit-icon {
   margin-left: 0.5rem;
+}
+@media (max-width: 768px) {
+  .report-full {
+    padding: 2rem 1.5rem;
+    img {
+      margin: -2rem -1.5rem 2rem -1.5rem;
+    }
+  }
 }

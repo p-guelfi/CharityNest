@@ -2,26 +2,35 @@
   display: flex;
   flex-direction: column;
   margin-top: 2rem;
+  width: 100%;
+  max-width: 800px;
+  box-sizing: border-box;
 }
 .project-ticker {
   background-color: $dark-ocean-blue;
   color: white;
   padding: 4rem;
   padding-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  a {
+    color: white;
+    text-decoration: none;
+  }
+}
+.ticker-content {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 2fr 1fr;
   grid-template-rows: auto;
-  gap: 1rem;
+  column-gap: 4rem;
+  row-gap: 0;
 }
 .project-ticker-info {
   grid-column: span 1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  a {
-    color: white;
-    text-decoration: none;
-  }
+  margin-top: 3rem;
   ul {
     list-style-type: none;
     padding: 0;
@@ -49,14 +58,22 @@
 }
 .project-ticker-graph {
   grid-column: span 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  margin-top: 3rem;
   div, canvas {
     width: 100%!important;
-    max-height: 80%!important;
+    max-height: 100%!important;
+  }
+  h6 {
+    margin-top: 1rem;
   }
 }
 .project-ticker-progress {
   grid-column: span 2;
   width: 100%;
+  margin-top: 4rem;
   .progress-info-and-bar {
     width: 100%;
   }
@@ -71,6 +88,7 @@
 .donation-info {
   display: flex;
   justify-content: start;
+  align-items: center;
 }
 .donation-amount {
   display: flex;
@@ -84,5 +102,39 @@
   div, canvas {
     width: 8rem!important;
     height: 5rem!important;
+  }
+}
+@container dashboardColumn (max-width: 600px) {
+  .project-ticker {
+    padding: 1.5rem;
+  }
+  .ticker-content {
+    grid-template-columns: 1fr;
+  }
+  .project-ticker-graph {
+    margin-top: 2rem;
+  }
+  .project-ticker-info {
+    margin-top: 2rem;
+  }
+  .project-ticker-progress {
+    grid-column: span 1;
+    margin-top: 2rem;
+  }
+  .donation-manage {
+    padding: 1rem;
+  }
+  .donation-piechart {
+    margin-right: 1rem;
+    div, canvas {
+      width: 2.5rem!important;
+      height: 2.5rem!important;
+    }
+  }
+  .donation-manage-action {
+    max-width: 40%;
+  }
+  .donation-amount p {
+    line-height: 1rem;
   }
 }
