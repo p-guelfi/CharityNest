@@ -49,7 +49,7 @@
             <% if @charity_project.articles.any? %>
               <%= render "reports_carousel", carousel_id: "articles", objects: @charity_project.articles %>
             <% else %>
-              <div>
+              <div class="show-placeholder-text">
                 <p>No Organisation Reporting published yet. Stay tuned for future updates.</p>
               </div>
             <% end %>
@@ -65,7 +65,7 @@
               <% if @charity_project.discussions.any? %>
                 <%= render "discussions_carousel", carousel_id: "Discussions", objects: @charity_project.discussions.first(3)  %>
               <% else %>
-                <div>
+                <div class="show-placeholder-text">
                   <p>No Forum discussions published yet. <%= link_to "Start the first discussion", charity_project_discussions_path(@charity_project) %></p>
                 </div>
               <% end %>

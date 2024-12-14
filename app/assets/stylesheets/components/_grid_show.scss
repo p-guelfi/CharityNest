@@ -58,29 +58,10 @@ $nav-width: 100px;
   max-width: 80%;
   margin-bottom: 2rem;
 }
-@media (max-width: 1280px) {
-  .show-section-card {
-    margin: 0 2rem 6rem 2rem;
-  }
-  .show-nav-container {
-    display: none;
-  }
-  .container-evaluations {
-    padding-left: 0rem;
-  }
+.show-placeholder-text {
+  padding: 0 2rem;
 }
-@media (max-width: 768px) {
-  .show-section-card {
-    margin: 0 1rem 6rem 1rem;
-    padding: 0.25rem;
-  }
-  .grid-show-container {
-    grid-template-columns: 1fr;
-  }
-  .container-articles {
-  max-width: 100%;
-  }
-}
+
 
 
 .description-subsection {
@@ -121,9 +102,7 @@ $nav-width: 100px;
     padding-right: 2rem;
   }
 }
-.show-intro {
 
-}
 .dropshadow-nav {
   box-shadow: $default-box-shadow;
   width: 100%;
@@ -137,5 +116,32 @@ $nav-width: 100px;
   h6,p {
     padding: 0 2rem 0 3.5rem;
     text-align: center;
+  }
+}
+
+@media (max-width: 1280px) {
+  .show-section-card {
+    margin: 0 2rem 6rem 2rem;
+  }
+  .show-nav-container {
+    display: none;
+  }
+  .container-evaluations {
+    padding-left: 0rem;
+  }
+}
+@media (max-width: 768px) {
+  .show-section-card {
+    margin: 0 1rem 6rem 1rem;
+    padding: 0.25rem;
+  }
+  .show-heading {
+    padding: 2rem;
+  }
+  .grid-show-container {
+    grid-template-columns: 1fr;
+  }
+  .container-articles {
+  max-width: 100%;
   }
 }
